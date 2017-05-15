@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="T_Claim" representedClassName="T_Claim" syncable="YES" codeGenerationType="class">
+        <attribute name="accidentDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="accidentDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="accidentLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="accidentLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="atFault" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="claimType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drivingLicense" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="insuredContact" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="insuredEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notifiedBy" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="nric" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="policeReportNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="policyNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="registrationNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tpVehicle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vehicleImage" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="T_ClaimImage" representedClassName="T_ClaimImage" syncable="YES" codeGenerationType="class">
+        <attribute name="beforeRepair" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="claimKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="T_Instruction" representedClassName="T_Instruction" syncable="YES" codeGenerationType="class">
+        <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="T_Profile" representedClassName="T_Profile" syncable="YES" codeGenerationType="class">
+        <attribute name="countryCode" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isGuideReaded" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="loginID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneToken" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rememberMe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="T_Claim" positionX="-36" positionY="45" width="128" height="330"/>
+        <element name="T_ClaimImage" positionX="-18" positionY="162" width="128" height="105"/>
+        <element name="T_Instruction" positionX="-54" positionY="36" width="128" height="75"/>
+        <element name="T_Profile" positionX="-63" positionY="-18" width="128" height="135"/>
+    </elements>
+</model>
