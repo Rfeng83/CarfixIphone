@@ -68,6 +68,8 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
             item.title = "Mobile No."
         } else if item.name == "vehicleNo" {
             item.title = "Vehicle No."
+        } else if item.name == "caseID" {
+            item.title = "Case ID"
         }
         return item
     }
