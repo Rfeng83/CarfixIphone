@@ -45,22 +45,22 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
                 
                 self.mImagesExists = [:]
                 
-//                if let categories = model.PhotoCategories {
-//                    for cat in categories {
-//                        if let photoCategory = PhotoCategory(rawValue: cat.Category) {
-//                            if self.mImagesExists?[photoCategory] == nil {
-//                                let images = [String]()
-//                                self.mImagesExists?.updateValue(images, forKey: photoCategory)
-//                            }
-//                            
-//                            if let images = cat.Images {
-//                                for image in images {
-//                                    self.mImagesExists?[photoCategory]?.append(image.Path ?? "")
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
+                //                if let categories = model.PhotoCategories {
+                //                    for cat in categories {
+                //                        if let photoCategory = PhotoCategory(rawValue: cat.Category) {
+                //                            if self.mImagesExists?[photoCategory] == nil {
+                //                                let images = [String]()
+                //                                self.mImagesExists?.updateValue(images, forKey: photoCategory)
+                //                            }
+                //
+                //                            if let images = cat.Images {
+                //                                for image in images {
+                //                                    self.mImagesExists?[photoCategory]?.append(image.Path ?? "")
+                //                                }
+                //                            }
+                //                        }
+                //                    }
+                //                }
                 
                 self.drawImageUpload(category: .DamagedVehicle)
                 self.drawImageUpload(category: .DrivingLicense)
@@ -145,6 +145,27 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
     }
     
     @IBAction func uploadImages(_ sender: Any) {
+        var imageList = [String: UIImage]()
+        
+        if let images = self.mImages {
+            for item in images {
+                var count = 0
+                for image in item.value {
+                    imageList["\(item.key.rawValue);\(count).jpg"] = image
+                    count = count + 1
+                }
+            }
+        }
+        
+        self.showProgressBar(msg: "The action might take few minutes to complete, please don’t close the apps until further instruction")
+        
+        if let key = key {
+            CarFixAPIPost(self).uploadClaimPhotos(key: key, images: imageList) { data in
+                self.performSegue(withIdentifier: Segue.segueViewSubmission.rawValue, sender: self)
+                self.mImages = [:]
+                self.refresh()
+            }
+        }
     }
     
     func drawImages(view: UIView, category: PhotoCategory, images: [String: UIImage?], btnAdd: CustomImageView, left: CGFloat, top: CGFloat, width: CGFloat, imageSize: CGFloat) -> CGPoint {

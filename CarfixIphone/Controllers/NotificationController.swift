@@ -108,7 +108,7 @@ class NotificationController: BaseTableController {
             }
             
             if let caseNo = Convert(model.CaseID).to(Int.self) as? Int {
-                if let serviceNeeded = ServiceNeeded(rawValue: Convert(model.ServiceNeeded).to()!) {
+                if let serviceNeeded = ServiceNeeded(rawValue: Convert(model.ServiceNeeded ?? 0).to()!) {
                     self.title = serviceNeeded.title
                     if caseNo > 0 {
                         self.title = "\(self.title!) | #\(caseNo)"

@@ -76,21 +76,6 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
     
     func buildField(name: String, field: UIView) -> UIView {
         let customField = field as! CustomTextField
-        //        if name == "accidentDate" {
-        //            customField = CustomDateTimePicker(frame: customField.frame).initView()
-        //            customField.name = name
-        //        } else if name == "mobileNo" {
-        //            customField = CustomPhoneField(frame: customField.frame).initView()
-        //            customField.name = name
-        //            customField.isEnabled = false
-        //        } else if name == "vehicleNo" {
-        //            customField.isEnabled = false
-        //        }
-        //
-        //        if name == "accidentDate" || name == "icNo" {
-        //            customField.isRequired = true
-        //        }
-        
         customField.isEnabled = false
         return customField
     }
@@ -107,15 +92,6 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
         myClaimDetails.text = "My Claim Details"
         _ = myClaimDetails.fitHeight()
         sender.addSubview(myClaimDetails)
-        
-        //        y = y + height + Config.lineHeight
-        //
-        //        let subTitle = CustomLabel(frame: CGRect(x: x, y: y, width: UIScreen.main.bounds.width - x * 2, height: 0)).initView()
-        //        subTitle.numberOfLines = 0
-        //        subTitle.textAlignment = .center
-        //        subTitle.text = "Please fill in your vehicle details and your particulars below"
-        //        height = subTitle.fitHeight()
-        //        sender.addSubview(subTitle)
     }
     
     func afterDrawing(_ sender: CustomEditPage) -> Bool {
@@ -134,15 +110,6 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
         sender.addSubview(uploadTitle)
         
         y = y + height + Config.lineHeight
-        
-        //        let subTitle = CustomLabel(frame: CGRect(x: x, y: y, width: width, height: 0)).initView()
-        //        subTitle.numberOfLines = 0
-        //        subTitle.textAlignment = .center
-        //        subTitle.text = "Please provide sufficient images of your damaged vehicle and other necessary documents."
-        //        height = subTitle.fitHeight()
-        //        sender.addSubview(subTitle)
-        //
-        //        y = y + height + Config.lineHeight
         
         for item in EnumManager().array(PhotoCategory.self) {
             let view = drawImageUpload(category: item, left: x, top: y)
@@ -171,22 +138,7 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
         
         y = y + Config.lineHeight + Config.padding
         let imageSize = Config.lineHeight * 4
-        //        let iconSize = Config.iconSizeBig
         
-        //        y = y + imageSize / 2 - iconSize / 2
-        //
-        //        let btnAdd = CustomImageView(frame: CGRect(x: x, y: y, width: iconSize, height: iconSize)).initView()
-        //        btnAdd.tag = Convert(category.rawValue).to()!
-        //        btnAdd.tintColor = CarfixColor.primary.color
-        //        btnAdd.image = #imageLiteral(resourceName: "ic_add_circle")
-        //        view.addSubview(btnAdd)
-        
-        //        let gestureAdd = UITapGestureRecognizer(target: self, action: #selector(pickImage(_:)))
-        //        gestureAdd.delegate = self
-        //        btnAdd.isUserInteractionEnabled = true
-        //        btnAdd.addGestureRecognizer(gestureAdd)
-        
-        //        x = x + btnAdd.frame.width + Config.padding
         y = titleLabel.frame.origin.y + titleLabel.frame.size.height + Config.padding
         
         if let images = mImagesExists?[category] {

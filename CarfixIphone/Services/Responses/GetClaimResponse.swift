@@ -15,6 +15,7 @@ class GetClaimResponse: CarFixAPIResponse {
 class GetClaimResult: BaseAPIItem {
     var CaseID: Int32 = 0
     var ClaimStatus: String?
+    var Workshop: String?
     var VehicleNo: String?
     var AccidentDate: Date?
     var MobileNo: String?

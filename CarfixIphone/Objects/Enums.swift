@@ -185,6 +185,7 @@ enum Segue: String {
     case seguePanelWorkshops
     case segueNewClaimResult
     case segueViewClaim
+    case segueViewSubmission
 }
 
 enum MyError: Error {

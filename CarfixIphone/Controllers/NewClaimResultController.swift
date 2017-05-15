@@ -62,6 +62,6 @@ class NewClaimResultController: BaseFormController, UIGestureRecognizerDelegate 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        dismissParentController(type: ViewVehicleController.self)
+        dismissParentController(type: BaseTabBarController.self)
     }
 }

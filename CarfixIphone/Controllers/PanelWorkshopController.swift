@@ -54,18 +54,24 @@ class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mPanelWorkshops?.count ?? 0
+        return getItems()?.count ?? 0
     }
     
-    var selectedRow: GetPanelWorkshopsResult?
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    var selectedRow: PanelWorkshopItem?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? PanelWorkshopTableViewCell {
             cell.leftImage.isHidden = false
             cell.titleLabel.textColor = CarfixColor.primary.color
             cell.detailsLabel.textColor = CarfixColor.primary.color
-            cell.contentView.backgroundColor = CarfixColor.white.color
+//            cell.contentView.backgroundColor = CarfixColor.white.color
             
-            if let row = mPanelWorkshops?[indexPath.row] {
+            if let row = getItems()?[indexPath.row] as? PanelWorkshopItem {
                 selectedRow = row
             }
         }
@@ -100,6 +106,7 @@ class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
     override func buildItems() -> [BaseTableItem]? {
         var items = [BaseTableItem]()
         
+        items.append(PanelWorkshopItem())
         if let result = mPanelWorkshops {
             for model in result {
                 items.append(PanelWorkshopItem(model: model))
@@ -158,12 +165,12 @@ class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
                 }
             }
             
-            if let workshop = selectedRow.key {
-                self.showProgressBar(msg: "The action might take few minutes to complete, please don’t close the apps until further instruction")
-                CarFixAPIPost(self).newClaim(ins: offerService.Title!, vehReg: newClaimModel.vehicleNo!, accidentDate: newClaimModel.accidentDate!, icNo: newClaimModel.icNo!, workshop: workshop, images: imageList) { data in
-                    self.mResult = data?.Result
-                    self.performSegue(withIdentifier: Segue.segueNewClaimResult.rawValue, sender: self)
-                }
+            self.showProgressBar(msg: "The action might take few minutes to complete, please don’t close the apps until further instruction")
+            
+            let workshop = selectedRow.mModel?.key
+            CarFixAPIPost(self).newClaim(ins: offerService.Title!, vehReg: newClaimModel.vehicleNo!, accidentDate: newClaimModel.accidentDate!, icNo: newClaimModel.icNo!, workshop: workshop, images: imageList) { data in
+                self.mResult = data?.Result
+                self.performSegue(withIdentifier: Segue.segueNewClaimResult.rawValue, sender: self)
             }
         } else {
             self.message(content: "Please select a Panel Workshop to continue...")
@@ -171,17 +178,26 @@ class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
     }
     
     class PanelWorkshopItem: BaseTableItem {
+        var mModel: GetPanelWorkshopsResult?
         var itemId: String!
         
-        required init(model: GetPanelWorkshopsResult) {
+        override init() {
             super.init()
+            
+            self.itemId = ""
+            self.title = "Insurance Decide"
+            self.leftImage = #imageLiteral(resourceName: "ic_check_circle")
+        }
+        
+        required convenience init(model: GetPanelWorkshopsResult) {
+            self.init()
             
             if let key = model.key {
                 itemId = key
             }
             self.title = model.CompanyName
             self.details = model.WorkshopAddress
-            self.leftImage = #imageLiteral(resourceName: "ic_check_circle")
+            self.mModel = model
         }
     }
     
