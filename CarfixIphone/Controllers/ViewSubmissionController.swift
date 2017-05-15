@@ -37,6 +37,7 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
         if let model = self.mModel {
             item.caseID = model.CaseID
             item.claimStatus = model.ClaimStatus
+            item.workshop = model.Workshop
             item.vehicleNo = model.VehicleNo
             item.accidentDate = model.AccidentDate
             item.icNo = model.ICNo
@@ -243,6 +244,7 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
     class ViewSubmissionModel: NSObject {
         public var caseID: Int32?
         public var claimStatus: String?
+        public var workshop: String?
         public var vehicleNo: String?
         public var accidentDate: Date?
         public var icNo: String?
