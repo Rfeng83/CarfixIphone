@@ -14,6 +14,12 @@ class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
     var offerService: GetOfferServicesResult!
     var images: [PhotoCategory: [UIImage]]?
     
+    var insurerName: String {
+        get {
+            return offerService.InsurerName ?? offerService.Title!
+        }
+    }
+    
     @IBOutlet weak var pickerLocationArea: LocationAreaPicker!
     
     override func viewDidLoad() {
@@ -94,7 +100,7 @@ class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
                 
                 if let item = item as? LocationAreaItem {
                     selectedRow = nil
-                    CarFixAPIPost(self).getPanelWorkshops(ins: offerService.Title!, area: item.itemId) { data in
+                    CarFixAPIPost(self).getPanelWorkshops(ins: insurerName, area: item.itemId) { data in
                         self.mPanelWorkshops = data?.Result
                         self.refresh(sender: nil)
                     }
@@ -168,7 +174,7 @@ class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
             self.showProgressBar(msg: "The action might take few minutes to complete, please don’t close the apps until further instruction")
             
             let workshop = selectedRow.mModel?.key
-            CarFixAPIPost(self).newClaim(ins: offerService.Title!, vehReg: newClaimModel.vehicleNo!, accidentDate: newClaimModel.accidentDate!, icNo: newClaimModel.icNo!, workshop: workshop, images: imageList) { data in
+            CarFixAPIPost(self).newClaim(ins: insurerName, vehReg: newClaimModel.vehicleNo!, accidentDate: newClaimModel.accidentDate!, icNo: newClaimModel.icNo!, workshop: workshop, images: imageList) { data in
                 self.mResult = data?.Result
                 self.performSegue(withIdentifier: Segue.segueNewClaimResult.rawValue, sender: self)
             }

@@ -16,6 +16,7 @@ class GetOfferServicesResponse: MobileUserAPIResponse {
 class GetOfferServicesResult: BaseAPIItem {
     var ServiceID: Int = 0
     var ServiceName: String?
+    var InsurerName: String?
     var Title: String?
     var SubTitle: String?
     var Price: NSNumber?
