@@ -185,7 +185,7 @@ class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
             super.init()
             
             self.itemId = ""
-            self.title = "Insurance Decide"
+            self.title = "Skip"
             self.leftImage = #imageLiteral(resourceName: "ic_check_circle")
         }
         

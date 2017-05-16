@@ -13,6 +13,7 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
     @IBOutlet weak var imgLogo: CustomImageView!
     @IBOutlet weak var labelCaseID: CustomLabel!
     @IBOutlet weak var labelClaimStatus: CustomLabel!
+    @IBOutlet weak var labelApprovalAmount: CustomLabel!
     
     @IBOutlet weak var viewDamagedVehicle: UIView!
     @IBOutlet weak var viewDamagedVehicleHeight: NSLayoutConstraint!
@@ -22,6 +23,7 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
     @IBOutlet weak var viewPoliceReportHeight: NSLayoutConstraint!
     
     @IBOutlet weak var btnUpload: CustomButton!
+    @IBOutlet weak var btnViewApprovalLetter: CustomButton!
     
     var key: String?
     override func viewDidLoad() {
@@ -42,6 +44,9 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
                 
                 self.labelCaseID.text = "\(model.CaseID)"
                 self.labelClaimStatus.text = model.ClaimStatus
+                self.labelApprovalAmount.text = Convert(model.ApprovalAmount ?? 0).toCurrency()
+                
+                self.btnViewApprovalLetter.isEnabled = model.IsApproved == 1
                 
                 self.mImagesExists = [:]
                 
@@ -249,9 +254,25 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
                     
                 }
             }
-        }
-        else if let svc = segue.destination as? ViewSubmissionController {
+        } else if let svc = segue.destination as? ViewSubmissionController {
             svc.key = self.key
+        } else if let nav = segue.destination as? UINavigationController {
+            if let svc = nav.topViewController as? WebController {
+                svc.title = "Approval Letter"
+                
+                var queryItems = [URLQueryItem(name: "key", value: key)]
+                
+                let root = CarFixAPIPost(self).getWebBaseURL();
+                var urlComps = URLComponents(string: "\(root)/Letter/ApprovalLetter")!
+                urlComps.queryItems = queryItems
+                var uri = urlComps.url!
+                
+                queryItems = [URLQueryItem(name: "embedded", value: "true"), URLQueryItem(name: "url", value: uri.absoluteString)]
+                urlComps = URLComponents(string: "http://drive.google.com/viewerng/viewer")!
+                urlComps.queryItems = queryItems
+                uri = urlComps.url!
+                svc.url = uri
+            }
         }
     }
     
@@ -322,5 +343,4 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
         
         self.dismiss(animated: true, completion: nil)
     }
-    
 }
