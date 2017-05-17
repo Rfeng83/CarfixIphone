@@ -40,7 +40,7 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
             item.workshop = model.Workshop
             item.vehicleNo = model.VehicleNo
             item.accidentDate = model.AccidentDate
-            item.address = model.AccidentAddress
+            item.address = model.AccidentLocation
             item.icNo = model.ICNo
             item.mobileNo = model.MobileNo
             

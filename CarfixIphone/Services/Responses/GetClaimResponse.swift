@@ -20,7 +20,9 @@ class GetClaimResult: BaseAPIItem {
     var Workshop: String?
     var VehicleNo: String?
     var AccidentDate: Date?
-    var AccidentAddress: String?
+    var AccidentLocation: String?
+    var AccidentLatitude: NSNumber?
+    var AccidentLongitude: NSNumber?
     var MobileNo: String?
     var ICNo: String?
     var InsurerName: String?
