@@ -134,13 +134,16 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "LogCase", parameters: parameters, onSuccess: onSuccess)
     }
     
-    func newClaim(ins: String, vehReg: String, accidentDate: Date, icNo: String, workshop: String?, images: [String: UIImage], onSuccess: @escaping (NewClaimResponse?) -> Void) {
+    func newClaim(ins: String, vehReg: String, accidentDate: Date, icNo: String, workshop: String?,latitude: Double, longitude: Double, accidentLocation: String, images: [String: UIImage], onSuccess: @escaping (NewClaimResponse?) -> Void) {
         var parameters = [String: Any]()
         parameters.updateValue(ins, forKey: "ins")
         parameters.updateValue(vehReg, forKey: "vehReg")
         parameters.updateValue(accidentDate, forKey: "accidentDate")
         parameters.updateValue(icNo, forKey: "icNo")
         if let val = workshop { parameters.updateValue(val, forKey: "workshop") }
+        parameters.updateValue(latitude, forKey: "latitude")
+        parameters.updateValue(longitude, forKey: "longitude")
+        parameters.updateValue(accidentLocation, forKey: "accidentLocation")
         postFile(method: "NewClaim", parameters: parameters, images: images, onBuildRequest: { req in
             var request = req
             request.setValue(self.getUID(), forHTTPHeaderField: "UID")

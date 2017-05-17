@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CustomTextView: UITextView {
+class CustomTextView: UITextView, Required {
 //    required init?(coder aDecoder: NSCoder) {
 //        super.init(coder: aDecoder)
 //        initView()
@@ -107,6 +107,16 @@ class CustomTextView: UITextView {
         else
         {
             closeTextField()
+        }
+    }
+    
+    private var mIsRequired: Bool = false
+    var isRequired: Bool {
+        get {
+            return mIsRequired
+        }
+        set {
+            mIsRequired = newValue
         }
     }
 }

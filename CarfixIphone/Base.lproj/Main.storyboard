@@ -1647,7 +1647,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="WIW-pO-oOn" firstAttribute="top" secondItem="FOv-uR-Bxj" secondAttribute="topMargin" id="5Ny-t6-Miu"/>
                                     <constraint firstItem="827-td-7OF" firstAttribute="top" secondItem="WIW-pO-oOn" secondAttribute="bottom" constant="8" id="GGd-vL-oZf"/>
@@ -2693,6 +2692,7 @@
                         <outlet property="editPage" destination="dpH-hX-Agv" id="lyS-FE-C32"/>
                         <segue destination="vs0-By-FY3" kind="show" identifier="segueViewImage" id="VLC-Xz-ZtE"/>
                         <segue destination="vCi-xx-EmZ" kind="show" identifier="seguePanelWorkshops" id="hVc-yj-eIn"/>
+                        <segue destination="VE1-Nf-Wad" kind="showDetail" identifier="segueNewClaimMap" id="877-l1-9CA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n78-MJ-O3K" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4055,6 +4055,120 @@
             </objects>
             <point key="canvasLocation" x="5908" y="3090"/>
         </scene>
+        <!--Insurance Claim-->
+        <scene sceneID="n9R-iY-oXN">
+            <objects>
+                <viewController id="6Jw-sb-IFT" customClass="NewClaimMapController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XSS-tY-eWp"/>
+                        <viewControllerLayoutGuide type="bottom" id="sLr-sj-PPG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Bx-Jl-xIu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qw0-8H-tf3">
+                                <rect key="frame" x="0.0" y="64" width="375" height="433.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_location" translatesAutoresizingMaskIntoConstraints="NO" id="baa-0j-V6b">
+                                        <rect key="frame" x="171" y="185.5" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="Agt-KN-Sja"/>
+                                            <constraint firstAttribute="height" constant="32" id="XKA-Zf-Ts9"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="baa-0j-V6b" firstAttribute="centerX" secondItem="qw0-8H-tf3" secondAttribute="centerX" id="5nq-nV-0Or"/>
+                                    <constraint firstItem="baa-0j-V6b" firstAttribute="centerY" secondItem="qw0-8H-tf3" secondAttribute="centerY" constant="-16" id="QRu-YX-McT"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2h-xI-1Me">
+                                <rect key="frame" x="0.0" y="509.5" width="375" height="108.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breakdown Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="176-Ku-DUN" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="166" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaQ-cO-FdW" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="37" width="359" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="vaQ-cO-FdW" secondAttribute="trailing" id="3Je-Te-gbO"/>
+                                    <constraint firstItem="vaQ-cO-FdW" firstAttribute="leading" secondItem="v2h-xI-1Me" secondAttribute="leadingMargin" id="Bca-Du-DkH"/>
+                                    <constraint firstItem="176-Ku-DUN" firstAttribute="leading" secondItem="v2h-xI-1Me" secondAttribute="leadingMargin" id="E6n-oy-nuH"/>
+                                    <constraint firstItem="176-Ku-DUN" firstAttribute="top" secondItem="v2h-xI-1Me" secondAttribute="topMargin" id="oyl-db-s0w"/>
+                                    <constraint firstItem="vaQ-cO-FdW" firstAttribute="top" secondItem="176-Ku-DUN" secondAttribute="bottom" constant="8" id="q1m-of-ekc"/>
+                                </constraints>
+                            </view>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFM-Wz-7Ni" customClass="CustomButton" customModule="CarfixIphone" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="h5i-eV-B0i"/>
+                                </constraints>
+                                <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="confirmLocation:" destination="6Jw-sb-IFT" eventType="touchUpInside" id="sAx-Hr-Z9M"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v2h-xI-1Me" firstAttribute="top" secondItem="qw0-8H-tf3" secondAttribute="bottom" constant="12" id="5VH-Lh-aVS"/>
+                            <constraint firstItem="FFM-Wz-7Ni" firstAttribute="top" secondItem="v2h-xI-1Me" secondAttribute="bottom" id="6QE-yc-n6j"/>
+                            <constraint firstAttribute="trailing" secondItem="qw0-8H-tf3" secondAttribute="trailing" id="BPf-bI-XLA"/>
+                            <constraint firstAttribute="trailing" secondItem="v2h-xI-1Me" secondAttribute="trailing" id="Haq-qR-Khk"/>
+                            <constraint firstItem="qw0-8H-tf3" firstAttribute="height" secondItem="6Bx-Jl-xIu" secondAttribute="height" multiplier="0.65" id="LjO-kO-dOR"/>
+                            <constraint firstItem="FFM-Wz-7Ni" firstAttribute="leading" secondItem="6Bx-Jl-xIu" secondAttribute="leading" id="Wos-EC-CoQ"/>
+                            <constraint firstItem="qw0-8H-tf3" firstAttribute="leading" secondItem="6Bx-Jl-xIu" secondAttribute="leading" id="YwD-1v-Yvc"/>
+                            <constraint firstAttribute="bottom" secondItem="FFM-Wz-7Ni" secondAttribute="bottom" id="f3Y-pO-yOO"/>
+                            <constraint firstItem="v2h-xI-1Me" firstAttribute="leading" secondItem="6Bx-Jl-xIu" secondAttribute="leading" id="scW-E8-Mih"/>
+                            <constraint firstItem="qw0-8H-tf3" firstAttribute="top" secondItem="XSS-tY-eWp" secondAttribute="bottom" id="vKj-hs-xqF"/>
+                            <constraint firstAttribute="trailing" secondItem="FFM-Wz-7Ni" secondAttribute="trailing" id="xeR-fp-1fy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Insurance Claim" id="O4H-pO-lne">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="nfq-gz-Nd4">
+                            <connections>
+                                <action selector="closeWithSender:" destination="6Jw-sb-IFT" id="c3V-aS-WLI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="lblAddress" destination="176-Ku-DUN" id="B7M-V8-LbS"/>
+                        <outlet property="mapViewContainer" destination="qw0-8H-tf3" id="Krl-XZ-kyx"/>
+                        <outlet property="txtAddress" destination="vaQ-cO-FdW" id="IzR-Zb-yap"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ip6-19-4Ju" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8094" y="4074"/>
+        </scene>
+        <!--Base Navigation Controller-->
+        <scene sceneID="dkZ-wu-TeC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VE1-Nf-Wad" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GWj-pp-XIl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6Jw-sb-IFT" kind="relationship" relationship="rootViewController" id="Kav-SJ-vqi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fdj-AE-n3V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7342" y="4075"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_account_circle" width="24" height="24"/>
@@ -4094,14 +4208,14 @@
         <image name="loading" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ej0-WV-Lxs"/>
-        <segue reference="hCq-E1-HUC"/>
+        <segue reference="2nD-6o-Hqc"/>
         <segue reference="zky-01-kms"/>
-        <segue reference="UwB-fJ-tA0"/>
-        <segue reference="Mb9-hL-ail"/>
+        <segue reference="hCq-E1-HUC"/>
         <segue reference="SnJ-bj-dFk"/>
-        <segue reference="pWd-LV-gft"/>
-        <segue reference="Sj4-yO-bIK"/>
+        <segue reference="Ej0-WV-Lxs"/>
+        <segue reference="VLC-Xz-ZtE"/>
+        <segue reference="UwB-fJ-tA0"/>
         <segue reference="37J-qr-IGl"/>
+        <segue reference="Sj4-yO-bIK"/>
     </inferredMetricsTieBreakers>
 </document>

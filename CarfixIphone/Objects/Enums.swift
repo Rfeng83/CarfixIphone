@@ -182,6 +182,7 @@ enum Segue: String {
     case segueChangePassword
     case seguePolicy
     case segueViewImage
+    case segueNewClaimMap
     case seguePanelWorkshops
     case segueNewClaimResult
     case segueViewClaim

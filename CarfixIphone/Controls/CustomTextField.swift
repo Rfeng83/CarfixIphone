@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CustomTextField : UITextField {
+class CustomTextField : UITextField, Required {
     override func initView() -> CustomTextField {
         if let font = self.font {
             self.font = font.withSize(Config.editFontSize)
@@ -168,4 +168,8 @@ class CustomTextField : UITextField {
     func validateField() -> Bool {
         return !self.isRequired || !self.text.isEmpty
     }
+}
+
+protocol Required {
+    var isRequired: Bool{ get set }
 }

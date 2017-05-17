@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import GoogleMaps
 
-class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePicker, UIGestureRecognizerDelegate, ViewImageControllerDelegate {
+class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePicker, UIGestureRecognizerDelegate, ViewImageControllerDelegate, NewClaimMapControllerDelegate {
     var key: String?
     var serviceID: Int?
     var mModel: GetOfferServicesResult?
@@ -70,6 +71,45 @@ class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePi
             customField.isEnabled = false
         } else if name == "vehicleNo" {
             customField.isEnabled = false
+        } else if name == "address" {
+            let view = CustomView(frame: field.frame).initView()
+            view.isRequired = true
+            let padding: CGFloat = 2
+            var x = padding
+            var y: CGFloat = Config.padding
+            var width = view.frame.size.width - padding
+            var height = view.frame.size.height
+            let frame = CGRect(x: x, y: y, width: width, height: height)
+            let text = CustomLabel(frame: frame).initView()
+            text.font = text.font.withSize(Config.editFontSize)
+            text.numberOfLines = 0
+            
+            if let model = mItem {
+                text.text = model.address
+            }
+            
+            if text.text.isEmpty {
+                text.text = "Tap to add accident address..."
+            }
+            
+            view.addSubview(text)
+            
+            x = 0
+            y = Config.padding + text.fitHeight() + Config.padding
+            width = view.frame.width
+            height = 1
+            let border = UIView(frame: CGRect(x: x, y: y, width: width, height: height))
+            border.backgroundColor = CarfixColor.gray800.color
+            view.addSubview(border)
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addAddress(_:)))
+            tapGesture.delegate = self
+            text.isUserInteractionEnabled = true
+            text.addGestureRecognizer(tapGesture)
+            
+            view.adjustSize()
+            
+            return view
         }
         
         if name == "accidentDate" || name == "icNo" {
@@ -77,6 +117,19 @@ class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePi
         }
         
         return customField
+    }
+    
+    func addAddress(_ sender: UIGestureRecognizer) {
+        performSegue(withIdentifier: Segue.segueNewClaimMap.rawValue, sender: self)
+    }
+    
+    var mLocation: CLLocation?
+    func updateAddress(address: String?, location: CLLocation?) {
+        mItem = self.editPage.getResult() as? NewClaimModel
+        mItem?.address = address
+        mLocation = location
+        
+        self.editPage.refresh()
     }
     
     func beforeDrawing(_ sender: CustomEditPage) {
@@ -232,6 +285,11 @@ class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePi
             svc.images = self.mImages
             svc.newClaimModel = editPage.getResult() as! NewClaimModel
             svc.offerService = self.mModel!
+            svc.location = self.mLocation!
+        } else if let nav = segue.destination as? UINavigationController {
+            if let svc = nav.topViewController as? NewClaimMapController {
+                svc.delegate = self
+            }
         }
     }
     
@@ -276,16 +334,21 @@ class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePi
     }
     
     @IBAction func next(_ sender: Any) {
-        if editPage.validateFields() {
-            performSegue(withIdentifier: Segue.seguePanelWorkshops.rawValue, sender: self)
+        if mLocation.isEmpty || mItem?.address?.isEmpty == true {
+            self.message(content: "Accident address is required to continue...")
         } else {
-            self.message(content: "Please enter required field to continue...")
+            if editPage.validateFields() {
+                performSegue(withIdentifier: Segue.seguePanelWorkshops.rawValue, sender: self)
+            } else {
+                self.message(content: "Please enter required field to continue...")
+            }
         }
     }
     
     class NewClaimModel: NSObject {
         public var vehicleNo: String?
         public var accidentDate: Date?
+        public var address: String?
         public var icNo: String?
         public var mobileNo: String?
         //        5. upload photo - damaged vehicle

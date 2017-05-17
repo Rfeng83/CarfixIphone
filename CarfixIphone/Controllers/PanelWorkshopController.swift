@@ -8,11 +8,13 @@
 
 import Foundation
 import UIKit
+import GoogleMaps
 
 class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
     var newClaimModel: NewClaimController.NewClaimModel!
     var offerService: GetOfferServicesResult!
     var images: [PhotoCategory: [UIImage]]?
+    var location: CLLocation!
     
     var insurerName: String {
         get {
@@ -174,7 +176,7 @@ class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
             self.showProgressBar(msg: "The action might take few minutes to complete, please don’t close the apps until further instruction")
             
             let workshop = selectedRow.mModel?.key
-            CarFixAPIPost(self).newClaim(ins: insurerName, vehReg: newClaimModel.vehicleNo!, accidentDate: newClaimModel.accidentDate!, icNo: newClaimModel.icNo!, workshop: workshop, images: imageList) { data in
+            CarFixAPIPost(self).newClaim(ins: insurerName, vehReg: newClaimModel.vehicleNo!, accidentDate: newClaimModel.accidentDate!, icNo: newClaimModel.icNo!, workshop: workshop, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, accidentLocation: newClaimModel.address!, images: imageList) { data in
                 self.mResult = data?.Result
                 self.performSegue(withIdentifier: Segue.segueNewClaimResult.rawValue, sender: self)
             }

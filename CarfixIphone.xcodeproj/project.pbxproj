@@ -132,6 +132,8 @@
 		47DC05D41E009114000B352D /* CustomEditPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DC05D31E009114000B352D /* CustomEditPage.swift */; };
 		47DC05D61E00A7BB000B352D /* EditVehicleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DC05D51E00A7BB000B352D /* EditVehicleController.swift */; };
 		47DC05D81E0137FB000B352D /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DC05D71E0137FB000B352D /* CustomPicker.swift */; };
+		47E5D1981ECC6570002A44A0 /* NewClaimMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E5D1971ECC6570002A44A0 /* NewClaimMapController.swift */; };
+		47E5D19A1ECC7C7A002A44A0 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E5D1991ECC7C7A002A44A0 /* CustomView.swift */; };
 		47ECDD931E8A25E300D1ACEF /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ECDD921E8A25E300D1ACEF /* ResetPasswordController.swift */; };
 		47ED9E481E0BD85600DADE42 /* DisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ED9E471E0BD85600DADE42 /* DisplayManager.swift */; };
 		47F6ABE91E764A32003748AA /* ViewMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F6ABE81E764A32003748AA /* ViewMapController.swift */; };
@@ -274,6 +276,8 @@
 		47DC05D31E009114000B352D /* CustomEditPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEditPage.swift; sourceTree = "<group>"; };
 		47DC05D51E00A7BB000B352D /* EditVehicleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVehicleController.swift; sourceTree = "<group>"; };
 		47DC05D71E0137FB000B352D /* CustomPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
+		47E5D1971ECC6570002A44A0 /* NewClaimMapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewClaimMapController.swift; sourceTree = "<group>"; };
+		47E5D1991ECC7C7A002A44A0 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		47ECDD921E8A25E300D1ACEF /* ResetPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
 		47ED9E471E0BD85600DADE42 /* DisplayManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayManager.swift; sourceTree = "<group>"; };
 		47F6ABE81E764A32003748AA /* ViewMapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewMapController.swift; sourceTree = "<group>"; };
@@ -387,6 +391,7 @@
 				47B685CB1E07A08800D556FB /* CaseController.swift */,
 				473757531EC1900400672347 /* PolicyController.swift */,
 				473757551EC1922400672347 /* NewClaimController.swift */,
+				47E5D1971ECC6570002A44A0 /* NewClaimMapController.swift */,
 				4710BE071EC3073100091F95 /* PanelWorkshopController.swift */,
 				475528361EC48CA8001199C8 /* NewClaimResultController.swift */,
 				470EAA701EC56AFB006E752E /* ViewClaimController.swift */,
@@ -414,6 +419,7 @@
 		4716CE2F1DDDE6E80089C9F9 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				47E5D1991ECC7C7A002A44A0 /* CustomView.swift */,
 				470654F21DE8502E003D99B6 /* CustomDatePicker.swift */,
 				470654F31DE8502E003D99B6 /* CustomDateTimePicker.swift */,
 				470654F81DE8502E003D99B6 /* CustomTextField.swift */,
@@ -758,6 +764,7 @@
 				470C27E11DE09DC8003A6FFC /* StringExtension.swift in Sources */,
 				47FFA0771DE5EF5E00623CE1 /* BaseFormController.swift in Sources */,
 				470DC9291EC4710C0001FD40 /* NewClaimResponse.swift in Sources */,
+				47E5D1981ECC6570002A44A0 /* NewClaimMapController.swift in Sources */,
 				471926411E35EA2D00963F00 /* Pulsing.swift in Sources */,
 				47DC05D81E0137FB000B352D /* CustomPicker.swift in Sources */,
 				47C6EA891DE19BDD00D1B2A1 /* GetVehiclesResponse.swift in Sources */,
@@ -791,6 +798,7 @@
 				470DBAC71E092BD30087CC41 /* RightBorder.swift in Sources */,
 				47ED9E481E0BD85600DADE42 /* DisplayManager.swift in Sources */,
 				47C6EA861DE19BDD00D1B2A1 /* GetCaseDetailsResponse.swift in Sources */,
+				47E5D19A1ECC7C7A002A44A0 /* CustomView.swift in Sources */,
 				4707782D1E82C68500F2FC33 /* PopupMenuController.swift in Sources */,
 				470654FC1DE8502E003D99B6 /* CustomEmailField.swift in Sources */,
 				470B6D7B1E95F3AA00C9C74F /* CaseHistoryDetailsController.swift in Sources */,

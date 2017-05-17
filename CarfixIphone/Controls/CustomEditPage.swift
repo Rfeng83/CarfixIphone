@@ -65,7 +65,7 @@ class CustomEditPage: UIScrollView {
                 editControl = valueText
             }
             
-            if let txt = editControl as? CustomTextField {
+            if let txt = editControl as? Required {
                 if txt.isRequired {
                     _ = labelText.fitWidth()
                     let actualWidth = labelText.frame.size.width
@@ -74,7 +74,9 @@ class CustomEditPage: UIScrollView {
                     labelRequired.textColor = CarfixColor.primary.color
                     view.addSubview(labelRequired)
                 }
-                
+            }
+            
+            if let txt = editControl as? CustomTextField {
                 txt.text = item.details
                 if let parent = self.delegate as? UITextFieldDelegate {
                     txt.delegate = parent
@@ -88,7 +90,7 @@ class CustomEditPage: UIScrollView {
             baseView?.insertSubview(view, at: count)
             count += 1
             
-            y += height + padding
+            y += (editControl?.frame.height ?? height) + padding
             
             if prevEdit.isEmpty == false {
                 prevEdit?.nextField = editControl
