@@ -60,7 +60,7 @@ class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePi
         return item
     }
     
-    func buildField(name: String, field: UIView) -> UIView {
+    func buildField(name: String, item: BaseTableItem, field: UIView) -> UIView {
         var customField = field as! CustomTextField
         if name == "accidentDate" {
             customField = CustomDateTimePicker(frame: customField.frame).initView()

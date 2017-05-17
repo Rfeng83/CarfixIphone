@@ -16,7 +16,7 @@ class ResetPasswordController: BaseFormController, CustomEditPageDelegate {
         return PasswordModel()
     }
     
-    func buildField(name: String, field: UIView) -> UIView {
+    func buildField(name: String, item: BaseTableItem, field: UIView) -> UIView {
         let field = CustomPasswordField(frame: field.frame).initView()
         field.isRequired = true
         return field

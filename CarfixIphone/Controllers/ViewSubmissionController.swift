@@ -40,6 +40,7 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
             item.workshop = model.Workshop
             item.vehicleNo = model.VehicleNo
             item.accidentDate = model.AccidentDate
+            item.address = model.AccidentAddress
             item.icNo = model.ICNo
             item.mobileNo = model.MobileNo
             
@@ -75,10 +76,50 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
         return item
     }
     
-    func buildField(name: String, field: UIView) -> UIView {
+    func buildField(name: String, item: BaseTableItem, field: UIView) -> UIView {
         let customField = field as! CustomTextField
-        customField.isEnabled = false
-        return customField
+        if name == "address" {
+            let view = CustomView(frame: field.frame).initView()
+            
+            let iconSize = Config.lineHeight
+            let padding: CGFloat = 2
+            var x = padding
+            var y: CGFloat = Config.padding
+            var width = view.frame.size.width - padding - iconSize
+            var height = view.frame.size.height
+            let frame = CGRect(x: x, y: y, width: width, height: height)
+            let text = CustomLabel(frame: frame).initView()
+            text.font = text.font.withSize(Config.editFontSize)
+            text.numberOfLines = 0
+            text.text = item.details
+            view.addSubview(text)
+            
+            x = padding + width
+            let img = CustomImageView(frame: CGRect(x: x, y: y, width: iconSize, height: iconSize)).initView()
+            img.image = #imageLiteral(resourceName: "ic_lock")
+            img.tintColor = CarfixColor.gray700.color
+            view.addSubview(img)
+            
+            height = text.fitHeight()
+            if height < Config.lineHeight {
+                height = Config.lineHeight
+            }
+            
+            x = 0
+            y = Config.padding + height + Config.padding
+            width = view.frame.width
+            height = 1
+            let border = UIView(frame: CGRect(x: x, y: y, width: width, height: height))
+            border.backgroundColor = CarfixColor.gray800.color
+            view.addSubview(border)
+            
+            view.adjustSize()
+            
+            return view
+        } else {
+            customField.isEnabled = false
+            return customField
+        }
     }
     
     func beforeDrawing(_ sender: CustomEditPage) {
@@ -247,6 +288,7 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
         public var workshop: String?
         public var vehicleNo: String?
         public var accidentDate: Date?
+        public var address: String?
         public var icNo: String?
         public var mobileNo: String?
     }

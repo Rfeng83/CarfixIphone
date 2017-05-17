@@ -61,7 +61,7 @@ class EditVehicleController: BaseFormController, CustomEditPageDelegate, HasImag
     var engineCCPicker: PopupPicker!
     var transmissionPicker: PopupPicker!
     var variantSeriesPicker: PopupPicker!
-    func buildField(name: String, field: UIView) -> UIView {
+    func buildField(name: String, item: BaseTableItem, field: UIView) -> UIView {
         var customField = field as! CustomTextField
         if name == "year" {
             yearPicker = PopupPicker(frame: field.frame).initView()

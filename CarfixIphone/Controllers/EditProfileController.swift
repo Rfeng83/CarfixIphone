@@ -35,7 +35,7 @@ class EditProfileController: BaseFormController, CustomEditPageDelegate, HasImag
         }
     }
     
-    func buildField(name: String, field: UIView) -> UIView {
+    func buildField(name: String, item: BaseTableItem, field: UIView) -> UIView {
         var customField = field as! CustomTextField
         if name == "mobile" || name == "country" {
             customField.isEnabled = false

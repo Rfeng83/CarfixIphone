@@ -57,7 +57,7 @@ class CustomEditPage: UIScrollView {
             var editControl: UIView?
             if let editPage = self.delegate as? CustomEditPageDelegate {
                 if editPage.buildField != nil {
-                    editControl = editPage.buildField!(name: item.name, field: valueText)
+                    editControl = editPage.buildField!(name: item.name, item: item, field: valueText)
                 }
             }
             
@@ -207,7 +207,7 @@ class CustomEditPage: UIScrollView {
 protocol CustomEditPageDelegate
 {
     func buildModel() -> NSObject
-    @objc optional func buildField(name: String, field: UIView) -> UIView
+    @objc optional func buildField(name: String, item: BaseTableItem, field: UIView) -> UIView
     @objc optional func buildItem(_ item: BaseTableItem) -> BaseTableItem
     @objc optional func buildHeader() -> UIView
     @objc optional func beforeDrawing(_ sender: CustomEditPage)
