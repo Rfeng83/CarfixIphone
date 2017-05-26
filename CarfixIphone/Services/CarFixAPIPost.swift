@@ -12,7 +12,7 @@ import UIKit
 class CarFixAPIPost: BaseAPIPost
 {
     override func getWebBaseURL() -> String {
-        return "\(super.getWebBaseURL()):8016"
+        return "\(super.getWebBaseURL())/Core/Mobile"
     }
     
     private func getUID() -> String {

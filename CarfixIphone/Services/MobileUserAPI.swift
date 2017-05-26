@@ -12,7 +12,7 @@ import UIKit
 class MobileUserAPI: BaseAPIPost
 {
     override func getWebBaseURL() -> String {
-        return "\(super.getWebBaseURL())/Carfix"
+        return "\(super.getWebBaseURL())/Core"
     }
     
     override func isJSONContentType() -> Bool {
