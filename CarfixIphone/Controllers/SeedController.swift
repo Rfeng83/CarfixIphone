@@ -18,7 +18,7 @@ class SeedController: BaseTableController {
     @IBOutlet weak var notificationButton: NotificationBarButtonItem!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        self.initLayout()
         
         CarFixAPIPost(self).getMobileNewsFeedCategory() { data in
             if let result = data?.Result {
@@ -30,6 +30,8 @@ class SeedController: BaseTableController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         notificationButton.startGlowing()
+        
+        self.refresh(sender: self)
     }
     
     override func refresh(sender: AnyObject?) {

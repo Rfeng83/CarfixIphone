@@ -16,10 +16,14 @@ class BaseTableController: UITableViewController {
     override func getBackgroundImage() -> UIImage? {
         return nil
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.initLayout()
+        refresh(sender: nil)
+    }
+    
+    func initLayout() {
         self.view.backgroundColor = UIColor.clear
         
         //        showInstruction()
@@ -29,8 +33,6 @@ class BaseTableController: UITableViewController {
             self.refreshControl = UIRefreshControl()
         }
         self.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        
-        refresh(sender: nil)
     }
     
     func refresh(sender: AnyObject?) {
