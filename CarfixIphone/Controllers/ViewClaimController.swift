@@ -156,7 +156,7 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
             for item in images {
                 var count = 0
                 for image in item.value {
-                    imageList["\(item.key.rawValue);\(count).jpg"] = image
+                    imageList["\(item.key.rawValue);\(count).jpg"] = resizeImage(sourceImage: image, scaledToWidth: Config.profileImageWidth)
                     count = count + 1
                 }
             }
@@ -313,7 +313,7 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
         if let cat: Int16 = Convert(sender.view?.tag).to() {
             photoCategory = PhotoCategory(rawValue: cat)
         }
-        self.cameraOrPhoto(sender: self)
+        self.cameraOrPhoto(sender: self, allowsEditing: false)
     }
     
     func imagePickerPreferredContentSize() -> CGSize {
@@ -334,7 +334,7 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
                 mImages?.updateValue(images, forKey: photoCategory)
             }
             
-            if let image: UIImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            if let image: UIImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 mImages![photoCategory]!.append(image)
             } else { print("some error message") }
             

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarfixIphone/Extensions/HasImagePicker.swift"
-            timestampString = "503449150.654731"
+            timestampString = "517804725.393394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "HasImagePicker"
             landmarkType = "4">
          </BreakpointContent>
