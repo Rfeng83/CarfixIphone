@@ -151,7 +151,7 @@ class LoginController: BaseFormController, CustomPickerDelegate {
                             profile.countryCode = result.Country
                             db.save()
                             
-                            if let phoneToken = FIRInstanceID.instanceID().token() {
+                            if let phoneToken = InstanceID.instanceID().token() {
                                 print("Token from instance: \(phoneToken)")
                                 print("Token saved: \(profile.phoneToken ?? "")")
                                 CarFixAPIPost(self).updateFirebase(token: phoneToken, isIOS: 1) { _ in

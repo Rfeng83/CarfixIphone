@@ -10,5 +10,7 @@ target 'CarfixIphone' do
   pod 'GooglePlaces'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
   
 end

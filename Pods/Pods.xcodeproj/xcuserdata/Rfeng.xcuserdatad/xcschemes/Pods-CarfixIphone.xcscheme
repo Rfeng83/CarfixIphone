@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "432AD8C4BD54261B69179FB4B46F87AD"
+               BlueprintIdentifier = "23751DFE0AE7077D922EA2C4D75CCDDD"
                BuildableName = "Pods_CarfixIphone.framework"
                BlueprintName = "Pods-CarfixIphone"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "432AD8C4BD54261B69179FB4B46F87AD"
+            BlueprintIdentifier = "23751DFE0AE7077D922EA2C4D75CCDDD"
             BuildableName = "Pods_CarfixIphone.framework"
             BlueprintName = "Pods-CarfixIphone"
             ReferencedContainer = "container:Pods.xcodeproj">

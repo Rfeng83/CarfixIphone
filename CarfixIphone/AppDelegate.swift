@@ -31,20 +31,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func configureFirebase(_ application: UIApplication) {
+        FirebaseApp.configure()
+        
+        // [START set_messaging_delegate]
+        Messaging.messaging().delegate = self
+        // [END set_messaging_delegate]
         // Register for remote notifications. This shows a permission dialog on first run, to
         // show the dialog at a more appropriate time move this registration accordingly.
         // [START register_for_notifications]
         if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
                 completionHandler: {_, _ in })
-            
-            // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self
-            // For iOS 10 data message (sent via FCM)
-            FIRMessaging.messaging().remoteMessageDelegate = self
-            
         } else {
             let settings: UIUserNotificationSettings =
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -54,13 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         // [END register_for_notifications]
-        FIRApp.configure()
-        
-        // Add observer for InstanceID token refresh callback.
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.tokenRefreshNotification),
-                                               name: .firInstanceIDTokenRefresh,
-                                               object: nil)
     }
     
     // [START receive_message]
@@ -68,6 +63,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If you are receiving a notification message while your app is in the background,
         // this callback will not be fired till the user taps on the notification launching the application.
         // TODO: Handle data of notification
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
@@ -77,10 +74,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(userInfo)
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // If you are receiving a notification message while your app is in the background,
         // this callback will not be fired till the user taps on the notification launching the application.
         // TODO: Handle data of notification
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
@@ -89,79 +89,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Print full message.
         print(userInfo)
         
-        let application = UIApplication.shared
-        application.applicationIconBadgeNumber = application.applicationIconBadgeNumber + 1
-        
         completionHandler(UIBackgroundFetchResult.newData)
     }
-    
     // [END receive_message]
-    // [START refresh_token]
-    func tokenRefreshNotification(_ notification: Notification) {
-        if let refreshedToken = FIRInstanceID.instanceID().token() {
-            print("InstanceID token: \(refreshedToken)")
-        }
-        
-        // Connect to FCM since connection may have failed when attempted before having a token.
-        connectToFcm()
-    }
-    // [END refresh_token]
-    // [START connect_to_fcm]
-    func connectToFcm() {
-        // Won't connect since there is no token
-        guard FIRInstanceID.instanceID().token() != nil else {
-            return;
-        }
-        
-        let db = CarfixInfo()
-        let profile = db.profile
-        if profile.phoneToken.isEmpty {
-            profile.phoneToken = FIRInstanceID.instanceID().token()
-            db.save()
-        }
-        
-        // Disconnect previous FCM connection if it exists.
-        FIRMessaging.messaging().disconnect()
-        
-        FIRMessaging.messaging().connect { (error) in
-            if error != nil {
-                print("Unable to connect with FCM. \(error!)")
-            } else {
-                print("Connected to FCM.")
-            }
-        }
-    }
-    // [END connect_to_fcm]
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Unable to register for remote notifications: \(error.localizedDescription)")
     }
     
-//    // This function is added here only for debugging purposes, and can be removed if swizzling is enabled.
-//    // If swizzling is disabled then this function must be implemented so that the APNs token can be paired to
-//    // the InstanceID token.
+    // This function is added here only for debugging purposes, and can be removed if swizzling is enabled.
+    // If swizzling is disabled then this function must be implemented so that the APNs token can be paired to
+    // the FCM registration token.
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.prod)
+        print("APNs token retrieved: \(deviceToken)")
         
-        //#if DEBUG
-        //            FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: .Sandbox)
-        //        //#else
-        //            //FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: .Prod)
-        //        //#endif
-        
+        // With swizzling disabled you must set the APNs token here.
+        // Messaging.messaging().apnsToken = deviceToken
     }
-
-    
-    // [START connect_on_active]
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        connectToFcm()
-    }
-    // [END connect_on_active]
-    // [START disconnect_from_fcm]
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        FIRMessaging.messaging().disconnect()
-        print("Disconnected from FCM.")
-    }
-    // [END disconnect_from_fcm]
 }
 
 // [START ios_10_message_handling]
@@ -173,6 +116,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let userInfo = notification.request.content.userInfo
+        
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
@@ -204,12 +150,25 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     }
 }
 // [END ios_10_message_handling]
-// [START ios_10_data_message_handling]
-extension AppDelegate : FIRMessagingDelegate {
-    // Receive data message on iOS 10 devices while app is in the foreground.
-    func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
-        print(remoteMessage.appData)
-    }
-}
-// [END ios_10_data_message_handling]
 
+extension AppDelegate : MessagingDelegate {
+    // [START refresh_token]
+    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+        
+        let db = CarfixInfo()
+        let profile = db.profile
+        if profile.phoneToken.isEmpty {
+            profile.phoneToken = fcmToken
+            db.save()
+        }
+    }
+    // [END refresh_token]
+    // [START ios_10_data_message]
+    // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
+    // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
+    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        print("Received data message: \(remoteMessage.appData)")
+    }
+    // [END ios_10_data_message]
+}
