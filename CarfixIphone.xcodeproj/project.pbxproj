@@ -86,6 +86,7 @@
 		471926411E35EA2D00963F00 /* Pulsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471926401E35EA2D00963F00 /* Pulsing.swift */; };
 		471926451E373A1700963F00 /* PickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471926441E373A1700963F00 /* PickerController.swift */; };
 		471926471E373D3000963F00 /* PopupPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471926461E373D3000963F00 /* PopupPicker.swift */; };
+		471A40171EE93C0200FBBA81 /* NotificationAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471A40161EE93C0200FBBA81 /* NotificationAlertController.swift */; };
 		471A919D1E2E029300E857C9 /* GetBrandsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471A919C1E2E029300E857C9 /* GetBrandsResponse.swift */; };
 		47222EFB1E08DC910097797E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47222EFA1E08DC910097797E /* UIImageExtension.swift */; };
 		472972811E7FCFA500BC9312 /* MobileUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472972801E7FCFA500BC9312 /* MobileUserAPI.swift */; };
@@ -227,6 +228,7 @@
 		471926401E35EA2D00963F00 /* Pulsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pulsing.swift; sourceTree = "<group>"; };
 		471926441E373A1700963F00 /* PickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerController.swift; sourceTree = "<group>"; };
 		471926461E373D3000963F00 /* PopupPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupPicker.swift; sourceTree = "<group>"; };
+		471A40161EE93C0200FBBA81 /* NotificationAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlertController.swift; sourceTree = "<group>"; };
 		471A919C1E2E029300E857C9 /* GetBrandsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBrandsResponse.swift; sourceTree = "<group>"; };
 		47222EFA1E08DC910097797E /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		472972801E7FCFA500BC9312 /* MobileUserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileUserAPI.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				4719263E1E320DA600963F00 /* NotificationBarButtonItem.swift */,
 				471926401E35EA2D00963F00 /* Pulsing.swift */,
 				474FC4CB1E83C19200CFC05C /* CustomIconSizeConstraint.swift */,
+				471A40161EE93C0200FBBA81 /* NotificationAlertController.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				470654FA1DE8502E003D99B6 /* CustomDateTimePicker.swift in Sources */,
 				470C27E11DE09DC8003A6FFC /* StringExtension.swift in Sources */,
 				47FFA0771DE5EF5E00623CE1 /* BaseFormController.swift in Sources */,
+				471A40171EE93C0200FBBA81 /* NotificationAlertController.swift in Sources */,
 				470DC9291EC4710C0001FD40 /* NewClaimResponse.swift in Sources */,
 				47E5D1981ECC6570002A44A0 /* NewClaimMapController.swift in Sources */,
 				471926411E35EA2D00963F00 /* Pulsing.swift in Sources */,

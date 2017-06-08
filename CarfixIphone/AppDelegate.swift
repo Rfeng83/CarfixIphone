@@ -12,6 +12,8 @@ import GoogleMaps
 import GooglePlaces
 import Firebase
 import FirebaseMessaging
+import FacebookCore
+import FacebookLogin
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,7 +29,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Override point for customization after application launch.
         UIApplication.shared.statusBarStyle = .lightContent
-        return true
+        
+        return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let appId = SDKSettings.appId
+        if url.scheme != nil && url.scheme!.hasPrefix("fb\(appId)") && url.host ==  "authorize" { // facebook
+            return SDKApplicationDelegate.shared.application(app, open: url, options: options)
+        }
+        return false
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        AppEventsLogger.activate(application)
     }
     
     func configureFirebase(_ application: UIApplication) {
@@ -72,6 +87,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Print full message.
         print(userInfo)
+        
+        if let message = userInfo["message"] as? String {
+            showNotification(message: message)
+        }
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
@@ -90,7 +109,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(userInfo)
         
         completionHandler(UIBackgroundFetchResult.newData)
+        
+        if let message = userInfo["message"] as? String {
+            showNotification(message: message)
+        }
     }
+    
+    func showNotification(message: String) {
+        let topWindow = UIWindow(frame: UIScreen.main.bounds)
+        topWindow.rootViewController = UIViewController()
+        topWindow.windowLevel = UIWindowLevelAlert + 1
+        topWindow.makeKeyAndVisible()
+        topWindow.rootViewController?.notification(content: message)
+    }
+    
     // [END receive_message]
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Unable to register for remote notifications: \(error.localizedDescription)")
@@ -126,6 +158,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         // Print full message.
         print(userInfo)
+        
+        let application = UIApplication.shared
+        application.applicationIconBadgeNumber = application.applicationIconBadgeNumber + 1
         
         // Change this to your preferred presentation option
         completionHandler([])

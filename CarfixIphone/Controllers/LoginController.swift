@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 import Firebase
+import FacebookLogin
 
 class LoginController: BaseFormController, CustomPickerDelegate {
     //    @IBOutlet weak var labelRememberMe: UIView!
@@ -17,6 +18,8 @@ class LoginController: BaseFormController, CustomPickerDelegate {
     @IBOutlet weak var labelRememberMe: CustomLabel!
     @IBOutlet weak var chkRememberMe: UIImageView!
     @IBOutlet weak var chkRememberMeWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var viewFacebook: UIView!
     
     @IBOutlet weak var labelForgetPassword: CustomLabel!
     
@@ -68,9 +71,15 @@ class LoginController: BaseFormController, CustomPickerDelegate {
             pickCountryLength.constant = 65
             break
         }
+        
+//        loginButton = LoginButton(readPermissions: [.publicProfile, .email])
+//        viewFacebook.addSubview(loginButton)
     }
     
+    var loginButton: LoginButton?
     override func viewDidAppear(_ animated: Bool) {
+        loginButton?.frame = CGRect(origin: CGPoint(x: viewFacebook.frame.width - loginButton!.frame.width, y: 0), size: loginButton!.frame.size)
+        
         let db = CarfixInfo()
         let profile = db.profile
         
@@ -154,7 +163,7 @@ class LoginController: BaseFormController, CustomPickerDelegate {
                             if let phoneToken = InstanceID.instanceID().token() {
                                 print("Token from instance: \(phoneToken)")
                                 print("Token saved: \(profile.phoneToken ?? "")")
-                                CarFixAPIPost(self).updateFirebase(token: phoneToken, isIOS: 1) { _ in
+                                CarFixAPIPost(self).updateFirebase(token: phoneToken, isIOS: true) { _ in
                                     
                                 }
                             }

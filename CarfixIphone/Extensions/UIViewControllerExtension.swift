@@ -11,7 +11,7 @@ import UIKit
 
 private var kAssociationKeyMessageFrame: UInt8 = 0
 
-extension UIViewController: UITextFieldDelegate, UITextViewDelegate
+extension UIViewController: UITextFieldDelegate, UITextViewDelegate, NotificationAlertControllerDelegate
 {
     open override func awakeFromNib() {
         if let image = getBackgroundImage() {
@@ -98,6 +98,16 @@ extension UIViewController: UITextFieldDelegate, UITextViewDelegate
         DispatchQueue.main.async {
             self.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    func notification(content: String) {
+        notification(content: content, dismissView: false)
+    }
+    func notification(content: String, dismissView: Bool){
+        let alertController = NotificationAlertController(title: "Notification", message: content, preferredStyle: .alert)
+        alertController.delegate = self
+        
+        self.present(alertController, animated: true)
     }
     
     func message(content: String) {

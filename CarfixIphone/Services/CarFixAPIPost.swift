@@ -44,7 +44,7 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "GetProfile", parameters: nil, onSuccess: onSuccess)
     }
     
-    func updateFirebase(token: String, isIOS: Int32, onSuccess: @escaping (CarFixAPIResponse?) -> Void) {
+    func updateFirebase(token: String, isIOS: Bool, onSuccess: @escaping (CarFixAPIResponse?) -> Void) {
         var parameters = [String: Any]()
         parameters.updateValue(token, forKey: "token")
         parameters.updateValue(isIOS, forKey: "isIOS")

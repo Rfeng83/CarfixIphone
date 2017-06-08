@@ -2091,7 +2091,7 @@
         <!--Base Navigation Controller-->
         <scene sceneID="Nkg-nP-SDu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gRi-KY-1wN" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="notifications" automaticallyAdjustsScrollViewInsets="NO" id="gRi-KY-1wN" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5gb-g4-ObE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2109,7 +2109,7 @@
         <!--Login Controller-->
         <scene sceneID="BqX-ka-TBt">
             <objects>
-                <viewController id="KT1-oZ-ngc" customClass="LoginController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="KT1-oZ-ngc" customClass="LoginController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qIB-Xb-b0k"/>
                         <viewControllerLayoutGuide type="bottom" id="H0X-zR-0MW"/>
@@ -2118,20 +2118,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43c-Ja-0aM">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43c-Ja-0aM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKr-Rz-Xpm" userLabel="Content">
-                                        <rect key="frame" x="0.0" y="-64" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_logo" translatesAutoresizingMaskIntoConstraints="NO" id="UtP-Md-8ty">
-                                                <rect key="frame" x="94" y="0.0" width="188" height="75"/>
+                                                <rect key="frame" x="94" y="60" width="188" height="75"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="UtP-Md-8ty" secondAttribute="height" multiplier="5:2" id="LLF-hc-nu5"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1v-YP-xNU">
-                                                <rect key="frame" x="20" y="115" width="335" height="240"/>
+                                                <rect key="frame" x="20" y="147" width="335" height="275"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGm-mq-EDY" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
                                                         <rect key="frame" x="8" y="8" width="127" height="21"/>
@@ -2218,14 +2218,17 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9F9-NO-ysB" customClass="CustomButton" customModule="CarfixIphone" customModuleProvider="target">
-                                                        <rect key="frame" x="84" y="178" width="168" height="30"/>
+                                                        <rect key="frame" x="59.5" y="178" width="217.5" height="30"/>
                                                         <state key="normal" title="Login"/>
                                                         <connections>
                                                             <action selector="login:" destination="KT1-oZ-ngc" eventType="touchUpInside" id="yrP-R8-MsD"/>
                                                         </connections>
                                                     </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Xy-XQ-iul">
+                                                        <rect key="frame" x="58.5" y="216" width="217.5" height="30"/>
+                                                    </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sb2-KF-TLC" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                        <rect key="frame" x="99" y="220" width="137" height="21"/>
+                                                        <rect key="frame" x="99" y="254" width="137" height="21"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="Forget Password?">
                                                                 <attributes>
@@ -2242,6 +2245,9 @@
                                                 <constraints>
                                                     <constraint firstItem="7nj-JY-gX4" firstAttribute="top" secondItem="8iK-Ch-RkZ" secondAttribute="bottom" constant="8" id="1Te-uh-fK4"/>
                                                     <constraint firstItem="2ab-b9-NRM" firstAttribute="leading" secondItem="8iK-Ch-RkZ" secondAttribute="trailing" constant="8" id="1zo-q8-BVF"/>
+                                                    <constraint firstAttribute="bottom" secondItem="sb2-KF-TLC" secondAttribute="bottom" id="3wv-05-LS8"/>
+                                                    <constraint firstItem="sb2-KF-TLC" firstAttribute="top" secondItem="4Xy-XQ-iul" secondAttribute="bottom" constant="8" id="4FG-ot-7fi"/>
+                                                    <constraint firstItem="4Xy-XQ-iul" firstAttribute="centerX" secondItem="T1v-YP-xNU" secondAttribute="centerX" id="4lP-sq-k8c"/>
                                                     <constraint firstAttribute="trailing" secondItem="gX0-Oa-Dgi" secondAttribute="trailing" constant="8" id="7Y0-wp-rkM"/>
                                                     <constraint firstItem="7nj-JY-gX4" firstAttribute="leading" secondItem="T1v-YP-xNU" secondAttribute="leading" constant="8" id="AFh-YC-1fR"/>
                                                     <constraint firstItem="gGm-mq-EDY" firstAttribute="top" secondItem="T1v-YP-xNU" secondAttribute="top" constant="8" id="AuN-3M-X7w"/>
@@ -2249,38 +2255,39 @@
                                                     <constraint firstItem="3g9-69-1X0" firstAttribute="top" secondItem="gGm-mq-EDY" secondAttribute="bottom" constant="8" id="FRB-hO-ugW"/>
                                                     <constraint firstItem="sb2-KF-TLC" firstAttribute="centerX" secondItem="T1v-YP-xNU" secondAttribute="centerX" id="ICF-NB-1nb"/>
                                                     <constraint firstItem="44n-L7-c1f" firstAttribute="centerX" secondItem="T1v-YP-xNU" secondAttribute="centerX" id="Luu-oL-hRi"/>
-                                                    <constraint firstItem="9F9-NO-ysB" firstAttribute="width" secondItem="T1v-YP-xNU" secondAttribute="width" multiplier="0.5" id="Odx-LP-6UG"/>
+                                                    <constraint firstItem="4Xy-XQ-iul" firstAttribute="width" secondItem="9F9-NO-ysB" secondAttribute="width" id="NkM-JD-FaE"/>
+                                                    <constraint firstItem="9F9-NO-ysB" firstAttribute="width" secondItem="T1v-YP-xNU" secondAttribute="width" multiplier="0.65" id="Odx-LP-6UG"/>
                                                     <constraint firstItem="44n-L7-c1f" firstAttribute="top" secondItem="gX0-Oa-Dgi" secondAttribute="bottom" constant="12" id="VHS-Kw-3hl"/>
                                                     <constraint firstItem="9F9-NO-ysB" firstAttribute="top" secondItem="44n-L7-c1f" secondAttribute="bottom" constant="12" id="ZOO-dl-wOu"/>
-                                                    <constraint firstAttribute="height" constant="240" id="g3y-oh-r15"/>
-                                                    <constraint firstItem="sb2-KF-TLC" firstAttribute="top" secondItem="9F9-NO-ysB" secondAttribute="bottom" constant="12" id="hKS-dK-T9Z"/>
                                                     <constraint firstItem="gGm-mq-EDY" firstAttribute="leading" secondItem="T1v-YP-xNU" secondAttribute="leading" constant="8" id="iRe-hX-paj"/>
                                                     <constraint firstItem="2ab-b9-NRM" firstAttribute="top" secondItem="gGm-mq-EDY" secondAttribute="bottom" constant="15" id="ifV-KP-KI2"/>
                                                     <constraint firstItem="gX0-Oa-Dgi" firstAttribute="leading" secondItem="T1v-YP-xNU" secondAttribute="leading" constant="8" id="jWf-eQ-ATM"/>
                                                     <constraint firstItem="3g9-69-1X0" firstAttribute="leading" secondItem="2ab-b9-NRM" secondAttribute="trailing" constant="8" id="lmh-AM-C85"/>
                                                     <constraint firstAttribute="trailing" secondItem="44n-L7-c1f" secondAttribute="trailing" id="mSa-5H-6kK"/>
                                                     <constraint firstItem="8iK-Ch-RkZ" firstAttribute="top" secondItem="gGm-mq-EDY" secondAttribute="bottom" constant="8" id="p9j-8K-2az"/>
+                                                    <constraint firstItem="4Xy-XQ-iul" firstAttribute="height" secondItem="9F9-NO-ysB" secondAttribute="height" id="pDM-cb-6a3"/>
                                                     <constraint firstItem="8iK-Ch-RkZ" firstAttribute="leading" secondItem="T1v-YP-xNU" secondAttribute="leading" constant="8" id="tV8-T8-IKk"/>
+                                                    <constraint firstItem="4Xy-XQ-iul" firstAttribute="top" secondItem="9F9-NO-ysB" secondAttribute="bottom" constant="8" id="tyd-Uz-xp6"/>
                                                     <constraint firstItem="gX0-Oa-Dgi" firstAttribute="top" secondItem="7nj-JY-gX4" secondAttribute="bottom" constant="8" id="wlf-b6-t39"/>
                                                     <constraint firstItem="9F9-NO-ysB" firstAttribute="centerX" secondItem="T1v-YP-xNU" secondAttribute="centerX" id="yB3-d2-7X7"/>
                                                     <constraint firstAttribute="trailing" secondItem="3g9-69-1X0" secondAttribute="trailing" constant="8" id="yPd-Kv-f2k"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CarFix Version 2.1.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfe-J6-OR8" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="114" y="562" width="147" height="21"/>
+                                                <rect key="frame" x="114" y="626" width="147" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gc4-Ao-O0e" customClass="CustomButton" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="104" y="512" width="167" height="30"/>
+                                                <rect key="frame" x="79" y="576" width="217.5" height="30"/>
                                                 <state key="normal" title="Register Here"/>
                                                 <connections>
                                                     <action selector="registerHere:" destination="KT1-oZ-ngc" eventType="touchUpInside" id="qfz-TA-aJn"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not a member yet?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rF8-62-oDx" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="115" y="471" width="146" height="21"/>
+                                                <rect key="frame" x="115" y="535" width="146" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2290,22 +2297,22 @@
                                         <constraints>
                                             <constraint firstItem="UtP-Md-8ty" firstAttribute="centerX" secondItem="kKr-Rz-Xpm" secondAttribute="centerX" id="0US-ra-Rgb"/>
                                             <constraint firstItem="Gc4-Ao-O0e" firstAttribute="top" secondItem="rF8-62-oDx" secondAttribute="bottom" constant="20" id="3BE-GT-YUM"/>
-                                            <constraint firstItem="UtP-Md-8ty" firstAttribute="top" secondItem="kKr-Rz-Xpm" secondAttribute="top" id="8XD-km-Ry7"/>
+                                            <constraint firstItem="UtP-Md-8ty" firstAttribute="top" secondItem="kKr-Rz-Xpm" secondAttribute="top" constant="60" id="8XD-km-Ry7"/>
                                             <constraint firstItem="T1v-YP-xNU" firstAttribute="leading" secondItem="kKr-Rz-Xpm" secondAttribute="leading" constant="20" id="8be-zy-LG4"/>
                                             <constraint firstItem="rF8-62-oDx" firstAttribute="centerX" secondItem="kKr-Rz-Xpm" secondAttribute="centerX" id="9f3-xU-kw6"/>
                                             <constraint firstAttribute="trailing" secondItem="T1v-YP-xNU" secondAttribute="trailing" constant="20" id="DaT-6Q-SdN"/>
+                                            <constraint firstItem="Gc4-Ao-O0e" firstAttribute="width" secondItem="9F9-NO-ysB" secondAttribute="width" id="Kjb-Uh-KZG"/>
                                             <constraint firstItem="Gc4-Ao-O0e" firstAttribute="centerX" secondItem="kKr-Rz-Xpm" secondAttribute="centerX" id="N1w-1s-bWG"/>
                                             <constraint firstItem="pfe-J6-OR8" firstAttribute="centerX" secondItem="kKr-Rz-Xpm" secondAttribute="centerX" id="WJI-KP-Img"/>
                                             <constraint firstItem="UtP-Md-8ty" firstAttribute="width" secondItem="kKr-Rz-Xpm" secondAttribute="width" multiplier="0.5" id="aXO-cj-5DZ"/>
                                             <constraint firstAttribute="bottom" secondItem="pfe-J6-OR8" secondAttribute="bottom" constant="20" id="kLQ-UW-Idn"/>
-                                            <constraint firstItem="T1v-YP-xNU" firstAttribute="top" secondItem="UtP-Md-8ty" secondAttribute="bottom" constant="40" id="rwd-Zc-7ZI"/>
-                                            <constraint firstItem="Gc4-Ao-O0e" firstAttribute="width" secondItem="T1v-YP-xNU" secondAttribute="width" multiplier="0.5" id="y8z-ra-llg"/>
+                                            <constraint firstItem="T1v-YP-xNU" firstAttribute="top" secondItem="UtP-Md-8ty" secondAttribute="bottom" constant="12" id="rwd-Zc-7ZI"/>
                                             <constraint firstItem="pfe-J6-OR8" firstAttribute="top" secondItem="Gc4-Ao-O0e" secondAttribute="bottom" constant="20" id="zUa-VI-wME"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="kKr-Rz-Xpm" firstAttribute="top" secondItem="43c-Ja-0aM" secondAttribute="top" constant="-64" id="JSY-nd-06V"/>
+                                    <constraint firstItem="kKr-Rz-Xpm" firstAttribute="top" secondItem="43c-Ja-0aM" secondAttribute="top" id="JSY-nd-06V"/>
                                     <constraint firstItem="kKr-Rz-Xpm" firstAttribute="width" secondItem="43c-Ja-0aM" secondAttribute="width" id="TzG-OG-Hys"/>
                                     <constraint firstItem="kKr-Rz-Xpm" firstAttribute="leading" secondItem="43c-Ja-0aM" secondAttribute="leading" id="UfT-Pv-ISs"/>
                                     <constraint firstAttribute="trailing" secondItem="kKr-Rz-Xpm" secondAttribute="trailing" id="cIX-PI-hX0"/>
@@ -2316,9 +2323,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="43c-Ja-0aM" secondAttribute="trailing" id="DmN-Df-jJa"/>
-                            <constraint firstItem="kKr-Rz-Xpm" firstAttribute="height" secondItem="ofa-bZ-qCu" secondAttribute="height" constant="-64" id="DnN-UY-iV1"/>
+                            <constraint firstItem="kKr-Rz-Xpm" firstAttribute="height" secondItem="ofa-bZ-qCu" secondAttribute="height" id="DnN-UY-iV1"/>
                             <constraint firstItem="43c-Ja-0aM" firstAttribute="leading" secondItem="ofa-bZ-qCu" secondAttribute="leading" id="My6-7m-PcY"/>
-                            <constraint firstItem="43c-Ja-0aM" firstAttribute="top" secondItem="ofa-bZ-qCu" secondAttribute="top" constant="64" id="SO3-8G-cPk"/>
+                            <constraint firstItem="43c-Ja-0aM" firstAttribute="top" secondItem="ofa-bZ-qCu" secondAttribute="top" id="SO3-8G-cPk"/>
                             <constraint firstItem="H0X-zR-0MW" firstAttribute="top" secondItem="43c-Ja-0aM" secondAttribute="bottom" id="enV-eH-dRE"/>
                         </constraints>
                     </view>
@@ -2333,6 +2340,7 @@
                         <outlet property="pickCountryLength" destination="UOh-DV-h6t" id="LCH-UE-qQM"/>
                         <outlet property="txtMobileNumber" destination="3g9-69-1X0" id="ZE2-I5-qbm"/>
                         <outlet property="txtPassword" destination="gX0-Oa-Dgi" id="gQh-XN-uvU"/>
+                        <outlet property="viewFacebook" destination="4Xy-XQ-iul" id="NQo-iX-1WJ"/>
                         <segue destination="49e-Tb-3d3" kind="showDetail" identifier="segueLogin" id="PwB-hX-IPR"/>
                         <segue destination="9d9-c7-p25" kind="showDetail" identifier="segueWeb" id="Fxq-RS-dFd"/>
                     </connections>
@@ -4206,14 +4214,14 @@
         <image name="loading" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Fxq-RS-dFd"/>
         <segue reference="2nD-6o-Hqc"/>
         <segue reference="zky-01-kms"/>
         <segue reference="hCq-E1-HUC"/>
         <segue reference="SnJ-bj-dFk"/>
-        <segue reference="Ej0-WV-Lxs"/>
         <segue reference="VLC-Xz-ZtE"/>
         <segue reference="UwB-fJ-tA0"/>
-        <segue reference="37J-qr-IGl"/>
         <segue reference="Sj4-yO-bIK"/>
+        <segue reference="37J-qr-IGl"/>
     </inferredMetricsTieBreakers>
 </document>
