@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 import Firebase
+import FacebookCore
 import FacebookLogin
 
 class LoginController: BaseFormController, CustomPickerDelegate {
@@ -31,7 +32,7 @@ class LoginController: BaseFormController, CustomPickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-       labelVersion.text = "CarFix version \(String(describing: version.value))"
+        labelVersion.text = "CarFix version \(String(describing: version.value))"
         
         self.view.backgroundColor = UIColor.clear
         
@@ -72,12 +73,14 @@ class LoginController: BaseFormController, CustomPickerDelegate {
             break
         }
         
-//        loginButton = LoginButton(readPermissions: [.publicProfile, .email])
-//        viewFacebook.addSubview(loginButton)
+        loginButton = LoginButton(readPermissions: [.publicProfile, .email])
+        viewFacebook.addSubview(loginButton!)
     }
     
     var loginButton: LoginButton?
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         loginButton?.frame = CGRect(origin: CGPoint(x: viewFacebook.frame.width - loginButton!.frame.width, y: 0), size: loginButton!.frame.size)
         
         let db = CarfixInfo()
@@ -97,12 +100,14 @@ class LoginController: BaseFormController, CustomPickerDelegate {
             }
             
             txtMobileNumber.text = mobileNo
-            _ = txtPassword.becomeFirstResponder()
+            //            _ = txtPassword.becomeFirstResponder()
         }
         txtPassword.text = ""
         
+        txtMobileNumber.resignFirstResponder()
+        
         if profile.rememberMe {
-            if profile.loginID?.isEmpty == false && profile.password?.isEmpty == false {
+            if profile.loginID.hasValue && profile.password.hasValue {
                 CarFixAPIPost(self).getProfile(onSuccess: { data in
                     if let country = data?.Result?.Country {
                         db.profile.countryCode = country
@@ -111,7 +116,59 @@ class LoginController: BaseFormController, CustomPickerDelegate {
                     self.performSegue(withIdentifier: Segue.segueLogin.rawValue, sender: self)
                 })
             }
+            
+            if AccessToken.current.hasValue {
+                loadFacebookData()
+            }
         }
+    }
+    
+    func loadFacebookData()
+    {
+        let connection = GraphRequestConnection()
+        var request = GraphRequest(graphPath: "/me")
+        request.parameters = ["fields": "id, name, email, picture.type(large)"]
+        connection.add(request) { resp, result in
+            switch result {
+            case .success(let response):
+                print(response)
+                if let id = response.dictionaryValue?["id"] {
+                    print(id)
+                }
+                if let name = response.dictionaryValue?["name"] {
+                    print(name)
+                }
+                if let email = response.dictionaryValue?["email"] {
+                    print(email)
+                }
+            case .failed(let error):
+                print("Custom Graph Request Failed: \(error)")
+            }
+        }
+        connection.start()
+        
+        //        let graphRequest : GraphRequest = GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email, picture.type(large)"])
+        //        graphRequest.start({ (response, result) in
+        //            guard let email = result["email"] as? String else {
+        //                return
+        //            }
+        ////            let name = result["name"]
+        ////            let picture = result["picture"]
+        //            print(email)
+        //        })
+        
+        //        graphRequest.start({ (connection, result, error) -> Void in
+        //            if ((error) != nil)
+        //            {
+        //                // Process error
+        //                print("Error: \(error)")
+        //            }
+        //            else
+        //            {
+        //                print(result)
+        //
+        //            }
+        //        })
     }
     
     var isRememberMe: Bool! = false
@@ -191,7 +248,7 @@ class LoginController: BaseFormController, CustomPickerDelegate {
             if let vc = nav.topViewController as? WebController {
                 let title: String = Convert(sender).to()!
                 let baseURL = RootPath.My.rawValue
-
+                
                 switch title {
                 case "Registration":
                     vc.url = URL(string: "\(baseURL)/MobileUser/RegisterMobileUser")!
