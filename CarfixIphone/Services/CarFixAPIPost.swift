@@ -46,6 +46,12 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "CheckUser", parameters: nil, onSuccess: onSuccess)
     }
     
+    func checkVersion(ver: String, onSuccess: @escaping (CheckVersionResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(ver, forKey: "ver")
+        self.post(method: "CheckVersion", parameters: parameters, onSuccess: onSuccess)
+    }
+    
     func phoneRegisteration(email: String, name:String, country:Int, isIOS: Int32, onSuccess: @escaping (PhoneRegistrationResponse?) -> Void)
     {
         var parameters = [String: Any]()

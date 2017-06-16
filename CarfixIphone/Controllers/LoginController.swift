@@ -83,6 +83,25 @@ class LoginController: BaseFormController, CustomPickerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+            CarFixAPIPost(self).checkVersion(ver: version) { data in
+                if let result = data?.Result {
+                    if result.needUpdate == 1 {
+                        let appStoreAppID: String = "284708449"
+                        self.message(content: "Latest version (\(result.latestVersion!)) was ready, please download it from AppStore to continue", handler: { data in
+                            UIApplication.shared.openURL(URL(string: "itms-apps://itunes.apple.com/app/id" + appStoreAppID)!)
+                        })
+                    } else {
+                        self.initLogin()
+                    }
+                }
+            }
+        } else {
+            initLogin()
+        }
+    }
+    
+    func initLogin() {
         loginButton?.frame = CGRect(origin: CGPoint(x: viewFacebook.frame.width - loginButton!.frame.width, y: 0), size: loginButton!.frame.size)
         
         let db = CarfixInfo()

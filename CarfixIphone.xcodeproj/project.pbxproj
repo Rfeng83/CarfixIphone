@@ -87,6 +87,7 @@
 		471926411E35EA2D00963F00 /* Pulsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471926401E35EA2D00963F00 /* Pulsing.swift */; };
 		471926451E373A1700963F00 /* PickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471926441E373A1700963F00 /* PickerController.swift */; };
 		471926471E373D3000963F00 /* PopupPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471926461E373D3000963F00 /* PopupPicker.swift */; };
+		471933CC1EF3F3ED00631C2D /* CheckVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471933CB1EF3F3ED00631C2D /* CheckVersion.swift */; };
 		471A40171EE93C0200FBBA81 /* NotificationAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471A40161EE93C0200FBBA81 /* NotificationAlertController.swift */; };
 		471A919D1E2E029300E857C9 /* GetBrandsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471A919C1E2E029300E857C9 /* GetBrandsResponse.swift */; };
 		47222EFB1E08DC910097797E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47222EFA1E08DC910097797E /* UIImageExtension.swift */; };
@@ -230,6 +231,7 @@
 		471926401E35EA2D00963F00 /* Pulsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pulsing.swift; sourceTree = "<group>"; };
 		471926441E373A1700963F00 /* PickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerController.swift; sourceTree = "<group>"; };
 		471926461E373D3000963F00 /* PopupPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupPicker.swift; sourceTree = "<group>"; };
+		471933CB1EF3F3ED00631C2D /* CheckVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckVersion.swift; sourceTree = "<group>"; };
 		471A40161EE93C0200FBBA81 /* NotificationAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlertController.swift; sourceTree = "<group>"; };
 		471A919C1E2E029300E857C9 /* GetBrandsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBrandsResponse.swift; sourceTree = "<group>"; };
 		47222EFA1E08DC910097797E /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				470C27E21DE0A1D1003A6FFC /* CarFixAPIResponse.swift */,
 				470C27D21DE09ADE003A6FFC /* GetProfileResponse.swift */,
 				471528DE1EF0FBD70058E42C /* CheckUser.swift */,
+				471933CB1EF3F3ED00631C2D /* CheckVersion.swift */,
 				47C6EA7F1DE19BDD00D1B2A1 /* GetCaseDetailsResponse.swift */,
 				47C6EA801DE19BDD00D1B2A1 /* GetCaseHistoryResponse.swift */,
 				47C6EA811DE19BDD00D1B2A1 /* GetNotificationResponse.swift */,
@@ -789,6 +792,7 @@
 				472972811E7FCFA500BC9312 /* MobileUserAPI.swift in Sources */,
 				472972891E7FF8D400BC9312 /* GenTokenResponse.swift in Sources */,
 				4716CE4A1DDE14A00089C9F9 /* VehiclesController.swift in Sources */,
+				471933CC1EF3F3ED00631C2D /* CheckVersion.swift in Sources */,
 				4710BE0A1EC3241500091F95 /* BaseTableGroup.swift in Sources */,
 				47C6EA8A1DE19BDD00D1B2A1 /* KeyResponse.swift in Sources */,
 				470FAFED1DE4B85900E341CD /* Config.swift in Sources */,
