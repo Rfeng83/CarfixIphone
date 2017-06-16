@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FacebookCore
 
 class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
@@ -22,7 +23,9 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        guard CarfixInfo().profile.password?.isEmpty == false else {
+        super.viewDidAppear(animated)
+        
+        if CarfixInfo().profile.password.isEmpty && AccessToken.current.isEmpty {
             self.dismiss(animated: true, completion: nil)
             return
         }
@@ -52,14 +55,14 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
             return false
         }
         
-//        let fromView: UIView = tabBarController.selectedViewController!.view
-//        let toView  : UIView = viewController.view
-//        if fromView == toView {
-//            return false
-//        }
-//        
-//        UIView.transition(from: fromView, to: toView, duration: 0.3, options: .transitionCrossDissolve) { (finished:Bool) in
-//        }
+        //        let fromView: UIView = tabBarController.selectedViewController!.view
+        //        let toView  : UIView = viewController.view
+        //        if fromView == toView {
+        //            return false
+        //        }
+        //
+        //        UIView.transition(from: fromView, to: toView, duration: 0.3, options: .transitionCrossDissolve) { (finished:Bool) in
+        //        }
         return true
     }
     

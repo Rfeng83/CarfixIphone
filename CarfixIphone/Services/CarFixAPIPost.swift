@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FacebookCore
 
 class CarFixAPIPost: BaseAPIPost
 {
@@ -21,13 +22,28 @@ class CarFixAPIPost: BaseAPIPost
         return uid
     }
     
+    private func getFID() -> String? {
+        if let token = AccessToken.current?.userId {
+            return token
+        }
+        return nil
+    }
+    
     override func post<T : BaseAPIResponse>(method: String, parameters: [String : Any]?, onSuccess: @escaping (T?) -> Void) {
         super.post(method: method, parameters: parameters, onBuildRequest: { req in
             var request = req
-            request.setValue(self.getUID(), forHTTPHeaderField: "UID")
+            if let fid = self.getFID() {
+                request.setValue(fid, forHTTPHeaderField: "FID")
+            } else {
+                request.setValue(self.getUID(), forHTTPHeaderField: "UID")
+            }
             //request.setValue(self.mInsCode, forHTTPHeaderField: "InsCode")
             return request
         }, onSuccess: onSuccess)
+    }
+    
+    func checkUser(onSuccess: @escaping (CheckUserResponse?) -> Void) {
+        self.post(method: "CheckUser", parameters: nil, onSuccess: onSuccess)
     }
     
     func phoneRegisteration(email: String, name:String, country:Int, isIOS: Int32, onSuccess: @escaping (PhoneRegistrationResponse?) -> Void)
@@ -51,6 +67,13 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "UpdateFirebase", parameters: parameters, onSuccess: onSuccess)
     }
     
+    func updateFacebook(name: String, email: String, onSuccess: @escaping (CarFixAPIResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(name, forKey: "name")
+        parameters.updateValue(email, forKey: "email")
+        self.post(method: "UpdateFacebook", parameters: parameters, onSuccess: onSuccess)
+    }
+
     func updateProfile(name: String, email: String, onSuccess: @escaping (CarFixAPIResponse?) -> Void)
     {
         var parameters = [String: Any]()
@@ -212,8 +235,7 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "GetPanelWorkshops", parameters: parameters, onSuccess: onSuccess)
     }
     
-    func uploadImages(folder: String, key: String?, images: [String: UIImage], onSuccess: @escaping (UploadResponse?) -> Void)
-    {
+    func uploadImages(folder: String, key: String?, images: [String: UIImage], onSuccess: @escaping (UploadResponse?) -> Void) {
         var parameters = [String: Any]()
         parameters.updateValue(folder, forKey: "folder")
         if let val = key {
@@ -221,7 +243,11 @@ class CarFixAPIPost: BaseAPIPost
         }
         postFile(method: "UploadImages", parameters: parameters, images: images, onBuildRequest: { req in
             var request = req
-            request.setValue(self.getUID(), forHTTPHeaderField: "UID")
+            if let fid = self.getFID() {
+                request.setValue(fid, forHTTPHeaderField: "FID")
+            } else {
+                request.setValue(self.getUID(), forHTTPHeaderField: "UID")
+            }
             //            request.setValue(self.mInsCode, forHTTPHeaderField: "InsCode")
             return request
         }, onSuccess: onSuccess)

@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import FacebookCore
+import FacebookLogin
 
 private var kAssociationKeyMessageFrame: UInt8 = 0
 
@@ -250,12 +252,16 @@ extension UIViewController: UITextFieldDelegate, UITextViewDelegate, Notificatio
     }
     
     func signOut() {
-        let db = CarfixInfo()
-        let profile = db.profile
-        
-        profile.password = ""
-        profile.rememberMe = false
-        db.save()
+        if AccessToken.current.isEmpty {
+            let db = CarfixInfo()
+            let profile = db.profile
+            
+            profile.password = ""
+            profile.rememberMe = false
+            db.save()
+        } else {
+            LoginManager().logOut()
+        }
         
         //        self.dismiss(animated: true, completion: nil)
         self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)

@@ -75,6 +75,8 @@ class LoginController: BaseFormController, CustomPickerDelegate {
         
         loginButton = LoginButton(readPermissions: [.publicProfile, .email])
         viewFacebook.addSubview(loginButton!)
+        
+        LoginController.facebookReadySignedIn = AccessToken.current.hasValue
     }
     
     var loginButton: LoginButton?
@@ -116,59 +118,51 @@ class LoginController: BaseFormController, CustomPickerDelegate {
                     self.performSegue(withIdentifier: Segue.segueLogin.rawValue, sender: self)
                 })
             }
-            
+        } else {
             if AccessToken.current.hasValue {
-                loadFacebookData()
+                self.loadFacebookData()
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) { data in
+                    self.loadFacebookData()
+                }
             }
         }
     }
     
-    func loadFacebookData()
-    {
+    static var facebookSigningIn: Bool? = false
+    static var facebookReadySignedIn: Bool?
+    func loadFacebookData() {
         let connection = GraphRequestConnection()
         var request = GraphRequest(graphPath: "/me")
         request.parameters = ["fields": "id, name, email, picture.type(large)"]
         connection.add(request) { resp, result in
             switch result {
             case .success(let response):
-                print(response)
-                if let id = response.dictionaryValue?["id"] {
-                    print(id)
-                }
                 if let name = response.dictionaryValue?["name"] {
-                    print(name)
-                }
-                if let email = response.dictionaryValue?["email"] {
-                    print(email)
+                    if let email = response.dictionaryValue?["email"] {
+                        CarFixAPIPost(self).updateFacebook(name: Convert(name).to()!, email: Convert(email).to()!, onSuccess: { data in
+                            CarFixAPIPost(self).checkUser(onSuccess: { data in
+                                if data?.Result?.IsLoggedIn == 1 {
+                                    if LoginController.facebookReadySignedIn == true {
+                                        self.performSegue(withIdentifier: Segue.segueLogin.rawValue, sender: self)
+                                    } else {
+                                        self.startLogin()
+                                    }
+                                } else {
+                                    if LoginController.facebookSigningIn == true {
+                                        self.performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: "Facebook")
+                                        LoginController.facebookSigningIn = false
+                                    }
+                                }
+                            })
+                        })
+                    }
                 }
             case .failed(let error):
                 print("Custom Graph Request Failed: \(error)")
             }
         }
         connection.start()
-        
-        //        let graphRequest : GraphRequest = GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email, picture.type(large)"])
-        //        graphRequest.start({ (response, result) in
-        //            guard let email = result["email"] as? String else {
-        //                return
-        //            }
-        ////            let name = result["name"]
-        ////            let picture = result["picture"]
-        //            print(email)
-        //        })
-        
-        //        graphRequest.start({ (connection, result, error) -> Void in
-        //            if ((error) != nil)
-        //            {
-        //                // Process error
-        //                print("Error: \(error)")
-        //            }
-        //            else
-        //            {
-        //                print(result)
-        //
-        //            }
-        //        })
     }
     
     var isRememberMe: Bool! = false
@@ -211,28 +205,34 @@ class LoginController: BaseFormController, CustomPickerDelegate {
                 profile.rememberMe = isRememberMe
                 db.save()
                 
-                CarFixAPIPost(self).getProfile(onSuccess: { data in
-                    if let result = data?.Result {
-                        if result.PhoneNo.isEmpty == false {
-                            profile.countryCode = result.Country
-                            db.save()
-                            
-                            if let phoneToken = InstanceID.instanceID().token() {
-                                print("Token from instance: \(phoneToken)")
-                                print("Token saved: \(profile.phoneToken ?? "")")
-                                CarFixAPIPost(self).updateFirebase(token: phoneToken, isIOS: true) { _ in
-                                    
-                                }
-                            }
-                            
-                            self.performSegue(withIdentifier: Segue.segueLogin.rawValue, sender: self)
-                        } else {
-                            self.message(content: "Invalid mobile no./password")
-                        }
-                    }
-                })
+                startLogin()
             }
         }
+    }
+    
+    func startLogin() {
+        CarFixAPIPost(self).getProfile(onSuccess: { data in
+            if let result = data?.Result {
+                if result.PhoneNo.isEmpty == false {
+                    let db = CarfixInfo()
+                    let profile = db.profile
+                    profile.countryCode = result.Country
+                    db.save()
+                    
+                    if let phoneToken = InstanceID.instanceID().token() {
+                        print("Token from instance: \(phoneToken)")
+                        print("Token saved: \(profile.phoneToken ?? "")")
+                        CarFixAPIPost(self).updateFirebase(token: phoneToken, isIOS: true) { _ in
+                            
+                        }
+                    }
+                    
+                    self.performSegue(withIdentifier: Segue.segueLogin.rawValue, sender: self)
+                } else {
+                    self.message(content: "Invalid mobile no./password")
+                }
+            }
+        })
     }
     
     func forgetPassword(sender: UITapGestureRecognizer) {
@@ -251,13 +251,18 @@ class LoginController: BaseFormController, CustomPickerDelegate {
                 
                 switch title {
                 case "Registration":
-                    vc.url = URL(string: "\(baseURL)/MobileUser/RegisterMobileUser")!
+                    vc.title = title
+                    vc.url = URL(string: "\(baseURL)/CarFix/MobileUser/RegisterMobileUser")!
+                    break
+                case "Facebook":
+                    vc.title = "Registration"
+                    vc.url = URL(string: "\(baseURL)/CarFix/MobileUser/RegisterMobileUser?fid=\(AccessToken.current!.userId!)")!
                     break
                 default:
-                    vc.url = URL(string: "\(baseURL)/MobileUser/ResetMobileUserPassword")!
+                    vc.title = title
+                    vc.url = URL(string: "\(baseURL)/CarFix/MobileUser/ResetMobileUserPassword")!
                     break
                 }
-                vc.title = title
             }
         }
     }

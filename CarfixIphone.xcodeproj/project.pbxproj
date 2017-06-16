@@ -65,6 +65,7 @@
 		4713C7611DEB494F00396E1C /* CarfixInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713C7601DEB494F00396E1C /* CarfixInfo.swift */; };
 		471403C31DE3415100A3A48F /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471403C21DE3415100A3A48F /* CustomImageView.swift */; };
 		471403C51DE34B0E00A3A48F /* GetNewsFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471403C41DE34B0E00A3A48F /* GetNewsFeedResponse.swift */; };
+		471528DF1EF0FBD70058E42C /* CheckUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471528DE1EF0FBD70058E42C /* CheckUser.swift */; };
 		4715B1FA1EC955E20028DE11 /* ViewSubmissionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4715B1F91EC955E20028DE11 /* ViewSubmissionController.swift */; };
 		4716CE0D1DDDDBDC0089C9F9 /* RedNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716CE0C1DDDDBDC0089C9F9 /* RedNavigationController.swift */; };
 		4716CE0F1DDDDFE50089C9F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4716CE0E1DDDDFE50089C9F9 /* Assets.xcassets */; };
@@ -207,6 +208,7 @@
 		4713C7601DEB494F00396E1C /* CarfixInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarfixInfo.swift; sourceTree = "<group>"; };
 		471403C21DE3415100A3A48F /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		471403C41DE34B0E00A3A48F /* GetNewsFeedResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNewsFeedResponse.swift; sourceTree = "<group>"; };
+		471528DE1EF0FBD70058E42C /* CheckUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckUser.swift; sourceTree = "<group>"; };
 		4715B1F91EC955E20028DE11 /* ViewSubmissionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSubmissionController.swift; sourceTree = "<group>"; };
 		4716CE0C1DDDDBDC0089C9F9 /* RedNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedNavigationController.swift; sourceTree = "<group>"; };
 		4716CE0E1DDDDFE50089C9F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				470C27BE1DE098D7003A6FFC /* BaseAPIResponse.swift */,
 				470C27E21DE0A1D1003A6FFC /* CarFixAPIResponse.swift */,
 				470C27D21DE09ADE003A6FFC /* GetProfileResponse.swift */,
+				471528DE1EF0FBD70058E42C /* CheckUser.swift */,
 				47C6EA7F1DE19BDD00D1B2A1 /* GetCaseDetailsResponse.swift */,
 				47C6EA801DE19BDD00D1B2A1 /* GetCaseHistoryResponse.swift */,
 				47C6EA811DE19BDD00D1B2A1 /* GetNotificationResponse.swift */,
@@ -739,6 +742,7 @@
 				472AB0D81DE5957E009E5FB6 /* RoundedImageView.swift in Sources */,
 				4713C75F1DEB45AB00396E1C /* DBHelper.swift in Sources */,
 				4716CE481DDE14700089C9F9 /* ServiceController.swift in Sources */,
+				471528DF1EF0FBD70058E42C /* CheckUser.swift in Sources */,
 				470C27D91DE09B59003A6FFC /* EnumManager.swift in Sources */,
 				470C27E31DE0A1D1003A6FFC /* CarFixAPIResponse.swift in Sources */,
 				47C6EA8B1DE19BDD00D1B2A1 /* LogCaseResponse.swift in Sources */,
