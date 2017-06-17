@@ -86,6 +86,7 @@ class ImageManager
                             ImageManager.imageCache[mUrl] = image
                         } else {
                             imageView.image = oriImage
+                            ImageManager.imageCache[mUrl] = oriImage
                         }
                         onSuccess(imageView)
                     }
