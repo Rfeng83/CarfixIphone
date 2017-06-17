@@ -11,10 +11,10 @@ import UIKit
 
 
 enum RootPath: String {
-    case My = "http://203.223.133.13"
-    case Ph = "http://203.223.133.13/CarfixPh"
-//    case My = "http://www.carfix.my"
-//    case Ph = "http://www.carfix.ph"
+//    case My = "http://203.223.133.13"
+//    case Ph = "http://203.223.133.13/CarfixPh"
+    case My = "http://www.carfix.my"
+    case Ph = "http://www.carfix.ph"
 }
 
 enum CarfixColor: Int {

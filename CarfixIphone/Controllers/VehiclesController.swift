@@ -117,7 +117,6 @@ class VehicleViewCell: UICollectionViewCell {
     @IBOutlet weak var view: RoundedView!
     
     override func awakeFromNib() {
-        self.view.backgroundColor = CarfixColor.primary.color
         self.label.textColor = CarfixColor.white.color
         self.image.tintColor = CarfixColor.white.color
     }
@@ -127,9 +126,10 @@ class VehicleViewCell: UICollectionViewCell {
             ImageManager.downloadImage(mUrl: imagePath, imageView: self.image)
         } else {
             if model.Key == nil {
+                self.view.backgroundColor = CarfixColor.primary.color
                 self.image.image = #imageLiteral(resourceName: "ic_add_circle").withRenderingMode(.alwaysTemplate)
             } else {
-                self.image.image = #imageLiteral(resourceName: "ic_directions_car").withRenderingMode(.alwaysTemplate)
+                self.image.image = #imageLiteral(resourceName: "ic_vehicle_default").withRenderingMode(.alwaysTemplate)
             }
         }
         label.text = model.VehicleRegNo

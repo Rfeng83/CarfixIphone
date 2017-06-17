@@ -87,9 +87,8 @@ class LoginController: BaseFormController, CustomPickerDelegate {
             CarFixAPIPost(self).checkVersion(ver: version) { data in
                 if let result = data?.Result {
                     if result.needUpdate == 1 {
-                        let appStoreAppID: String = "284708449"
                         self.message(content: "Latest version (\(result.latestVersion!)) was ready, please download it from AppStore to continue", handler: { data in
-                            UIApplication.shared.openURL(URL(string: "itms-apps://itunes.apple.com/app/id" + appStoreAppID)!)
+                            UIApplication.shared.openURL(URL(string: "itms-apps://itunes.apple.com/app/id\(Config.appStoreID)")!)
                         })
                     } else {
                         self.initLogin()
@@ -266,20 +265,24 @@ class LoginController: BaseFormController, CustomPickerDelegate {
         if let nav = segue.destination as? UINavigationController {
             if let vc = nav.topViewController as? WebController {
                 let title: String = Convert(sender).to()!
-                let baseURL = RootPath.My.rawValue
+                var baseURL = RootPath.My.rawValue
+                
+                if baseURL.contains("203") {
+                    baseURL = "\(baseURL)/CarFix"
+                }
                 
                 switch title {
                 case "Registration":
                     vc.title = title
-                    vc.url = URL(string: "\(baseURL)/CarFix/MobileUser/RegisterMobileUser")!
+                    vc.url = URL(string: "\(baseURL)/MobileUser/RegisterMobileUser")!
                     break
                 case "Facebook":
                     vc.title = "Registration"
-                    vc.url = URL(string: "\(baseURL)/CarFix/MobileUser/RegisterMobileUser?fid=\(AccessToken.current!.userId!)")!
+                    vc.url = URL(string: "\(baseURL)/MobileUser/RegisterMobileUser?fid=\(AccessToken.current!.userId!)")!
                     break
                 default:
                     vc.title = title
-                    vc.url = URL(string: "\(baseURL)/CarFix/MobileUser/ResetMobileUserPassword")!
+                    vc.url = URL(string: "\(baseURL)/MobileUser/ResetMobileUserPassword")!
                     break
                 }
             }

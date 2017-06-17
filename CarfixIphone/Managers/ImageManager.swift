@@ -54,12 +54,12 @@ class ImageManager
         }
     }
     
-//    static func clearCache(url: String) {
-//        if imageCache.contains(where: { (key, data) in
-//            return key == url }) {
-//            imageCache.removeValue(forKey: url)
-//        }
-//    }
+    //    static func clearCache(url: String) {
+    //        if imageCache.contains(where: { (key, data) in
+    //            return key == url }) {
+    //            imageCache.removeValue(forKey: url)
+    //        }
+    //    }
     
     static func downloadImage(mUrl: String, imageView: UIImageView, onSuccess: @escaping (UIImageView) -> Void) {
         downloadImage(mUrl: mUrl, imageView: imageView, cache: true, onSuccess: onSuccess)
@@ -67,6 +67,7 @@ class ImageManager
     
     static func downloadImage(mUrl: String, imageView: UIImageView, cache: Bool, onSuccess: @escaping (UIImageView) -> Void) {
         let oriSize = imageView.frame.size
+        let oriImage = imageView.image
         imageView.image = #imageLiteral(resourceName: "loading")
         
         let cachedImage = imageCache[mUrl]
@@ -80,11 +81,12 @@ class ImageManager
                         guard let data = data, error == nil else { return }
                         print(response?.suggestedFilename ?? "")
                         print("Download Finished")
-                        let image = UIImage(data: data)
-                        imageViewSetImage(imageView: imageView, cachedImage: image, size: oriSize)
-                        
-                        ImageManager.imageCache[mUrl] = image
-                        
+                        if let image = UIImage(data: data) {
+                            imageViewSetImage(imageView: imageView, cachedImage: image, size: oriSize)
+                            ImageManager.imageCache[mUrl] = image
+                        } else {
+                            imageView.image = oriImage
+                        }
                         onSuccess(imageView)
                     }
                     }.resume()

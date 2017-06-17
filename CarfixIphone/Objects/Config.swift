@@ -19,6 +19,11 @@ struct Config {
             }
         }
     }
+    static var appStoreID: Int {
+        get {
+            return 975824393;
+        }
+    }
     static let margin: CGFloat = 4
     static let padding: CGFloat = 8
     static var lineHeight: CGFloat {

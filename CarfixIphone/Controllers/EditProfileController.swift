@@ -63,10 +63,9 @@ class EditProfileController: BaseFormController, CustomEditPageDelegate, HasImag
         let y: CGFloat = 10
         
         let imageView = RoundedImageView(frame: CGRect(x: x, y: y, width: width, height: height)).initView()
+        imageView.image = #imageLiteral(resourceName: "ic_profile_default")
         if let imagePath = mModel?.ProfileImage {
             ImageManager.downloadImage(mUrl: imagePath, imageView: imageView)
-        } else {
-            imageView.image = #imageLiteral(resourceName: "ic_profile_default")
         }
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(imageTapped(img:)))
