@@ -18,8 +18,12 @@ class CarFixAPIPost: BaseAPIPost
     
     private func getUID() -> String {
         let profile = CarfixInfo().profile
-        let uid: String = "\(profile.password!);\(profile.loginID!)"
-        return uid
+        if profile.password.hasValue && profile.loginID.hasValue {
+            let uid: String = "\(profile.password!);\(profile.loginID!)"
+            return uid
+        } else {
+            return ""
+        }
     }
     
     private func getFID() -> String? {
@@ -79,7 +83,7 @@ class CarFixAPIPost: BaseAPIPost
         parameters.updateValue(email, forKey: "email")
         self.post(method: "UpdateFacebook", parameters: parameters, onSuccess: onSuccess)
     }
-
+    
     func updateProfile(name: String, email: String, onSuccess: @escaping (CarFixAPIResponse?) -> Void)
     {
         var parameters = [String: Any]()
@@ -257,6 +261,6 @@ class CarFixAPIPost: BaseAPIPost
             //            request.setValue(self.mInsCode, forHTTPHeaderField: "InsCode")
             return request
         }, onSuccess: onSuccess)
-    }   
+    }
     
 }
