@@ -67,5 +67,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarfixIphone/Managers/ImageManager.swift"
+            timestampString = "519556486.88761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "downloadImage(mUrl:imageView:cache:onSuccess:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static CarfixIphone.ImageManager.downloadImage (mUrl : Swift.String, imageView : __ObjC.UIImageView, cache : Swift.Bool, onSuccess : (__ObjC.UIImageView) -&gt; ()) -&gt; ()"
+                  moduleName = "CarfixIphone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rfeng/Documents/XCodeProjects/CarfixIphone/CarfixIphone/Managers/ImageManager.swift"
+                  timestampString = "519556502.28902"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "1415">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static CarfixIphone.ImageManager.(downloadImage (mUrl : Swift.String, imageView : __ObjC.UIImageView, cache : Swift.Bool, onSuccess : (__ObjC.UIImageView) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "CarfixIphone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rfeng/Documents/XCodeProjects/CarfixIphone/CarfixIphone/Managers/ImageManager.swift"
+                  timestampString = "519556502.292399"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "107">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

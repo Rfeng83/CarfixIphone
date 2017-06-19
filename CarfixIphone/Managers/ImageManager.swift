@@ -62,7 +62,7 @@ class ImageManager
     //    }
     
     static func downloadImage(mUrl: String, imageView: UIImageView, onSuccess: @escaping (UIImageView) -> Void) {
-        downloadImage(mUrl: mUrl, imageView: imageView, cache: true, onSuccess: onSuccess)
+        downloadImage(mUrl: mUrl, imageView: imageView, cache: false, onSuccess: onSuccess)
     }
     
     static func downloadImage(mUrl: String, imageView: UIImageView, cache: Bool, onSuccess: @escaping (UIImageView) -> Void) {
