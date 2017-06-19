@@ -262,7 +262,7 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
                 
                 var queryItems = [URLQueryItem(name: "key", value: key)]
                 
-                let root = CarFixAPIPost(self).getWebBaseURL();
+                let root = BaseAPIPost(self).getWebBaseURL();
                 var urlComps = URLComponents(string: "\(root)/Letter/ApprovalLetter")!
                 urlComps.queryItems = queryItems
                 var uri = urlComps.url!
