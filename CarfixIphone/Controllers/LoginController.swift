@@ -101,7 +101,7 @@ class LoginController: BaseFormController, CustomPickerDelegate {
     }
     
     func initLogin() {
-        loginButton?.frame = CGRect(origin: CGPoint(x: viewFacebook.frame.width - loginButton!.frame.width, y: 0), size: loginButton!.frame.size)
+        loginButton?.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: viewFacebook.frame.size)
         
         let db = CarfixInfo()
         let profile = db.profile

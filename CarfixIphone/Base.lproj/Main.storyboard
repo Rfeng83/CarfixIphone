@@ -3737,7 +3737,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oix-rl-VPp" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="625"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="655"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8zB-HU-hrh" customClass="CustomImageView" customModule="CarfixIphone" customModuleProvider="target">
                                                 <rect key="frame" x="137" y="20" width="100" height="100"/>
@@ -3828,68 +3828,82 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75g-Cb-SxS" customClass="CustomButton" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="97" y="199" width="180" height="30"/>
+                                                <rect key="frame" x="77" y="199" width="220" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="180" id="AL8-r8-2PE"/>
+                                                    <constraint firstAttribute="width" constant="220" id="AL8-r8-2PE"/>
                                                 </constraints>
                                                 <state key="normal" title="View Submission"/>
                                                 <connections>
                                                     <segue destination="Eb8-Fa-7Kd" kind="show" identifier="segueViewSubmission" id="ugl-8H-USS"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dy9-Rc-Mlt" customClass="CustomButton" customModule="CarfixIphone" customModuleProvider="target">
+                                                <rect key="frame" x="77" y="233" width="220" height="30"/>
+                                                <state key="normal" title="View Approval Letter"/>
+                                                <connections>
+                                                    <action selector="viewApprovalLetter:" destination="Xlo-9M-Hx9" eventType="touchUpInside" id="N6h-VJ-34k"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOd-ww-SJQ" customClass="CustomButton" customModule="CarfixIphone" customModuleProvider="target">
+                                                <rect key="frame" x="77" y="271" width="220" height="30"/>
+                                                <state key="normal" title="View Discharge Voucher"/>
+                                                <connections>
+                                                    <action selector="viewDischargeVoucher:" destination="Xlo-9M-Hx9" eventType="touchUpInside" id="4n4-zD-scG"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ane-He-P8C" customClass="ExtraBigLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="114" y="279" width="147" height="21"/>
+                                                <rect key="frame" x="114" y="309" width="147" height="21"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You may be requested to upload more relevant images from our agents" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZY-FD-Zfv" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="308" width="359" height="21"/>
+                                                <rect key="frame" x="8" y="338" width="359" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Damaged Vehicle :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpv-vE-7qb" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="345" width="143" height="21"/>
+                                                <rect key="frame" x="8" y="375" width="143" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XS-RZ-fvO">
-                                                <rect key="frame" x="8" y="374" width="359" height="40"/>
+                                                <rect key="frame" x="8" y="404" width="359" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="KyN-Ev-x1D"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driving License :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCD-lZ-VSo" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="422" width="127" height="21"/>
+                                                <rect key="frame" x="8" y="452" width="127" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8S-2Y-Ipm">
-                                                <rect key="frame" x="8" y="451" width="359" height="40"/>
+                                                <rect key="frame" x="8" y="481" width="359" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="nIO-D4-v1v"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Police Report :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpu-KY-Yxi" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="499" width="112" height="21"/>
+                                                <rect key="frame" x="8" y="529" width="112" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7PO-ym-wId">
-                                                <rect key="frame" x="8" y="528" width="359" height="40"/>
+                                                <rect key="frame" x="8" y="558" width="359" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Ayw-DM-cnd"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1m-RW-Mkq" customClass="CustomButton" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="576" width="375" height="49"/>
+                                                <rect key="frame" x="0.0" y="606" width="375" height="49"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="49" id="LWQ-II-6oC"/>
                                                 </constraints>
@@ -3898,19 +3912,13 @@
                                                     <action selector="uploadImages:" destination="Xlo-9M-Hx9" eventType="touchUpInside" id="0Dd-Gj-BUg"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dy9-Rc-Mlt" customClass="CustomButton" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="97" y="233" width="180" height="30"/>
-                                                <state key="normal" title="View Approval Letter"/>
-                                                <connections>
-                                                    <segue destination="9d9-c7-p25" kind="showDetail" identifier="segueWeb" id="Ej0-WV-Lxs"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="8zB-HU-hrh" firstAttribute="centerX" secondItem="Oix-rl-VPp" secondAttribute="centerX" id="0uc-DK-U6c"/>
-                                            <constraint firstItem="ane-He-P8C" firstAttribute="top" secondItem="Dy9-Rc-Mlt" secondAttribute="bottom" constant="16" id="17y-5Y-raZ"/>
                                             <constraint firstItem="YU9-Ek-y1t" firstAttribute="centerX" secondItem="Oix-rl-VPp" secondAttribute="centerX" id="4oi-vR-IS9"/>
+                                            <constraint firstItem="IOd-ww-SJQ" firstAttribute="centerX" secondItem="Oix-rl-VPp" secondAttribute="centerX" id="Cd6-Jn-1Aa"/>
+                                            <constraint firstItem="ane-He-P8C" firstAttribute="top" secondItem="IOd-ww-SJQ" secondAttribute="bottom" constant="8" id="DEB-Bi-8RK"/>
                                             <constraint firstItem="X8S-2Y-Ipm" firstAttribute="trailing" secondItem="Oix-rl-VPp" secondAttribute="trailingMargin" id="EQs-cl-fU4"/>
                                             <constraint firstItem="Dy9-Rc-Mlt" firstAttribute="top" secondItem="75g-Cb-SxS" secondAttribute="bottom" constant="4" id="GyD-ns-Jm9"/>
                                             <constraint firstItem="IZY-FD-Zfv" firstAttribute="centerX" secondItem="Oix-rl-VPp" secondAttribute="centerX" id="HjW-7N-BIy"/>
@@ -3926,6 +3934,8 @@
                                             <constraint firstItem="gpv-vE-7qb" firstAttribute="top" secondItem="IZY-FD-Zfv" secondAttribute="bottom" constant="16" id="X4L-s1-fG6"/>
                                             <constraint firstItem="75g-Cb-SxS" firstAttribute="centerX" secondItem="Oix-rl-VPp" secondAttribute="centerX" id="Y8d-OV-1Nt"/>
                                             <constraint firstItem="3XS-RZ-fvO" firstAttribute="top" secondItem="gpv-vE-7qb" secondAttribute="bottom" constant="8" id="YAZ-WX-dz7"/>
+                                            <constraint firstItem="IOd-ww-SJQ" firstAttribute="width" secondItem="Dy9-Rc-Mlt" secondAttribute="width" id="aZg-Q2-BlW"/>
+                                            <constraint firstItem="IOd-ww-SJQ" firstAttribute="top" secondItem="Dy9-Rc-Mlt" secondAttribute="bottom" constant="8" id="asA-vR-U5j"/>
                                             <constraint firstItem="COO-po-V9e" firstAttribute="centerX" secondItem="Oix-rl-VPp" secondAttribute="centerX" id="ayB-27-2v5"/>
                                             <constraint firstItem="7PO-ym-wId" firstAttribute="leading" secondItem="Oix-rl-VPp" secondAttribute="leadingMargin" id="bF9-z3-Lup"/>
                                             <constraint firstItem="IZY-FD-Zfv" firstAttribute="top" secondItem="ane-He-P8C" secondAttribute="bottom" constant="8" id="bYc-KZ-yc5"/>
@@ -3976,6 +3986,7 @@
                     <connections>
                         <outlet property="btnUpload" destination="z1m-RW-Mkq" id="Ndw-oa-fWw"/>
                         <outlet property="btnViewApprovalLetter" destination="Dy9-Rc-Mlt" id="dKt-jn-I2z"/>
+                        <outlet property="btnViewDischargeVoucher" destination="IOd-ww-SJQ" id="tAG-G8-OT6"/>
                         <outlet property="imgLogo" destination="8zB-HU-hrh" id="esk-81-2ME"/>
                         <outlet property="labelApprovalAmount" destination="g5G-kJ-c0g" id="oqC-60-zmm"/>
                         <outlet property="labelCaseID" destination="ldi-kA-kwY" id="eOH-PX-hrK"/>
@@ -3987,6 +3998,7 @@
                         <outlet property="viewPoliceReport" destination="7PO-ym-wId" id="YUs-F3-p61"/>
                         <outlet property="viewPoliceReportHeight" destination="Ayw-DM-cnd" id="duK-BL-vBL"/>
                         <segue destination="vs0-By-FY3" kind="show" identifier="segueViewImage" id="pWd-LV-gft"/>
+                        <segue destination="9d9-c7-p25" kind="showDetail" identifier="segueWeb" id="Vh7-co-D3X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4v7-zh-o1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4213,14 +4225,14 @@
         <image name="loading" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zky-01-kms"/>
         <segue reference="2nD-6o-Hqc"/>
+        <segue reference="zky-01-kms"/>
         <segue reference="hCq-E1-HUC"/>
-        <segue reference="SnJ-bj-dFk"/>
-        <segue reference="VLC-Xz-ZtE"/>
         <segue reference="UwB-fJ-tA0"/>
-        <segue reference="aCX-i4-H0a"/>
+        <segue reference="SnJ-bj-dFk"/>
+        <segue reference="pWd-LV-gft"/>
+        <segue reference="Vh7-co-D3X"/>
+        <segue reference="37J-qr-IGl"/>
         <segue reference="Sj4-yO-bIK"/>
-        <segue reference="BiJ-Ro-5fv"/>
     </inferredMetricsTieBreakers>
 </document>

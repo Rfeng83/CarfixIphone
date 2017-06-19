@@ -150,11 +150,15 @@ class ViewVehicleController: BaseTableViewController, UIPopoverPresentationContr
             if let url = item.openUrl {
                 UIApplication.shared.openURL(URL(string: url)!)
             } else if item.isTappable {
-                MobileUserAPI(self).getServiceOffer(serviceID: item.offerService!.rawValue, vehicleID: key!) { data in
-                    self.refresh(sender: self)
+                if let offerService = item.offerService {
+                    MobileUserAPI(self).getServiceOffer(serviceID: offerService.rawValue, vehicleID: key!) { data in
+                        self.refresh(sender: self)
+                    }
                 }
             } else {
-                self.performSegue(withIdentifier: Segue.seguePolicy.rawValue, sender: item)
+                if item.offerService == .ValidPolicy || item.offerService == .ISearch {
+                    self.performSegue(withIdentifier: Segue.seguePolicy.rawValue, sender: item)
+                }
             }
         }
     }

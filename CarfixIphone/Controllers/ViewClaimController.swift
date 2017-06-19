@@ -24,6 +24,7 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
     
     @IBOutlet weak var btnUpload: CustomButton!
     @IBOutlet weak var btnViewApprovalLetter: CustomButton!
+    @IBOutlet weak var btnViewDischargeVoucher: CustomButton!
     
     var key: String?
     override func viewDidLoad() {
@@ -47,25 +48,9 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
                 self.labelApprovalAmount.text = Convert(model.ApprovalAmount ?? 0).toCurrency()
                 
                 self.btnViewApprovalLetter.isEnabled = model.IsApproved == 1
+                self.btnViewDischargeVoucher.isEnabled = model.IsApproved == 1
                 
                 self.mImagesExists = [:]
-                
-                //                if let categories = model.PhotoCategories {
-                //                    for cat in categories {
-                //                        if let photoCategory = PhotoCategory(rawValue: cat.Category) {
-                //                            if self.mImagesExists?[photoCategory] == nil {
-                //                                let images = [String]()
-                //                                self.mImagesExists?.updateValue(images, forKey: photoCategory)
-                //                            }
-                //
-                //                            if let images = cat.Images {
-                //                                for image in images {
-                //                                    self.mImagesExists?[photoCategory]?.append(image.Path ?? "")
-                //                                }
-                //                            }
-                //                        }
-                //                    }
-                //                }
                 
                 self.drawImageUpload(category: .DamagedVehicle)
                 self.drawImageUpload(category: .DrivingLicense)
@@ -231,6 +216,16 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
         }
     }
     
+    var titleApprovalLetter = "Approval Letter"
+    @IBAction func viewApprovalLetter(_ sender: Any) {
+        performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: titleApprovalLetter)
+    }
+    
+    var titleDischargeVoucher = "Discharge Voucher"
+    @IBAction func viewDischargeVoucher(_ sender: Any) {
+        performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: titleDischargeVoucher)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let svc = segue.destination as? ViewImageController {
             if let imageView = sender as? CustomImageView {
@@ -258,20 +253,27 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
             svc.key = self.key
         } else if let nav = segue.destination as? UINavigationController {
             if let svc = nav.topViewController as? WebController {
-                svc.title = "Approval Letter"
-                
-                var queryItems = [URLQueryItem(name: "key", value: key)]
-                
-                let root = BaseAPIPost(self).getWebBaseURL();
-                var urlComps = URLComponents(string: "\(root)/Letter/ApprovalLetter")!
-                urlComps.queryItems = queryItems
-                var uri = urlComps.url!
-                
-                queryItems = [URLQueryItem(name: "embedded", value: "true"), URLQueryItem(name: "url", value: uri.absoluteString)]
-                urlComps = URLComponents(string: "http://drive.google.com/viewerng/viewer")!
-                urlComps.queryItems = queryItems
-                uri = urlComps.url!
-                svc.url = uri
+                if let title = sender as? String {
+                    svc.title = title
+                    var uri: URL?
+                    
+                    if title.compare(titleApprovalLetter) == .orderedSame {
+                        if let url = self.mModel?.ApprovalLetterUrl {
+                            uri = URL(string: url)
+                        }
+                    } else if title.compare(titleDischargeVoucher) == .orderedSame {
+                        if let url = self.mModel?.DischargeVoucherUrl {
+                            uri = URL(string: url)
+                        }
+                    }
+                    
+                    if let uri = uri {
+                        let queryItems = [URLQueryItem(name: "embedded", value: "true"), URLQueryItem(name: "url", value: uri.absoluteString)]
+                        var urlComps = URLComponents(string: "http://drive.google.com/viewerng/viewer")!
+                        urlComps.queryItems = queryItems
+                        svc.url = urlComps.url
+                    }
+                }
             }
         }
     }

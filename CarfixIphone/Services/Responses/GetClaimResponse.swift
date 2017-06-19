@@ -17,6 +17,8 @@ class GetClaimResult: BaseAPIItem {
     var ClaimStatus: String?
     var ApprovalAmount: NSNumber?
     var IsApproved: NSNumber?
+    var ApprovalLetterUrl: String?
+    var DischargeVoucherUrl: String?
     var Workshop: String?
     var VehicleNo: String?
     var AccidentDate: Date?

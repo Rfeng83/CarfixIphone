@@ -110,14 +110,15 @@ struct Config {
     static let buttonFont: UIFont = UIFont.systemFont(ofSize: buttonFontSize)
     static var buttonFontSize: CGFloat {
         get {
-            switch DisplayManager.typeIsLike {
-            case .iphone6:
-                return 18
-            case .iphone6plus:
-                return 20
-            default:
-                return 16
-            }
+//            switch DisplayManager.typeIsLike {
+//            case .iphone6:
+//                return 18
+//            case .iphone6plus:
+//                return 20
+//            default:
+//                return 16
+//            }
+            return fontSizeBig
         }
     }
     
