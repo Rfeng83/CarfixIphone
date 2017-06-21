@@ -100,9 +100,15 @@ class LoginController: BaseFormController, CustomPickerDelegate {
         }
     }
     
-    func initLogin() {
+    func resizeFacebookButton() {
         loginButton?.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: viewFacebook.frame.size)
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        resizeFacebookButton()
+    }
+    
+    func initLogin() {        
         let db = CarfixInfo()
         let profile = db.profile
         
@@ -170,7 +176,11 @@ class LoginController: BaseFormController, CustomPickerDelegate {
                                     if LoginController.facebookSigningIn == true {
                                         self.performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: "Facebook")
                                         LoginController.facebookSigningIn = false
+                                    } else {
+                                        LoginManager().logOut()
                                     }
+                                    
+                                    self.initLogin()
                                 }
                             })
                         })
