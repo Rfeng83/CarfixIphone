@@ -95,8 +95,8 @@ class VehiclesController: BaseController, UICollectionViewDelegate, UICollection
         var id: String!
         if item.Key == nil {
             id = "cell"
-        } else if item.Image == nil {
-            id = "cell"
+        } else if item.Image.isEmpty {
+            id = "cellImage"
         } else {
             id = "cellImage"
         }
@@ -122,14 +122,14 @@ class VehicleViewCell: UICollectionViewCell {
     }
     
     func setData(model: GetVehiclesResult){
-        if let imagePath = model.Image {
-            ImageManager.downloadImage(mUrl: imagePath, imageView: self.image)
+        if model.Image.hasValue {
+            ImageManager.downloadImage(mUrl: model.Image!, imageView: self.image)
         } else {
             if model.Key == nil {
                 self.view.backgroundColor = CarfixColor.primary.color
                 self.image.image = #imageLiteral(resourceName: "ic_add_circle").withRenderingMode(.alwaysTemplate)
             } else {
-                self.image.image = #imageLiteral(resourceName: "ic_vehicle_default").withRenderingMode(.alwaysTemplate)
+                self.image.image = #imageLiteral(resourceName: "ic_vehicle_default")
             }
         }
         label.text = model.VehicleRegNo

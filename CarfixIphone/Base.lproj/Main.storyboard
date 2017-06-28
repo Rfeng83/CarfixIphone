@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="51"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ONO-zc-LeJ" id="G0G-CZ-kMh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -33,7 +33,7 @@
                                 <rect key="frame" x="0.0" y="79" width="375" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sfq-gW-Z4z" id="X5m-ZR-ojB">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="52.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -41,7 +41,7 @@
                                 <rect key="frame" x="0.0" y="132" width="375" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2kP-zm-3V5" id="naY-Pw-jGD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="52.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -89,11 +89,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qPt-tC-lzZ" id="ek0-rr-5Kq">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2q9-nL-2eB">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <nil key="textColor"/>
@@ -175,7 +175,7 @@
                                         <rect key="frame" x="0.0" y="88" width="375" height="45"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_phone_iphone" translatesAutoresizingMaskIntoConstraints="NO" id="mnZ-Hf-jHx">
-                                                <rect key="frame" x="36" y="14.5" width="16" height="16"/>
+                                                <rect key="frame" x="36" y="15" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="aah-dj-dz6" customClass="CustomIconSizeConstraint" customModule="CarfixIphone" customModuleProvider="target"/>
                                                     <constraint firstAttribute="width" secondItem="mnZ-Hf-jHx" secondAttribute="height" multiplier="1:1" id="yVE-kW-xvd"/>
@@ -200,7 +200,7 @@
                                         <rect key="frame" x="0.0" y="133" width="375" height="45"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mail_outline" translatesAutoresizingMaskIntoConstraints="NO" id="fuQ-Je-N5G">
-                                                <rect key="frame" x="36" y="14.5" width="16" height="16"/>
+                                                <rect key="frame" x="36" y="15" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="fuQ-Je-N5G" secondAttribute="height" multiplier="1:1" id="2t9-Ia-n1e"/>
                                                     <constraint firstAttribute="width" constant="16" id="hPD-i0-Ofk" customClass="CustomIconSizeConstraint" customModule="CarfixIphone" customModuleProvider="target"/>
@@ -225,7 +225,7 @@
                                         <rect key="frame" x="0.0" y="178" width="375" height="45"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_place" translatesAutoresizingMaskIntoConstraints="NO" id="iYd-RZ-bto">
-                                                <rect key="frame" x="36" y="14.5" width="16" height="16"/>
+                                                <rect key="frame" x="36" y="15" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="2Ri-OS-Il1" customClass="CustomIconSizeConstraint" customModule="CarfixIphone" customModuleProvider="target"/>
                                                     <constraint firstAttribute="width" secondItem="iYd-RZ-bto" secondAttribute="height" multiplier="1:1" id="Bq5-Va-pTY"/>
@@ -276,7 +276,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_account_circle" translatesAutoresizingMaskIntoConstraints="NO" id="MLW-w7-Tgl">
-                                                <rect key="frame" x="36" y="14.5" width="16" height="16"/>
+                                                <rect key="frame" x="36" y="15" width="16" height="16"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="MLW-w7-Tgl" secondAttribute="height" multiplier="1:1" id="8mv-v0-Rvg"/>
@@ -314,7 +314,7 @@
                                         <rect key="frame" x="0.0" y="45" width="375" height="45"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_history" translatesAutoresizingMaskIntoConstraints="NO" id="6Vz-72-gkx">
-                                                <rect key="frame" x="36" y="14.5" width="16" height="16"/>
+                                                <rect key="frame" x="36" y="15" width="16" height="16"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="6Vz-72-gkx" secondAttribute="height" multiplier="1:1" id="KHp-m8-s9S"/>
@@ -352,7 +352,7 @@
                                         <rect key="frame" x="0.0" y="90" width="375" height="45"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_info" translatesAutoresizingMaskIntoConstraints="NO" id="bh7-4P-jos">
-                                                <rect key="frame" x="36" y="14.5" width="16" height="16"/>
+                                                <rect key="frame" x="36" y="15" width="16" height="16"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="bh7-4P-jos" secondAttribute="height" multiplier="1:1" id="UEA-IR-Gly"/>
@@ -390,7 +390,7 @@
                                         <rect key="frame" x="0.0" y="135" width="375" height="45"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_help" translatesAutoresizingMaskIntoConstraints="NO" id="D0t-Yh-WdY">
-                                                <rect key="frame" x="36" y="14.5" width="16" height="16"/>
+                                                <rect key="frame" x="36" y="15" width="16" height="16"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="tlv-dW-QxH" customClass="CustomIconSizeConstraint" customModule="CarfixIphone" customModuleProvider="target"/>
@@ -428,7 +428,7 @@
                                         <rect key="frame" x="0.0" y="180" width="375" height="45"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_settings" translatesAutoresizingMaskIntoConstraints="NO" id="T7B-SC-JE7">
-                                                <rect key="frame" x="36" y="14.5" width="16" height="16"/>
+                                                <rect key="frame" x="36" y="15" width="16" height="16"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="ADo-xg-V0t" customClass="CustomIconSizeConstraint" customModule="CarfixIphone" customModuleProvider="target"/>
@@ -617,7 +617,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="116-gV-CSm" id="M6k-m7-RAn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -892,14 +892,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L7E-bD-3pu">
-                                                    <rect key="frame" x="15" y="8" width="91" height="14.5"/>
+                                                    <rect key="frame" x="15" y="8" width="91" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wgx-ZS-B4P">
-                                                    <rect key="frame" x="112" y="8" width="33" height="14.5"/>
+                                                    <rect key="frame" x="112" y="8" width="33" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -1045,7 +1045,7 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fBm-oD-RmQ" id="p7F-Kc-Ui6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1053,7 +1053,7 @@
                                 <rect key="frame" x="0.0" y="110" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ecP-gc-HP4" id="4h1-3k-xxw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1122,7 +1122,7 @@
                                 <rect key="frame" x="0.0" y="68" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VnF-LE-gb2" id="QC3-bd-zjW">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHo-3R-gqa" userLabel="Top Border" customClass="CustomLine" customModule="CarfixIphone" customModuleProvider="target">
@@ -1178,7 +1178,7 @@
                                 <rect key="frame" x="0.0" y="112" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tkl-1m-0FY" id="v4P-JD-Rxr">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDb-q3-C2A" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
@@ -1295,7 +1295,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="281" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BGb-hG-OOW" id="c10-dV-d5B">
-                                                    <rect key="frame" x="0.0" y="0.0" width="281" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MOd-Im-t9U">
@@ -1764,7 +1764,7 @@
                                 <rect key="frame" x="0.0" y="230" width="375" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ojm-wV-Sd6" id="7H1-YR-LCG">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="47"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1864,7 +1864,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" reuseIdentifier="cell" id="vtA-Zk-ryT" customClass="VehicleViewCell" customModule="CarfixIphone" customModuleProvider="target">
-                                        <rect key="frame" x="138.5" y="8" width="98" height="99"/>
+                                        <rect key="frame" x="139" y="8" width="98" height="99"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="98" height="99"/>
@@ -1995,8 +1995,8 @@
                     <connections>
                         <segue destination="hda-sw-Tqj" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="wFj-Pg-1Id" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="7Ed-cK-WcD" kind="relationship" relationship="viewControllers" id="aie-0x-OyS"/>
-                        <segue destination="x3j-zM-UgA" kind="relationship" relationship="viewControllers" id="IWt-mH-6l7"/>
+                        <segue destination="x3j-zM-UgA" kind="relationship" relationship="viewControllers" id="f1C-1k-T6O"/>
+                        <segue destination="7Ed-cK-WcD" kind="relationship" relationship="viewControllers" id="WP1-w0-cvw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -2011,7 +2011,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ATp-Nj-pzq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ATp-Nj-pzq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2032,7 +2032,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PmX-Og-JUR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PmX-Og-JUR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2053,7 +2053,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TBD-ME-DZJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TBD-ME-DZJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2074,7 +2074,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hEy-4Y-qN0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hEy-4Y-qN0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2092,7 +2092,7 @@
             <objects>
                 <navigationController storyboardIdentifier="notifications" automaticallyAdjustsScrollViewInsets="NO" id="gRi-KY-1wN" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5gb-g4-ObE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5gb-g4-ObE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2130,7 +2130,7 @@
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1v-YP-xNU">
-                                                <rect key="frame" x="20" y="147" width="335" height="275"/>
+                                                <rect key="frame" x="20" y="147" width="335" height="246"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGm-mq-EDY" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
                                                         <rect key="frame" x="8" y="8" width="127" height="21"/>
@@ -2190,74 +2190,66 @@
                                                             <outlet property="doneButton" destination="9F9-NO-ysB" id="2qx-7v-DdP"/>
                                                         </connections>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44n-L7-c1f">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44n-L7-c1f" userLabel="remember me view">
                                                         <rect key="frame" x="0.0" y="146" width="335" height="20"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_check_box" translatesAutoresizingMaskIntoConstraints="NO" id="3Q2-9t-nz9">
-                                                                <rect key="frame" x="37" y="0.0" width="24" height="24"/>
+                                                                <rect key="frame" x="12" y="0.0" width="24" height="24"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="3Q2-9t-nz9" secondAttribute="height" multiplier="1:1" id="8fK-fr-19V"/>
                                                                     <constraint firstAttribute="width" constant="24" id="YCr-1O-Owi"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me on this device" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8h5-h3-TjA" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                                <rect key="frame" x="65" y="0.0" width="222" height="21"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8h5-h3-TjA" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
+                                                                <rect key="frame" x="40" y="0.0" width="112" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forget Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sb2-KF-TLC" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
+                                                                <rect key="frame" x="199" y="0.0" width="128" height="21"/>
+                                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstItem="8h5-h3-TjA" firstAttribute="centerX" secondItem="44n-L7-c1f" secondAttribute="centerX" constant="8" id="Alr-18-M0m"/>
+                                                            <constraint firstItem="3Q2-9t-nz9" firstAttribute="leading" secondItem="44n-L7-c1f" secondAttribute="leading" constant="12" id="9Wf-Ec-sgl"/>
+                                                            <constraint firstAttribute="trailing" secondItem="sb2-KF-TLC" secondAttribute="trailing" constant="8" id="eHW-h0-rGR"/>
                                                             <constraint firstAttribute="height" constant="20" id="jFh-Ex-JkC"/>
+                                                            <constraint firstItem="sb2-KF-TLC" firstAttribute="top" secondItem="44n-L7-c1f" secondAttribute="top" id="q9b-c3-Dh3"/>
                                                             <constraint firstItem="8h5-h3-TjA" firstAttribute="top" secondItem="44n-L7-c1f" secondAttribute="top" id="tkl-1w-T2Y"/>
                                                             <constraint firstItem="3Q2-9t-nz9" firstAttribute="top" secondItem="44n-L7-c1f" secondAttribute="top" id="wCd-bV-Vcj"/>
                                                             <constraint firstItem="8h5-h3-TjA" firstAttribute="leading" secondItem="3Q2-9t-nz9" secondAttribute="trailing" constant="4" id="xnA-wQ-9Nv"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9F9-NO-ysB" customClass="CustomButton" customModule="CarfixIphone" customModuleProvider="target">
-                                                        <rect key="frame" x="59.5" y="178" width="217.5" height="30"/>
+                                                        <rect key="frame" x="59" y="178" width="217" height="30"/>
                                                         <state key="normal" title="Login"/>
                                                         <connections>
                                                             <action selector="login:" destination="KT1-oZ-ngc" eventType="touchUpInside" id="yrP-R8-MsD"/>
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Xy-XQ-iul">
-                                                        <rect key="frame" x="58.5" y="216" width="217.5" height="30"/>
+                                                        <rect key="frame" x="59" y="216" width="217" height="30"/>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sb2-KF-TLC" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                        <rect key="frame" x="99" y="254" width="137" height="21"/>
-                                                        <attributedString key="attributedText">
-                                                            <fragment content="Forget Password?">
-                                                                <attributes>
-                                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <font key="NSFont" metaFont="system" size="17"/>
-                                                                    <integer key="NSUnderline" value="1"/>
-                                                                </attributes>
-                                                            </fragment>
-                                                        </attributedString>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="7nj-JY-gX4" firstAttribute="top" secondItem="8iK-Ch-RkZ" secondAttribute="bottom" constant="8" id="1Te-uh-fK4"/>
                                                     <constraint firstItem="2ab-b9-NRM" firstAttribute="leading" secondItem="8iK-Ch-RkZ" secondAttribute="trailing" constant="8" id="1zo-q8-BVF"/>
-                                                    <constraint firstAttribute="bottom" secondItem="sb2-KF-TLC" secondAttribute="bottom" id="3wv-05-LS8"/>
-                                                    <constraint firstItem="sb2-KF-TLC" firstAttribute="top" secondItem="4Xy-XQ-iul" secondAttribute="bottom" constant="8" id="4FG-ot-7fi"/>
                                                     <constraint firstItem="4Xy-XQ-iul" firstAttribute="centerX" secondItem="T1v-YP-xNU" secondAttribute="centerX" id="4lP-sq-k8c"/>
                                                     <constraint firstAttribute="trailing" secondItem="gX0-Oa-Dgi" secondAttribute="trailing" constant="8" id="7Y0-wp-rkM"/>
                                                     <constraint firstItem="7nj-JY-gX4" firstAttribute="leading" secondItem="T1v-YP-xNU" secondAttribute="leading" constant="8" id="AFh-YC-1fR"/>
                                                     <constraint firstItem="gGm-mq-EDY" firstAttribute="top" secondItem="T1v-YP-xNU" secondAttribute="top" constant="8" id="AuN-3M-X7w"/>
                                                     <constraint firstItem="44n-L7-c1f" firstAttribute="leading" secondItem="T1v-YP-xNU" secondAttribute="leading" id="CxG-tm-jtg"/>
                                                     <constraint firstItem="3g9-69-1X0" firstAttribute="top" secondItem="gGm-mq-EDY" secondAttribute="bottom" constant="8" id="FRB-hO-ugW"/>
-                                                    <constraint firstItem="sb2-KF-TLC" firstAttribute="centerX" secondItem="T1v-YP-xNU" secondAttribute="centerX" id="ICF-NB-1nb"/>
-                                                    <constraint firstItem="44n-L7-c1f" firstAttribute="centerX" secondItem="T1v-YP-xNU" secondAttribute="centerX" id="Luu-oL-hRi"/>
                                                     <constraint firstItem="4Xy-XQ-iul" firstAttribute="width" secondItem="9F9-NO-ysB" secondAttribute="width" id="NkM-JD-FaE"/>
                                                     <constraint firstItem="9F9-NO-ysB" firstAttribute="width" secondItem="T1v-YP-xNU" secondAttribute="width" multiplier="0.65" id="Odx-LP-6UG"/>
                                                     <constraint firstItem="44n-L7-c1f" firstAttribute="top" secondItem="gX0-Oa-Dgi" secondAttribute="bottom" constant="12" id="VHS-Kw-3hl"/>
                                                     <constraint firstItem="9F9-NO-ysB" firstAttribute="top" secondItem="44n-L7-c1f" secondAttribute="bottom" constant="12" id="ZOO-dl-wOu"/>
+                                                    <constraint firstAttribute="bottom" secondItem="4Xy-XQ-iul" secondAttribute="bottom" id="cCH-3y-GrN"/>
                                                     <constraint firstItem="gGm-mq-EDY" firstAttribute="leading" secondItem="T1v-YP-xNU" secondAttribute="leading" constant="8" id="iRe-hX-paj"/>
                                                     <constraint firstItem="2ab-b9-NRM" firstAttribute="top" secondItem="gGm-mq-EDY" secondAttribute="bottom" constant="15" id="ifV-KP-KI2"/>
                                                     <constraint firstItem="gX0-Oa-Dgi" firstAttribute="leading" secondItem="T1v-YP-xNU" secondAttribute="leading" constant="8" id="jWf-eQ-ATM"/>
@@ -2279,7 +2271,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gc4-Ao-O0e" customClass="CustomButton" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="79" y="576" width="217.5" height="30"/>
+                                                <rect key="frame" x="79" y="576" width="217" height="30"/>
                                                 <state key="normal" title="Register Here"/>
                                                 <connections>
                                                     <action selector="registerHere:" destination="KT1-oZ-ngc" eventType="touchUpInside" id="qfz-TA-aJn"/>
@@ -2353,7 +2345,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9d9-c7-p25" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qRt-bx-zLB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qRt-bx-zLB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2450,7 +2442,7 @@
                                         <rect key="frame" x="0.0" y="245" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lyk-db-BsN" id="o7q-cb-qCB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2536,11 +2528,11 @@
                                         <rect key="frame" x="0.0" y="28" width="160" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MDu-iV-3Qo" id="Dio-oU-wy5">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jL2-wc-rrG">
-                                                    <rect key="frame" x="54" y="0.0" width="91" height="43.5"/>
+                                                    <rect key="frame" x="54" y="0.0" width="91" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
@@ -2590,7 +2582,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Submit A New Claim" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWm-lD-DXz" customClass="ExtraBigLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                <rect key="frame" x="104.5" y="323" width="166" height="21"/>
+                                <rect key="frame" x="105" y="323" width="166" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2737,7 +2729,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Panel Workshops" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZU-Ax-pam" customClass="ExtraBigLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                            <rect key="frame" x="117" y="20" width="141.5" height="21"/>
+                                            <rect key="frame" x="117" y="20" width="142" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -2783,7 +2775,7 @@
                                         <rect key="frame" x="0.0" y="148" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZEZ-zJ-Zmu" id="PL1-Ho-Oi2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2855,19 +2847,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One of our friendly agents will be contacting you within the next 3 - 4 working days" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lti-pU-LkU" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                <rect key="frame" x="16" y="301" width="343" height="21"/>
+                                <rect key="frame" x="16" y="301" width="343" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For more information or assistance regarding your submission, please contact us at:" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4e-hu-kNl" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                <rect key="frame" x="16" y="342" width="343" height="21"/>
+                                <rect key="frame" x="16" y="362" width="343" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_email" translatesAutoresizingMaskIntoConstraints="NO" id="6he-0z-jQi" customClass="CustomImageView" customModule="CarfixIphone" customModuleProvider="target">
-                                <rect key="frame" x="171.5" y="383" width="32" height="32"/>
+                                <rect key="frame" x="172" y="423" width="32" height="32"/>
                                 <color key="tintColor" red="1" green="0.20046078489999999" blue="0.26714044930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="987-8X-NX6"/>
@@ -2875,13 +2867,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udz-op-f3S" customClass="ExtraBigLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                <rect key="frame" x="167" y="415" width="41" height="21"/>
+                                <rect key="frame" x="167" y="455" width="41" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_phone" translatesAutoresizingMaskIntoConstraints="NO" id="Jlf-hb-Zgg" customClass="CustomImageView" customModule="CarfixIphone" customModuleProvider="target">
-                                <rect key="frame" x="171.5" y="456" width="32" height="32"/>
+                                <rect key="frame" x="172" y="496" width="32" height="32"/>
                                 <color key="tintColor" red="1" green="0.20046078489999999" blue="0.26714044930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="XbO-8c-TW4"/>
@@ -2889,7 +2881,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone No." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZj-rb-pr9" customClass="ExtraBigLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                <rect key="frame" x="147.5" y="488" width="80" height="21"/>
+                                <rect key="frame" x="148" y="528" width="80" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2964,7 +2956,7 @@
                                 <rect key="frame" x="16" y="578" width="343" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 / 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gva-xt-FKU" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                        <rect key="frame" x="156" y="9.5" width="30" height="21"/>
+                                        <rect key="frame" x="156" y="10" width="30" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -3077,7 +3069,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7Hx-fu-kLF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Hx-fu-kLF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     </navigationBar>
@@ -3095,7 +3087,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8sm-fK-Dte" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NAt-9u-TJI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NAt-9u-TJI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3113,7 +3105,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EM9-0f-nOy" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8nv-Js-bTw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8nv-Js-bTw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3131,7 +3123,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x3H-pr-tzn" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="maI-Bz-622">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="maI-Bz-622">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3149,7 +3141,7 @@
             <objects>
                 <navigationController storyboardIdentifier="CaseController_Old" automaticallyAdjustsScrollViewInsets="NO" id="UvX-eN-CeO" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="L5C-GT-PHs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="L5C-GT-PHs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3167,7 +3159,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KAk-0c-WiK" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B6F-da-jTW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B6F-da-jTW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3185,7 +3177,7 @@
             <objects>
                 <navigationController storyboardIdentifier="picker" automaticallyAdjustsScrollViewInsets="NO" id="5th-1Y-wOf" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Jri-M3-aRN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jri-M3-aRN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3203,7 +3195,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="emq-EU-u3P" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Hx3-fN-J3O">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hx3-fN-J3O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3221,7 +3213,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WVC-zb-gqd" customClass="RedNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GXo-9w-eOg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GXo-9w-eOg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3248,7 +3240,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x7i-1b-NJn" id="N8b-Gn-S95">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -3278,7 +3270,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cAf-tS-KJl" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Nni-yf-9dY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nni-yf-9dY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3317,7 +3309,7 @@
                                                     <rect key="frame" x="0.0" y="112" width="375" height="55"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UhA-0x-abk" userLabel="InsuranceLogo">
-                                                            <rect key="frame" x="8" y="6.5" width="39" height="39"/>
+                                                            <rect key="frame" x="8" y="7" width="39" height="39"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="UhA-0x-abk" secondAttribute="height" multiplier="1:1" id="IHK-eR-BXe"/>
                                                                 <constraint firstAttribute="height" constant="39" id="LRd-D1-era"/>
@@ -3604,14 +3596,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hA2-ur-0Hj">
-                                                    <rect key="frame" x="15" y="8" width="91" height="14.5"/>
+                                                    <rect key="frame" x="15" y="8" width="91" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hjt-OX-VER">
-                                                    <rect key="frame" x="112" y="8" width="33" height="14.5"/>
+                                                    <rect key="frame" x="112" y="8" width="33" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -3672,7 +3664,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iho-UW-qdI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="o3x-7s-6N8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="o3x-7s-6N8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3690,7 +3682,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oFt-Ri-RrX" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uzf-Lb-cvL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uzf-Lb-cvL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3708,7 +3700,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X90-MA-hGi" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ttw-Tp-LWK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ttw-Tp-LWK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3737,7 +3729,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oix-rl-VPp" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="655"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="675"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8zB-HU-hrh" customClass="CustomImageView" customModule="CarfixIphone" customModuleProvider="target">
                                                 <rect key="frame" x="137" y="20" width="100" height="100"/>
@@ -3747,7 +3739,7 @@
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YU9-Ek-y1t" userLabel="Case ID View">
-                                                <rect key="frame" x="115.5" y="128" width="143" height="21"/>
+                                                <rect key="frame" x="116" y="128" width="143" height="21"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Case ID :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N25-KF-obD" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="21"/>
@@ -3858,52 +3850,52 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You may be requested to upload more relevant images from our agents" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZY-FD-Zfv" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="338" width="359" height="21"/>
+                                                <rect key="frame" x="8" y="338" width="359" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Damaged Vehicle :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpv-vE-7qb" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="375" width="143" height="21"/>
+                                                <rect key="frame" x="8" y="395" width="143" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XS-RZ-fvO">
-                                                <rect key="frame" x="8" y="404" width="359" height="40"/>
+                                                <rect key="frame" x="8" y="424" width="359" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="KyN-Ev-x1D"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driving License :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCD-lZ-VSo" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="452" width="127" height="21"/>
+                                                <rect key="frame" x="8" y="472" width="127" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8S-2Y-Ipm">
-                                                <rect key="frame" x="8" y="481" width="359" height="40"/>
+                                                <rect key="frame" x="8" y="501" width="359" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="nIO-D4-v1v"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Police Report :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpu-KY-Yxi" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="529" width="112" height="21"/>
+                                                <rect key="frame" x="8" y="549" width="112" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7PO-ym-wId">
-                                                <rect key="frame" x="8" y="558" width="359" height="40"/>
+                                                <rect key="frame" x="8" y="578" width="359" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Ayw-DM-cnd"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1m-RW-Mkq" customClass="CustomButton" customModule="CarfixIphone" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="606" width="375" height="49"/>
+                                                <rect key="frame" x="0.0" y="626" width="375" height="49"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="49" id="LWQ-II-6oC"/>
                                                 </constraints>
@@ -4059,7 +4051,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yKI-bD-3YZ" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DhY-nX-Xxx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DhY-nX-Xxx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4085,10 +4077,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qw0-8H-tf3">
-                                <rect key="frame" x="0.0" y="64" width="375" height="433.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="434"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_location" translatesAutoresizingMaskIntoConstraints="NO" id="baa-0j-V6b">
-                                        <rect key="frame" x="171" y="185.5" width="32" height="32"/>
+                                        <rect key="frame" x="171" y="185" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="Agt-KN-Sja"/>
                                             <constraint firstAttribute="height" constant="32" id="XKA-Zf-Ts9"/>
@@ -4102,7 +4094,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2h-xI-1Me">
-                                <rect key="frame" x="0.0" y="509.5" width="375" height="108.5"/>
+                                <rect key="frame" x="0.0" y="510" width="375" height="108"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breakdown Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="176-Ku-DUN" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="166" height="21"/>
@@ -4173,7 +4165,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VE1-Nf-Wad" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GWj-pp-XIl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GWj-pp-XIl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4225,13 +4217,13 @@
         <image name="loading" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2nD-6o-Hqc"/>
+        <segue reference="W2W-0r-kbu"/>
+        <segue reference="Fxq-RS-dFd"/>
         <segue reference="zky-01-kms"/>
-        <segue reference="hCq-E1-HUC"/>
         <segue reference="UwB-fJ-tA0"/>
+        <segue reference="2nD-6o-Hqc"/>
         <segue reference="SnJ-bj-dFk"/>
         <segue reference="pWd-LV-gft"/>
-        <segue reference="Vh7-co-D3X"/>
         <segue reference="37J-qr-IGl"/>
         <segue reference="Sj4-yO-bIK"/>
     </inferredMetricsTieBreakers>
