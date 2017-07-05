@@ -15,6 +15,7 @@ class GetCaseHistoryResponse: CarFixAPIResponse
 
 class GetCaseHistoryResult: BaseAPIItem {
     public var key: String?
+    public var IsClaim: NSNumber?
     public var VehReg: String?
     public var Address: String?
     public var Passcode: String?

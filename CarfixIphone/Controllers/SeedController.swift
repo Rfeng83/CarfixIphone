@@ -73,7 +73,7 @@ class SeedController: BaseTableController {
         
         items.sort(by: { a, b in
             return !a.date.isEmpty && !b.date.isEmpty && a.date!.compare(b.date!) == .orderedDescending
-            })
+        })
         
         return items
     }
@@ -93,7 +93,11 @@ class SeedController: BaseTableController {
                 performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: item)
             }
         } else if let item = item as? SeedItem {
-            performSegue(withIdentifier: Segue.segueCase.rawValue, sender: item)
+            if item.isClaim {
+                performSegue(withIdentifier: Segue.segueViewClaim.rawValue, sender: item)
+            } else {
+                performSegue(withIdentifier: Segue.segueCase.rawValue, sender: item)
+            }
         } else if item is CreateVehicleItem {
             performSegue(withIdentifier: Segue.segueEditVehicle.rawValue, sender: item)
         }
@@ -116,6 +120,8 @@ class SeedController: BaseTableController {
             else if let seed = sender as? SeedItem {
                 if let svc = nav.topViewController as? CaseHistoryDetailsController {
                     svc.key = seed.itemId!
+                } else if let svc = nav.topViewController as? ViewClaimController {
+                    svc.key = seed.itemId!
                 }
             }
         }
@@ -125,12 +131,12 @@ class SeedController: BaseTableController {
         let item = getItems()?[indexPath.row]
         if item is NewsFeedController.NewsFeedItem {
             return tableView.dequeueReusableCell(withIdentifier: "bigNewsFeedCell", for: indexPath)
-//            if indexPath.row == 0 {
-//                return tableView.dequeueReusableCell(withIdentifier: "bigNewsFeedCell", for: indexPath)
-//            }
-//            else{
-//                return tableView.dequeueReusableCell(withIdentifier: "newsFeedCell", for: indexPath)
-//            }
+            //            if indexPath.row == 0 {
+            //                return tableView.dequeueReusableCell(withIdentifier: "bigNewsFeedCell", for: indexPath)
+            //            }
+            //            else{
+            //                return tableView.dequeueReusableCell(withIdentifier: "newsFeedCell", for: indexPath)
+            //            }
         } else {
             return super.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
         }
@@ -138,17 +144,25 @@ class SeedController: BaseTableController {
     
     class SeedItem: NewsFeedController.BaseNewsFeedItem {
         var itemId: String?
+        var isClaim: Bool!
         
         required init(model: GetCaseHistoryResult) {
             super.init()
             
             self.itemId = model.key
             self.date = model.CreatedDate
+            self.isClaim = model.IsClaim == true
             
-            let serviceNeeded = ServiceNeeded(rawValue: model.ServiceNeeded)
-            self.title = serviceNeeded?.title
+            if let serviceNeeded = ServiceNeeded(rawValue: model.ServiceNeeded) {
+                self.title = serviceNeeded.title
+                self.leftImage = serviceNeeded.icon
+            } else {
+                self.title = "Claim"
+                self.leftImage = #imageLiteral(resourceName: "ic_towing_services")
+            }
+            
             self.details = "\(Convert(model.CreatedDate).countDown())\n\(model.VehReg!)"
-            self.leftImage = serviceNeeded?.icon.withRenderingMode(.alwaysTemplate)
+            
             //            let myMutableString = NSMutableAttributedString(
             //                string: string)
             //            myMutableString.addAttribute(NSForegroundColorAttributeName,

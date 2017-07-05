@@ -14,6 +14,7 @@ class GetHistoryCasesResponse: MobileUserAPIResponse {
 
 class GetHistoryCasesResult: BaseAPIItem {
     var Key: String?
+    var IsClaim: NSNumber?
     var ServiceNeeded: String?
     var DriverURL: String?
     var Status: String?

@@ -68,7 +68,9 @@ class ImageManager
     static func downloadImage(mUrl: String, imageView: UIImageView, cache: Bool, onSuccess: @escaping (UIImageView) -> Void) {
         let oriSize = imageView.frame.size
         let oriImage = imageView.image
-        imageView.image = #imageLiteral(resourceName: "loading")
+        if oriImage.isEmpty {
+            imageView.image = #imageLiteral(resourceName: "loading")
+        }
         
         let cachedImage = imageCache[mUrl]
         if !cache || cachedImage.isEmpty {

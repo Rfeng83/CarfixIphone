@@ -33,17 +33,19 @@ class MapManager {
                     let routes = jsonResult.value(forKey: "routes")
                     
                     if let routes = routes as? NSArray {
-                        if let route = routes[0] as? NSDictionary {
-                            if let polyline = route["overview_polyline"] as? NSDictionary {
-                                if let points = polyline["points"] as? String {
-                                    if points != "" {
-                                        DispatchQueue.main.async() {
-                                            if let path = self.drawRoute(start: start, end: end, with: points) {
-                                                var bounds = GMSCoordinateBounds(coordinate: start, coordinate: end)
-                                                for index in 1...path.count() {
-                                                    bounds = bounds.includingCoordinate(path.coordinate(at: index))
+                        if routes.count > 0 {
+                            if let route = routes[0] as? NSDictionary {
+                                if let polyline = route["overview_polyline"] as? NSDictionary {
+                                    if let points = polyline["points"] as? String {
+                                        if points != "" {
+                                            DispatchQueue.main.async() {
+                                                if let path = self.drawRoute(start: start, end: end, with: points) {
+                                                    var bounds = GMSCoordinateBounds(coordinate: start, coordinate: end)
+                                                    for index in 1...path.count() {
+                                                        bounds = bounds.includingCoordinate(path.coordinate(at: index))
+                                                    }
+                                                    self.mMap.animate(with: GMSCameraUpdate.fit(bounds))
                                                 }
-                                                self.mMap.animate(with: GMSCameraUpdate.fit(bounds))
                                             }
                                         }
                                     }
@@ -82,7 +84,7 @@ class MapManager {
         dmarker.map = mMap
         
         //rfeng: remove this later
-//        stackMove(marker: smarker, from: nil, polyline: polyLine, duration: 1.0, count: 0)
+        //        stackMove(marker: smarker, from: nil, polyline: polyLine, duration: 1.0, count: 0)
         
         return path
     }

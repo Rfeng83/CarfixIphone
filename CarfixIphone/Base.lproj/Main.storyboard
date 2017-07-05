@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="51"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ONO-zc-LeJ" id="G0G-CZ-kMh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -33,7 +33,7 @@
                                 <rect key="frame" x="0.0" y="79" width="375" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sfq-gW-Z4z" id="X5m-ZR-ojB">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="52.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -41,7 +41,7 @@
                                 <rect key="frame" x="0.0" y="132" width="375" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2kP-zm-3V5" id="naY-Pw-jGD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="52.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -70,6 +70,7 @@
                         <segue destination="9d9-c7-p25" kind="showDetail" identifier="segueWeb" id="vmf-su-nhb"/>
                         <segue destination="EM9-0f-nOy" kind="showDetail" identifier="segueEditVehicle" id="Glp-Da-3cq"/>
                         <segue destination="iho-UW-qdI" kind="showDetail" identifier="segueCase" id="Psq-1a-Vmq"/>
+                        <segue destination="yKI-bD-3YZ" kind="showDetail" identifier="segueViewClaim" id="UCN-Hw-WgN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzb-gG-vu6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -89,11 +90,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qPt-tC-lzZ" id="ek0-rr-5Kq">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2q9-nL-2eB">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <nil key="textColor"/>
@@ -617,7 +618,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="116-gV-CSm" id="M6k-m7-RAn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -892,14 +893,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L7E-bD-3pu">
-                                                    <rect key="frame" x="15" y="8" width="91" height="15"/>
+                                                    <rect key="frame" x="15" y="8" width="91" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wgx-ZS-B4P">
-                                                    <rect key="frame" x="112" y="8" width="33" height="15"/>
+                                                    <rect key="frame" x="112" y="8" width="33" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -1045,7 +1046,7 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fBm-oD-RmQ" id="p7F-Kc-Ui6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1053,7 +1054,7 @@
                                 <rect key="frame" x="0.0" y="110" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ecP-gc-HP4" id="4h1-3k-xxw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1122,7 +1123,7 @@
                                 <rect key="frame" x="0.0" y="68" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VnF-LE-gb2" id="QC3-bd-zjW">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHo-3R-gqa" userLabel="Top Border" customClass="CustomLine" customModule="CarfixIphone" customModuleProvider="target">
@@ -1178,7 +1179,7 @@
                                 <rect key="frame" x="0.0" y="112" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tkl-1m-0FY" id="v4P-JD-Rxr">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDb-q3-C2A" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
@@ -1295,7 +1296,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="281" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BGb-hG-OOW" id="c10-dV-d5B">
-                                                    <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="281" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MOd-Im-t9U">
@@ -1764,7 +1765,7 @@
                                 <rect key="frame" x="0.0" y="230" width="375" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ojm-wV-Sd6" id="7H1-YR-LCG">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="47"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1864,7 +1865,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" reuseIdentifier="cell" id="vtA-Zk-ryT" customClass="VehicleViewCell" customModule="CarfixIphone" customModuleProvider="target">
-                                        <rect key="frame" x="139" y="8" width="98" height="99"/>
+                                        <rect key="frame" x="138.5" y="8" width="98" height="99"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="98" height="99"/>
@@ -2011,7 +2012,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ATp-Nj-pzq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ATp-Nj-pzq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2032,7 +2033,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PmX-Og-JUR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PmX-Og-JUR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2053,7 +2054,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TBD-ME-DZJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TBD-ME-DZJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2074,7 +2075,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hEy-4Y-qN0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hEy-4Y-qN0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2092,7 +2093,7 @@
             <objects>
                 <navigationController storyboardIdentifier="notifications" automaticallyAdjustsScrollViewInsets="NO" id="gRi-KY-1wN" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5gb-g4-ObE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5gb-g4-ObE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2345,7 +2346,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9d9-c7-p25" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qRt-bx-zLB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qRt-bx-zLB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2442,7 +2443,7 @@
                                         <rect key="frame" x="0.0" y="245" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lyk-db-BsN" id="o7q-cb-qCB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2528,11 +2529,11 @@
                                         <rect key="frame" x="0.0" y="28" width="160" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MDu-iV-3Qo" id="Dio-oU-wy5">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jL2-wc-rrG">
-                                                    <rect key="frame" x="54" y="0.0" width="91" height="43"/>
+                                                    <rect key="frame" x="54" y="0.0" width="91" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
@@ -2775,7 +2776,7 @@
                                         <rect key="frame" x="0.0" y="148" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZEZ-zJ-Zmu" id="PL1-Ho-Oi2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3069,7 +3070,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Hx-fu-kLF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7Hx-fu-kLF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     </navigationBar>
@@ -3087,7 +3088,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8sm-fK-Dte" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NAt-9u-TJI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NAt-9u-TJI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3105,7 +3106,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EM9-0f-nOy" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8nv-Js-bTw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8nv-Js-bTw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3123,7 +3124,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x3H-pr-tzn" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="maI-Bz-622">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="maI-Bz-622">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3141,7 +3142,7 @@
             <objects>
                 <navigationController storyboardIdentifier="CaseController_Old" automaticallyAdjustsScrollViewInsets="NO" id="UvX-eN-CeO" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="L5C-GT-PHs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="L5C-GT-PHs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3159,7 +3160,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KAk-0c-WiK" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B6F-da-jTW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B6F-da-jTW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3177,7 +3178,7 @@
             <objects>
                 <navigationController storyboardIdentifier="picker" automaticallyAdjustsScrollViewInsets="NO" id="5th-1Y-wOf" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jri-M3-aRN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Jri-M3-aRN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3195,7 +3196,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="emq-EU-u3P" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hx3-fN-J3O">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Hx3-fN-J3O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3213,7 +3214,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WVC-zb-gqd" customClass="RedNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GXo-9w-eOg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GXo-9w-eOg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3240,7 +3241,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x7i-1b-NJn" id="N8b-Gn-S95">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -3259,6 +3260,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="iho-UW-qdI" kind="showDetail" identifier="segueCase" id="68B-ff-YFy"/>
+                        <segue destination="yKI-bD-3YZ" kind="showDetail" identifier="segueViewClaim" id="WBy-a4-CUj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCV-Uv-ttR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3270,7 +3272,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cAf-tS-KJl" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nni-yf-9dY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Nni-yf-9dY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3596,14 +3598,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hA2-ur-0Hj">
-                                                    <rect key="frame" x="15" y="8" width="91" height="15"/>
+                                                    <rect key="frame" x="15" y="8" width="91" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hjt-OX-VER">
-                                                    <rect key="frame" x="112" y="8" width="33" height="15"/>
+                                                    <rect key="frame" x="112" y="8" width="33" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -3664,7 +3666,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iho-UW-qdI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="o3x-7s-6N8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="o3x-7s-6N8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3682,7 +3684,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oFt-Ri-RrX" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uzf-Lb-cvL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uzf-Lb-cvL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3700,7 +3702,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X90-MA-hGi" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ttw-Tp-LWK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ttw-Tp-LWK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4051,7 +4053,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yKI-bD-3YZ" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DhY-nX-Xxx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DhY-nX-Xxx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4165,7 +4167,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VE1-Nf-Wad" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GWj-pp-XIl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GWj-pp-XIl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4217,12 +4219,13 @@
         <image name="loading" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="W2W-0r-kbu"/>
-        <segue reference="Fxq-RS-dFd"/>
-        <segue reference="zky-01-kms"/>
+        <segue reference="UCN-Hw-WgN"/>
         <segue reference="UwB-fJ-tA0"/>
         <segue reference="2nD-6o-Hqc"/>
-        <segue reference="SnJ-bj-dFk"/>
+        <segue reference="Psq-1a-Vmq"/>
+        <segue reference="Glp-Da-3cq"/>
+        <segue reference="fdF-sT-vca"/>
+        <segue reference="vmf-su-nhb"/>
         <segue reference="pWd-LV-gft"/>
         <segue reference="37J-qr-IGl"/>
         <segue reference="Sj4-yO-bIK"/>

@@ -56,7 +56,11 @@ class CaseHistoryController: BaseTableController {
                     self.performSegue(withIdentifier: Segue.segueNoPolicy.rawValue, sender: logData)
                 }
             } else {
-                performSegue(withIdentifier: Segue.segueCase.rawValue, sender: item.itemId)
+                if item.isClaim {
+                    performSegue(withIdentifier: Segue.segueViewClaim.rawValue, sender: item.itemId)
+                } else {
+                    performSegue(withIdentifier: Segue.segueCase.rawValue, sender: item.itemId)
+                }
             }
         }
     }
@@ -78,8 +82,10 @@ class CaseHistoryController: BaseTableController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let nav = segue.destination as? UINavigationController {
-            if let vc = nav.topViewController as? CaseHistoryDetailsController {
-                if let key = sender as? String {
+            if let key = sender as? String {
+                if let vc = nav.topViewController as? CaseHistoryDetailsController {
+                    vc.key = key
+                } else if let vc = nav.topViewController as? ViewClaimController {
                     vc.key = key
                 }
             }
@@ -94,6 +100,7 @@ class CaseHistoryController: BaseTableController {
         var itemId: String!
         var passcode: String?
         var statusDesc: String?
+        var isClaim: Bool!
         
         required init(model: GetHistoryCasesResult) {
             super.init()
@@ -105,6 +112,7 @@ class CaseHistoryController: BaseTableController {
             self.title = model.ServiceNeeded
             self.details = Convert(model.CreatedDate).countDown()
             self.statusDesc = model.Status
+            self.isClaim = model.IsClaim == 1
             if let image = model.DriverURL {
                 self.leftImagePath = image
             } else {
