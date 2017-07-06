@@ -28,9 +28,9 @@ class CaseHistoryController: BaseTableController {
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
     
-    var mResult: [GetHistoryCasesResult]?
+    var mResult: [GetResolvedCasesResult]?
     override func refresh(sender: AnyObject?) {
-        MobileUserAPI(self).getHistoryCases(phoneNo: CarfixInfo().profile.loginID!, onSuccess: { data in
+        CarFixAPIPost(self).getResolvedCases(onSuccess: { data in
             self.mResult = data?.Result
             super.refresh(sender: sender)
         })
@@ -102,7 +102,7 @@ class CaseHistoryController: BaseTableController {
         var statusDesc: String?
         var isClaim: Bool!
         
-        required init(model: GetHistoryCasesResult) {
+        required init(model: GetResolvedCasesResult) {
             super.init()
             
             if let uniKey = model.Key {

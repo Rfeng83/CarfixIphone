@@ -59,6 +59,7 @@
 		4710BE061EC2D21B00091F95 /* GetPanelWorkshopsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4710BE051EC2D21B00091F95 /* GetPanelWorkshopsResponse.swift */; };
 		4710BE081EC3073200091F95 /* PanelWorkshopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4710BE071EC3073100091F95 /* PanelWorkshopController.swift */; };
 		4710BE0A1EC3241500091F95 /* BaseTableGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4710BE091EC3241500091F95 /* BaseTableGroup.swift */; };
+		4710E9B71F0DEEA7004BE52C /* GetResolvedCasesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4710E9B61F0DEEA7004BE52C /* GetResolvedCasesResponse.swift */; };
 		4712EEAC1E30A24E0053BF8E /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712EEAB1E30A24E0053BF8E /* NSAttributedString.swift */; };
 		4712EEAE1E30A3A20053BF8E /* GeneralHelpsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712EEAD1E30A3A20053BF8E /* GeneralHelpsResponse.swift */; };
 		4713C75F1DEB45AB00396E1C /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713C75E1DEB45AB00396E1C /* DBHelper.swift */; };
@@ -203,6 +204,7 @@
 		4710BE051EC2D21B00091F95 /* GetPanelWorkshopsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPanelWorkshopsResponse.swift; sourceTree = "<group>"; };
 		4710BE071EC3073100091F95 /* PanelWorkshopController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelWorkshopController.swift; sourceTree = "<group>"; };
 		4710BE091EC3241500091F95 /* BaseTableGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableGroup.swift; sourceTree = "<group>"; };
+		4710E9B61F0DEEA7004BE52C /* GetResolvedCasesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetResolvedCasesResponse.swift; sourceTree = "<group>"; };
 		4712EEAB1E30A24E0053BF8E /* NSAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		4712EEAD1E30A3A20053BF8E /* GeneralHelpsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralHelpsResponse.swift; sourceTree = "<group>"; };
 		4713C75E1DEB45AB00396E1C /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				471933CB1EF3F3ED00631C2D /* CheckVersion.swift */,
 				47C6EA7F1DE19BDD00D1B2A1 /* GetCaseDetailsResponse.swift */,
 				47C6EA801DE19BDD00D1B2A1 /* GetCaseHistoryResponse.swift */,
+				4710E9B61F0DEEA7004BE52C /* GetResolvedCasesResponse.swift */,
 				47C6EA811DE19BDD00D1B2A1 /* GetNotificationResponse.swift */,
 				47C6EA821DE19BDD00D1B2A1 /* GetVehiclesResponse.swift */,
 				47C6EA831DE19BDD00D1B2A1 /* KeyResponse.swift */,
@@ -749,6 +752,7 @@
 				470C27D91DE09B59003A6FFC /* EnumManager.swift in Sources */,
 				470C27E31DE0A1D1003A6FFC /* CarFixAPIResponse.swift in Sources */,
 				47C6EA8B1DE19BDD00D1B2A1 /* LogCaseResponse.swift in Sources */,
+				4710E9B71F0DEEA7004BE52C /* GetResolvedCasesResponse.swift in Sources */,
 				470EAA6F1EC56821006E752E /* UploadClaimPhotosResponse.swift in Sources */,
 				470C27D81DE09B59003A6FFC /* ConvertManager.swift in Sources */,
 				470C27DD1DE09BFA003A6FFC /* OptionalExtension.swift in Sources */,

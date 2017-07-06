@@ -204,6 +204,10 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "GetCaseHistory", parameters: nil, onSuccess: onSuccess)
     }
     
+    func getResolvedCases(onSuccess: @escaping (GetResolvedCasesResponse?) -> Void) {
+        post(method: "GetResolvedCases", parameters: nil, onSuccess: onSuccess)
+    }
+    
     func getCaseDetails(key: String, onSuccess: @escaping (GetCaseDetailsResponse?) -> Void) {
         var parameters = [String: Any]()
         parameters.updateValue(key, forKey: "key")
