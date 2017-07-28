@@ -10,6 +10,17 @@ import Foundation
 import UIKit
 
 class CustomTextView: UITextView, Required {
+    override func initView() -> CustomTextView {
+        if let font = self.font {
+            self.font = font.withSize(Config.editFontSize)
+        } else {
+            self.font = Config.editFont
+        }
+        self.tintColor = CarfixColor.gray700.color
+        textContainerInset = .init(top: 2, left: 2, bottom: 2, right: 2)
+        textContainer.lineFragmentPadding = 0
+        return self
+    }
 //    required init?(coder aDecoder: NSCoder) {
 //        super.init(coder: aDecoder)
 //        initView()
@@ -32,15 +43,13 @@ class CustomTextView: UITextView, Required {
     }
     
     func initToolbar() {
-        
-        var doneButtonLabel = "Done"
+        var doneButtonLabel = "Next"
         
         var nextField = self.nextField
         while nextField != nil
         {
             if let textField = nextField as? CustomTextField {
                 if textField.isEnabled {
-                    doneButtonLabel = "Next"
                     break
                 }
                 else {
@@ -49,13 +58,16 @@ class CustomTextView: UITextView, Required {
             }
             else if let textField = nextField as? CustomTextView {
                 if textField.isHidden == false {
-                    doneButtonLabel = "Next"
                     break
                 }
                 else {
                     nextField = textField.nextField
                 }
             }
+        }
+        
+        if self.doneButton != nil {
+            doneButtonLabel = "Done"
         }
         
         let closeButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(CustomTextView.closeTextField))
@@ -73,9 +85,28 @@ class CustomTextView: UITextView, Required {
         toolBar.setItems([closeButton, spaceButton, titleItem, spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         
-        self.inputAccessoryView = toolBar
-        
+        self.inputAccessoryView = toolBar        
     }
+    
+//    public var underlineOnly: Bool = true
+//    override func draw(_ rect: CGRect) {
+//        if underlineOnly {
+//            let startingPoint = CGPoint(x: rect.minX, y: rect.maxY)
+//            let endingPoint = CGPoint(x: rect.maxX, y: rect.maxY)
+//            
+//            let path = UIBezierPath()
+//            
+//            path.move(to: startingPoint)
+//            path.addLine(to: endingPoint)
+//            path.lineWidth = 2.0
+//            
+//            tintColor.setStroke()
+//            
+//            path.stroke()
+//        } else {
+//            super.draw(rect)
+//        }
+//    }
     
     func closeTextField(){
         self.resignFirstResponder()
@@ -119,4 +150,6 @@ class CustomTextView: UITextView, Required {
             mIsRequired = newValue
         }
     }
+    
+    
 }

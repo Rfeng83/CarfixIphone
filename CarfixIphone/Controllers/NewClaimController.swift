@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import GoogleMaps
 
-class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePicker, UIGestureRecognizerDelegate, ViewImageControllerDelegate, NewClaimMapControllerDelegate {
+class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePicker, UIGestureRecognizerDelegate, ViewImageControllerDelegate, NewClaimMapControllerDelegate, BaseFormReturnData {
     var key: String?
     var serviceID: Int?
     var mModel: GetOfferServicesResult?
@@ -263,7 +263,7 @@ class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let svc = segue.destination as? ViewImageController {
+        if let svc: ViewImageController = segue.getMainController() {
             if let imageView = sender as? CustomImageView {
                 if let category = viewImageCategory {
                     if let images = getCategoryImages(category: category) {
@@ -281,15 +281,20 @@ class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePi
                     }
                 }
             }
-        } else if let svc = segue.destination as? PanelWorkshopController {
-            svc.images = self.mImages
-            svc.newClaimModel = editPage.getResult() as! NewClaimModel
-            svc.offerService = self.mModel!
-            svc.location = self.mLocation!
-        } else if let nav = segue.destination as? UINavigationController {
-            if let svc = nav.topViewController as? NewClaimMapController {
-                svc.delegate = self
+        } else if let svc: PanelWorkshopController = segue.getMainController() {
+            //            svc.images = self.mImages
+            //            svc.newClaimModel = editPage.getResult() as! NewClaimModel
+            //            svc.offerService = self.mModel!
+            //            svc.location = self.mLocation!
+            if let insurerName = self.mModel?.InsurerName ?? self.mModel?.Title {
+                svc.insurerName = insurerName
             }
+            svc.delegate = self
+        } else if let svc: NewClaimMapController = segue.getMainController() {
+            svc.delegate = self
+        } else if let svc: NewClaimResultController = segue.getMainController()  {
+            svc.companyName = self.mModel?.Title
+            svc.result = mResult ?? NewClaimResult(obj: nil)
         }
     }
     
@@ -341,6 +346,37 @@ class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePi
                 performSegue(withIdentifier: Segue.seguePanelWorkshops.rawValue, sender: self)
             } else {
                 self.message(content: "Please enter required field to continue...")
+            }
+        }
+    }
+    
+    var mResult: NewClaimResult?
+    func returnData(sender: BaseController, item: Any) {
+        if let newClaimModel = editPage.getResult() as? NewClaimModel {
+            if let selectedRow = item as? PanelWorkshopController.PanelWorkshopItem {
+                if let location = self.mLocation {
+                    if let insurerName = self.mModel?.InsurerName ?? self.mModel?.Title {
+                        var imageList = [String: UIImage]()
+                        
+                        if let images = self.mImages {
+                            for item in images {
+                                var count = 0
+                                for image in item.value {
+                                    imageList["\(item.key.rawValue);\(count).jpg"] = image
+                                    count = count + 1
+                                }
+                            }
+                        }
+                        
+                        sender.showProgressBar(msg: "The action might take few minutes to complete, please don’t close the apps until further instruction")
+                        
+                        let workshop = selectedRow.mModel?.key
+                        CarFixAPIPost(self).newClaim(ins: insurerName, vehReg: newClaimModel.vehicleNo!, accidentDate: newClaimModel.accidentDate!, icNo: newClaimModel.icNo!, workshop: workshop, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, accidentLocation: newClaimModel.address!, images: imageList) { data in
+                            self.mResult = data?.Result
+                            self.performSegue(withIdentifier: Segue.segueNewClaimResult.rawValue, sender: self)
+                        }
+                    }
+                }
             }
         }
     }

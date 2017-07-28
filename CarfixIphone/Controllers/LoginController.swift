@@ -13,7 +13,7 @@ import Firebase
 import FacebookCore
 import FacebookLogin
 
-class LoginController: BaseFormController, CustomPickerDelegate {
+class LoginController: BaseFormController, CustomPickerDelegate, LoginButtonDelegate {
     //    @IBOutlet weak var labelRememberMe: UIView!
     @IBOutlet weak var labelVersion: CustomLabel!
     @IBOutlet weak var labelRememberMe: CustomLabel!
@@ -74,9 +74,15 @@ class LoginController: BaseFormController, CustomPickerDelegate {
         }
         
         loginButton = LoginButton(readPermissions: [.publicProfile, .email])
+        loginButton?.delegate = self
         viewFacebook.addSubview(loginButton!)
         
         LoginController.facebookReadySignedIn = AccessToken.current.hasValue
+    }
+    
+    func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
+    }
+    func loginButtonDidLogOut(_ loginButton: LoginButton) {
     }
     
     var loginButton: LoginButton?

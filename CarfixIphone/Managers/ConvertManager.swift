@@ -39,16 +39,15 @@ class Convert
             return value
         }
         
+        var innerType = type
+        if let optional = type as? OptionalProtocol.Type {
+            innerType = optional.wrappedType()
+        }
+        
         var string = "\(value)"
         
         if string == "nil" {
             return nil
-        }
-        
-        var innerType = type
-        if let optional = type as? OptionalProtocol.Type
-        {
-            innerType = optional.wrappedType()
         }
         
         if string.isEmpty {
@@ -63,9 +62,15 @@ class Convert
         switch(innerType)
         {
         case is Int.Type, is Int8.Type, is Int16.Type, is Int32.Type, is Int64.Type, is UInt.Type, is UInt8.Type, is UInt16.Type, is UInt32.Type, is UInt64.Type, is NSInteger.Type, is Bool.Type:
-            let findIndex: String = "."
-            if string.contains(findIndex) {
-                string = string.substring(to: string.range(of: findIndex)!.lowerBound)
+            if string.compare("true") == .orderedSame {
+                string = "1"
+            } else if string.compare("false") == .orderedSame {
+                string = "0"
+            } else {
+                let findIndex: String = "."
+                if string.contains(findIndex) {
+                    string = string.substring(to: string.range(of: findIndex)!.lowerBound)
+                }
             }
             break
         default:

@@ -12,7 +12,7 @@ import UIKit
 extension UIView
 {
     open override func awakeFromNib() {
-        _ = initView()
+        _ = self.initView()
     }
     
     func initView() -> UIView {
@@ -41,6 +41,7 @@ extension UIView
         var rect = CGRect(x: 0, y: 0, width: 0, height: 0)
         for item in self.subviews {
             rect = rect.union(item.frame)
+            rect = rect.union(item.estimateAdjustedRect())
         }
         if extendRight > 0 || extendBottom > 0 {
             rect.size = CGSize(width: rect.size.width + extendRight, height: rect.size.height + extendBottom)
@@ -92,6 +93,37 @@ extension UIView
     //        self.sendSubview(toBack: imageViewBackground)
     //    }
     
+    func getView<T>() -> T? {
+        let items: [T] = getAllViews()
+        if items.count > 0 {
+            return items[0]
+        } else {
+            return nil
+        }
+    }
+    func getAllViews<T>() -> [T] {
+        var items = [T]()
+        for item in self.subviews {
+            if let item = item as? T {
+                items.append(item)
+            } else {
+                let children: [T] = item.getAllViews()
+                for child in children {
+                    items.append(child)
+                }
+            }
+        }
+        
+        return items
+    }
+    func getSuperView<T>() -> T? {
+        if let item = self.superview as? T {
+            return item
+        } else {
+            return self.superview?.getSuperView()
+        }
+    }
+    
     func startGlowing() {
         self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         UIView.animate(withDuration: 2.0,
@@ -103,7 +135,7 @@ extension UIView
                         self?.transform = .identity
                         self?.drawLeftShadow()
                         self?.drawRightShadow()
-                    
+                        
             },
                        completion: nil)
     }
@@ -138,5 +170,21 @@ extension UIView
         if height != 0 {
             self.frame = CGRect(origin: CGPoint(x: self.frame.origin.x, y: self.frame.minY + height), size: self.frame.size)
         }
+    }
+    
+    func putCenter(control: UIView) {
+        if !self.subviews.contains(control) {
+            self.addSubview(control)
+        }
+        
+        if let control = control as? CustomLabel {
+            let width = control.fitWidth()
+            if width > self.bounds.width {
+                control.frame.size = CGSize(width: self.bounds.width, height: Config.lineHeight)
+            }
+            _ = control.fitHeight()
+        }
+        
+        control.frame = CGRect(origin: CGPoint(x: (self.bounds.width - control.bounds.width) / 2, y: (self.bounds.height - control.bounds.height) / 2), size: control.bounds.size)
     }
 }

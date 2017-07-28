@@ -12,12 +12,9 @@ import UIKit
 class BaseAPIPost
 {
     func getWebBaseURL() -> String {
-        //let carFix = CarFixInfo()
-        //let setting = carFix.setting
-        
-        //        if(setting.countryCode == Country.ph.rawValue){
-        //            return RootPath.Ph.rawValue
-        //        }
+        if CarfixInfo().profile.loginID?.compare("60122538125") == ComparisonResult.orderedSame {
+            return RootPath.My_Test.rawValue
+        }
         return RootPath.My.rawValue
     }
     

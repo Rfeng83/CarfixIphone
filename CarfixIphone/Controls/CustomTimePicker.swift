@@ -9,16 +9,16 @@
 import Foundation
 import UIKit
 
-class CustomDateTimePicker: CustomTextField
+class CustomTimePicker: CustomTextField
 {
-    override func initView() -> CustomDateTimePicker {
+    override func initView() -> CustomTimePicker {
         _ = super.initView()
         
         let picker = UIDatePicker()
         
         picker.backgroundColor = CarfixColor.white.color
-        picker.addTarget(self, action: #selector(CustomDateTimePicker.dateTimePickerValueChanged), for: .valueChanged)
-        picker.maximumDate = Date()
+        picker.addTarget(self, action: #selector(CustomTimePicker.timePickerValueChanged), for: .valueChanged)
+        picker.datePickerMode = .time
         
         self.inputView = picker
         
@@ -28,22 +28,30 @@ class CustomDateTimePicker: CustomTextField
         return self
     }
     
-    func dateTimePickerValueChanged(sender: UIDatePicker){
-        self.text = Convert(sender.date).to()
-        if self.delegate is CustomDateTimePickerDelegate
-        {
-            (self.delegate as! CustomDateTimePickerDelegate).customDateTimePickerChanged(picker: sender)
+    func timePickerValueChanged(sender: UIDatePicker){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.locale = NSLocale.current
+        self.text = dateFormatter.string(from: sender.date)
+        
+        if self.delegate is CustomTimePickerDelegate {
+            (self.delegate as! CustomTimePickerDelegate).customTimePickerChanged(picker: sender)
         }
     }
     var date: Date? {
         get {
-            return Convert(self.text).to()
+            if let text = self.text {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "h:mm a"
+                return dateFormatter.date(from: text)
+            }
+            return nil
         }
         set(value) {
             let picker = self.inputView as! UIDatePicker
             if value != nil {
                 picker.date = value!
-                dateTimePickerValueChanged(sender: picker)
+                timePickerValueChanged(sender: picker)
             } else {
                 self.text = nil
             }
@@ -57,18 +65,18 @@ class CustomDateTimePicker: CustomTextField
     
     override func becomeFirstResponder() -> Bool {
         let picker = self.inputView as! UIDatePicker
-        if let date: Date = Convert(self.text).to() {
+        if let date = date {
             picker.date = date
         }
         else {
-            dateTimePickerValueChanged(sender: picker)
+            timePickerValueChanged(sender: picker)
         }
         
         return super.becomeFirstResponder()
     }
 }
 
-protocol CustomDateTimePickerDelegate: UITextFieldDelegate
+protocol CustomTimePickerDelegate: UITextFieldDelegate
 {
-    func customDateTimePickerChanged(picker: UIDatePicker)
+    func customTimePickerChanged(picker: UIDatePicker)
 }

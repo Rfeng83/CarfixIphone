@@ -9,10 +9,12 @@
 import Foundation
 import UIKit
 
-class WebController: UIViewController, UIWebViewDelegate {
+class WebController: BaseController, UIWebViewDelegate {
+    var delegate: BaseFormReturnData?
     var url: URL!
     
     @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var btnNextHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.backgroundColor = .white
@@ -25,6 +27,12 @@ class WebController: UIViewController, UIWebViewDelegate {
         self.navigationController?.navigationBar.backgroundColor = CarfixColor.gray200.color
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: CarfixColor.primary.color]
+        
+        if self.delegate.hasValue {
+            btnNextHeight.constant = 49
+        } else {
+            btnNextHeight.constant = 0
+        }
     }
     
     var boxView: UIView!
@@ -47,5 +55,9 @@ class WebController: UIViewController, UIWebViewDelegate {
     
     override func getBackgroundImage() -> UIImage? {
         return nil
+    }
+    
+    @IBAction func next(_ sender: Any) {
+        self.delegate?.returnData(sender: self, item: true)
     }
 }

@@ -10,14 +10,26 @@ import UIKit
 
 extension UIButton {
     func setImageWithPath(path: String?) {
-        if let imagePath = ImageManager.fileInDocumentsDirectory(path)
+        if let imagePath = ImageManager.fileInDocumentsDirectory(filename: path)
         {
-            if let loadedImage = ImageManager.loadImageFromPath(imagePath) {
+            if let loadedImage = ImageManager.loadImageFromPath(path: imagePath.absoluteString) {
                 print(" Loaded Image: \(loadedImage)")
                 let img = loadedImage
-                self.setImage(img, forState: .Normal)
+                self.setImage(img, for: .normal)
             } else { print("some error message 2") }
         }
     }
     
+    var systemImage: UIBarButtonSystemItem? {
+        get { return nil }
+        set {
+            if let value = newValue {
+                let imageView = CustomImageView()
+                imageView.systemImage = value
+                if let image = imageView.image {
+                    setImage(image, for: .normal)
+                }
+            }
+        }
+    }
 }

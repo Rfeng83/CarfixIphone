@@ -26,9 +26,16 @@ class BaseTableViewController: BaseController, UITableViewDelegate, UITableViewD
         //        showInstruction()
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = .clear
+        if self.tableView.delegate.isEmpty {
+            self.tableView.delegate = self
+        }
+        if self.tableView.dataSource.isEmpty {
+            self.tableView.dataSource = self
+        }
         
         if self.refreshControl.isEmpty {
             self.refreshControl = UIRefreshControl()
+            self.tableView.addSubview(self.refreshControl!)
         }
         self.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         

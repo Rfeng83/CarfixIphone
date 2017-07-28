@@ -13,6 +13,9 @@ class CustomLabel: UILabel {
     override func initView() -> CustomLabel {
         _ = super.initView()
         self.font = self.font.withSize(Config.fontSize)
+        if self.textColor == UIColor.black {
+            self.textColor = CarfixColor.gray800.color
+        }
         return self
     }
     

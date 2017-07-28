@@ -51,6 +51,14 @@ extension UIViewController: UITextFieldDelegate, UITextViewDelegate, Notificatio
     }
     
     @IBAction func close(sender: AnyObject) {
+        if let sender = sender as? UIViewController {
+            if let nav = sender.navigationController {
+                if nav.viewControllers.first != sender {
+                    nav.popViewController(animated: true)
+                    return
+                }
+            }
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -210,13 +218,13 @@ extension UIViewController: UITextFieldDelegate, UITextViewDelegate, Notificatio
         }
     }
     
-    public func scrollViewDidScroll(scrollView: UIScrollView) {
-        if let messageFrame = self.messageFrame {
-            var fixedFrame = messageFrame.frame;
-            fixedFrame.origin.y = scrollView.contentOffset.y + 64
-            messageFrame.frame = fixedFrame;
-        }
-    }
+    //    public func scrollViewDidScroll(scrollView: UIScrollView) {
+    //        if let messageFrame = self.messageFrame {
+    //            var fixedFrame = messageFrame.frame;
+    //            fixedFrame.origin.y = scrollView.contentOffset.y + 64
+    //            messageFrame.frame = fixedFrame;
+    //        }
+    //    }
     
     func hideProgressBar()
     {

@@ -11,16 +11,8 @@ import UIKit
 import GoogleMaps
 
 class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
-    var newClaimModel: NewClaimController.NewClaimModel!
-    var offerService: GetOfferServicesResult!
-    var images: [PhotoCategory: [UIImage]]?
-    var location: CLLocation!
-    
-    var insurerName: String {
-        get {
-            return offerService.InsurerName ?? offerService.Title!
-        }
-    }
+    var delegate: BaseFormReturnData?
+    var insurerName: String!
     
     @IBOutlet weak var pickerLocationArea: LocationAreaPicker!
     
@@ -67,21 +59,30 @@ class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        cell.selectionStyle = .none
+        if let cell = cell as? PanelWorkshopTableViewCell {
+            if let item = getItems()?[indexPath.row] as? PanelWorkshopItem {
+                if item == selectedRow {
+                    initSelectedCell(indexPath: indexPath, cell: cell)
+                }
+            }
+        }
         return cell
+    }
+    
+    func initSelectedCell(indexPath: IndexPath, cell: PanelWorkshopTableViewCell) {
+        cell.leftImage.isHidden = false
+        cell.titleLabel.textColor = CarfixColor.primary.color
+        cell.detailsLabel.textColor = CarfixColor.primary.color
+        
+        if let row = getItems()?[indexPath.row] as? PanelWorkshopItem {
+            selectedRow = row
+        }
     }
     
     var selectedRow: PanelWorkshopItem?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? PanelWorkshopTableViewCell {
-            cell.leftImage.isHidden = false
-            cell.titleLabel.textColor = CarfixColor.primary.color
-            cell.detailsLabel.textColor = CarfixColor.primary.color
-//            cell.contentView.backgroundColor = CarfixColor.white.color
-            
-            if let row = getItems()?[indexPath.row] as? PanelWorkshopItem {
-                selectedRow = row
-            }
+            initSelectedCell(indexPath: indexPath, cell: cell)
         }
     }
     
@@ -93,18 +94,64 @@ class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
         }
     }
     
+    var mAreaIDSelected: Int32?
     var mPanelWorkshops: [GetPanelWorkshopsResult]?
     func tableSelection(sender: BaseTableController, section: Int?, row: Int?) {
         if section.hasValue && row.hasValue {
             if let items = mLocationAreas[section!].children {
                 let item = items[row!]
-                pickerLocationArea.text = item.title
-                
                 if let item = item as? LocationAreaItem {
-                    selectedRow = nil
-                    CarFixAPIPost(self).getPanelWorkshops(ins: insurerName, area: item.itemId) { data in
-                        self.mPanelWorkshops = data?.Result
-                        self.refresh(sender: nil)
+                    mAreaIDSelected = item.itemId
+                    loadPanelWorkshops(title: item.title, workshop: nil)
+                }
+            }
+        }
+    }
+    
+    func loadPanelWorkshops(title: String?, workshop: String?) {
+        if mLocationAreas.count == 0 {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) { data in
+                self.loadPanelWorkshops(title: title, workshop: workshop)
+            }
+        } else {
+            selectedRow = nil
+            pickerLocationArea.text = title
+            
+            var areaID: Int32?
+            if mAreaIDSelected.hasValue {
+                areaID = mAreaIDSelected!
+            } else {
+                for location in mLocationAreas {
+                    if let items = location.children {
+                        for area in items {
+                            if let area = area as? LocationAreaItem {
+                                if title == area.title {
+                                    areaID = area.itemId
+                                    break
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if let areaID = areaID {
+                CarFixAPIPost(self).getPanelWorkshops(ins: insurerName, area: areaID) { data in
+                    self.mPanelWorkshops = data?.Result
+                    self.refresh(sender: nil)
+                    
+                    if let items = self.getItems() {
+                        for i in 0...(items.count-1) {
+                            if let item = items[i] as? PanelWorkshopItem {
+                                if item.itemId == workshop {
+                                    let indexPath = IndexPath(row: i, section: 0)
+                                    self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                                    self.tableView(self.tableView, didSelectRowAt: indexPath)
+                                    self.selectedRow = item
+                                    break
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -124,7 +171,7 @@ class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
         return items
     }
     
-    var mLocationAreas: [BaseTableGroup]!
+    var mLocationAreas: [BaseTableGroup] = []
     func popupLocationArea() {
         performSegue(withIdentifier: Segue.segueFilter.rawValue, sender: self)
     }
@@ -152,34 +199,17 @@ class PanelWorkshopController: BaseTableViewController, BaseTableReturnData {
                 svc.filterCategories = items
                 svc.refresh(sender: self.refreshControl)
             }
-        } else if let svc = segue.destination as? NewClaimResultController {
-            svc.companyName = offerService.Title
-            svc.result = mResult ?? NewClaimResult(obj: nil)
         }
+        //        else if let svc = segue.destination as? NewClaimResultController {
+        //            svc.companyName = offerService.Title
+        //            svc.result = mResult ?? NewClaimResult(obj: nil)
+        //        }
     }
     
-    var mResult: NewClaimResult?
+    //    var mResult: NewClaimResult?
     @IBAction func submit(_ sender: Any) {
         if let selectedRow = self.selectedRow {
-            var imageList = [String: UIImage]()
-            
-            if let images = self.images {
-                for item in images {
-                    var count = 0
-                    for image in item.value {
-                        imageList["\(item.key.rawValue);\(count).jpg"] = image
-                        count = count + 1
-                    }
-                }
-            }
-            
-            self.showProgressBar(msg: "The action might take few minutes to complete, please don’t close the apps until further instruction")
-            
-            let workshop = selectedRow.mModel?.key
-            CarFixAPIPost(self).newClaim(ins: insurerName, vehReg: newClaimModel.vehicleNo!, accidentDate: newClaimModel.accidentDate!, icNo: newClaimModel.icNo!, workshop: workshop, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, accidentLocation: newClaimModel.address!, images: imageList) { data in
-                self.mResult = data?.Result
-                self.performSegue(withIdentifier: Segue.segueNewClaimResult.rawValue, sender: self)
-            }
+            self.delegate?.returnData(sender: self, item: selectedRow)
         } else {
             self.message(content: "Please select a Panel Workshop to continue...")
         }
@@ -248,6 +278,8 @@ class PanelWorkshopTableViewCell: CustomTableViewCell {
         y = Config.lineHeight * 2 - iconSize / 2
         self.leftImage.frame = CGRect(x: x, y: y, width: iconSize, height: iconSize)
         self.leftImage.tintColor = CarfixColor.green.color
+        
+        self.selectionStyle = .none
         
         return self
     }

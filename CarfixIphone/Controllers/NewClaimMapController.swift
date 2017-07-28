@@ -45,7 +45,6 @@ class NewClaimMapController: BaseFormController, GMSMapViewDelegate, CLLocationM
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.distanceFilter = 50
-        locationManager.startUpdatingLocation()
         locationManager.delegate = self
         
         placesClient = GMSPlacesClient.shared()
@@ -54,6 +53,12 @@ class NewClaimMapController: BaseFormController, GMSMapViewDelegate, CLLocationM
         
         DispatchQueue.main.async {
             self.mapView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.mapViewContainer.bounds.height)
+        }
+        
+        if let location = currentLocation {
+            self.mapView.animate(to: GMSCameraPosition.camera(withTarget: location.coordinate, zoom: zoomLevel))
+        } else {
+            locationManager.startUpdatingLocation()
         }
     }
     
@@ -83,7 +88,6 @@ class NewClaimMapController: BaseFormController, GMSMapViewDelegate, CLLocationM
         
         // Prevent the navigation bar from being hidden when searching.
         searchController?.hidesNavigationBarDuringPresentation = false
-        
     }
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
@@ -153,11 +157,13 @@ class NewClaimMapController: BaseFormController, GMSMapViewDelegate, CLLocationM
         })
     }
     
+    var addressDict: [AnyHashable : Any]?
     func displayLocationInfo(placemark: CLPlacemark) {
         //stop updating location to save battery life
         locationManager.stopUpdatingLocation()
         
         if let dict = placemark.addressDictionary {
+            addressDict = dict
             if let addresses = dict["FormattedAddressLines"] {
                 txtAddress.text = (addresses as! NSArray).componentsJoined(by: ", ")
             }
@@ -188,11 +194,21 @@ class NewClaimMapController: BaseFormController, GMSMapViewDelegate, CLLocationM
     }
     
     @IBAction func confirmLocation(_ sender: Any) {
-        self.delegate?.updateAddress(address: txtAddress.text, location: currentLocation)
+        if let item = self.delegate {
+            if item.updateAddress.hasValue {
+                item.updateAddress!(address: txtAddress.text, location: currentLocation)
+            }
+            if item.updateAddressExtra.hasValue {
+                if let dict = addressDict {
+                    item.updateAddressExtra!(address: txtAddress.text, location: currentLocation, name: dict["Name"] as? String, zip: dict["ZIP"] as? String, city: dict["City"] as? String, state: dict["State"] as? String, country: dict["Country"] as? String)
+                }
+            }
+        }
         self.close(sender: self)
     }
 }
 
-protocol NewClaimMapControllerDelegate {
-    func updateAddress(address: String?, location: CLLocation?) -> Void
+@objc protocol NewClaimMapControllerDelegate {
+    @objc optional func updateAddress(address: String?, location: CLLocation?) -> Void
+    @objc optional func updateAddressExtra(address: String?, location: CLLocation?, name: String?, zip: String?, city: String?, state: String?, country: String?)
 }

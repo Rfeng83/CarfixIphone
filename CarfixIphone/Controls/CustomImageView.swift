@@ -14,4 +14,9 @@ class CustomImageView: UIImageView {
         _ = super.initView()
         return self
     }
+    
+    override func draw(_ rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()
+        context?.clear(self.bounds)
+    }
 }

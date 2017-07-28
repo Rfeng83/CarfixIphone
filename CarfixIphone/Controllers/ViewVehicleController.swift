@@ -149,6 +149,8 @@ class ViewVehicleController: BaseTableViewController, UIPopoverPresentationContr
         if let item = getItems()?[indexPath.row] as? OfferServiceTableItem {
             if let url = item.openUrl {
                 UIApplication.shared.openURL(URL(string: url)!)
+            } else if item.offerService == .Windscreen {
+                self.performSegue(withIdentifier: Segue.segueClaimPolicy.rawValue, sender: item)
             } else if item.isTappable {
                 if let offerService = item.offerService {
                     MobileUserAPI(self).getServiceOffer(serviceID: offerService.rawValue, vehicleID: key!) { data in
@@ -173,6 +175,12 @@ class ViewVehicleController: BaseTableViewController, UIPopoverPresentationContr
                         svc.key = key
                         svc.serviceID = sender.offerService?.rawValue
                         svc.mModel = sender.mModel
+                    }
+                } else if let svc = nav.topViewController as? ClaimPolicyController {
+                    if let sender = sender as? OfferServiceTableItem {
+                        svc.key = key
+                        svc.mModel = sender.mModel
+                        svc.mVehicle = self.mModel
                     }
                 }
             } else if let menu = segue.destination as? PopupMenuController {
@@ -221,7 +229,9 @@ class ViewVehicleController: BaseTableViewController, UIPopoverPresentationContr
             self.details = model.SubTitle
             self.leftImagePath = model.ImageURL
             
-            self.openUrl = model.OpenURL
+            if model.OpenURL.hasValue {
+                self.openUrl = model.OpenURL
+            }
             self.isTappable = model.IsTappable
             
             self.price = model.Price
@@ -254,6 +264,7 @@ class OfferServiceTableViewCell: GradientTableViewCell {
         
         let imageWidth: CGFloat = Config.lineHeight * 4 - margin * 3
         self.leftImage.frame = CGRect(x: x, y: y, width: imageWidth, height: imageWidth)
+        self.leftImage.image = #imageLiteral(resourceName: "ic_vehicle_default")
         
         x = x + imageWidth + padding
         self.titleLabel.frame = CGRect(x: x, y: y, width: width, height: Config.lineHeight)

@@ -33,72 +33,24 @@ class BaseController: UIViewController {
                                        object: nil)
     }
     
+    @IBOutlet weak var scrollViewBottom: NSLayoutConstraint?
     var scrollView: UIScrollView?
     var scrollViewRect: CGRect?
+    var keyboardSize: CGSize?
     // Called when the UIKeyboardDidShowNotification is sent.
     func keyboardWillBeShown(sender: Notification) {
-        //let triggerTime = (Int32(NSEC_PER_MSEC) * 10)
-        let time = DispatchTime.now() + 0.1
-        
-        DispatchQueue.main.asyncAfter(deadline: time) {
-            //self.keyboardWillBeHidden(sender: sender)
-            let info = sender.userInfo!
-            let value = info[UIKeyboardFrameBeginUserInfoKey] as! NSValue
-            let keyboardSize: CGSize = value.cgRectValue.size
-            
-            if let activeTextField = self.activeTextField {
-                self.scrollView = self.getSuperScrollView(view: activeTextField)
-                if let view = self.scrollView {
-                    var aRect: CGRect
-                    
-                    if self.scrollViewRect.isEmpty {
-                        aRect = view.frame
-                        self.scrollViewRect = aRect
-                    } else {
-                        aRect = self.scrollViewRect!
-                    }
-                    
-                    let keyboardMaxY = UIScreen.main.bounds.maxY - keyboardSize.height
-                    let scrollViewExtraHeight = aRect.maxY - keyboardMaxY
-                    
-//                    aRect.size.height = aRect.size.height - keyboardSize.height
-//                    if !(self is LoginController) {
-//                        aRect.size.height = aRect.size.height + activeTextField.frame.size.height + Config.padding * 2
-//                    }
-
-                    aRect.size.height = aRect.size.height - scrollViewExtraHeight
-                    view.frame = aRect
-                    
-                    //                    var containerView: UIView = activeTextField
-                    //                    var y = containerView.frame.origin.y
-                    //                    while !(containerView.superview is UIScrollView) {
-                    //                        containerView = containerView.superview!
-                    //                        y = containerView.frame.origin.y + y
-                    //                    }
-                    //                    y = containerView.superview!.frame.origin.y + y
-                    //
-                    //                    let activeTextFieldRect = activeTextField.frame
-                    //                    let activeTextFieldOrigin = activeTextFieldRect.origin
-                    //                    let point = CGPoint(x: activeTextFieldOrigin.x, y: y + activeTextFieldRect.height)
-                    //                    if !aRect.contains(point) {
-                    //                        var offset: CGFloat
-                    //                        if self.activeTextField is UITextField {
-                    //                            offset = y + activeTextFieldRect.height + 5 + aRect.origin.y - aRect.height
-                    //                        }
-                    //                        else {
-                    //                            offset = y + activeTextFieldRect.height + aRect.origin.y - aRect.height
-                    //                        }
-                    ////                        self.animateViewMoving(up: true, moveValue: offset)
-                    //                    }
-                }
-            }
-        }
+        let info = sender.userInfo!
+        let value = info[UIKeyboardFrameBeginUserInfoKey] as! NSValue
+        keyboardSize = value.cgRectValue.size
+        updateScrollViewRect()
     }
     
     func getSuperScrollView(view: UIView?) -> UIScrollView? {
         if let view = view {
             if view is UIScrollView {
-                return view as? UIScrollView
+                guard view is UITextView else {
+                    return view as? UIScrollView
+                }
             }
             
             return getSuperScrollView(view: view.superview)
@@ -112,6 +64,8 @@ class BaseController: UIViewController {
         self.scrollView?.frame = self.scrollViewRect!
         let aRect: CGRect = self.view.frame
         animateViewMoving(up: false, moveValue: -aRect.origin.y)
+        
+        self.scrollViewBottom?.constant = Config.padding
     }
     
     var activeTextField: UIView?
@@ -128,12 +82,49 @@ class BaseController: UIViewController {
         activeTextField = nil
     }
     
-    func animateViewMoving (up:Bool, moveValue :CGFloat){
+    public func textViewDidChange(_ textView: UITextView) {
+        updateScrollViewRect()
+    }
+    
+    func updateScrollViewRect() {
+        if let keyboardSize = keyboardSize {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                if let activeTextField = self.activeTextField {
+                    self.scrollView = self.getSuperScrollView(view: activeTextField)
+                    if let view = self.scrollView {
+                        let bottomHeight = view.estimateAdjustedRect().height + keyboardSize.height - UIScreen.main.bounds.height + Config.padding * 2
+                        self.scrollViewBottom?.constant = bottomHeight
+                        
+                        var aRect: CGRect
+                        
+                        if self.scrollViewRect.isEmpty {
+                            aRect = view.frame
+                            self.scrollViewRect = aRect
+                        } else {
+                            aRect = self.scrollViewRect!
+                        }
+                        
+                        let keyboardMaxY = UIScreen.main.bounds.maxY - keyboardSize.height
+                        let scrollViewExtraHeight = aRect.maxY - keyboardMaxY
+                        
+                        aRect.size.height = aRect.size.height - scrollViewExtraHeight
+                        view.frame = aRect
+                        
+                        var rc = activeTextField.bounds
+                        rc = activeTextField.convert(rc, to: view)
+                        self.scrollView?.scrollRectToVisible(rc, animated: true)
+                    }
+                }
+            }
+        }
+    }
+    
+    func animateViewMoving(up: Bool, moveValue: CGFloat){
         let movementDuration: TimeInterval = 0.3
-        let movement:CGFloat = ( up ? -moveValue : moveValue)
+        let movement = up ? -moveValue : moveValue
         UIView.beginAnimations( "animateView", context: nil)
         UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(movementDuration )
+        UIView.setAnimationDuration(movementDuration)
         self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
         UIView.commitAnimations()
     }

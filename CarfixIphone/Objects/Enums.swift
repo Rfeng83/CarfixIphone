@@ -11,10 +11,10 @@ import UIKit
 
 
 enum RootPath: String {
-    case My = "http://203.223.133.13"
-    case Ph = "http://203.223.133.13/CarfixPh"
-//    case My = "http://www.carfix.my"
-//    case Ph = "http://www.carfix.ph"
+    case My_Test = "http://203.223.133.13"
+    case Ph_Test = "http://203.223.133.13/CarfixPh"
+    case My = "http://www.carfix.my"
+    case Ph = "http://www.carfix.ph"
 }
 
 enum CarfixColor: Int {
@@ -25,6 +25,7 @@ enum CarfixColor: Int {
     case gray100 = 0xF5F5F5
     case gray200 = 0xEEEEEE
     case gray300 = 0xEDEDED
+    case gray500 = 0x999999
     case gray700 = 0x616161
     case gray800 = 0x424242
     case black = 0x000000
@@ -187,6 +188,12 @@ enum Segue: String {
     case segueNewClaimResult
     case segueViewClaim
     case segueViewSubmission
+    case segueClaimPolicy
+    case segueClaimMenu
+    case segueClaimPersonal
+    case segueClaimVehicle
+    case segueClaimBankDetails
+    case segueClaimSubmit
 }
 
 enum MyError: Error {
@@ -226,6 +233,7 @@ enum OfferService: Int {
     case MarketValue = 3
     case VehicleCheck = 4
     case CenturyBattery = 5
+    case Windscreen = 7
     
     var description: String {
         get {
@@ -242,6 +250,8 @@ enum OfferService: Int {
                 return "Vehicle Check"
             case .CenturyBattery:
                 return "Century Battery"
+            case .Windscreen:
+                return "Windscreen"
             }
         }
     }
@@ -277,6 +287,34 @@ enum PhotoCategory: Int16 {
     var title: String {
         get {
             return "\(self)".beautify()
+        }
+    }
+}
+
+enum ClaimContentCategoryEnum: Int {
+    case MyDetail = 1
+    case VehicleAccidentDetail = 2
+    case BankDetail = 3
+    case DocumentImage = 4
+    case AccidentImage = 5
+    case PanelWorkshops = 6
+    
+    var title: String {
+        get {
+            switch self {
+            case .MyDetail:
+                return "Details|Your personal information"
+            case .VehicleAccidentDetail:
+                return "Vehicle & Accident Details|Vehicle affected and accident particulars"
+            case .BankDetail:
+                return "E-Payment|Provide your bank details"
+            case .DocumentImage:
+                return "Documents|Required documentation for processing"
+            case .AccidentImage:
+                return "Accident Images|Four angle images of your damage vehicle"
+            case .PanelWorkshops:
+                return "Panel Workshops|Select a Panel Workshop"
+            }
         }
     }
 }

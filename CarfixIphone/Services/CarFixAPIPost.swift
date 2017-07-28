@@ -177,11 +177,7 @@ class CarFixAPIPost: BaseAPIPost
         parameters.updateValue(latitude, forKey: "latitude")
         parameters.updateValue(longitude, forKey: "longitude")
         parameters.updateValue(accidentLocation, forKey: "accidentLocation")
-        postFile(method: "NewClaim", parameters: parameters, images: images, onBuildRequest: { req in
-            var request = req
-            request.setValue(self.getUID(), forHTTPHeaderField: "UID")
-            return request
-        }, onSuccess: onSuccess)
+        postFile(method: "NewClaim", parameters: parameters, images: images, onSuccess: onSuccess)
     }
     
     func getClaim(key: String, onSuccess: @escaping (GetClaimResponse?) -> Void) {
@@ -190,16 +186,155 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "GetClaim", parameters: parameters, onSuccess: onSuccess)
     }
     
-    func uploadClaimPhotos(key: String, images: [String: UIImage], onSuccess: @escaping (NewClaimResponse?) -> Void) {
+    func submitClaimReply(key: String, replyMessage: String?, onSuccess: @escaping (SubmitClaimReplyResponse?) -> Void) {
         var parameters = [String: Any]()
         parameters.updateValue(key, forKey: "key")
-        postFile(method: "UploadClaimPhotos", parameters: parameters, images: images, onBuildRequest: { req in
+        if let val = replyMessage { parameters.updateValue(val, forKey: "replyMessage") }
+        self.post(method: "SubmitClaimReply", parameters: parameters, onSuccess: onSuccess)
+    }
+
+
+    func newPendingClaim(vehReg: String, claimTypeID: Int32, isDriver: Int16, insurerName: String, onSuccess: @escaping (KeyResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(vehReg, forKey: "vehReg")
+        parameters.updateValue(claimTypeID, forKey: "claimTypeID")
+        parameters.updateValue(isDriver, forKey: "isDriver")
+        parameters.updateValue(insurerName, forKey: "insurerName")
+        self.post(method: "NewPendingClaim", parameters: parameters, onSuccess: onSuccess)
+    }
+    
+    func getClaimPersonalDetails(key: String, onSuccess: @escaping (GetClaimPersonalDetailsResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        self.post(method: "GetClaimPersonalDetails", parameters: parameters, onSuccess: onSuccess)
+    }
+    
+    func updateClaimPersonalDetails(key: String, OwnerName: String?, OwnerIC: String?, OwnerTel: String?, OwnerMobile: String?, OwnerEmail: String?, OwnerGstNo: String?, isBusiness: Bool?, isDriverTheOwner: Bool?, DriverName: String?, DriverIC: String?, DriverTel: String?, DriverMobile: String?, LicenceType: String?, LicenceClass: String?, LicenceExpiredOn: Date?, LicenceIssuedOn: Date?, LicenceSuspended: Bool?, onSuccess: @escaping (KeyResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        if let val = OwnerName { parameters.updateValue(val, forKey: "OwnerName") }
+        if let val = OwnerIC { parameters.updateValue(val, forKey: "OwnerIC") }
+        if let val = OwnerTel { parameters.updateValue(val, forKey: "OwnerTel") }
+        if let val = OwnerMobile { parameters.updateValue(val, forKey: "OwnerMobile") }
+        if let val = OwnerEmail { parameters.updateValue(val, forKey: "OwnerEmail") }
+        if let val = OwnerGstNo { parameters.updateValue(val, forKey: "OwnerGstNo") }
+        if let val = isBusiness { parameters.updateValue(val, forKey: "isBusiness") }
+        if let val = isDriverTheOwner { parameters.updateValue(val, forKey: "isDriverTheOwner") }
+        if let val = DriverName { parameters.updateValue(val, forKey: "DriverName") }
+        if let val = DriverIC { parameters.updateValue(val, forKey: "DriverIC") }
+        if let val = DriverTel { parameters.updateValue(val, forKey: "DriverTel") }
+        if let val = DriverMobile { parameters.updateValue(val, forKey: "DriverMobile") }
+        if let val = LicenceType { parameters.updateValue(val, forKey: "LicenceType") }
+        if let val = LicenceClass { parameters.updateValue(val, forKey: "LicenceClass") }
+        if let val = LicenceExpiredOn { parameters.updateValue(val, forKey: "LicenceExpiredOn") }
+        if let val = LicenceIssuedOn { parameters.updateValue(val, forKey: "LicenceIssuedOn") }
+        if let val = LicenceSuspended { parameters.updateValue(val, forKey: "LicenceSuspended") }
+        self.post(method: "UpdateClaimPersonalDetails", parameters: parameters, onSuccess: onSuccess)
+    }
+    
+    func updateClaimVehicle(key: String, engineNo: String?, chassisNo: String?, dateOfAcc: Date?, placeOfAcc: String?, policeReportNo: String?, isInsuredConsent: Bool?, vehiclePurpose: String?, roadSide: String?, accLatitude: Double?, accLongitude: Double?, onSuccess: @escaping (KeyResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        if let engineNo = engineNo { parameters.updateValue(engineNo, forKey: "engineNo") }
+        if let chassisNo = chassisNo { parameters.updateValue(chassisNo, forKey: "chassisNo") }
+        if let dateOfAcc = dateOfAcc { parameters.updateValue(dateOfAcc, forKey: "dateOfAcc") }
+        if let placeOfAcc = placeOfAcc { parameters.updateValue(placeOfAcc, forKey: "placeOfAcc") }
+        if let policeReportNo = policeReportNo { parameters.updateValue(policeReportNo, forKey: "policeReportNo") }
+        if let isInsuredConsent = isInsuredConsent { parameters.updateValue(isInsuredConsent, forKey: "isInsuredConsent") }
+        if let vehiclePurpose = vehiclePurpose { parameters.updateValue(vehiclePurpose, forKey: "vehiclePurpose") }
+        if let roadSide = roadSide { parameters.updateValue(roadSide, forKey: "roadSide") }
+        if let accLatitude = accLatitude { parameters.updateValue(accLatitude, forKey: "accLatitude") }
+        if let accLongitude = accLongitude { parameters.updateValue(accLongitude, forKey: "accLongitude") }
+        
+        self.post(method: "UpdateClaimVehicle", parameters: parameters, onSuccess: onSuccess)
+    }
+    
+    func getClaimVehicle(key: String, onSuccess: @escaping (GetClaimVehicleResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        self.post(method: "GetClaimVehicle", parameters: parameters, onSuccess: onSuccess)
+    }
+    
+    func updateClaimEPayment(key: String, bankName: String?, accountName: String?, accountNumber: String?, bankAddress: String?, images: [String: UIImage], onSuccess: @escaping (KeyResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        if let val = bankName { parameters.updateValue(val, forKey: "bankName") }
+        if let val = accountName { parameters.updateValue(val, forKey: "accountName") }
+        if let val = accountNumber { parameters.updateValue(val, forKey: "accountNumber") }
+        if let val = bankAddress { parameters.updateValue(val, forKey: "bankAddress") }
+        self.postFile(method: "UpdateClaimEPayment", parameters: parameters, images: images, onBuildRequest: { req in
             var request = req
             request.setValue(self.getUID(), forHTTPHeaderField: "UID")
             return request
         }, onSuccess: onSuccess)
     }
     
+    func getClaimEPayment(key: String, onSuccess: @escaping (GetClaimEPaymentResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        self.post(method: "GetClaimEPayment", parameters: parameters, onSuccess: onSuccess)
+    }
+    
+    func updateClaimWorkshop(key: String, workshop: String?, onSuccess: @escaping (CarFixAPIResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        if let val = workshop { parameters.updateValue(val, forKey: "workshop") }
+        self.post(method: "UpdateClaimWorkshop", parameters: parameters, onSuccess: onSuccess)
+    }
+
+    func getClaimWorkshop(key: String, onSuccess: @escaping (GetClaimWorkshopResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        self.post(method: "GetClaimWorkshop", parameters: parameters, onSuccess: onSuccess)
+    }
+    
+    func getClaimContentCategories(key: String, onSuccess: @escaping (GetClaimContentCategoriesResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        self.post(method: "GetClaimContentCategories", parameters: parameters, onSuccess: onSuccess)
+    }
+    
+    func getClaimDocumentsInPdf(key: String, onSuccess: @escaping (GetClaimDocumentsInPdfResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        self.post(method: "GetClaimDocumentsInPdf", parameters: parameters, onSuccess: onSuccess)
+    }
+    
+    func uploadClaimPhotos(key: String, claimMessageId: Int32?, images: [String: UIImage], onSuccess: @escaping (NewClaimResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        if let claimMessageId = claimMessageId {
+            parameters.updateValue(claimMessageId, forKey: "claimMessageId")
+        }
+        postFile(method: "UploadClaimPhotos", parameters: parameters, images: images, onSuccess: onSuccess)
+    }
+    
+    func submitSignedClaim(key: String, images: [String: UIImage], onSuccess: @escaping (SubmitSignedClaimResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        postFile(method: "SubmitSignedClaim", parameters: parameters, images: images, onSuccess: onSuccess)
+    }
+    
+    func submitSignedDV(key: String, witnessName: String, witnessIC: String, images: [String: UIImage], onSuccess: @escaping (KeyResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        parameters.updateValue(witnessName, forKey: "witnessName")
+        parameters.updateValue(witnessIC, forKey: "witnessIC")
+        postFile(method: "SubmitSignedDV", parameters: parameters, images: images, onSuccess: onSuccess)
+    }
+    
+    func deleteClaim(key: String, onSuccess: @escaping (CarFixAPIResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        self.post(method: "DeleteClaim", parameters: parameters, onSuccess: onSuccess)
+    }
+    
+    func cancelClaim(key: String, onSuccess: @escaping (KeyResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        self.post(method: "CancelClaim", parameters: parameters, onSuccess: onSuccess)
+    }
+
     func getCaseHistory(onSuccess: @escaping (GetCaseHistoryResponse?) -> Void) {
         self.post(method: "GetCaseHistory", parameters: nil, onSuccess: onSuccess)
     }
@@ -255,16 +390,18 @@ class CarFixAPIPost: BaseAPIPost
         if let val = key {
             parameters.updateValue(val, forKey: "key")
         }
-        postFile(method: "UploadImages", parameters: parameters, images: images, onBuildRequest: { req in
+        postFile(method: "UploadImages", parameters: parameters, images: images, onSuccess: onSuccess)
+    }
+    
+    func postFile<T>(method: String, parameters: [String : Any]?, images: [String : UIImage], onSuccess: @escaping (T?) -> Void) where T : BaseAPIResponse {
+        postFile(method: method, parameters: parameters, images: images, onBuildRequest: { req in
             var request = req
             if let fid = self.getFID() {
                 request.setValue(fid, forHTTPHeaderField: "FID")
             } else {
                 request.setValue(self.getUID(), forHTTPHeaderField: "UID")
             }
-            //            request.setValue(self.mInsCode, forHTTPHeaderField: "InsCode")
             return request
         }, onSuccess: onSuccess)
     }
-    
 }

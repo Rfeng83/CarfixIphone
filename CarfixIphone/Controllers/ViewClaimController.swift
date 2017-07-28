@@ -150,7 +150,7 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
         self.showProgressBar(msg: "The action might take few minutes to complete, please don’t close the apps until further instruction")
         
         if let key = key {
-            CarFixAPIPost(self).uploadClaimPhotos(key: key, images: imageList) { data in
+            CarFixAPIPost(self).uploadClaimPhotos(key: key, claimMessageId: nil, images: imageList) { data in
                 self.performSegue(withIdentifier: Segue.segueViewSubmission.rawValue, sender: self)
                 self.mImages = [:]
                 self.refresh()
@@ -180,7 +180,7 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
             case .DrivingLicense:
                 gesture = UITapGestureRecognizer(target: self, action: #selector(viewDrivingLicenseImage(_:)))
             case .PoliceReport:
-                gesture = UITapGestureRecognizer(target: self, action: #selector(viewDrivingLicenseImage(_:)))
+                gesture = UITapGestureRecognizer(target: self, action: #selector(viewPoliceReportImage(_:)))
             }
             gesture.delegate = self
             imageView.isUserInteractionEnabled = true

@@ -31,14 +31,13 @@ class CustomTextField : UITextField, Required {
     var name: String?
     
     func initToolbar() {
-        var doneButtonLabel = "Hide"
+        var doneButtonLabel = "Next"
         
         var nextField = self.nextField
         while nextField != nil
         {
             if let textField = nextField as? CustomTextField {
                 if textField.isEnabled {
-                    doneButtonLabel = "Next"
                     break
                 }
                 else {
@@ -47,7 +46,6 @@ class CustomTextField : UITextField, Required {
             }
             else if let textField = nextField as? CustomTextView {
                 if textField.isHidden == false {
-                    doneButtonLabel = "Next"
                     break
                 }
                 else {
