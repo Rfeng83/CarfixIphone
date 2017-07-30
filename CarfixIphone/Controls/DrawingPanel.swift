@@ -9,21 +9,12 @@
 import Foundation
 import UIKit
 
-class DrawingPanel: UIView {
-    var viewBorder: CAShapeLayer!
-    
+class DrawingPanel: BorderView {
     override func initView() -> DrawingPanel {
         _ = super.initView()
         
         DispatchQueue.main.async {
-            self.viewBorder = CAShapeLayer()
-            self.viewBorder.strokeColor = CarfixColor.gray500.color.cgColor
-            self.viewBorder.fillColor = CarfixColor.transparent.color.cgColor
-            self.viewBorder.lineDashPattern = [8, 6]
             self.viewBorder.lineWidth = 3
-            self.viewBorder.frame = self.bounds
-            self.viewBorder.path = UIBezierPath(rect: self.bounds).cgPath
-            self.layer.addSublayer(self.viewBorder)
             
             let rect = CGRect(origin: self.bounds.origin, size: CGSize(width: round(self.bounds.width), height: round(self.bounds.height)))
             self.tempImageView = CustomImageView(frame: rect).initView()

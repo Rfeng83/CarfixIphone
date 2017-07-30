@@ -193,6 +193,8 @@ enum Segue: String {
     case segueClaimPersonal
     case segueClaimVehicle
     case segueClaimBankDetails
+    case segueClaimDocument
+    case segueClaimAccidentImages
     case segueClaimSubmit
 }
 
@@ -281,15 +283,57 @@ enum VehicleMenu: String {
 
 enum PhotoCategory: Int16 {
     case DamagedVehicle = 1
+    case OwnerIC = 13
     case DrivingLicense = 11
+    case RegistrationCard = 12
     case PoliceReport = 9
+    case LatestBankStatement = 15
     
     var title: String {
         get {
-            return "\(self)".beautify()
+            switch self {
+            case .OwnerIC:
+                return "Identity Card (front & back)"
+            case .RegistrationCard:
+                return "RIMV Registration Card"
+            default:
+                return "\(self)".beautify()
+            }
         }
     }
 }
+
+//None = 0,
+//[Description("My Vehicle Damage")]
+//MyVehicleDamage = 1,
+//[Description("Other Driver's Vehicle Damage")]
+//OtherDriverVehicleDamage = 2,
+//[Description("Scene of The Accident")]
+//SurroundingPhotos = 3,
+//[Description("My Vehicle Photo")]
+//MyVehiclePhoto = 4,
+//[Description("After Repaired Photo")]
+//AfterRepaired = 5,
+//[Description("Before Repair")]
+//BeforeRepair = 6,
+//[Description("Midst of Repair")]
+//MidstOfRepair = 7,
+//[Description("Tinted of Repair")]
+//TintedOfRepair = 8,
+//[Description("Police Report")]
+//PoliceReport = 9,
+//[Description("Invoice")]
+//Invoice = 10,
+//[Description("Driver's IC & License")]
+//DriverIC = 11,
+//[Description("Registration Card")]
+//RegistrationCard = 12,
+//[Description("Owner IC / Business Registration No")]
+//OwnerIC = 13,
+//[Description("Add More Photo")]
+//AddMorePhoto = 14,
+//[Description("Latest Bank Statement")]
+//BankStatement = 15
 
 enum ClaimContentCategoryEnum: Int {
     case MyDetail = 1

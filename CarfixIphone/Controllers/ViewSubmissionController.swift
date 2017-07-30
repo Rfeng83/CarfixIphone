@@ -213,6 +213,8 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
             viewDrivingLicense = view
         case .PoliceReport:
             viewPoliceReport = view
+        default:
+            break
         }
         
         return view
@@ -258,6 +260,8 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
             view = self.viewDrivingLicense
         case .PoliceReport:
             view = self.viewPoliceReport
+        default:
+            return nil
         }
         
         var images = [UIImage]()

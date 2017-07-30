@@ -43,6 +43,7 @@
 		470CE55C1F2B2C7A00F594ED /* SubmitSignedClaimResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470CE55B1F2B2C7A00F594ED /* SubmitSignedClaimResponse.swift */; };
 		470CE55E1F2B2E6500F594ED /* GetClaimDocumentsInPdfResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470CE55D1F2B2E6500F594ED /* GetClaimDocumentsInPdfResponse.swift */; };
 		470CE5601F2B464200F594ED /* ClaimDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470CE55F1F2B464200F594ED /* ClaimDocumentController.swift */; };
+		470CE5621F2B6F7000F594ED /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470CE5611F2B6F7000F594ED /* BorderView.swift */; };
 		470D99991E826F26008D1D41 /* GetOfferServicesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470D99981E826F26008D1D41 /* GetOfferServicesResponse.swift */; };
 		470D999B1E827F6F008D1D41 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470D999A1E827F6F008D1D41 /* BaseTableViewController.swift */; };
 		470DBAC71E092BD30087CC41 /* RightBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470DBAC61E092BD30087CC41 /* RightBorder.swift */; };
@@ -63,6 +64,8 @@
 		4710BE081EC3073200091F95 /* PanelWorkshopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4710BE071EC3073100091F95 /* PanelWorkshopController.swift */; };
 		4710BE0A1EC3241500091F95 /* BaseTableGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4710BE091EC3241500091F95 /* BaseTableGroup.swift */; };
 		4710E9B71F0DEEA7004BE52C /* GetResolvedCasesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4710E9B61F0DEEA7004BE52C /* GetResolvedCasesResponse.swift */; };
+		471153941F2E264000B0754E /* ClaimImagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471153931F2E264000B0754E /* ClaimImagesController.swift */; };
+		471153961F2E2BDE00B0754E /* ClaimAccidentImagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471153951F2E2BDE00B0754E /* ClaimAccidentImagesController.swift */; };
 		4712EEAC1E30A24E0053BF8E /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712EEAB1E30A24E0053BF8E /* NSAttributedString.swift */; };
 		4712EEAE1E30A3A20053BF8E /* GeneralHelpsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712EEAD1E30A3A20053BF8E /* GeneralHelpsResponse.swift */; };
 		4713C75F1DEB45AB00396E1C /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713C75E1DEB45AB00396E1C /* DBHelper.swift */; };
@@ -213,6 +216,7 @@
 		470CE55B1F2B2C7A00F594ED /* SubmitSignedClaimResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitSignedClaimResponse.swift; sourceTree = "<group>"; };
 		470CE55D1F2B2E6500F594ED /* GetClaimDocumentsInPdfResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetClaimDocumentsInPdfResponse.swift; sourceTree = "<group>"; };
 		470CE55F1F2B464200F594ED /* ClaimDocumentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimDocumentController.swift; sourceTree = "<group>"; };
+		470CE5611F2B6F7000F594ED /* BorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 		470D99981E826F26008D1D41 /* GetOfferServicesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetOfferServicesResponse.swift; sourceTree = "<group>"; };
 		470D999A1E827F6F008D1D41 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		470DBAC61E092BD30087CC41 /* RightBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightBorder.swift; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 		4710BE071EC3073100091F95 /* PanelWorkshopController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelWorkshopController.swift; sourceTree = "<group>"; };
 		4710BE091EC3241500091F95 /* BaseTableGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableGroup.swift; sourceTree = "<group>"; };
 		4710E9B61F0DEEA7004BE52C /* GetResolvedCasesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetResolvedCasesResponse.swift; sourceTree = "<group>"; };
+		471153931F2E264000B0754E /* ClaimImagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimImagesController.swift; sourceTree = "<group>"; };
+		471153951F2E2BDE00B0754E /* ClaimAccidentImagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimAccidentImagesController.swift; sourceTree = "<group>"; };
 		4712EEAB1E30A24E0053BF8E /* NSAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		4712EEAD1E30A3A20053BF8E /* GeneralHelpsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralHelpsResponse.swift; sourceTree = "<group>"; };
 		4713C75E1DEB45AB00396E1C /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
@@ -465,7 +471,9 @@
 				471951221F20A2870064E2F0 /* ClaimVehicleController.swift */,
 				47172D111F238D8D00850FDC /* ClaimBankDetailsController.swift */,
 				47172D1D1F24929E00850FDC /* ClaimDeclarationController.swift */,
+				471153931F2E264000B0754E /* ClaimImagesController.swift */,
 				470CE55F1F2B464200F594ED /* ClaimDocumentController.swift */,
+				471153951F2E2BDE00B0754E /* ClaimAccidentImagesController.swift */,
 				473757531EC1900400672347 /* PolicyController.swift */,
 				473757551EC1922400672347 /* NewClaimController.swift */,
 				47E5D1971ECC6570002A44A0 /* NewClaimMapController.swift */,
@@ -534,6 +542,7 @@
 				471A40161EE93C0200FBBA81 /* NotificationAlertController.swift */,
 				47172D151F239E7400850FDC /* DrawingPanel.swift */,
 				47172D1B1F248C8E00850FDC /* SignaturePanel.swift */,
+				470CE5611F2B6F7000F594ED /* BorderView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -779,6 +788,7 @@
 				47066AFD1E03AD59005F9208 /* NewCaseController.swift in Sources */,
 				470D99991E826F26008D1D41 /* GetOfferServicesResponse.swift in Sources */,
 				47FFA07D1DE5FA4400623CE1 /* CustomButton.swift in Sources */,
+				471153961F2E2BDE00B0754E /* ClaimAccidentImagesController.swift in Sources */,
 				4716CE461DDE13FE0089C9F9 /* NewsFeedController.swift in Sources */,
 				47C6EA871DE19BDD00D1B2A1 /* GetCaseHistoryResponse.swift in Sources */,
 				471580A31F26F65300A7448D /* BaseFormReturnData.swift in Sources */,
@@ -817,6 +827,7 @@
 				47B25E831DDDBED900F65C47 /* UITabBarItemExtension.swift in Sources */,
 				4769F0401E2393D7003D094D /* GrayBackground.swift in Sources */,
 				47B685CE1E0880E300D556FB /* MapManager.swift in Sources */,
+				470CE5621F2B6F7000F594ED /* BorderView.swift in Sources */,
 				47C6EA8E1DE1A65300D1B2A1 /* BaseTableController.swift in Sources */,
 				4719263F1E320DA600963F00 /* NotificationBarButtonItem.swift in Sources */,
 				470FAFEB1DE4B68200E341CD /* NavigationBackButton.swift in Sources */,
@@ -824,6 +835,7 @@
 				470FAFE71DE4A50E00E341CD /* NotificationController.swift in Sources */,
 				47DC05D41E009114000B352D /* CustomEditPage.swift in Sources */,
 				47E324CF1F1E5C1000D319C0 /* GetClaimContentCategoriesResponse.swift in Sources */,
+				471153941F2E264000B0754E /* ClaimImagesController.swift in Sources */,
 				47DC05D61E00A7BB000B352D /* EditVehicleController.swift in Sources */,
 				4709A56B1E948B3A0061CB3E /* GetHistoryCasesResponse.swift in Sources */,
 				472AB0D81DE5957E009E5FB6 /* RoundedImageView.swift in Sources */,

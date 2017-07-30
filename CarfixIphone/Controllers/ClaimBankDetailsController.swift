@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-class ClaimBankDetailsController: BaseFormController {
-    var key: String?
+class ClaimBankDetailsController: ClaimImagesController {
     
     @IBOutlet weak var txtBankName: CustomTextField!
     @IBOutlet weak var txtAccNumber: CustomTextField!
@@ -21,6 +20,21 @@ class ClaimBankDetailsController: BaseFormController {
     @IBOutlet weak var viewIAgree: UIView!
     
     @IBOutlet weak var lblReadMore: CustomLabel!
+    
+    @IBOutlet weak var viewImages: UIView!
+    @IBOutlet weak var viewImagesHeight: NSLayoutConstraint!
+    
+    override func redrawImages() {
+        drawImageUpload(category: .LatestBankStatement)
+    }
+    
+    override func getImageContainer(category: PhotoCategory) -> UIView? {
+        return viewImages
+    }
+    
+    override func getImageContainerHeight(category: PhotoCategory) -> NSLayoutConstraint? {
+        return viewImagesHeight
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +48,11 @@ class ClaimBankDetailsController: BaseFormController {
         viewIAgree.addGestureRecognizer(gestureIAgree)
         checkIt(viewIAgree, agree: false)
         
+        singleFile = true
         refresh()
     }
     
-    func refresh() {
+    override func refresh() {
         if let key = key {
             CarFixAPIPost(self).getClaimEPayment(key: key) { data in
                 if let result = data?.Result {
@@ -45,6 +60,7 @@ class ClaimBankDetailsController: BaseFormController {
                     self.txtAccName.text = result.AccountName
                     self.txtAccNumber.text = result.AccountNumber
                     //                    self.txtBankAdd.text = result.BankAddress
+                    self.redrawImages()
                 }
             }
         }
@@ -76,6 +92,9 @@ class ClaimBankDetailsController: BaseFormController {
                 var images = [String: UIImage]()
                 if let signature = viewSignature.getImage() {
                     images.updateValue(signature, forKey: "OwnerSignature.png")
+                    if let stamp = mImages?.first?.value.first {
+                        images.updateValue(stamp, forKey: "CompanyStamp.png")
+                    }
                     CarFixAPIPost(self).updateClaimEPayment(key: key, bankName: txtBankName.text, accountName: txtAccName.text, accountNumber: txtAccNumber.text, bankAddress: nil, images: images) { data in
                         self.close(sender: self)
                     }

@@ -67,5 +67,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarfixIphone/Controls/CustomEditPage.swift"
+            timestampString = "522939097.577651"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "refresh()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CarfixIphone.CustomEditPage.refresh () -&gt; ()"
+                  moduleName = "CarfixIphone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rfeng/Documents/XCodeProjects/CarfixIphone/CarfixIphone/Controls/CustomEditPage.swift"
+                  timestampString = "523125476.968365"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CarfixIphone.CustomEditPage.(refresh () -&gt; ()).(closure #1)"
+                  moduleName = "CarfixIphone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rfeng/Documents/XCodeProjects/CarfixIphone/CarfixIphone/Controls/CustomEditPage.swift"
+                  timestampString = "523125476.970878"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -79,10 +79,12 @@ class ClaimMenuController: BaseTableViewController, BaseFormReturnData {
                     performSegue(withIdentifier: Segue.segueClaimVehicle.rawValue, sender: key)
                 case .BankDetail:
                     performSegue(withIdentifier: Segue.segueClaimBankDetails.rawValue, sender: key)
+                case .DocumentImage:
+                    performSegue(withIdentifier: Segue.segueClaimDocument.rawValue, sender: key)
+                case .AccidentImage:
+                    performSegue(withIdentifier: Segue.segueClaimAccidentImages.rawValue, sender: key)
                 case .PanelWorkshops:
                     performSegue(withIdentifier: Segue.seguePanelWorkshops.rawValue, sender: key)
-                default:
-                    break
                 }
             }
         }
@@ -97,6 +99,8 @@ class ClaimMenuController: BaseTableViewController, BaseFormReturnData {
             } else if let svc: ClaimBankDetailsController = segue.getMainController() {
                 svc.key = key
             } else if let svc: ClaimDeclarationController = segue.getMainController() {
+                svc.key = key
+            } else if let svc: ClaimImagesController = segue.getMainController() {
                 svc.key = key
             } else if let svc: PanelWorkshopController = segue.getMainController() {
                 svc.insurerName = self.offerService?.InsurerName ?? self.offerService?.Title

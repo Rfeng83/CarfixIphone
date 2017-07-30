@@ -72,6 +72,8 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
         case .PoliceReport:
             view = viewPoliceReport
             heightConstraint = viewPoliceReportHeight
+        default:
+            return
         }
         
         view.subviews.forEach({ $0.removeFromSuperview() })
@@ -173,15 +175,7 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
             }
             view.addSubview(imageView)
             
-            let gesture: UITapGestureRecognizer
-            switch category {
-            case .DamagedVehicle:
-                gesture = UITapGestureRecognizer(target: self, action: #selector(viewDamagedVehicleImage(_:)))
-            case .DrivingLicense:
-                gesture = UITapGestureRecognizer(target: self, action: #selector(viewDrivingLicenseImage(_:)))
-            case .PoliceReport:
-                gesture = UITapGestureRecognizer(target: self, action: #selector(viewPoliceReportImage(_:)))
-            }
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(viewImage(sender:)))
             gesture.delegate = self
             imageView.isUserInteractionEnabled = true
             imageView.addGestureRecognizer(gesture)
@@ -196,23 +190,13 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
         return CGPoint(x: x, y: y)
     }
     
-    func viewDamagedVehicleImage(_ sender: UIGestureRecognizer) {
-        viewImage(sender: sender, category: .DamagedVehicle)
-    }
-    
-    func viewDrivingLicenseImage(_ sender: UIGestureRecognizer) {
-        viewImage(sender: sender, category: .DrivingLicense)
-    }
-    
-    func viewPoliceReportImage(_ sender: UIGestureRecognizer) {
-        viewImage(sender: sender, category: .PoliceReport)
-    }
-    
     var viewImageCategory: PhotoCategory?
-    func viewImage(sender: UIGestureRecognizer, category: PhotoCategory) {
+    func viewImage(sender: UIGestureRecognizer) {
         if let imageView = sender.view as? CustomImageView {
-            viewImageCategory = category
-            performSegue(withIdentifier: Segue.segueViewImage.rawValue, sender: imageView)
+            if let category = PhotoCategory(rawValue: Convert(imageView.tag).to()!) {
+                viewImageCategory = category
+                performSegue(withIdentifier: Segue.segueViewImage.rawValue, sender: imageView)
+            }
         }
     }
     
@@ -287,6 +271,8 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
             view = self.viewDrivingLicense
         case .PoliceReport:
             view = self.viewPoliceReport
+        default:
+            return []
         }
         
         var images = [UIImage]()
