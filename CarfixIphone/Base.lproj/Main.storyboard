@@ -3910,9 +3910,15 @@
                                                     <constraint firstAttribute="bottom" secondItem="Adc-Vi-Tkn" secondAttribute="bottom" constant="16" id="nG5-07-2oy"/>
                                                     <constraint firstItem="8v6-ng-fYr" firstAttribute="leading" secondItem="usR-JR-anB" secondAttribute="leading" id="q8E-aO-tgp"/>
                                                     <constraint firstItem="JR4-5u-2Jn" firstAttribute="top" secondItem="8v6-ng-fYr" secondAttribute="bottom" constant="16" id="uYk-X8-jyb"/>
+                                                    <constraint firstItem="Adc-Vi-Tkn" firstAttribute="top" secondItem="JR4-5u-2Jn" secondAttribute="bottom" constant="16" id="umy-hL-IyY"/>
                                                     <constraint firstItem="6n6-kr-jN1" firstAttribute="top" secondItem="JR4-5u-2Jn" secondAttribute="bottom" constant="16" id="xXs-gV-Mqx"/>
                                                     <constraint firstAttribute="trailing" secondItem="Pa8-22-2Vl" secondAttribute="trailing" id="yS9-Zt-MWg"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="umy-hL-IyY"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3951,7 +3957,10 @@
                         <outlet property="txtAccName" destination="17d-k9-Eb3" id="WVe-YK-8b7"/>
                         <outlet property="txtAccNumber" destination="Pwx-nP-9PU" id="SnF-pg-QGC"/>
                         <outlet property="txtBankName" destination="4BO-j1-tP8" id="S3p-b6-v0C"/>
+                        <outlet property="viewCompanyStamp" destination="6n6-kr-jN1" id="hzu-s8-mkZ"/>
                         <outlet property="viewIAgree" destination="EA3-jq-szA" id="gUD-nT-jwW"/>
+                        <outlet property="viewIAgreeToContentBottom" destination="umy-hL-IyY" id="oD0-hZ-6zz"/>
+                        <outlet property="viewIAgreeToSignatureBottom" destination="dtJ-Oc-wnq" id="6h4-lg-fXs"/>
                         <outlet property="viewImages" destination="gOF-KD-pDz" id="hp4-0H-TcX"/>
                         <outlet property="viewImagesHeight" destination="Z4S-Wm-7ZH" id="RPZ-Dn-6Ao"/>
                         <outlet property="viewSignature" destination="fUA-vR-z16" id="fFc-57-Y7G"/>

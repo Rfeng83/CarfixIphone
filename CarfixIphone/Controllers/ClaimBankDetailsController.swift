@@ -18,6 +18,9 @@ class ClaimBankDetailsController: ClaimImagesController {
     
     @IBOutlet weak var viewSignature: SignaturePanel!
     @IBOutlet weak var viewIAgree: UIView!
+    @IBOutlet weak var viewCompanyStamp: UIView!
+    @IBOutlet weak var viewIAgreeToContentBottom: NSLayoutConstraint!
+    @IBOutlet weak var viewIAgreeToSignatureBottom: NSLayoutConstraint!
     
     @IBOutlet weak var lblReadMore: CustomLabel!
     
@@ -52,14 +55,19 @@ class ClaimBankDetailsController: ClaimImagesController {
         refresh()
     }
     
+    var mResult: GetClaimEPaymentResult?
     override func refresh() {
         if let key = key {
             CarFixAPIPost(self).getClaimEPayment(key: key) { data in
-                if let result = data?.Result {
+                self.mResult = data?.Result
+                if let result = self.mResult {
                     self.txtBankName.text = result.BankName
                     self.txtAccName.text = result.AccountName
                     self.txtAccNumber.text = result.AccountNumber
                     //                    self.txtBankAdd.text = result.BankAddress
+                    self.viewCompanyStamp.isHidden = !Convert(result.IsBusiness).to()!
+                    self.viewIAgreeToContentBottom.isActive = self.viewCompanyStamp.isHidden
+                    self.viewIAgreeToSignatureBottom.isActive = !self.viewCompanyStamp.isHidden
                     self.redrawImages()
                 }
             }
@@ -89,12 +97,17 @@ class ClaimBankDetailsController: ClaimImagesController {
     @IBAction func next(_ sender: Any) {
         if isAgreed {
             if let key = key {
-                var images = [String: UIImage]()
                 if let signature = viewSignature.getImage() {
-                    images.updateValue(signature, forKey: "OwnerSignature.png")
+                    var images = [String: UIImage]()
                     if let stamp = mImages?.first?.value.first {
                         images.updateValue(stamp, forKey: "CompanyStamp.png")
+                    } else if (mResult?.IsBusiness == 1) {
+                        self.message(content: "Please upload your Company Stamp for the Business Vehicle")
+                        return
                     }
+                    
+                    images.updateValue(signature, forKey: "OwnerSignature.png")
+                    
                     CarFixAPIPost(self).updateClaimEPayment(key: key, bankName: txtBankName.text, accountName: txtAccName.text, accountNumber: txtAccNumber.text, bankAddress: nil, images: images) { data in
                         self.close(sender: self)
                     }

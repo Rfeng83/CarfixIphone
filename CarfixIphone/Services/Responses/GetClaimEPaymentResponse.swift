@@ -14,6 +14,7 @@ class GetClaimEPaymentResponse: CarFixAPIResponse {
 }
 
 class GetClaimEPaymentResult: BaseAPIItem {
+    var IsBusiness: NSNumber?
     var BankName: String?
     var AccountName: String?
     var AccountNumber: String?
