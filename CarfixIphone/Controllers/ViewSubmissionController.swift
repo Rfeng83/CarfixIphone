@@ -137,29 +137,34 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
     }
     
     func afterDrawing(_ sender: CustomEditPage) -> Bool {
-        let bounds = UIScreen.main.bounds
-        
-        let x = Config.padding
-        var y = sender.estimateAdjustedRect().size.height + Config.lineHeight
-        let width: CGFloat = bounds.width - x * 2
-        
-        let uploadTitle = ExtraBigLabel(frame: CGRect(x: x, y: y, width: width, height: 0)).initView()
-        uploadTitle.numberOfLines = 0
-        uploadTitle.font = UIFont.boldSystemFont(ofSize: Config.fontSizeExtraBig)
-        uploadTitle.textAlignment = .center
-        uploadTitle.text = "Uploaded Images"
-        let height = uploadTitle.fitHeight()
-        sender.addSubview(uploadTitle)
-        
-        y = y + height + Config.lineHeight
-        
-        for item in EnumManager().array(PhotoCategory.self) {
-            let view = drawImageUpload(category: item, left: x, top: y)
-            sender.addSubview(view)
-            y = y + view.frame.height + Config.lineHeight
+        if mImagesExists?.count == 0 {
+            return false
+        } else {
+            let bounds = UIScreen.main.bounds
+            
+            let x = Config.padding
+            var y = sender.estimateAdjustedRect().size.height + Config.lineHeight
+            let width: CGFloat = bounds.width - x * 2
+            
+            let uploadTitle = ExtraBigLabel(frame: CGRect(x: x, y: y, width: width, height: 0)).initView()
+            uploadTitle.numberOfLines = 0
+            uploadTitle.font = UIFont.boldSystemFont(ofSize: Config.fontSizeExtraBig)
+            uploadTitle.textAlignment = .center
+            uploadTitle.text = "Uploaded Images"
+            let height = uploadTitle.fitHeight()
+            sender.addSubview(uploadTitle)
+            
+            y = y + height + Config.lineHeight
+            
+            if let images = mImagesExists {
+                for item in images {
+                    let view = drawImageUpload(category: item.key, left: x, top: y)
+                    sender.addSubview(view)
+                    y = y + view.frame.height + Config.lineHeight
+                }
+            }
+            return true
         }
-        
-        return true
     }
     
     var viewDamagedVehicle: UIView?

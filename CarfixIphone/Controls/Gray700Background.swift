@@ -9,14 +9,10 @@
 import Foundation
 import UIKit
 
-class Gray700Background: UIView {
+class Gray700Background: PrimaryBackground {
     override func initView() -> Gray700Background {
+        _ = super.initView()
         self.backgroundColor = CarfixColor.gray700.color
-        let items: [CustomLabel] = self.getAllViews()
-        for item in items {
-            item.textColor = CarfixColor.white.color
-        }
-        
         return self
     }
 }

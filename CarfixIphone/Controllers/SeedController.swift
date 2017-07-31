@@ -93,7 +93,9 @@ class SeedController: BaseTableController {
                 performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: item)
             }
         } else if let item = item as? SeedItem {
-            if item.isClaim {
+            if item.isWindscreen {
+                performSegue(withIdentifier: Segue.segueViewWindscreen.rawValue, sender: item)
+            } else if item.isClaim {
                 performSegue(withIdentifier: Segue.segueViewClaim.rawValue, sender: item)
             } else {
                 performSegue(withIdentifier: Segue.segueCase.rawValue, sender: item)
@@ -104,9 +106,8 @@ class SeedController: BaseTableController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let nav = segue.destination as? UINavigationController {
             if let newsFeed = sender as? NewsFeedController.NewsFeedItem {
-                if let svc = nav.topViewController as? WebController {
+                if let svc: WebController = segue.getMainController() {
                     for item in newsFeedCategoriesCached! {
                         if item.ID == Convert(newsFeed.category).to()! {
                             svc.title = item.Name
@@ -118,25 +119,20 @@ class SeedController: BaseTableController {
                 }
             }
             else if let seed = sender as? SeedItem {
-                if let svc = nav.topViewController as? CaseHistoryDetailsController {
+                if let svc: CaseHistoryDetailsController = segue.getMainController() {
                     svc.key = seed.itemId!
-                } else if let svc = nav.topViewController as? ViewClaimController {
+                } else if let svc: ViewClaimController = segue.getMainController() {
+                    svc.key = seed.itemId!
+                } else if let svc: ClaimDetailController = segue.getMainController() {
                     svc.key = seed.itemId!
                 }
             }
-        }
     }
     
     override func dequeueReusableCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let item = getItems()?[indexPath.row]
         if item is NewsFeedController.NewsFeedItem {
             return tableView.dequeueReusableCell(withIdentifier: "bigNewsFeedCell", for: indexPath)
-            //            if indexPath.row == 0 {
-            //                return tableView.dequeueReusableCell(withIdentifier: "bigNewsFeedCell", for: indexPath)
-            //            }
-            //            else{
-            //                return tableView.dequeueReusableCell(withIdentifier: "newsFeedCell", for: indexPath)
-            //            }
         } else {
             return super.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
         }
@@ -145,6 +141,7 @@ class SeedController: BaseTableController {
     class SeedItem: NewsFeedController.BaseNewsFeedItem {
         var itemId: String?
         var isClaim: Bool!
+        var isWindscreen: Bool!
         
         required init(model: GetCaseHistoryResult) {
             super.init()
@@ -152,6 +149,7 @@ class SeedController: BaseTableController {
             self.itemId = model.key
             self.date = model.CreatedDate
             self.isClaim = model.IsClaim == true
+            self.isWindscreen = model.ClaimTypeID == 2
             
             if let serviceNeeded = ServiceNeeded(rawValue: model.ServiceNeeded) {
                 self.title = serviceNeeded.title

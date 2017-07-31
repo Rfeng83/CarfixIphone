@@ -14,20 +14,11 @@ class CustomTableViewCell: UITableViewCell {
     var detailsLabel: CustomLabel!
     var leftImage: CustomImageView!
     
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        initView()
-//    }
-    
     override func initView() -> CustomTableViewCell {
         _ = super.initView()
         
         self.backgroundColor = .clear
-    
-//        let selectedBackgroundView = UIView()
-//        selectedBackgroundView.backgroundColor = UIColor(white: 1, alpha: 0.5)
-//        self.selectedBackgroundView = selectedBackgroundView
-        
+
         let screenSize: CGRect = UIScreen.main.bounds
         
         let margin: CGFloat = Config.margin

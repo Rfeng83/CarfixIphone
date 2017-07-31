@@ -181,7 +181,7 @@ class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePi
         
         y = y + height + Config.lineHeight
         
-        for item in EnumManager().array(PhotoCategory.self) {
+        for item in [PhotoCategory.DamagedVehicle, PhotoCategory.DrivingLicense, PhotoCategory.PoliceReport] {
             let view = drawImageUpload(category: item, left: x, top: y)
             sender.addSubview(view)
             y = y + view.frame.height + Config.lineHeight
@@ -293,8 +293,9 @@ class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePi
         } else if let svc: NewClaimMapController = segue.getMainController() {
             svc.delegate = self
         } else if let svc: NewClaimResultController = segue.getMainController()  {
-            svc.companyName = self.mModel?.Title
-            svc.result = mResult ?? NewClaimResult(obj: nil)
+//            svc.companyName = self.mModel?.Title
+//            svc.result = mResult ?? NewClaimResult(obj: nil)
+            svc.key = mResult?.key
         }
     }
     

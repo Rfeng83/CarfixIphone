@@ -49,4 +49,37 @@ class ClaimDeclarationController: BaseFormController {
             img.tintColor = isAgreed ? CarfixColor.primary.color : CarfixColor.gray800.color
         }
     }
+    
+    @IBAction func submit(_ sender: Any) {
+        if isAgreed {
+            if let key = key {
+                if let insuredSignature = viewInsuredSignature.getImage() {
+                    var images = [String: UIImage]()
+                    images.updateValue(insuredSignature, forKey: "InsuredSignature.png")
+                    
+                    if let driverSignature = viewDriverSignature.getImage() {
+                        images.updateValue(driverSignature, forKey: "DriverSignature.png")
+                        
+                        CarFixAPIPost(self).submitSignedClaim(key: key, images: images) { data in
+                            self.performSegue(withIdentifier: Segue.segueNewClaimResult.rawValue, sender: key)
+                        }
+                    } else {
+                        self.message(content: "Please sign before continue")
+                    }
+                } else {
+                    self.message(content: "Please sign before continue")
+                }
+            }
+        } else {
+            self.message(content: "You must agree with the condition to continue")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let key = sender as? String {
+            if let svc: NewClaimResultController = segue.getMainController() {
+                svc.key = key
+            }
+        }
+    }
 }

@@ -203,6 +203,12 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "NewPendingClaim", parameters: parameters, onSuccess: onSuccess)
     }
     
+    func getClaimDetail(key: String, onSuccess: @escaping (GetClaimDetailResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        self.post(method: "GetClaimDetail", parameters: parameters, onSuccess: onSuccess)
+    }
+    
     func getClaimPersonalDetails(key: String, onSuccess: @escaping (GetClaimPersonalDetailsResponse?) -> Void) {
         var parameters = [String: Any]()
         parameters.updateValue(key, forKey: "key")

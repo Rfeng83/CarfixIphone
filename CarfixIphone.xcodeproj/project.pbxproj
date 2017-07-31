@@ -52,6 +52,8 @@
 		470EAA6F1EC56821006E752E /* UploadClaimPhotosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EAA6E1EC56821006E752E /* UploadClaimPhotosResponse.swift */; };
 		470EAA711EC56AFB006E752E /* ViewClaimController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EAA701EC56AFB006E752E /* ViewClaimController.swift */; };
 		470F4B0F1EC2151A00C2D8B2 /* ViewImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F4B0E1EC2151A00C2D8B2 /* ViewImageController.swift */; };
+		470F72E41F2F3C67005F28E7 /* PrimaryBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F72E31F2F3C67005F28E7 /* PrimaryBackground.swift */; };
+		470F72E61F2F6986005F28E7 /* ClaimDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F72E51F2F6986005F28E7 /* ClaimDetailController.swift */; };
 		470FAFE71DE4A50E00E341CD /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470FAFE61DE4A50E00E341CD /* NotificationController.swift */; };
 		470FAFE91DE4AEE700E341CD /* GradientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470FAFE81DE4AEE700E341CD /* GradientTableViewCell.swift */; };
 		470FAFEB1DE4B68200E341CD /* NavigationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470FAFEA1DE4B68200E341CD /* NavigationBackButton.swift */; };
@@ -76,6 +78,8 @@
 		471580A11F25FD4A00A7448D /* GetClaimEPaymentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471580A01F25FD4A00A7448D /* GetClaimEPaymentResponse.swift */; };
 		471580A31F26F65300A7448D /* BaseFormReturnData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471580A21F26F65300A7448D /* BaseFormReturnData.swift */; };
 		4715B1FA1EC955E20028DE11 /* ViewSubmissionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4715B1F91EC955E20028DE11 /* ViewSubmissionController.swift */; };
+		47164C831F2F7E6700672D85 /* GetClaimDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47164C821F2F7E6700672D85 /* GetClaimDetailResponse.swift */; };
+		47164C851F2F8D6900672D85 /* SubmissionDocumentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47164C841F2F8D6900672D85 /* SubmissionDocumentsController.swift */; };
 		4716CE0D1DDDDBDC0089C9F9 /* RedNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716CE0C1DDDDBDC0089C9F9 /* RedNavigationController.swift */; };
 		4716CE0F1DDDDFE50089C9F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4716CE0E1DDDDFE50089C9F9 /* Assets.xcassets */; };
 		4716CE2A1DDDE1950089C9F9 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716CE1C1DDDE1950089C9F9 /* UIViewControllerExtension.swift */; };
@@ -225,6 +229,8 @@
 		470EAA6E1EC56821006E752E /* UploadClaimPhotosResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadClaimPhotosResponse.swift; sourceTree = "<group>"; };
 		470EAA701EC56AFB006E752E /* ViewClaimController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClaimController.swift; sourceTree = "<group>"; };
 		470F4B0E1EC2151A00C2D8B2 /* ViewImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewImageController.swift; sourceTree = "<group>"; };
+		470F72E31F2F3C67005F28E7 /* PrimaryBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryBackground.swift; sourceTree = "<group>"; };
+		470F72E51F2F6986005F28E7 /* ClaimDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimDetailController.swift; sourceTree = "<group>"; };
 		470FAFE61DE4A50E00E341CD /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		470FAFE81DE4AEE700E341CD /* GradientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientTableViewCell.swift; sourceTree = "<group>"; };
 		470FAFEA1DE4B68200E341CD /* NavigationBackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBackButton.swift; sourceTree = "<group>"; };
@@ -249,6 +255,8 @@
 		471580A01F25FD4A00A7448D /* GetClaimEPaymentResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetClaimEPaymentResponse.swift; sourceTree = "<group>"; };
 		471580A21F26F65300A7448D /* BaseFormReturnData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormReturnData.swift; sourceTree = "<group>"; };
 		4715B1F91EC955E20028DE11 /* ViewSubmissionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSubmissionController.swift; sourceTree = "<group>"; };
+		47164C821F2F7E6700672D85 /* GetClaimDetailResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetClaimDetailResponse.swift; sourceTree = "<group>"; };
+		47164C841F2F8D6900672D85 /* SubmissionDocumentsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmissionDocumentsController.swift; sourceTree = "<group>"; };
 		4716CE0C1DDDDBDC0089C9F9 /* RedNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedNavigationController.swift; sourceTree = "<group>"; };
 		4716CE0E1DDDDFE50089C9F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4716CE1C1DDDE1950089C9F9 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -412,6 +420,7 @@
 				47C6EA841DE19BDD00D1B2A1 /* LogCaseResponse.swift */,
 				470DC9281EC4710C0001FD40 /* NewClaimResponse.swift */,
 				470EAA6C1EC567FE006E752E /* GetClaimResponse.swift */,
+				47164C821F2F7E6700672D85 /* GetClaimDetailResponse.swift */,
 				471EEEA61F25BD6B00F8AF6A /* GetClaimPersonalDetailsResponse.swift */,
 				47FB899F1F21973B00998035 /* GetClaimVehicleResponse.swift */,
 				471580A01F25FD4A00A7448D /* GetClaimEPaymentResponse.swift */,
@@ -470,10 +479,12 @@
 				471EEEA41F25BA4700F8AF6A /* ClaimPersonalController.swift */,
 				471951221F20A2870064E2F0 /* ClaimVehicleController.swift */,
 				47172D111F238D8D00850FDC /* ClaimBankDetailsController.swift */,
-				47172D1D1F24929E00850FDC /* ClaimDeclarationController.swift */,
 				471153931F2E264000B0754E /* ClaimImagesController.swift */,
 				470CE55F1F2B464200F594ED /* ClaimDocumentController.swift */,
 				471153951F2E2BDE00B0754E /* ClaimAccidentImagesController.swift */,
+				47172D1D1F24929E00850FDC /* ClaimDeclarationController.swift */,
+				470F72E51F2F6986005F28E7 /* ClaimDetailController.swift */,
+				47164C841F2F8D6900672D85 /* SubmissionDocumentsController.swift */,
 				473757531EC1900400672347 /* PolicyController.swift */,
 				473757551EC1922400672347 /* NewClaimController.swift */,
 				47E5D1971ECC6570002A44A0 /* NewClaimMapController.swift */,
@@ -532,6 +543,7 @@
 				47868B381E0A439F00D7FB61 /* GradientView.swift */,
 				470505581E137F11006A458E /* CountryPicker.swift */,
 				4769F03F1E2393D7003D094D /* GrayBackground.swift */,
+				470F72E31F2F3C67005F28E7 /* PrimaryBackground.swift */,
 				47E324CA1F1E23FD00D319C0 /* Gray700Background.swift */,
 				4769F0411E23A35B003D094D /* CustomLine.swift */,
 				471951261F2102D30064E2F0 /* TextAreaLine.swift */,
@@ -779,6 +791,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				470FAFEF1DE4BC5400E341CD /* WebController.swift in Sources */,
+				47164C851F2F8D6900672D85 /* SubmissionDocumentsController.swift in Sources */,
 				470ABF2D1E0696D100CC119F /* NewCaseResultController.swift in Sources */,
 				47FB89A01F21973B00998035 /* GetClaimVehicleResponse.swift in Sources */,
 				470C27BF1DE098D7003A6FFC /* BaseAPIResponse.swift in Sources */,
@@ -816,6 +829,7 @@
 				47FD74C61E7E77940006F75D /* MenuController.swift in Sources */,
 				4710BE041EC2CFF600091F95 /* GetLocationAreasResponse.swift in Sources */,
 				4715B1FA1EC955E20028DE11 /* ViewSubmissionController.swift in Sources */,
+				470F72E61F2F6986005F28E7 /* ClaimDetailController.swift in Sources */,
 				470C27CF1DE099D9003A6FFC /* NSObjectExtensions.swift in Sources */,
 				474DDC051F284F9600EA52EB /* SubmitClaimReplyResponse.swift in Sources */,
 				475CF8441E01FFC4007E095B /* HasImagePicker.swift in Sources */,
@@ -824,6 +838,7 @@
 				4716CE441DDE13D60089C9F9 /* SeedController.swift in Sources */,
 				47FFA07B1DE5F0F000623CE1 /* ViewPageController.swift in Sources */,
 				477A375D1DE6F19E008D652F /* ViewProfileController.swift in Sources */,
+				47164C831F2F7E6700672D85 /* GetClaimDetailResponse.swift in Sources */,
 				47B25E831DDDBED900F65C47 /* UITabBarItemExtension.swift in Sources */,
 				4769F0401E2393D7003D094D /* GrayBackground.swift in Sources */,
 				47B685CE1E0880E300D556FB /* MapManager.swift in Sources */,
@@ -920,6 +935,7 @@
 				4716CE2E1DDDE4E90089C9F9 /* OrderedDictionary.swift in Sources */,
 				471403C51DE34B0E00A3A48F /* GetNewsFeedResponse.swift in Sources */,
 				47C6EA8C1DE19BDD00D1B2A1 /* UploadResponse.swift in Sources */,
+				470F72E41F2F3C67005F28E7 /* PrimaryBackground.swift in Sources */,
 				47ECDD931E8A25E300D1ACEF /* ResetPasswordController.swift in Sources */,
 				470DBAC71E092BD30087CC41 /* RightBorder.swift in Sources */,
 				47ED9E481E0BD85600DADE42 /* DisplayManager.swift in Sources */,

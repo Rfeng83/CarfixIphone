@@ -31,7 +31,7 @@ class CaseHistoryController: BaseTableController {
     var mResult: [GetResolvedCasesResult]?
     override func refresh(sender: AnyObject?) {
         CarFixAPIPost(self).getResolvedCases(onSuccess: { data in
-            self.mResult = data?.Result
+            self.mResult = data?.Result?.reversed()
             super.refresh(sender: sender)
         })
     }
@@ -56,7 +56,9 @@ class CaseHistoryController: BaseTableController {
                     self.performSegue(withIdentifier: Segue.segueNoPolicy.rawValue, sender: logData)
                 }
             } else {
-                if item.isClaim {
+                if item.isWindscreen {
+                    performSegue(withIdentifier: Segue.segueViewWindscreen.rawValue, sender: item.itemId)
+                } else if item.isClaim {
                     performSegue(withIdentifier: Segue.segueViewClaim.rawValue, sender: item.itemId)
                 } else {
                     performSegue(withIdentifier: Segue.segueCase.rawValue, sender: item.itemId)
@@ -81,17 +83,18 @@ class CaseHistoryController: BaseTableController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let nav = segue.destination as? UINavigationController {
-            if let key = sender as? String {
-                if let vc = nav.topViewController as? CaseHistoryDetailsController {
-                    vc.key = key
-                } else if let vc = nav.topViewController as? ViewClaimController {
-                    vc.key = key
-                }
+        if let key = sender as? String {
+            if let vc: CaseHistoryDetailsController = segue.getMainController() {
+                vc.key = key
+            } else if let vc: ViewClaimController = segue.getMainController() {
+                vc.key = key
+            } else if let vc: ClaimDetailController = segue.getMainController() {
+                vc.key = key
             }
-        } else if let nav = segue.destination as? NewCaseResultController {
+        }
+        else if let svc: NewCaseResultController = segue.getMainController() {
             if let logData = sender as? LogCaseResult {
-                nav.logData = logData
+                svc.logData = logData
             }
         }
     }
@@ -101,6 +104,7 @@ class CaseHistoryController: BaseTableController {
         var passcode: String?
         var statusDesc: String?
         var isClaim: Bool!
+        var isWindscreen: Bool!
         
         required init(model: GetResolvedCasesResult) {
             super.init()
@@ -113,6 +117,7 @@ class CaseHistoryController: BaseTableController {
             self.details = Convert(model.CreatedDate).countDown()
             self.statusDesc = model.Status
             self.isClaim = model.IsClaim == 1
+            self.isWindscreen = model.ClaimTypeID == 2
             if let image = model.DriverURL {
                 self.leftImagePath = image
             } else {

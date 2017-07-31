@@ -55,6 +55,8 @@ class NotificationController: BaseTableController {
                     logData.Passcode = item.passcode
                     self.performSegue(withIdentifier: Segue.segueNoPolicy.rawValue, sender: logData)
                 }
+            } else if item.isWindscreen {
+                performSegue(withIdentifier: Segue.segueViewWindscreen.rawValue, sender: item.itemId)
             } else if item.notificationTypeID == 2 {
                 performSegue(withIdentifier: Segue.segueViewClaim.rawValue, sender: item.itemId)
             } else {
@@ -78,19 +80,21 @@ class NotificationController: BaseTableController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let nav = segue.destination as? UINavigationController {
-            if let vc = nav.topViewController as? CaseHistoryDetailsController {
-                if let key = sender as? String {
-                    vc.key = key
-                }
-            } else if let vc = nav.topViewController as? ViewClaimController {
-                if let key = sender as? String {
-                    vc.key = key
-                }
+        if let svc: CaseHistoryDetailsController = segue.getMainController() {
+            if let key = sender as? String {
+                svc.key = key
             }
-        } else if let nav = segue.destination as? NewCaseResultController {
+        } else if let svc: ViewClaimController = segue.getMainController() {
+            if let key = sender as? String {
+                svc.key = key
+            }
+        } else if let svc: NewCaseResultController = segue.getMainController() {
             if let logData = sender as? LogCaseResult {
-                nav.logData = logData
+                svc.logData = logData
+            }
+        } else if let svc: ClaimDetailController = segue.getMainController() {
+            if let key = sender as? String {
+                svc.key = key
             }
         }
     }
@@ -99,6 +103,7 @@ class NotificationController: BaseTableController {
         var itemId: String!
         var passcode: String?
         var notificationTypeID: NSNumber?
+        var isWindscreen: Bool!
         
         required init(model: GetNotificationResult) {
             super.init()
@@ -116,7 +121,11 @@ class NotificationController: BaseTableController {
                     }
                 }
                 else {
-                    self.title = "Claim"
+                    if model.ClaimTypeID == 3 {
+                        self.title = "Case"
+                    } else {
+                        self.title = "Claim"
+                    }
                     if caseNo > 0 {
                         self.title = "\(self.title!) | #\(caseNo)"
                         self.passcode = "\(caseNo)"
@@ -126,6 +135,8 @@ class NotificationController: BaseTableController {
             self.notificationTypeID = model.NotificationTypeID
             self.details = "\(model.Message!) - \(Convert(model.CreatedDate).countDown())"
             self.leftImage = #imageLiteral(resourceName: "ic_chevron_right")
+            
+            self.isWindscreen = model.ClaimTypeID == 2
         }
     }
 }
