@@ -80,6 +80,7 @@
 		4715B1FA1EC955E20028DE11 /* ViewSubmissionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4715B1F91EC955E20028DE11 /* ViewSubmissionController.swift */; };
 		47164C831F2F7E6700672D85 /* GetClaimDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47164C821F2F7E6700672D85 /* GetClaimDetailResponse.swift */; };
 		47164C851F2F8D6900672D85 /* SubmissionDocumentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47164C841F2F8D6900672D85 /* SubmissionDocumentsController.swift */; };
+		47164C871F301E9F00672D85 /* ClaimApproveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47164C861F301E9F00672D85 /* ClaimApproveController.swift */; };
 		4716CE0D1DDDDBDC0089C9F9 /* RedNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716CE0C1DDDDBDC0089C9F9 /* RedNavigationController.swift */; };
 		4716CE0F1DDDDFE50089C9F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4716CE0E1DDDDFE50089C9F9 /* Assets.xcassets */; };
 		4716CE2A1DDDE1950089C9F9 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716CE1C1DDDE1950089C9F9 /* UIViewControllerExtension.swift */; };
@@ -257,6 +258,7 @@
 		4715B1F91EC955E20028DE11 /* ViewSubmissionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSubmissionController.swift; sourceTree = "<group>"; };
 		47164C821F2F7E6700672D85 /* GetClaimDetailResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetClaimDetailResponse.swift; sourceTree = "<group>"; };
 		47164C841F2F8D6900672D85 /* SubmissionDocumentsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmissionDocumentsController.swift; sourceTree = "<group>"; };
+		47164C861F301E9F00672D85 /* ClaimApproveController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimApproveController.swift; sourceTree = "<group>"; };
 		4716CE0C1DDDDBDC0089C9F9 /* RedNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedNavigationController.swift; sourceTree = "<group>"; };
 		4716CE0E1DDDDFE50089C9F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4716CE1C1DDDE1950089C9F9 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 				47172D1D1F24929E00850FDC /* ClaimDeclarationController.swift */,
 				470F72E51F2F6986005F28E7 /* ClaimDetailController.swift */,
 				47164C841F2F8D6900672D85 /* SubmissionDocumentsController.swift */,
+				47164C861F301E9F00672D85 /* ClaimApproveController.swift */,
 				473757531EC1900400672347 /* PolicyController.swift */,
 				473757551EC1922400672347 /* NewClaimController.swift */,
 				47E5D1971ECC6570002A44A0 /* NewClaimMapController.swift */,
@@ -828,6 +831,7 @@
 				470C27DB1DE09B59003A6FFC /* ImageManager.swift in Sources */,
 				47FD74C61E7E77940006F75D /* MenuController.swift in Sources */,
 				4710BE041EC2CFF600091F95 /* GetLocationAreasResponse.swift in Sources */,
+				47164C871F301E9F00672D85 /* ClaimApproveController.swift in Sources */,
 				4715B1FA1EC955E20028DE11 /* ViewSubmissionController.swift in Sources */,
 				470F72E61F2F6986005F28E7 /* ClaimDetailController.swift in Sources */,
 				470C27CF1DE099D9003A6FFC /* NSObjectExtensions.swift in Sources */,

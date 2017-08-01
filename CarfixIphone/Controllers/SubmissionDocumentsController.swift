@@ -11,6 +11,7 @@ import UIKit
 
 class SubmissionDocumentsController: BaseTableViewController {
     var key: String?
+    @IBOutlet weak var btnApprove: CustomButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,33 +21,58 @@ class SubmissionDocumentsController: BaseTableViewController {
         self.navigationController?.navigationBar.tintColor = CarfixColor.primary.color
         self.navigationController?.navigationBar.backgroundColor = CarfixColor.gray200.color
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: CarfixColor.primary.color]
+        
+        self.enableApproveButton()
     }
     
+    var mDownloadClaimFormUrl: String?
     var mModel: GetClaimResult?
     override func refresh(sender: AnyObject?) {
         if let key = key {
-            CarFixAPIPost(self).getClaim(key: key) { data in
-                self.mModel = data?.Result
+            CarFixAPIPost(self).getClaimContentCategories(key: key) { data in
+                self.mDownloadClaimFormUrl = data?.Result?.DownloadClaimFormUrl
                 super.refresh(sender: sender)
+                CarFixAPIPost(self).getClaim(key: key) { data in
+                    self.mModel = data?.Result
+                    super.refresh(sender: sender)
+                    self.enableApproveButton()
+                }
             }
+        }
+    }
+    
+    func enableApproveButton() {
+        if let items = self.getItems() {
+            self.btnApprove.isEnabled = true
+            for item in items {
+                if let item = item as? SubmissionDocumentsItem {
+                    if !item.isEnabled {
+                        self.btnApprove.isEnabled = false
+                        break
+                    }
+                }
+            }
+        } else {
+            self.btnApprove.isEnabled = false
         }
     }
     
     override func buildItems() -> [BaseTableItem]? {
         var items = [BaseTableItem]()
-        items.append(SubmissionDocumentsItem(title: "My Claims Submission", enable: true))
-        items.append(SubmissionDocumentsItem(title: "Offer Letter", enable: mModel?.ApprovalLetterUrl.hasValue == true))
-        items.append(SubmissionDocumentsItem(title: "Discharge Voucher", enable: mModel?.DischargeVoucherUrl.hasValue == true))
+        items.append(SubmissionDocumentsItem(title: titleClaimForm, enable: mDownloadClaimFormUrl.hasValue == true))
+        items.append(SubmissionDocumentsItem(title: titleApprovalLetter, enable: mModel?.ApprovalLetterUrl.hasValue == true))
+        items.append(SubmissionDocumentsItem(title: titleDischargeVoucher, enable: mModel?.DischargeVoucherUrl.hasValue == true))
         return items
     }
     
-    var titleApprovalLetter = "Approval Letter"
+    var titleClaimForm = "My Claims Submission"
+    var titleApprovalLetter = "Offer Letter"
     var titleDischargeVoucher = "Discharge Voucher"
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let item = getItems()?[indexPath.row] as? SubmissionDocumentsItem {
             if item.isEnabled {
                 switch item.title! {
-                case titleApprovalLetter, titleDischargeVoucher:
+                case titleClaimForm, titleApprovalLetter, titleDischargeVoucher:
                     performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: item.title)
                 default:
                     performSegue(withIdentifier: Segue.segueViewSubmission.rawValue, sender: self.key)
@@ -55,8 +81,16 @@ class SubmissionDocumentsController: BaseTableViewController {
         }
     }
     
+    @IBAction func approveClaim(_ sender: Any) {
+        performSegue(withIdentifier: Segue.segueClaimApprove.rawValue, sender: key)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let svc: ViewSubmissionController = segue.getMainController() {
+            if let key = sender as? String {
+                svc.key = key
+            }
+        } else if let svc: ClaimApproveController = segue.getMainController() {
             if let key = sender as? String {
                 svc.key = key
             }
@@ -65,7 +99,11 @@ class SubmissionDocumentsController: BaseTableViewController {
                 svc.title = title
                 var uri: URL?
                 
-                if title.compare(titleApprovalLetter) == .orderedSame {
+                if title.compare(titleClaimForm) == .orderedSame {
+                    if let url = mDownloadClaimFormUrl {
+                        uri = URL(string: url)
+                    }
+                } else if title.compare(titleApprovalLetter) == .orderedSame {
                     if let url = self.mModel?.ApprovalLetterUrl {
                         uri = URL(string: url)
                     }

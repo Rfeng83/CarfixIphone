@@ -199,6 +199,7 @@ enum Segue: String {
     case segueClaimSubmit
     case segueSubmissionDocuments
     case segueUploadReply
+    case segueClaimApprove
 }
 
 enum MyError: Error {
