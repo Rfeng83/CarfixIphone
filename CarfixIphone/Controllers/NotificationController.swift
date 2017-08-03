@@ -56,7 +56,11 @@ class NotificationController: BaseTableController {
                     self.performSegue(withIdentifier: Segue.segueNoPolicy.rawValue, sender: logData)
                 }
             } else if item.isWindscreen {
-                performSegue(withIdentifier: Segue.segueViewWindscreen.rawValue, sender: item.itemId)
+                if item.caseResolvedDate.hasValue {
+                    performSegue(withIdentifier: Segue.segueCaseResolved.rawValue, sender: item.itemId)
+                } else {
+                    performSegue(withIdentifier: Segue.segueViewWindscreen.rawValue, sender: item.itemId)
+                }
             } else if item.notificationTypeID == 2 {
                 performSegue(withIdentifier: Segue.segueViewClaim.rawValue, sender: item.itemId)
             } else {
@@ -96,6 +100,10 @@ class NotificationController: BaseTableController {
             if let key = sender as? String {
                 svc.key = key
             }
+        } else if let svc: NewClaimResultController = segue.getMainController() {
+            if let key = sender as? String {
+                svc.key = key
+            }
         }
     }
     
@@ -104,6 +112,7 @@ class NotificationController: BaseTableController {
         var passcode: String?
         var notificationTypeID: NSNumber?
         var isWindscreen: Bool!
+        var caseResolvedDate: Date?
         
         required init(model: GetNotificationResult) {
             super.init()
@@ -137,6 +146,7 @@ class NotificationController: BaseTableController {
             self.leftImage = #imageLiteral(resourceName: "ic_chevron_right")
             
             self.isWindscreen = model.ClaimTypeID == 2
+            self.caseResolvedDate = model.CaseResolvedDate
         }
     }
 }
