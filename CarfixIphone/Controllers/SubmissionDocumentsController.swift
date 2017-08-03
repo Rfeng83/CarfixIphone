@@ -62,9 +62,6 @@ class SubmissionDocumentsController: BaseTableViewController {
     
     override func buildItems() -> [BaseTableItem]? {
         var items = [BaseTableItem]()
-        //        items.append(SubmissionDocumentsItem(title: titleClaimForm, enable: mDownloadClaimFormUrl.hasValue == true))
-        //        items.append(SubmissionDocumentsItem(title: titleApprovalLetter, enable: mModel?.ApprovalLetterUrl.hasValue == true))
-        //        items.append(SubmissionDocumentsItem(title: titleDischargeVoucher, enable: mModel?.DischargeVoucherUrl.hasValue == true))
         if let documents = mDocuments {
             for item in documents {
                 items.append(SubmissionDocumentsItem(model: item))
@@ -79,7 +76,7 @@ class SubmissionDocumentsController: BaseTableViewController {
             case 0:
                 performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: item)
             default:
-                performSegue(withIdentifier: Segue.segueViewSubmission.rawValue, sender: self.key)
+                performSegue(withIdentifier: Segue.segueClaimDocument.rawValue, sender: self.key)
             }
         }
     }
@@ -89,7 +86,7 @@ class SubmissionDocumentsController: BaseTableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let svc: ViewSubmissionController = segue.getMainController() {
+        if let svc: ClaimRepairedPhotosController = segue.getMainController() {
             if let key = sender as? String {
                 svc.key = key
             }

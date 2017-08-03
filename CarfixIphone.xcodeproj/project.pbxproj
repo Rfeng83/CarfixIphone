@@ -52,6 +52,7 @@
 		470EAA6F1EC56821006E752E /* UploadClaimPhotosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EAA6E1EC56821006E752E /* UploadClaimPhotosResponse.swift */; };
 		470EAA711EC56AFB006E752E /* ViewClaimController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EAA701EC56AFB006E752E /* ViewClaimController.swift */; };
 		470EC9BD1F3349D300448DFC /* UploadReplyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EC9BC1F3349D300448DFC /* UploadReplyController.swift */; };
+		470EC9BF1F336CCF00448DFC /* ClaimRepairedPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EC9BE1F336CCF00448DFC /* ClaimRepairedPhotosController.swift */; };
 		470F4B0F1EC2151A00C2D8B2 /* ViewImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F4B0E1EC2151A00C2D8B2 /* ViewImageController.swift */; };
 		470F72E41F2F3C67005F28E7 /* PrimaryBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F72E31F2F3C67005F28E7 /* PrimaryBackground.swift */; };
 		470F72E61F2F6986005F28E7 /* ClaimDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F72E51F2F6986005F28E7 /* ClaimDetailController.swift */; };
@@ -231,6 +232,7 @@
 		470EAA6E1EC56821006E752E /* UploadClaimPhotosResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadClaimPhotosResponse.swift; sourceTree = "<group>"; };
 		470EAA701EC56AFB006E752E /* ViewClaimController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClaimController.swift; sourceTree = "<group>"; };
 		470EC9BC1F3349D300448DFC /* UploadReplyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadReplyController.swift; sourceTree = "<group>"; };
+		470EC9BE1F336CCF00448DFC /* ClaimRepairedPhotosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimRepairedPhotosController.swift; sourceTree = "<group>"; };
 		470F4B0E1EC2151A00C2D8B2 /* ViewImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewImageController.swift; sourceTree = "<group>"; };
 		470F72E31F2F3C67005F28E7 /* PrimaryBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryBackground.swift; sourceTree = "<group>"; };
 		470F72E51F2F6986005F28E7 /* ClaimDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimDetailController.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 				47172D111F238D8D00850FDC /* ClaimBankDetailsController.swift */,
 				471153931F2E264000B0754E /* ClaimImagesController.swift */,
 				470CE55F1F2B464200F594ED /* ClaimDocumentController.swift */,
+				470EC9BE1F336CCF00448DFC /* ClaimRepairedPhotosController.swift */,
 				471153951F2E2BDE00B0754E /* ClaimAccidentImagesController.swift */,
 				47172D1D1F24929E00850FDC /* ClaimDeclarationController.swift */,
 				470F72E51F2F6986005F28E7 /* ClaimDetailController.swift */,
@@ -957,6 +960,7 @@
 				4716CE3A1DDDEDDF0089C9F9 /* Enums.swift in Sources */,
 				470CE55E1F2B2E6500F594ED /* GetClaimDocumentsInPdfResponse.swift in Sources */,
 				470654FB1DE8502E003D99B6 /* CustomDecimalField.swift in Sources */,
+				470EC9BF1F336CCF00448DFC /* ClaimRepairedPhotosController.swift in Sources */,
 				470C26001E2770760097E98E /* BaseNavigationController.swift in Sources */,
 				471951231F20A2870064E2F0 /* ClaimVehicleController.swift in Sources */,
 				472972841E7FE4EA00BC9312 /* GetSelectListItemsResponse.swift in Sources */,
