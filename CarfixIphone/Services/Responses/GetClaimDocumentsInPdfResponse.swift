@@ -15,5 +15,5 @@ class GetClaimDocumentsInPdfResponse: CarFixAPIResponse {
 class GetClaimDocumentsInPdfResult: BaseAPIItem {
     var url: String?
     var title: String?
-//    var description: String?
+    var actionType: NSNumber?
 }

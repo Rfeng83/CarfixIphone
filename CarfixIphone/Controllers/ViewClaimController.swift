@@ -152,7 +152,7 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
         self.showProgressBar(msg: "The action might take few minutes to complete, please don’t close the apps until further instruction")
         
         if let key = key {
-            CarFixAPIPost(self).uploadClaimPhotos(key: key, claimMessageId: nil, images: imageList) { data in
+            CarFixAPIPost(self).uploadClaimPhotos(key: key, message: nil, images: imageList) { data in
                 self.performSegue(withIdentifier: Segue.segueViewSubmission.rawValue, sender: self)
                 self.mImages = [:]
                 self.refresh()

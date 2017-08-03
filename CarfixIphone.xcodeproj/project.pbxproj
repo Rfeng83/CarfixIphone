@@ -51,6 +51,7 @@
 		470EAA6D1EC567FE006E752E /* GetClaimResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EAA6C1EC567FE006E752E /* GetClaimResponse.swift */; };
 		470EAA6F1EC56821006E752E /* UploadClaimPhotosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EAA6E1EC56821006E752E /* UploadClaimPhotosResponse.swift */; };
 		470EAA711EC56AFB006E752E /* ViewClaimController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EAA701EC56AFB006E752E /* ViewClaimController.swift */; };
+		470EC9BD1F3349D300448DFC /* UploadReplyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EC9BC1F3349D300448DFC /* UploadReplyController.swift */; };
 		470F4B0F1EC2151A00C2D8B2 /* ViewImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F4B0E1EC2151A00C2D8B2 /* ViewImageController.swift */; };
 		470F72E41F2F3C67005F28E7 /* PrimaryBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F72E31F2F3C67005F28E7 /* PrimaryBackground.swift */; };
 		470F72E61F2F6986005F28E7 /* ClaimDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F72E51F2F6986005F28E7 /* ClaimDetailController.swift */; };
@@ -229,6 +230,7 @@
 		470EAA6C1EC567FE006E752E /* GetClaimResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetClaimResponse.swift; sourceTree = "<group>"; };
 		470EAA6E1EC56821006E752E /* UploadClaimPhotosResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadClaimPhotosResponse.swift; sourceTree = "<group>"; };
 		470EAA701EC56AFB006E752E /* ViewClaimController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClaimController.swift; sourceTree = "<group>"; };
+		470EC9BC1F3349D300448DFC /* UploadReplyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadReplyController.swift; sourceTree = "<group>"; };
 		470F4B0E1EC2151A00C2D8B2 /* ViewImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewImageController.swift; sourceTree = "<group>"; };
 		470F72E31F2F3C67005F28E7 /* PrimaryBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryBackground.swift; sourceTree = "<group>"; };
 		470F72E51F2F6986005F28E7 /* ClaimDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimDetailController.swift; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 				470F72E51F2F6986005F28E7 /* ClaimDetailController.swift */,
 				47164C841F2F8D6900672D85 /* SubmissionDocumentsController.swift */,
 				47164C861F301E9F00672D85 /* ClaimApproveController.swift */,
+				470EC9BC1F3349D300448DFC /* UploadReplyController.swift */,
 				473757531EC1900400672347 /* PolicyController.swift */,
 				473757551EC1922400672347 /* NewClaimController.swift */,
 				47E5D1971ECC6570002A44A0 /* NewClaimMapController.swift */,
@@ -815,6 +818,7 @@
 				4716CE351DDDEC090089C9F9 /* UIViewExtension.swift in Sources */,
 				475528371EC48CA8001199C8 /* NewClaimResultController.swift in Sources */,
 				470C27BB1DE09852003A6FFC /* BaseAPIPost.swift in Sources */,
+				470EC9BD1F3349D300448DFC /* UploadReplyController.swift in Sources */,
 				4713C7611DEB494F00396E1C /* CarfixInfo.swift in Sources */,
 				4716CE2A1DDDE1950089C9F9 /* UIViewControllerExtension.swift in Sources */,
 				4716CE331DDDEA2D0089C9F9 /* UITextFieldExtension.swift in Sources */,

@@ -132,9 +132,8 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
         }
     }
     
-    @IBAction func uploadImages(_ sender: Any) {
+    func getNewImages() -> [String: UIImage] {
         var imageList = [String: UIImage]()
-        
         if let images = self.mImages {
             for item in images {
                 var count = 0
@@ -144,11 +143,14 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
                 }
             }
         }
-        
+        return imageList
+    }
+    @IBAction func uploadImages(_ sender: Any) {
+        let imageList = getNewImages()
         self.showProgressBar(msg: "The action might take few minutes to complete, please don’t close the apps until further instruction")
         
         if let key = key {
-            CarFixAPIPost(self).uploadClaimPhotos(key: key, claimMessageId: nil, images: imageList) { data in
+            CarFixAPIPost(self).uploadClaimPhotos(key: key, message: nil, images: imageList) { data in
                 self.mImages = [:]
                 self.refresh()
             }

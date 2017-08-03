@@ -292,6 +292,9 @@ enum PhotoCategory: Int16 {
     case RegistrationCard = 12
     case PoliceReport = 9
     case LatestBankStatement = 15
+    case AfterRepairedPhoto = 5
+    case RepairedReceipt = 16
+    case AddMorePhoto = 14
     
     var title: String {
         get {

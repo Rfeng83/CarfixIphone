@@ -25,12 +25,15 @@ class SubmissionDocumentsController: BaseTableViewController {
         self.enableApproveButton()
     }
     
-    var mDownloadClaimFormUrl: String?
+    //    var mDownloadClaimFormUrl: String?
     var mModel: GetClaimResult?
+    var mDocuments: [GetClaimDocumentsInPdfResult]?
     override func refresh(sender: AnyObject?) {
         if let key = key {
-            CarFixAPIPost(self).getClaimContentCategories(key: key) { data in
-                self.mDownloadClaimFormUrl = data?.Result?.DownloadClaimFormUrl
+            CarFixAPIPost(self).getClaimDocumentsInPdf(key: key) { data in
+                //                self.mDownloadClaimFormUrl = data?.Result?.DownloadClaimFormUrl
+                self.mDocuments = data?.Result
+                
                 super.refresh(sender: sender)
                 CarFixAPIPost(self).getClaim(key: key) { data in
                     self.mModel = data?.Result
@@ -42,41 +45,41 @@ class SubmissionDocumentsController: BaseTableViewController {
     }
     
     func enableApproveButton() {
-        if let items = self.getItems() {
-            self.btnApprove.isEnabled = true
-            for item in items {
-                if let item = item as? SubmissionDocumentsItem {
-                    if !item.isEnabled {
-                        self.btnApprove.isEnabled = false
-                        break
-                    }
-                }
-            }
-        } else {
-            self.btnApprove.isEnabled = false
-        }
+        //        if let items = self.getItems() {
+        //            self.btnApprove.isEnabled = true
+        //            for item in items {
+        //                if let item = item as? SubmissionDocumentsItem {
+        //                    if !item.isEnabled {
+        //                        self.btnApprove.isEnabled = false
+        //                        break
+        //                    }
+        //                }
+        //            }
+        //        } else {
+        //            self.btnApprove.isEnabled = false
+        //        }
     }
     
     override func buildItems() -> [BaseTableItem]? {
         var items = [BaseTableItem]()
-        items.append(SubmissionDocumentsItem(title: titleClaimForm, enable: mDownloadClaimFormUrl.hasValue == true))
-        items.append(SubmissionDocumentsItem(title: titleApprovalLetter, enable: mModel?.ApprovalLetterUrl.hasValue == true))
-        items.append(SubmissionDocumentsItem(title: titleDischargeVoucher, enable: mModel?.DischargeVoucherUrl.hasValue == true))
+        //        items.append(SubmissionDocumentsItem(title: titleClaimForm, enable: mDownloadClaimFormUrl.hasValue == true))
+        //        items.append(SubmissionDocumentsItem(title: titleApprovalLetter, enable: mModel?.ApprovalLetterUrl.hasValue == true))
+        //        items.append(SubmissionDocumentsItem(title: titleDischargeVoucher, enable: mModel?.DischargeVoucherUrl.hasValue == true))
+        if let documents = mDocuments {
+            for item in documents {
+                items.append(SubmissionDocumentsItem(model: item))
+            }
+        }
         return items
     }
     
-    var titleClaimForm = "My Claims Submission"
-    var titleApprovalLetter = "Offer Letter"
-    var titleDischargeVoucher = "Discharge Voucher"
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let item = getItems()?[indexPath.row] as? SubmissionDocumentsItem {
-            if item.isEnabled {
-                switch item.title! {
-                case titleClaimForm, titleApprovalLetter, titleDischargeVoucher:
-                    performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: item.title)
-                default:
-                    performSegue(withIdentifier: Segue.segueViewSubmission.rawValue, sender: self.key)
-                }
+            switch item.actionType! {
+            case 0:
+                performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: item)
+            default:
+                performSegue(withIdentifier: Segue.segueViewSubmission.rawValue, sender: self.key)
             }
         }
     }
@@ -95,25 +98,9 @@ class SubmissionDocumentsController: BaseTableViewController {
                 svc.key = key
             }
         } else if let svc: WebController = segue.getMainController() {
-            if let title = sender as? String {
-                svc.title = title
-                var uri: URL?
-                
-                if title.compare(titleClaimForm) == .orderedSame {
-                    if let url = mDownloadClaimFormUrl {
-                        uri = URL(string: url)
-                    }
-                } else if title.compare(titleApprovalLetter) == .orderedSame {
-                    if let url = self.mModel?.ApprovalLetterUrl {
-                        uri = URL(string: url)
-                    }
-                } else if title.compare(titleDischargeVoucher) == .orderedSame {
-                    if let url = self.mModel?.DischargeVoucherUrl {
-                        uri = URL(string: url)
-                    }
-                }
-                
-                if let uri = uri {
+            if let model = sender as? SubmissionDocumentsItem {
+                svc.title = model.title
+                if let uri = URL(string: model.url!) {
                     let queryItems = [URLQueryItem(name: "embedded", value: "true"), URLQueryItem(name: "url", value: uri.absoluteString)]
                     var urlComps = URLComponents(string: "http://drive.google.com/viewerng/viewer")!
                     urlComps.queryItems = queryItems
@@ -124,14 +111,14 @@ class SubmissionDocumentsController: BaseTableViewController {
     }
     
     class SubmissionDocumentsItem: BaseTableItem {
-        var isEnabled: Bool!
-        required init(title: String?, enable: Bool) {
+        var actionType: Int16?
+        var url: String?
+        required init(model: GetClaimDocumentsInPdfResult) {
             super.init()
-            self.title = title
-            isEnabled = enable
-            if isEnabled {
-                self.leftImage = #imageLiteral(resourceName: "ic_chevron_right")
-            }
+            self.title = model.title
+            self.actionType = Convert(model.actionType).to()
+            self.url = model.url
+            self.leftImage = #imageLiteral(resourceName: "ic_chevron_right")
         }
     }
 }

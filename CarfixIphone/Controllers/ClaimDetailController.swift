@@ -25,7 +25,7 @@ class ClaimDetailController: BaseTableViewController {
         
         self.view.backgroundColor = CarfixColor.white.color
         self.navigationController?.navigationBar.tintColor = CarfixColor.primary.color
-        self.navigationController?.navigationBar.backgroundColor = CarfixColor.gray200.color        
+        self.navigationController?.navigationBar.backgroundColor = CarfixColor.gray200.color
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: CarfixColor.primary.color]
         
         let gestureSubmissionDocuments = UITapGestureRecognizer(target: self, action: #selector(submissionDocuments))
@@ -39,6 +39,20 @@ class ClaimDetailController: BaseTableViewController {
         let gestureCancelClaim = UITapGestureRecognizer(target: self, action: #selector(cancelClaim))
         btnDelete.isUserInteractionEnabled = true
         btnDelete.addGestureRecognizer(gestureCancelClaim)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let item = getItems()?[indexPath.row] as? ClaimDetailItem {
+            if let content = item.content {
+                if !content.isEmpty {
+                    let width = UIScreen.main.bounds.width - Config.padding * 2 - Config.margin * 2
+                    let label = CustomLabel(frame: CGRect(x: 0, y: 0, width: width, height: Config.lineHeight)).initView()
+                    label.text = content
+                    return label.fitHeight() + Config.lineHeight * 3 + Config.margin + Config.margin
+                }
+            }
+        }
+        return Config.lineHeight * 3 + Config.margin
     }
     
     var mResult: GetClaimDetailResult?
@@ -82,6 +96,8 @@ class ClaimDetailController: BaseTableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let svc: SubmissionDocumentsController = segue.getMainController() {
             svc.key = self.key
+        } else if let svc: UploadReplyController = segue.getMainController() {
+            svc.key = self.key
         }
     }
     
@@ -96,16 +112,24 @@ class ClaimDetailController: BaseTableViewController {
     }
     
     class ClaimDetailItem: BaseTableItem {
+        var messageType: Int16!
+        var content: String?
         required init(model: GetClaimDetailMessage) {
             super.init()
             
-            self.title = model.Message
-            self.details = model.Content
+            self.title = model.CreatedDate?.forDisplay()
+            self.messageType = model.MessageTypeID
+            if let message = model.Message {
+                self.details = "- \(message)"
+            }
+            self.content = model.Content
         }
     }
 }
 
 class ClaimDetailTableViewCell: CustomTableViewCell {
+    var contentLabel: CustomLabel!
+    var bottomBorder: CustomLine!
     override func initView() -> ClaimDetailTableViewCell {
         _ = super.initView()
         
@@ -114,51 +138,68 @@ class ClaimDetailTableViewCell: CustomTableViewCell {
         let margin: CGFloat = Config.margin
         let padding: CGFloat = Config.padding
         
-        let iconSize: CGFloat = Config.lineHeight
-        
         var x = margin + padding
         var y = Config.lineHeight
         let height: CGFloat = Config.lineHeight
+        var width: CGFloat = Config.fieldExtraLongLabelWidth
         
-        x = x + padding
-        y = Config.lineHeight * 2 - iconSize / 2
-        self.leftImage.frame = CGRect(x: x, y: y, width: iconSize, height: iconSize)
-        self.leftImage.tintColor = CarfixColor.shadow.color
-        
-        x = x + iconSize + padding * 2
-        let detailsX = x
-        
-        x = screenSize.width - (margin + padding) - iconSize
-        y = Config.lineHeight * 2 - iconSize / 2
-        
-        let width = x - padding - detailsX
-        
-        x = detailsX
-        y = Config.lineHeight
         self.titleLabel.frame = CGRect(x: x, y: y, width: width, height: height)
-        y = y + height
         
+        x = x + width + Config.padding
+        width = screenSize.width - x - Config.padding
         self.detailsLabel.frame = CGRect(x: x, y: y, width: width, height: height)
         self.detailsLabel.numberOfLines = 0
         self.detailsLabel.lineBreakMode = .byWordWrapping
         self.detailsLabel.textColor = CarfixColor.gray800.color
+        
+        x = Config.padding + Config.margin
+        y = y + Config.lineHeight + Config.margin
+        width = screenSize.width - Config.padding * 2 - Config.margin * 2
+        self.contentLabel = CustomLabel(frame: CGRect(x: x, y: y, width: width, height: Config.lineHeight)).initView()
+        self.contentLabel.numberOfLines = 0
+        self.contentLabel.lineBreakMode = .byWordWrapping
+        self.contentLabel.textColor = CarfixColor.gray800.color
+        self.addSubview(self.contentLabel)
+        
+        y = self.frame.height - Config.margin
+        self.bottomBorder = CustomLine(frame: CGRect(x: 0, y: y, width: screenSize.width, height: Config.margin)).initView()
+        self.bottomBorder.backgroundColor = CarfixColor.white.color
+        self.addSubview(self.bottomBorder)
         
         return self
     }
     
     override func initCell(item: BaseTableItem) {
         super.initCell(item: item)
-                
-        let detailsHeight = self.detailsLabel.fitHeight()
-        if detailsHeight > Config.lineHeight {
-            let height = self.titleLabel.frame.height
-            let x = self.detailsLabel.frame.origin.x
-            var y = (Config.lineHeight * 4 - detailsHeight - height) / 2
-            let width = self.detailsLabel.bounds.width
+        
+        if let item = item as? ClaimDetailController.ClaimDetailItem {
+            self.contentLabel.text = item.content
+            _ = self.contentLabel.fitHeight()
+            switch item.messageType {
+            case 1:
+                self.backgroundColor = CarfixColor.white.color
+                self.backgroundColor = CarfixColor.green.color
+                let items: [CustomLabel] = self.getAllViews()
+                for item in items {
+                    item.textColor = CarfixColor.white.color
+                }
+            case 2:
+                self.backgroundColor = CarfixColor.green.color
+                let items: [CustomLabel] = self.getAllViews()
+                for item in items {
+                    item.textColor = CarfixColor.white.color
+                }
+            case 3:
+                self.backgroundColor = CarfixColor.gray700.color
+                let items: [CustomLabel] = self.getAllViews()
+                for item in items {
+                    item.textColor = CarfixColor.white.color
+                }
+            default:
+                break
+            }
             
-            self.titleLabel.frame = CGRect(x: x, y: y, width: width, height: height)
-            y = y + height
-            self.detailsLabel.frame = CGRect(x: x, y: y, width: width, height: detailsHeight)
+            self.bottomBorder.frame.origin.y = self.frame.height - Config.margin
         }
     }
 }

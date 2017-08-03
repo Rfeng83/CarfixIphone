@@ -186,13 +186,12 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "GetClaim", parameters: parameters, onSuccess: onSuccess)
     }
     
-    func submitClaimReply(key: String, replyMessage: String?, onSuccess: @escaping (SubmitClaimReplyResponse?) -> Void) {
-        var parameters = [String: Any]()
-        parameters.updateValue(key, forKey: "key")
-        if let val = replyMessage { parameters.updateValue(val, forKey: "replyMessage") }
-        self.post(method: "SubmitClaimReply", parameters: parameters, onSuccess: onSuccess)
-    }
-
+//    func submitClaimReply(key: String, replyMessage: String?, onSuccess: @escaping (SubmitClaimReplyResponse?) -> Void) {
+//        var parameters = [String: Any]()
+//        parameters.updateValue(key, forKey: "key")
+//        if let val = replyMessage { parameters.updateValue(val, forKey: "replyMessage") }
+//        self.post(method: "SubmitClaimReply", parameters: parameters, onSuccess: onSuccess)
+//    }
 
     func newPendingClaim(vehReg: String, claimTypeID: Int32, isDriver: Int16, insurerName: String, onSuccess: @escaping (KeyResponse?) -> Void) {
         var parameters = [String: Any]()
@@ -306,11 +305,11 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "GetClaimDocumentsInPdf", parameters: parameters, onSuccess: onSuccess)
     }
     
-    func uploadClaimPhotos(key: String, claimMessageId: Int32?, images: [String: UIImage], onSuccess: @escaping (NewClaimResponse?) -> Void) {
+    func uploadClaimPhotos(key: String, message: String?, images: [String: UIImage], onSuccess: @escaping (NewClaimResponse?) -> Void) {
         var parameters = [String: Any]()
         parameters.updateValue(key, forKey: "key")
-        if let claimMessageId = claimMessageId {
-            parameters.updateValue(claimMessageId, forKey: "claimMessageId")
+        if let message = message {
+            parameters.updateValue(message, forKey: "message")
         }
         postFile(method: "UploadClaimPhotos", parameters: parameters, images: images, onSuccess: onSuccess)
     }

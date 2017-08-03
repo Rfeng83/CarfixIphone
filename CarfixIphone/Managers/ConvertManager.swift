@@ -203,74 +203,76 @@ class Convert
     }
     
     func countDown() -> String {
-        let date: Date = to()!
-        
-        var different = Int(date.timeIntervalSince(Date()))
-        
-        let secondsInMilli: Int = 1
-        let minutesInMilli = secondsInMilli * 60
-        let hoursInMilli = minutesInMilli * 60
-        let daysInMilli = hoursInMilli * 24
-        
-        let elapsedDays = different / daysInMilli
-        different = different % daysInMilli
-        
-        let elapsedHours = different / hoursInMilli
-        different = different % hoursInMilli
-        
-        let elapsedMinutes = different / minutesInMilli
-        different = different % minutesInMilli
-        
-        let elapsedSeconds = different / secondsInMilli
-        
-        if elapsedDays == 1{
-            return "a day"
-        }
-        else if elapsedDays == -1 {
-            return "a day ago"
-        }
-        else if elapsedDays > 0 {
-            return "\(elapsedDays) days"
-        }
-        else if elapsedDays < 0 {
-            //            return Convert(date).to()!
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "d MMM yyyy"
-            dateFormatter.locale = NSLocale.current
-            return dateFormatter.string(from: date)
-        }
+        if let date: Date = to() {
+            var different = Int(date.timeIntervalSince(Date()))
             
-        else if elapsedHours == 1 {
-            return "an hour"
-        }
-        else if elapsedHours == -1 {
-            return "an hour ago"
-        }
-        else if elapsedHours > 0 {
-            return "\(elapsedHours) hours"
-        }
-        else if elapsedHours < 0 {
-            return "\(-elapsedHours) hours ago"
-        }
+            let secondsInMilli: Int = 1
+            let minutesInMilli = secondsInMilli * 60
+            let hoursInMilli = minutesInMilli * 60
+            let daysInMilli = hoursInMilli * 24
             
-        else if elapsedMinutes == 1 {
-            return "a minute"
-        }
-        else if elapsedMinutes == -1 {
-            return "a minute ago"
-        }
-        else if elapsedMinutes > 0 {
-            return "\(elapsedMinutes) minutes"
-        }
-        else if elapsedMinutes < 0 {
-            return "\(-elapsedMinutes) minutes ago"
-        }
+            let elapsedDays = different / daysInMilli
+            different = different % daysInMilli
             
-        else if elapsedSeconds > 0 {
-            return "few seconds"
-        }
-        else {
-            return "few seconds ago"
+            let elapsedHours = different / hoursInMilli
+            different = different % hoursInMilli
+            
+            let elapsedMinutes = different / minutesInMilli
+            different = different % minutesInMilli
+            
+            let elapsedSeconds = different / secondsInMilli
+            
+            if elapsedDays == 1{
+                return "a day"
+            }
+            else if elapsedDays == -1 {
+                return "a day ago"
+            }
+            else if elapsedDays > 0 {
+                return "\(elapsedDays) days"
+            }
+            else if elapsedDays < 0 {
+                //            return Convert(date).to()!
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "d MMM yyyy"
+                dateFormatter.locale = NSLocale.current
+                return dateFormatter.string(from: date)
+            }
+                
+            else if elapsedHours == 1 {
+                return "an hour"
+            }
+            else if elapsedHours == -1 {
+                return "an hour ago"
+            }
+            else if elapsedHours > 0 {
+                return "\(elapsedHours) hours"
+            }
+            else if elapsedHours < 0 {
+                return "\(-elapsedHours) hours ago"
+            }
+                
+            else if elapsedMinutes == 1 {
+                return "a minute"
+            }
+            else if elapsedMinutes == -1 {
+                return "a minute ago"
+            }
+            else if elapsedMinutes > 0 {
+                return "\(elapsedMinutes) minutes"
+            }
+            else if elapsedMinutes < 0 {
+                return "\(-elapsedMinutes) minutes ago"
+            }
+                
+            else if elapsedSeconds > 0 {
+                return "few seconds"
+            }
+            else {
+                return "few seconds ago"
+            }
+        } else {
+            return "N/A"
         }
     }
 }
