@@ -20,4 +20,5 @@ class GetResolvedCasesResult: BaseAPIItem {
     var DriverURL: String?
     var Status: String?
     var CreatedDate: Date?
+    var ModifiedDate: Date?
 }
