@@ -226,16 +226,20 @@ class NewCaseController: BaseFormController, GMSMapViewDelegate, CLLocationManag
             return
         }
         
-        var selectedVehicle: GetVehiclesResult?
-        for vehicle in mVehicles {
-            if vehicle.VehicleRegNo == ddlVehicle.text! {
-                selectedVehicle = vehicle
-                break
+        self.confirm(content: "Confirm to submit your case now?", handler: { data in
+            var selectedVehicle: GetVehiclesResult?
+            for vehicle in self.mVehicles {
+                if vehicle.VehicleRegNo == self.ddlVehicle.text! {
+                    selectedVehicle = vehicle
+                    break
+                }
             }
-        }
-        
-        CarFixAPIPost(self).logCase(vehReg: ddlVehicle.text!, serviceNeeded: serviceNeeded.rawValue, address: txtAddress.text!, latitude: currentLocation!.coordinate.latitude, longitude: currentLocation!.coordinate.longitude, vehModel: selectedVehicle!.Model!, policyID: 0, onSuccess: { data in
-            self.performSegue(withIdentifier: Segue.segueNewCaseResult.rawValue, sender: data?.Result)
+            
+            if let currentLocation = self.currentLocation {
+                CarFixAPIPost(self).logCase(vehReg: self.ddlVehicle.text!, serviceNeeded: self.serviceNeeded.rawValue, address: self.txtAddress.text!, latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, vehModel: selectedVehicle!.Model!, policyID: 0, onSuccess: { data in
+                    self.performSegue(withIdentifier: Segue.segueNewCaseResult.rawValue, sender: data?.Result)
+                })
+            }
         })
     }
     

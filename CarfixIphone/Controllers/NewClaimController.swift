@@ -357,25 +357,27 @@ class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePi
             if let selectedRow = item as? PanelWorkshopController.PanelWorkshopItem {
                 if let location = self.mLocation {
                     if let insurerName = self.mModel?.InsurerName ?? self.mModel?.Title {
-                        var imageList = [String: UIImage]()
-                        
-                        if let images = self.mImages {
-                            for item in images {
-                                var count = 0
-                                for image in item.value {
-                                    imageList["\(item.key.rawValue);\(count).jpg"] = image
-                                    count = count + 1
+                        self.confirm(content: "Confirm to submit your claim?", handler: { data in                            
+                            var imageList = [String: UIImage]()
+                            
+                            if let images = self.mImages {
+                                for item in images {
+                                    var count = 0
+                                    for image in item.value {
+                                        imageList["\(item.key.rawValue);\(count).jpg"] = image
+                                        count = count + 1
+                                    }
                                 }
                             }
-                        }
-                        
-                        sender.showProgressBar(msg: "The action might take few minutes to complete, please don’t close the apps until further instruction")
-                        
-                        let workshop = selectedRow.mModel?.key
-                        CarFixAPIPost(self).newClaim(ins: insurerName, vehReg: newClaimModel.vehicleNo!, accidentDate: newClaimModel.accidentDate!, icNo: newClaimModel.icNo!, workshop: workshop, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, accidentLocation: newClaimModel.address!, images: imageList) { data in
-                            self.mResult = data?.Result
-                            self.performSegue(withIdentifier: Segue.segueNewClaimResult.rawValue, sender: self)
-                        }
+                            
+                            sender.showProgressBar(msg: "The action might take few minutes to complete, please don’t close the apps until further instruction")
+                            
+                            let workshop = selectedRow.mModel?.key
+                            CarFixAPIPost(self).newClaim(ins: insurerName, vehReg: newClaimModel.vehicleNo!, accidentDate: newClaimModel.accidentDate!, icNo: newClaimModel.icNo!, workshop: workshop, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, accidentLocation: newClaimModel.address!, images: imageList) { data in
+                                self.mResult = data?.Result
+                                self.performSegue(withIdentifier: Segue.segueNewClaimResult.rawValue, sender: self)
+                            }
+                        })
                     }
                 }
             }

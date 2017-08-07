@@ -66,9 +66,11 @@ class ClaimApproveController: BaseFormController {
                         if let witnessSignature = signatureWitness.getImage() {
                             images.updateValue(witnessSignature, forKey: "Witness.png")
                             
-                            CarFixAPIPost(self).submitSignedDV(key: key, witnessName: txtWitnessName.text!, witnessIC: txtICNumber.text!, images: images) { data in
-                                self.dismissParentController(type: BaseTabBarController.self)
-                            }
+                            self.confirm(content: "Confirm to approve your claim?", handler: { data in
+                                CarFixAPIPost(self).submitSignedDV(key: key, witnessName: self.txtWitnessName.text!, witnessIC: self.txtICNumber.text!, images: images) { data in
+                                    self.dismissParentController(type: BaseTabBarController.self)
+                                }
+                            })
                         } else {
                             self.message(content: "Please sign before continue")
                         }

@@ -56,11 +56,7 @@ class NotificationController: BaseTableController {
                     self.performSegue(withIdentifier: Segue.segueNoPolicy.rawValue, sender: logData)
                 }
             } else if item.isWindscreen {
-                if item.caseResolvedDate.hasValue {
-                    performSegue(withIdentifier: Segue.segueCaseResolved.rawValue, sender: item.itemId)
-                } else {
-                    performSegue(withIdentifier: Segue.segueViewWindscreen.rawValue, sender: item.itemId)
-                }
+                performSegue(withIdentifier: Segue.segueViewWindscreen.rawValue, sender: item.itemId)
             } else if item.notificationTypeID == 2 {
                 performSegue(withIdentifier: Segue.segueViewClaim.rawValue, sender: item.itemId)
             } else {

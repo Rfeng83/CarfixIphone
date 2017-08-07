@@ -12,6 +12,7 @@ import UIKit
 class SubmissionDocumentsController: BaseTableViewController {
     var key: String?
     @IBOutlet weak var btnApprove: CustomButton!
+    @IBOutlet weak var btnApproveHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +23,11 @@ class SubmissionDocumentsController: BaseTableViewController {
         self.navigationController?.navigationBar.backgroundColor = CarfixColor.gray200.color
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: CarfixColor.primary.color]
         
-        self.enableApproveButton()
+        self.initApproveButton(isCaseResolved: true)
     }
     
     //    var mDownloadClaimFormUrl: String?
-    var mModel: GetClaimResult?
+    var mModel: GetClaimDetailResult?
     var mDocuments: [GetClaimDocumentsInPdfResult]?
     override func refresh(sender: AnyObject?) {
         if let key = key {
@@ -35,29 +36,25 @@ class SubmissionDocumentsController: BaseTableViewController {
                 self.mDocuments = data?.Result
                 
                 super.refresh(sender: sender)
-                CarFixAPIPost(self).getClaim(key: key) { data in
+                CarFixAPIPost(self).getClaimDetail(key: key) { data in
                     self.mModel = data?.Result
+                    
+                    self.initApproveButton(isCaseResolved: Convert(self.mModel?.IsCaseResolved).to() == true)
+                    
                     super.refresh(sender: sender)
-                    self.enableApproveButton()
                 }
             }
         }
     }
     
-    func enableApproveButton() {
-        //        if let items = self.getItems() {
-        //            self.btnApprove.isEnabled = true
-        //            for item in items {
-        //                if let item = item as? SubmissionDocumentsItem {
-        //                    if !item.isEnabled {
-        //                        self.btnApprove.isEnabled = false
-        //                        break
-        //                    }
-        //                }
-        //            }
-        //        } else {
-        //            self.btnApprove.isEnabled = false
-        //        }
+    func initApproveButton(isCaseResolved: Bool) {
+        self.btnApprove.isHidden = isCaseResolved
+        self.btnApprove.isEnabled = !self.btnApprove.isHidden
+        if self.btnApprove.isHidden {
+            self.btnApproveHeight.constant = 0
+        } else {
+            self.btnApproveHeight.constant = 49
+        }
     }
     
     override func buildItems() -> [BaseTableItem]? {

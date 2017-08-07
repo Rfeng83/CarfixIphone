@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ClaimPersonalController: BaseFormController {
+class ClaimPersonalController: BaseFormController, CustomPickerDelegate {
     var key: String?
     
     @IBOutlet weak var viewPersonalCar: UIView!
@@ -41,8 +41,10 @@ class ClaimPersonalController: BaseFormController {
     @IBOutlet weak var txtDriverMobileNo: CustomTextField!
     
     @IBOutlet weak var viewDrivingLicense: UIView!
-    @IBOutlet weak var viewFullLicense: UIView!
-    @IBOutlet weak var viewPLicense: UIView!
+    //    @IBOutlet weak var viewFullLicense: UIView!
+    //    @IBOutlet weak var viewPLicense: UIView!
+    
+    @IBOutlet weak var txtDrivingLicenseType: CustomPicker!
     @IBOutlet weak var txtDrivingLicenseClass: CustomTextField!
     
     @IBOutlet weak var dateValidityFrom: CustomDatePicker!
@@ -57,7 +59,7 @@ class ClaimPersonalController: BaseFormController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let items = [viewPersonalCar, viewBusinessCar, viewDriverYes, viewDriverNo, viewFullLicense, viewPLicense, viewEverBeenSuspendedYes, viewEverBeenSuspendedNo]
+        let items = [viewPersonalCar, viewBusinessCar, viewDriverYes, viewDriverNo, viewEverBeenSuspendedYes, viewEverBeenSuspendedNo]
         
         for item in items {
             let gesture = UITapGestureRecognizer(target: self, action: #selector(isChecked(_:)))
@@ -70,6 +72,12 @@ class ClaimPersonalController: BaseFormController {
         DispatchQueue.main.async {
             self.showCompanyInfo(yes: false)
         }
+    }
+    
+    var fullLicense: String = "Full License"
+    var pLicense: String = "\"P\" License"
+    func getPickOption(_ picker: CustomPicker) -> NSArray {
+        return [fullLicense, pLicense]
     }
     
     func refresh() {
@@ -107,9 +115,9 @@ class ClaimPersonalController: BaseFormController {
                         self.checkIt(self.viewDriverNo)
                     }
                     if result.LicenceType == "P" {
-                        self.checkIt(self.viewPLicense)
+                        self.txtDrivingLicenseType.text = self.pLicense
                     } else if result.LicenceType == "F" {
-                        self.checkIt(self.viewFullLicense)
+                        self.txtDrivingLicenseType.text = self.fullLicense
                     }
                     if result.LicenceSuspended == 1 {
                         self.checkIt(self.viewEverBeenSuspendedYes)
@@ -146,7 +154,7 @@ class ClaimPersonalController: BaseFormController {
     
     var isPersonal: Bool?
     var isDriver: Bool?
-    var isFullLicense: Bool?
+    //    var isFullLicense: Bool?
     var isEverBeenSuspended: Bool?
     func checkIt(_ item: UIView) {
         var imgs: [CustomImageView]
@@ -170,10 +178,6 @@ class ClaimPersonalController: BaseFormController {
             }
             drivingLicenseTopToIsDriverBottom.isActive = isDriver!
             drivingLicenseTopToOtherDriverBottom.isActive = !isDriver!
-        } else if item == viewFullLicense || item == viewPLicense {
-            viewYes = viewFullLicense
-            viewNo = viewPLicense
-            isFullLicense = item == viewYes
         } else if item == viewEverBeenSuspendedYes || item == viewEverBeenSuspendedNo {
             viewYes = viewEverBeenSuspendedYes
             viewNo = viewEverBeenSuspendedNo
@@ -207,18 +211,18 @@ class ClaimPersonalController: BaseFormController {
             self.message(content: "Which category is this policy under?")
         } else if isDriver.isEmpty {
             self.message(content: "Were you the driver during the time of accident?")
-        } else if isFullLicense.isEmpty {
-            self.message(content: "Please select your license type")
         } else if isEverBeenSuspended.isEmpty {
             self.message(content: "Have your license ever been suspended or endorsed?")
         }
         
         if let key = key {
             var licenseType: String?
-            if isFullLicense == true {
-                licenseType = "F"
-            } else {
-                licenseType = "P"
+            if let text = txtDrivingLicenseType.text {
+                if fullLicense.compare(text) == .orderedSame {
+                    licenseType = "F"
+                } else if pLicense.compare(text) == .orderedSame {
+                    licenseType = "P"
+                }
             }
             
             var ownerName: String?

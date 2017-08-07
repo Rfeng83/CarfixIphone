@@ -319,12 +319,15 @@ class OfferServiceTableViewCell: GradientTableViewCell {
                 ImageManager.downloadImage(mUrl: item.leftImagePath!, imageView: self.leftImage)
             }
             if let price = item.price {
-                self.priceLabel.text = Convert(price).toCurrency(showDecimail: false)
-                self.priceLabel.isHidden = false
-                let labelWidth = self.priceLabel.fitWidth()
-                
-                self.priceLabel.frame = CGRect(origin: CGPoint(x: totalWidth - labelWidth + Config.padding, y: self.priceLabel.frame.origin.y), size: self.priceLabel.frame.size)
-            } else {
+                if price.compare(0) == .orderedDescending {
+                    self.priceLabel.text = Convert(price).toCurrency(showDecimail: false)
+                    self.priceLabel.isHidden = false
+                    let labelWidth = self.priceLabel.fitWidth()
+                    
+                    self.priceLabel.frame = CGRect(origin: CGPoint(x: totalWidth - labelWidth + Config.padding, y: self.priceLabel.frame.origin.y), size: self.priceLabel.frame.size)
+                }
+            }
+            if self.priceLabel.text.isEmpty {
                 self.priceLabel.isHidden = true
             }
             

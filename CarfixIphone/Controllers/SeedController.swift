@@ -39,14 +39,12 @@ class SeedController: BaseTableController {
             self.mHasVehicle = data?.Result?.VehicleRegNo.isEmpty == false
         }
         CarFixAPIPost(self).getCaseHistory() { data in
-            if let result = data?.Result {
-                self.mResult = result.reversed()
-                super.refresh(sender: sender)
-            }
+            self.mResult = data?.Result
+            super.refresh(sender: sender)
         }
         CarFixAPIPost(self).getNewsFeed(category: nil, year: nil, month: nil) { data in
             if let result = data?.Result {
-                self.mNewsFeed = result.reversed()
+                self.mNewsFeed = result
                 super.refresh(sender: sender)
             }
         }

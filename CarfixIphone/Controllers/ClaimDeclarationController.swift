@@ -60,9 +60,11 @@ class ClaimDeclarationController: BaseFormController {
                     if let driverSignature = viewDriverSignature.getImage() {
                         images.updateValue(driverSignature, forKey: "DriverSignature.png")
                         
-                        CarFixAPIPost(self).submitSignedClaim(key: key, images: images) { data in
-                            self.performSegue(withIdentifier: Segue.segueNewClaimResult.rawValue, sender: key)
-                        }
+                        self.confirm(content: "Confirm to submit your claim?", handler: { data in
+                            CarFixAPIPost(self).submitSignedClaim(key: key, images: images) { data in
+                                self.performSegue(withIdentifier: Segue.segueNewClaimResult.rawValue, sender: key)
+                            }
+                        })
                     } else {
                         self.message(content: "Please sign before continue")
                     }

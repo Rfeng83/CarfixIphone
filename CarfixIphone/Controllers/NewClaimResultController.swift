@@ -11,6 +11,7 @@ import UIKit
 
 class NewClaimResultController: BaseFormController, UIGestureRecognizerDelegate {
     var key: String?
+    var dontBacktoMainScreen: Bool?
     
     @IBOutlet weak var imgLogo: CustomImageView!
     @IBOutlet weak var labelCaseID: CustomLabel!
@@ -79,6 +80,9 @@ class NewClaimResultController: BaseFormController, UIGestureRecognizerDelegate 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        dismissParentController(type: BaseTabBarController.self)
+        guard dontBacktoMainScreen == true else {
+            dismissParentController(type: BaseTabBarController.self)
+            return
+        }
     }
 }

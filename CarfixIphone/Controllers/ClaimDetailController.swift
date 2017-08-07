@@ -39,6 +39,8 @@ class ClaimDetailController: BaseTableViewController {
         let gestureCancelClaim = UITapGestureRecognizer(target: self, action: #selector(cancelClaim))
         btnDelete.isUserInteractionEnabled = true
         btnDelete.addGestureRecognizer(gestureCancelClaim)
+        
+        initButton(isCaseResolved: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -67,10 +69,28 @@ class ClaimDetailController: BaseTableViewController {
                     if let logo = result.Logo {
                         ImageManager.downloadImage(mUrl: logo, imageView: self.imgInsurer)
                     }
+                    
+                    let isCaseResolved = Convert(result.IsCaseResolved).to() == true
+                    self.initButton(isCaseResolved: isCaseResolved)
+                    
+                    if isCaseResolved {
+                        self.performSegue(withIdentifier: Segue.segueCaseResolved.rawValue, sender: self)
+                    }
                 }
                 
                 super.refresh(sender: sender)
             }
+        }
+    }
+    
+    func initButton(isCaseResolved: Bool){
+        btnUploadReply.isUserInteractionEnabled = !isCaseResolved
+        btnDelete.isHidden = isCaseResolved
+        
+        if btnUploadReply.isUserInteractionEnabled {
+            self.btnUploadReply.backgroundColor = CarfixColor.primary.color
+        } else {
+            self.btnUploadReply.backgroundColor = CarfixColor.gray500.color
         }
     }
     
@@ -98,6 +118,9 @@ class ClaimDetailController: BaseTableViewController {
             svc.key = self.key
         } else if let svc: UploadReplyController = segue.getMainController() {
             svc.key = self.key
+        } else if let svc: NewClaimResultController = segue.getMainController() {
+            svc.key = self.key
+            svc.dontBacktoMainScreen = true
         }
     }
     

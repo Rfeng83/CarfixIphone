@@ -31,7 +31,7 @@ class CaseHistoryController: BaseTableController {
     var mResult: [GetResolvedCasesResult]?
     override func refresh(sender: AnyObject?) {
         CarFixAPIPost(self).getResolvedCases(onSuccess: { data in
-            self.mResult = data?.Result?.reversed()
+            self.mResult = data?.Result
             super.refresh(sender: sender)
         })
     }
