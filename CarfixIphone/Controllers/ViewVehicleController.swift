@@ -150,7 +150,11 @@ class ViewVehicleController: BaseTableViewController, UIPopoverPresentationContr
             if let url = item.openUrl {
                 UIApplication.shared.openURL(URL(string: url)!)
             } else if item.offerService == .Windscreen {
-                self.performSegue(withIdentifier: Segue.segueClaimPolicy.rawValue, sender: item)
+                if item.mModel?.InsurerName.hasValue == true {
+                    self.performSegue(withIdentifier: Segue.segueClaimPolicy.rawValue, sender: item)
+                } else {
+                    self.message(content: "No policy found yet")
+                }
             } else if item.isTappable {
                 if let offerService = item.offerService {
                     MobileUserAPI(self).getServiceOffer(serviceID: offerService.rawValue, vehicleID: key!) { data in
