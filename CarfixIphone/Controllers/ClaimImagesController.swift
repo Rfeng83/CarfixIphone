@@ -22,9 +22,9 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
         refresh()
     }
     
-    var mModel: GetClaimResult?
+    var mModel: GetClaimPhotosResult?
     func refresh() {
-        CarFixAPIPost(self).getClaim(key: key!) { data in
+        CarFixAPIPost(self).getClaimPhotos(key: key!) { data in
             self.mModel = data?.Result
             
             if let model = self.mModel {
@@ -73,7 +73,8 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
                 let btnAdd = CustomImageView(frame: CGRect(x: x, y: y, width: iconSize, height: iconSize)).initView()
                 btnAdd.tintColor = CarfixColor.primary.color
                 btnAdd.image = #imageLiteral(resourceName: "ic_add_circle")
-                btnAddBorder.tag = Convert(category.rawValue).to()!
+                btnAdd.tag = Convert(category.rawValue).to()!
+                btnAddBorder.tag = btnAdd.tag
                 btnAddBorder.addSubview(btnAdd)
                 view.addSubview(btnAddBorder)
                 
@@ -89,6 +90,9 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
                             btnAdd.frame = btnAddBorder.bounds
                             break
                         }
+                    } else if let image = mImagesExists?[category]?.first {
+                        btnAdd.frame = btnAddBorder.bounds
+                        ImageManager.downloadImage(mUrl: image, imageView: btnAdd, cache: false)
                     }
                 } else {
                     x = btnAddBorder.frame.width + Config.padding

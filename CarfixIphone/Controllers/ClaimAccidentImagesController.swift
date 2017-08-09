@@ -14,7 +14,7 @@ class ClaimAccidentImagesController: ClaimImagesController {
     @IBOutlet weak var viewImagesHeight: NSLayoutConstraint!
     
     override func redrawImages() {
-        self.drawImageUpload(category: .DamagedVehicle)
+        self.drawImageUpload(category: .AccidentImages)
     }
     
     override func getImageContainer(category: PhotoCategory) -> UIView? {

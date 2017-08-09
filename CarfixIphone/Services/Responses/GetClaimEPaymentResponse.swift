@@ -20,4 +20,5 @@ class GetClaimEPaymentResult: BaseAPIItem {
     var AccountNumber: String?
     var BankAddress: String?
     var SignaturePath: String?
+    var StampPath: String?
 }

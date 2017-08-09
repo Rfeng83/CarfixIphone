@@ -186,6 +186,12 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "GetClaim", parameters: parameters, onSuccess: onSuccess)
     }
     
+    func getClaimPhotos(key: String, onSuccess: @escaping (GetClaimPhotosResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        self.post(method: "GetClaimPhotos", parameters: parameters, onSuccess: onSuccess)
+    }
+    
 //    func submitClaimReply(key: String, replyMessage: String?, onSuccess: @escaping (SubmitClaimReplyResponse?) -> Void) {
 //        var parameters = [String: Any]()
 //        parameters.updateValue(key, forKey: "key")

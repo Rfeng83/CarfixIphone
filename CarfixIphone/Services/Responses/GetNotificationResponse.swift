@@ -21,4 +21,5 @@ class GetNotificationResult: BaseAPIItem {
     var ServiceNeeded: NSNumber?
     var ClaimTypeID: NSNumber?
     var CaseResolvedDate: Date?
+    var ClaimFormNo: String?
 }

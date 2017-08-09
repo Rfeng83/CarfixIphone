@@ -64,6 +64,42 @@ class ImageManager
     static func downloadImage(mUrl: String, imageView: UIImageView, onSuccess: @escaping (UIImageView) -> Void) {
         downloadImage(mUrl: mUrl, imageView: imageView, cache: false, onSuccess: onSuccess)
     }
+//    
+//    static func downloadImage(mUrl: String, imageView: UIImageView, cache: Bool, onSuccess: @escaping (UIImageView) -> Void) {
+//        let oriSize = imageView.frame.size
+//        let oriImage = imageView.image
+//        if oriImage.isEmpty {
+//            imageView.image = #imageLiteral(resourceName: "loading")
+//        }
+//        
+//        let cachedImage = imageCache[mUrl]
+//        if !cache || cachedImage.isEmpty {
+//            if let url = URL(string: mUrl) {
+//                print("Download Started")
+//                print("lastPathComponent: " + (url.lastPathComponent ))
+//                
+//                URLSession.shared.dataTask(with: URLRequest(url: url, cachePolicy: cache ? .useProtocolCachePolicy : .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)) { (data, response, error) in
+//                    DispatchQueue.main.async { () -> Void in
+//                        guard let data = data, error == nil else { return }
+//                        print(response?.suggestedFilename ?? "")
+//                        print("Download Finished")
+//                        if let image = UIImage(data: data) {
+//                            imageViewSetImage(imageView: imageView, cachedImage: image, size: oriSize)
+//                            ImageManager.imageCache[mUrl] = image
+//                        } else {
+//                            imageView.image = oriImage
+//                            ImageManager.imageCache[mUrl] = oriImage
+//                        }
+//                        onSuccess(imageView)
+//                    }
+//                    }.resume()
+//            }
+//        }
+//        else {
+//            imageViewSetImage(imageView: imageView, cachedImage: cachedImage, size: oriSize)
+//            onSuccess(imageView)
+//        }
+//    }
     
     static func downloadImage(mUrl: String, imageView: UIImageView, cache: Bool, onSuccess: @escaping (UIImageView) -> Void) {
         let oriSize = imageView.frame.size
@@ -72,6 +108,17 @@ class ImageManager
             imageView.image = #imageLiteral(resourceName: "loading")
         }
         
+        downloadImage(mUrl: mUrl, cache: cache) { data in
+            if let image = data {
+                imageViewSetImage(imageView: imageView, cachedImage: image, size: oriSize)
+            } else {
+                imageView.image = oriImage
+                ImageManager.imageCache[mUrl] = oriImage
+            }
+        }
+    }
+
+    static func downloadImage(mUrl: String, cache: Bool, onSuccess: @escaping (UIImage?) -> Void) {
         let cachedImage = imageCache[mUrl]
         if !cache || cachedImage.isEmpty {
             if let url = URL(string: mUrl) {
@@ -84,20 +131,17 @@ class ImageManager
                         print(response?.suggestedFilename ?? "")
                         print("Download Finished")
                         if let image = UIImage(data: data) {
-                            imageViewSetImage(imageView: imageView, cachedImage: image, size: oriSize)
                             ImageManager.imageCache[mUrl] = image
+                            onSuccess(image)
                         } else {
-                            imageView.image = oriImage
-                            ImageManager.imageCache[mUrl] = oriImage
+                            onSuccess(nil)
                         }
-                        onSuccess(imageView)
                     }
                     }.resume()
             }
         }
         else {
-            imageViewSetImage(imageView: imageView, cachedImage: cachedImage, size: oriSize)
-            onSuccess(imageView)
+            onSuccess(cachedImage)
         }
     }
     

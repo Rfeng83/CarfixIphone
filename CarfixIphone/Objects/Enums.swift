@@ -288,6 +288,7 @@ enum VehicleMenu: String {
 
 enum PhotoCategory: Int16 {
     case DamagedVehicle = 1
+    case AccidentImages = 6
     case OwnerIC = 13
     case DrivingLicense = 11
     case RegistrationCard = 12

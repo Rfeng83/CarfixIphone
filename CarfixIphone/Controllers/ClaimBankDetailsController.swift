@@ -52,7 +52,6 @@ class ClaimBankDetailsController: ClaimImagesController {
         checkIt(viewIAgree, agree: false)
         
         singleFile = true
-        refresh()
     }
     
     var mResult: GetClaimEPaymentResult?
@@ -68,6 +67,20 @@ class ClaimBankDetailsController: ClaimImagesController {
                     self.viewCompanyStamp.isHidden = !Convert(result.IsBusiness).to()!
                     self.viewIAgreeToContentBottom.isActive = self.viewCompanyStamp.isHidden
                     self.viewIAgreeToSignatureBottom.isActive = !self.viewCompanyStamp.isHidden
+                    
+                    if let image = result.SignaturePath {
+                        if image.contains(".png") {
+                            self.viewSignature.startDrawing()
+                            ImageManager.downloadImage(mUrl: image, imageView: self.viewSignature.mainImageView, cache: false)
+                        }
+                    }
+                    if let image = result.StampPath {
+                        if image.contains(".png") {
+                            self.mImagesExists = [:]
+                            self.mImagesExists?.updateValue([image], forKey: PhotoCategory.LatestBankStatement)
+                        }
+                    }
+                    
                     self.redrawImages()
                 }
             }
@@ -99,14 +112,14 @@ class ClaimBankDetailsController: ClaimImagesController {
             if let key = key {
                 if let signature = viewSignature.getImage() {
                     var images = [String: UIImage]()
+                    images.updateValue(signature, forKey: "1;OwnerSignature.png")
+                    
                     if let stamp = mImages?.first?.value.first {
-                        images.updateValue(stamp, forKey: "CompanyStamp.png")
-                    } else if (mResult?.IsBusiness == 1) {
+                        images.updateValue(stamp, forKey: "2;CompanyStamp.png")
+                    } else if mResult?.IsBusiness == 1 && mImagesExists?[PhotoCategory.LatestBankStatement]?.first.hasValue != true {
                         self.message(content: "Please upload your Company Stamp for the Business Vehicle")
                         return
                     }
-                    
-                    images.updateValue(signature, forKey: "OwnerSignature.png")
                     
                     CarFixAPIPost(self).updateClaimEPayment(key: key, bankName: txtBankName.text, accountName: txtAccName.text, accountNumber: txtAccNumber.text, bankAddress: nil, images: images) { data in
                         self.close(sender: self)

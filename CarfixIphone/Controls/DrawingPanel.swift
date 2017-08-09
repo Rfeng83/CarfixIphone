@@ -17,10 +17,10 @@ class DrawingPanel: BorderView {
             self.viewBorder.lineWidth = 3
             
             let rect = CGRect(origin: self.bounds.origin, size: CGSize(width: round(self.bounds.width), height: round(self.bounds.height)))
-            self.tempImageView = CustomImageView(frame: rect).initView()
-            self.addSubview(self.tempImageView)
             self.mainImageView = CustomImageView(frame: rect).initView()
             self.addSubview(self.mainImageView)
+            self.tempImageView = CustomImageView(frame: rect).initView()
+            self.addSubview(self.tempImageView)
             
             let clear = UIButton(frame: CGRect(origin: CGPoint(x: self.bounds.width - Config.iconSize - Config.padding, y: self.bounds.height - Config.iconSize - Config.padding), size: CGSize(width: Config.iconSize, height: Config.iconSize)))
             clear.systemImage = .trash
@@ -105,7 +105,7 @@ class DrawingPanel: BorderView {
                 tempImageView.alpha = opacity
                 UIGraphicsEndImageContext()
                 
-                placeholderLabel?.isHidden = true
+                self.startDrawing()
             }
         }
     }
@@ -146,6 +146,9 @@ class DrawingPanel: BorderView {
         return mainImageView.image
     }
     
+    func startDrawing() {
+        placeholderLabel?.isHidden = true
+    }
     func reset() {
         tempImageView.image = nil
         mainImageView.image = nil

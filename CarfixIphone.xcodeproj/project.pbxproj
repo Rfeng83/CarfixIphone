@@ -70,6 +70,7 @@
 		4710E9B71F0DEEA7004BE52C /* GetResolvedCasesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4710E9B61F0DEEA7004BE52C /* GetResolvedCasesResponse.swift */; };
 		471153941F2E264000B0754E /* ClaimImagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471153931F2E264000B0754E /* ClaimImagesController.swift */; };
 		471153961F2E2BDE00B0754E /* ClaimAccidentImagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471153951F2E2BDE00B0754E /* ClaimAccidentImagesController.swift */; };
+		4712A3371F3B482900E72EFE /* GetClaimPhotosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712A3361F3B482900E72EFE /* GetClaimPhotosResponse.swift */; };
 		4712EEAC1E30A24E0053BF8E /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712EEAB1E30A24E0053BF8E /* NSAttributedString.swift */; };
 		4712EEAE1E30A3A20053BF8E /* GeneralHelpsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712EEAD1E30A3A20053BF8E /* GeneralHelpsResponse.swift */; };
 		4713C75F1DEB45AB00396E1C /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713C75E1DEB45AB00396E1C /* DBHelper.swift */; };
@@ -250,6 +251,7 @@
 		4710E9B61F0DEEA7004BE52C /* GetResolvedCasesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetResolvedCasesResponse.swift; sourceTree = "<group>"; };
 		471153931F2E264000B0754E /* ClaimImagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimImagesController.swift; sourceTree = "<group>"; };
 		471153951F2E2BDE00B0754E /* ClaimAccidentImagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimAccidentImagesController.swift; sourceTree = "<group>"; };
+		4712A3361F3B482900E72EFE /* GetClaimPhotosResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetClaimPhotosResponse.swift; sourceTree = "<group>"; };
 		4712EEAB1E30A24E0053BF8E /* NSAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		4712EEAD1E30A3A20053BF8E /* GeneralHelpsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralHelpsResponse.swift; sourceTree = "<group>"; };
 		4713C75E1DEB45AB00396E1C /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				47C6EA841DE19BDD00D1B2A1 /* LogCaseResponse.swift */,
 				470DC9281EC4710C0001FD40 /* NewClaimResponse.swift */,
 				470EAA6C1EC567FE006E752E /* GetClaimResponse.swift */,
+				4712A3361F3B482900E72EFE /* GetClaimPhotosResponse.swift */,
 				47164C821F2F7E6700672D85 /* GetClaimDetailResponse.swift */,
 				471EEEA61F25BD6B00F8AF6A /* GetClaimPersonalDetailsResponse.swift */,
 				47FB899F1F21973B00998035 /* GetClaimVehicleResponse.swift */,
@@ -857,6 +860,7 @@
 				47C6EA8E1DE1A65300D1B2A1 /* BaseTableController.swift in Sources */,
 				4719263F1E320DA600963F00 /* NotificationBarButtonItem.swift in Sources */,
 				470FAFEB1DE4B68200E341CD /* NavigationBackButton.swift in Sources */,
+				4712A3371F3B482900E72EFE /* GetClaimPhotosResponse.swift in Sources */,
 				470D999B1E827F6F008D1D41 /* BaseTableViewController.swift in Sources */,
 				470FAFE71DE4A50E00E341CD /* NotificationController.swift in Sources */,
 				47DC05D41E009114000B352D /* CustomEditPage.swift in Sources */,
