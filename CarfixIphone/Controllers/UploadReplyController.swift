@@ -10,9 +10,19 @@ import Foundation
 import UIKit
 
 class UploadReplyController: ClaimImagesController {
+    var delegate: BaseFormReturnData?
     @IBOutlet weak var viewUploadPhotos: UIView!
     @IBOutlet weak var viewUploadPhotosHeight: NSLayoutConstraint!
     @IBOutlet weak var txtMessage: CustomTextView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        txtMessage.textContainerInset = .init(top: 8, left: 8, bottom: 8, right: 8)
+    }
+    
+    override func loadExistingImages() -> Bool {
+        return false
+    }
     
     override func redrawImages() {
         self.drawImageUpload(category: .AddMorePhoto)
@@ -50,6 +60,9 @@ class UploadReplyController: ClaimImagesController {
             CarFixAPIPost(self).uploadClaimPhotos(key: key, message: txtMessage.text, images: imageList) { data in
                 self.mImages = [:]
                 self.close(sender: self)
+                if let result = data?.Result {
+                    self.delegate?.returnData(sender: self, item: result)
+                }
             }
         }
     }

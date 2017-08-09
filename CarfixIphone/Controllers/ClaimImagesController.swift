@@ -22,30 +22,38 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
         refresh()
     }
     
+    func loadExistingImages() -> Bool {
+        return true
+    }
+    
     var mModel: GetClaimPhotosResult?
     func refresh() {
-        CarFixAPIPost(self).getClaimPhotos(key: key!) { data in
-            self.mModel = data?.Result
-            
-            if let model = self.mModel {
-                self.mImagesExists = [:]
-                if let items = model.PhotoCategories {
-                    for item in items {
-                        if let category = PhotoCategory(rawValue: item.Category) {
-                            var list = [String]()
-                            if let images = item.Images {
-                                for image in images {
-                                    if let path = image.Path {
-                                        list.append(path)
+        if loadExistingImages() {
+            CarFixAPIPost(self).getClaimPhotos(key: key!) { data in
+                self.mModel = data?.Result
+                
+                if let model = self.mModel {
+                    self.mImagesExists = [:]
+                    if let items = model.PhotoCategories {
+                        for item in items {
+                            if let category = PhotoCategory(rawValue: item.Category) {
+                                var list = [String]()
+                                if let images = item.Images {
+                                    for image in images {
+                                        if let path = image.Path {
+                                            list.append(path)
+                                        }
                                     }
                                 }
+                                self.mImagesExists?.updateValue(list, forKey: category)
                             }
-                            self.mImagesExists?.updateValue(list, forKey: category)
                         }
                     }
                 }
+                
+                self.redrawImages()
             }
-            
+        } else {
             self.redrawImages()
         }
     }

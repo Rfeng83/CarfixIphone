@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ClaimDetailController: BaseTableViewController {
+class ClaimDetailController: BaseTableViewController, BaseFormReturnData {
     var key: String?
     
     @IBOutlet weak var btnSubmissionDocuments: PrimaryBackground!
@@ -43,6 +43,10 @@ class ClaimDetailController: BaseTableViewController {
         initButton(isCaseResolved: true)
     }
     
+    func returnData(sender: BaseController, item: Any) {
+        self.refresh(sender: self)
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let item = getItems()?[indexPath.row] as? ClaimDetailItem {
             if let content = item.content {
@@ -54,7 +58,7 @@ class ClaimDetailController: BaseTableViewController {
                 }
             }
         }
-        return Config.lineHeight * 3 + Config.margin
+        return Config.lineHeight * 3
     }
     
     var mResult: GetClaimDetailResult?
@@ -118,6 +122,7 @@ class ClaimDetailController: BaseTableViewController {
             svc.key = self.key
         } else if let svc: UploadReplyController = segue.getMainController() {
             svc.key = self.key
+            svc.delegate = self
         } else if let svc: NewClaimResultController = segue.getMainController() {
             svc.key = self.key
             svc.dontBacktoMainScreen = true
@@ -201,19 +206,18 @@ class ClaimDetailTableViewCell: CustomTableViewCell {
             switch item.messageType {
             case 1:
                 self.backgroundColor = CarfixColor.white.color
-                self.backgroundColor = CarfixColor.green.color
                 let items: [CustomLabel] = self.getAllViews()
                 for item in items {
-                    item.textColor = CarfixColor.white.color
+                    item.textColor = CarfixColor.gray700.color
                 }
             case 2:
-                self.backgroundColor = CarfixColor.green.color
+                self.backgroundColor = CarfixColor.gray700.color
                 let items: [CustomLabel] = self.getAllViews()
                 for item in items {
                     item.textColor = CarfixColor.white.color
                 }
             case 3:
-                self.backgroundColor = CarfixColor.gray700.color
+                self.backgroundColor = CarfixColor.green.color
                 let items: [CustomLabel] = self.getAllViews()
                 for item in items {
                     item.textColor = CarfixColor.white.color

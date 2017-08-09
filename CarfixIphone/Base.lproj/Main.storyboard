@@ -6593,6 +6593,7 @@
                         <outlet property="txtMessage" destination="iyK-xJ-zJh" id="qPe-Iy-K5l"/>
                         <outlet property="viewUploadPhotos" destination="WBA-hw-Oky" id="wZm-te-ZmJ"/>
                         <outlet property="viewUploadPhotosHeight" destination="C2l-pe-soi" id="Cf8-zr-JyO"/>
+                        <segue destination="vs0-By-FY3" kind="show" identifier="segueViewImage" id="BJf-tM-BSQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0sj-Yb-sl6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -7807,13 +7808,13 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_vehicle_default" translatesAutoresizingMaskIntoConstraints="NO" id="Tdk-bo-XUQ" customClass="CustomImageView" customModule="CarfixIphone" customModuleProvider="target">
-                                                                <rect key="frame" x="86" y="0.0" width="81" height="82"/>
+                                                                <rect key="frame" x="86" y="0.0" width="81.5" height="82"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_vehicle_default" translatesAutoresizingMaskIntoConstraints="NO" id="ZtS-zr-hAw" customClass="CustomImageView" customModule="CarfixIphone" customModuleProvider="target">
-                                                                <rect key="frame" x="171" y="0.0" width="82" height="82"/>
+                                                                <rect key="frame" x="171.5" y="0.0" width="82" height="82"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_vehicle_default" translatesAutoresizingMaskIntoConstraints="NO" id="8sk-fL-9nO" customClass="CustomImageView" customModule="CarfixIphone" customModuleProvider="target">
-                                                                <rect key="frame" x="257.5" y="0.0" width="81.5" height="82"/>
+                                                                <rect key="frame" x="258" y="0.0" width="81" height="82"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -8230,18 +8231,18 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ksb-uh-DtL"/>
-        <segue reference="Glp-Da-3cq"/>
-        <segue reference="fdF-sT-vca"/>
-        <segue reference="Mb9-hL-ail"/>
-        <segue reference="Oay-mq-rqT"/>
-        <segue reference="ebC-82-iFH"/>
-        <segue reference="SnJ-bj-dFk"/>
-        <segue reference="Mi6-Cg-gB8"/>
-        <segue reference="egW-dH-0SX"/>
-        <segue reference="TFK-nt-Uof"/>
         <segue reference="eDe-6U-5Qf"/>
         <segue reference="UwB-fJ-tA0"/>
-        <segue reference="Sj4-yO-bIK"/>
+        <segue reference="TFK-nt-Uof"/>
+        <segue reference="Glp-Da-3cq"/>
+        <segue reference="fdF-sT-vca"/>
+        <segue reference="Oay-mq-rqT"/>
+        <segue reference="Mb9-hL-ail"/>
+        <segue reference="SnJ-bj-dFk"/>
+        <segue reference="ebC-82-iFH"/>
+        <segue reference="pWd-LV-gft"/>
+        <segue reference="Mi6-Cg-gB8"/>
         <segue reference="37J-qr-IGl"/>
+        <segue reference="Sj4-yO-bIK"/>
     </inferredMetricsTieBreakers>
 </document>
