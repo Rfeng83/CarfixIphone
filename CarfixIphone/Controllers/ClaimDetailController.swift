@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ClaimDetailController: BaseTableViewController, BaseFormReturnData {
+class ClaimDetailController: BaseTableViewController {
     var key: String?
     
     @IBOutlet weak var btnSubmissionDocuments: PrimaryBackground!
@@ -41,10 +41,6 @@ class ClaimDetailController: BaseTableViewController, BaseFormReturnData {
         btnDelete.addGestureRecognizer(gestureCancelClaim)
         
         initButton(isCaseResolved: true)
-    }
-    
-    func returnData(sender: BaseController, item: Any) {
-        self.refresh(sender: self)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

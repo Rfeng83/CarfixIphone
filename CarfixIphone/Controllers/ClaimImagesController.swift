@@ -11,6 +11,7 @@ import UIKit
 
 class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecognizerDelegate, ViewImageControllerDelegate {
     
+    var delegate: RefreshDelegate?
     @IBOutlet weak var btnUpload: CustomButton?
     
     var key: String?
@@ -164,7 +165,8 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
         if let key = key {
             CarFixAPIPost(self).uploadClaimPhotos(key: key, message: nil, images: imageList) { data in
                 self.mImages = [:]
-                self.refresh()
+                self.close(sender: self)
+                self.delegate?.refresh(sender: self)
             }
         }
     }

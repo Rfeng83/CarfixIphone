@@ -23,10 +23,9 @@ class SubmissionDocumentsController: BaseTableViewController {
         self.navigationController?.navigationBar.backgroundColor = CarfixColor.gray200.color
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: CarfixColor.primary.color]
         
-        self.initApproveButton(isCaseResolved: true)
+        self.initApproveButton(canApprove: false)
     }
     
-    //    var mDownloadClaimFormUrl: String?
     var mModel: GetClaimDetailResult?
     var mDocuments: [GetClaimDocumentsInPdfResult]?
     override func refresh(sender: AnyObject?) {
@@ -39,7 +38,23 @@ class SubmissionDocumentsController: BaseTableViewController {
                 CarFixAPIPost(self).getClaimDetail(key: key) { data in
                     self.mModel = data?.Result
                     
-                    self.initApproveButton(isCaseResolved: Convert(self.mModel?.IsCaseResolved).to() == true)
+                    if let result = self.mModel {
+                        var canApprove: Bool = Convert(result.IsCaseResolved).to() != true
+                        if canApprove {
+                            if let documents = self.mDocuments {
+                                var imageUploaded: Bool = false
+                                for item in documents {
+                                    if item.actionType == 2 {
+                                        imageUploaded = true
+                                        break
+                                    }
+                                }
+                                canApprove = imageUploaded
+                            }
+                        }
+                        
+                        self.initApproveButton(canApprove: canApprove)
+                    }
                     
                     super.refresh(sender: sender)
                 }
@@ -47,8 +62,8 @@ class SubmissionDocumentsController: BaseTableViewController {
         }
     }
     
-    func initApproveButton(isCaseResolved: Bool) {
-        self.btnApprove.isHidden = isCaseResolved
+    func initApproveButton(canApprove: Bool) {
+        self.btnApprove.isHidden = !canApprove
         self.btnApprove.isEnabled = !self.btnApprove.isHidden
         if self.btnApprove.isHidden {
             self.btnApproveHeight.constant = 0
@@ -87,6 +102,7 @@ class SubmissionDocumentsController: BaseTableViewController {
             if let key = sender as? String {
                 svc.key = key
             }
+            svc.delegate = self
         } else if let svc: ClaimApproveController = segue.getMainController() {
             if let key = sender as? String {
                 svc.key = key

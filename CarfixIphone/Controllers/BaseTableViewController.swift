@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BaseTableViewController: BaseController, UITableViewDelegate, UITableViewDataSource, CustomPickerDelegate {
+class BaseTableViewController: BaseController, UITableViewDelegate, UITableViewDataSource, CustomPickerDelegate, RefreshDelegate {
     @IBOutlet weak var tableView: UITableView!
     var refreshControl: UIRefreshControl?
     var mItems: [BaseTableItem]?

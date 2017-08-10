@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class UploadReplyController: ClaimImagesController {
-    var delegate: BaseFormReturnData?
     @IBOutlet weak var viewUploadPhotos: UIView!
     @IBOutlet weak var viewUploadPhotosHeight: NSLayoutConstraint!
     @IBOutlet weak var txtMessage: CustomTextView!
@@ -56,13 +55,11 @@ class UploadReplyController: ClaimImagesController {
         
         if let key = key {
             self.showProgressBar(msg: "The action might take few minutes to complete, please don’t close the apps until further instruction")
-        
+            
             CarFixAPIPost(self).uploadClaimPhotos(key: key, message: txtMessage.text, images: imageList) { data in
                 self.mImages = [:]
                 self.close(sender: self)
-                if let result = data?.Result {
-                    self.delegate?.returnData(sender: self, item: result)
-                }
+                self.delegate?.refresh(sender: self)
             }
         }
     }
