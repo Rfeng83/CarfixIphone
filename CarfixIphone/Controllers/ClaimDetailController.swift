@@ -63,7 +63,11 @@ class ClaimDetailController: BaseTableViewController {
             CarFixAPIPost(self).getClaimDetail(key: key) { data in
                 self.mResult = data?.Result
                 if let result = self.mResult {
-                    self.txtCaseID.text = "\(result.ClaimID)"
+                    if let claimNo = result.ClaimFormNo {
+                        self.txtCaseID.text = claimNo
+                    } else {
+                        self.txtCaseID.text = "\(result.ClaimID)"
+                    }
                     self.txtClaimStatus.text = result.ClaimStatus
                     
                     if let logo = result.Logo {

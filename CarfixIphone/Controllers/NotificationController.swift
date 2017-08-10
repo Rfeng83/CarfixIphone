@@ -117,23 +117,31 @@ class NotificationController: BaseTableController {
                 itemId = uniKey
             }
             
-            if let caseNo = Convert(model.CaseID).to(Int.self) as? Int {
+            if let passcode = Convert(model.CaseID).to(Int.self) as? Int {
                 if let serviceNeeded = ServiceNeeded(rawValue: Convert(model.ServiceNeeded ?? 0).to()!) {
                     self.title = serviceNeeded.title
-                    if caseNo > 0 {
+                    if let caseNo = model.ClaimFormNo {
                         self.title = "\(self.title!) | #\(caseNo)"
-                        self.passcode = "\(caseNo)"
+                    }
+                    if passcode > 0 {
+                        self.passcode = "\(passcode)"
                     }
                 }
                 else {
                     if model.ClaimTypeID == 3 {
                         self.title = "Case"
+                    } else if model.ClaimTypeID == 2 {
+                        self.title = "Winscreen Claim"
                     } else {
                         self.title = "Claim"
                     }
-                    if caseNo > 0 {
-                        self.title = "\(self.title!) | #\(caseNo)"
-                        self.passcode = "\(caseNo)"
+                    if passcode > 0 {
+                        if let caseNo = model.ClaimFormNo {
+                            self.title = "\(self.title!) | #\(caseNo)"
+                        } else {
+                            self.title = "\(self.title!) | #\(passcode)"
+                        }
+                        self.passcode = "\(passcode)"
                     }
                 }
             }
