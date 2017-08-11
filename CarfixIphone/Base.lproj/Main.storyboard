@@ -2520,6 +2520,7 @@
                         <segue destination="EM9-0f-nOy" kind="showDetail" identifier="segueEditVehicle" id="zOa-Ds-HbM"/>
                         <segue destination="oFt-Ri-RrX" kind="showDetail" identifier="seguePolicy" id="fQP-uq-1NP"/>
                         <segue destination="LSQ-cO-4NL" kind="showDetail" identifier="segueClaimPolicy" id="FiN-Kk-cvm"/>
+                        <segue destination="WPz-kf-Hf7" kind="showDetail" identifier="segueClaimMenu" id="jwp-6J-ziI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yfM-Iz-KTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6744,7 +6745,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y44-cg-p3F" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y44-cg-p3F" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
                                                             <rect key="frame" x="118" y="21" width="8" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -6753,15 +6754,15 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="vs4-4O-L6L" firstAttribute="leading" secondItem="Cqw-68-Te2" secondAttribute="leading" id="2Hv-Gx-r31"/>
-                                                        <constraint firstItem="5bC-gA-m9B" firstAttribute="top" secondItem="Cqw-68-Te2" secondAttribute="top" id="BQ9-9N-zNN"/>
-                                                        <constraint firstItem="61d-YG-zKX" firstAttribute="leading" secondItem="Cqw-68-Te2" secondAttribute="leading" id="Dva-c1-5gO"/>
-                                                        <constraint firstItem="61d-YG-zKX" firstAttribute="top" secondItem="Cqw-68-Te2" secondAttribute="top" id="Dww-2F-5O7"/>
-                                                        <constraint firstItem="y44-cg-p3F" firstAttribute="leading" secondItem="vs4-4O-L6L" secondAttribute="trailing" constant="4" id="GHj-UR-3Wb"/>
-                                                        <constraint firstItem="5bC-gA-m9B" firstAttribute="leading" secondItem="61d-YG-zKX" secondAttribute="trailing" constant="4" id="Txa-YC-uky"/>
-                                                        <constraint firstItem="vs4-4O-L6L" firstAttribute="top" secondItem="61d-YG-zKX" secondAttribute="bottom" id="Wq9-rV-tmn"/>
-                                                        <constraint firstAttribute="bottom" secondItem="vs4-4O-L6L" secondAttribute="bottom" id="aYD-44-w7e"/>
-                                                        <constraint firstAttribute="bottom" secondItem="y44-cg-p3F" secondAttribute="bottom" id="g2y-vz-LaT"/>
+                                                        <constraint firstItem="vs4-4O-L6L" firstAttribute="leading" secondItem="Cqw-68-Te2" secondAttribute="leading" id="59B-sF-Iic"/>
+                                                        <constraint firstItem="5bC-gA-m9B" firstAttribute="leading" secondItem="61d-YG-zKX" secondAttribute="trailing" constant="4" id="7cV-UO-9Ha"/>
+                                                        <constraint firstItem="61d-YG-zKX" firstAttribute="leading" secondItem="Cqw-68-Te2" secondAttribute="leading" id="DZN-ZR-Dik"/>
+                                                        <constraint firstItem="5bC-gA-m9B" firstAttribute="top" secondItem="Cqw-68-Te2" secondAttribute="top" id="HSa-M6-cSn"/>
+                                                        <constraint firstItem="vs4-4O-L6L" firstAttribute="top" secondItem="61d-YG-zKX" secondAttribute="bottom" id="VvK-HA-6yo"/>
+                                                        <constraint firstItem="61d-YG-zKX" firstAttribute="top" secondItem="Cqw-68-Te2" secondAttribute="top" id="YD7-qU-4QL"/>
+                                                        <constraint firstAttribute="bottom" secondItem="y44-cg-p3F" secondAttribute="bottom" id="ZCm-a4-a0I"/>
+                                                        <constraint firstItem="y44-cg-p3F" firstAttribute="top" secondItem="5bC-gA-m9B" secondAttribute="bottom" id="pHh-Q9-q3e"/>
+                                                        <constraint firstItem="y44-cg-p3F" firstAttribute="leading" secondItem="vs4-4O-L6L" secondAttribute="trailing" constant="4" id="pbw-qd-K7w"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -7808,13 +7809,13 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_vehicle_default" translatesAutoresizingMaskIntoConstraints="NO" id="Tdk-bo-XUQ" customClass="CustomImageView" customModule="CarfixIphone" customModuleProvider="target">
-                                                                <rect key="frame" x="86" y="0.0" width="81" height="82"/>
+                                                                <rect key="frame" x="86" y="0.0" width="81.5" height="82"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_vehicle_default" translatesAutoresizingMaskIntoConstraints="NO" id="ZtS-zr-hAw" customClass="CustomImageView" customModule="CarfixIphone" customModuleProvider="target">
-                                                                <rect key="frame" x="171" y="0.0" width="82" height="82"/>
+                                                                <rect key="frame" x="171.5" y="0.0" width="82" height="82"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_vehicle_default" translatesAutoresizingMaskIntoConstraints="NO" id="8sk-fL-9nO" customClass="CustomImageView" customModule="CarfixIphone" customModuleProvider="target">
-                                                                <rect key="frame" x="257.5" y="0.0" width="81.5" height="82"/>
+                                                                <rect key="frame" x="258" y="0.0" width="81" height="82"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -8230,18 +8231,19 @@
         <image name="loading" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ksb-uh-DtL"/>
-        <segue reference="eDe-6U-5Qf"/>
         <segue reference="UwB-fJ-tA0"/>
-        <segue reference="TFK-nt-Uof"/>
-        <segue reference="Glp-Da-3cq"/>
+        <segue reference="Ksb-uh-DtL"/>
+        <segue reference="jwp-6J-ziI"/>
         <segue reference="fdF-sT-vca"/>
         <segue reference="Oay-mq-rqT"/>
+        <segue reference="ebC-82-iFH"/>
         <segue reference="Mb9-hL-ail"/>
         <segue reference="SnJ-bj-dFk"/>
-        <segue reference="ebC-82-iFH"/>
         <segue reference="pWd-LV-gft"/>
         <segue reference="Mi6-Cg-gB8"/>
+        <segue reference="zOa-Ds-HbM"/>
+        <segue reference="TFK-nt-Uof"/>
+        <segue reference="eDe-6U-5Qf"/>
         <segue reference="37J-qr-IGl"/>
         <segue reference="Sj4-yO-bIK"/>
     </inferredMetricsTieBreakers>

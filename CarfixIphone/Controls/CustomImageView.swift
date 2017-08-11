@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 class CustomImageView: UIImageView {
+    var key: String?
+    var path: String?
+    
     override func initView() -> CustomImageView {
         _ = super.initView()
         return self

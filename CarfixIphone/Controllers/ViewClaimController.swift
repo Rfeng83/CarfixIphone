@@ -215,7 +215,11 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
             if let imageView = sender as? CustomImageView {
                 if let category = viewImageCategory {
                     if let images = getCategoryImages(category: category) {
-                        svc.images = images
+                        var passImages: [ViewImageController.ViewImageItem] = []
+                        for image in images {
+                            passImages.append(ViewImageController.ViewImageItem(key: nil, path: nil, image: image))
+                        }
+                        svc.images = passImages
                         var count = 0
                         for image in images {
                             if image == imageView.image {
@@ -293,6 +297,11 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
     
     func removeImage(category: PhotoCategory, index: Int) {
         mImages?[category]?.remove(at: index)
+        drawImageUpload(category: category)
+    }
+    
+    func removeExistsImage(category: PhotoCategory, index: Int) {
+        mImagesExists?[category]?.remove(at: index)
         drawImageUpload(category: category)
     }
     

@@ -38,11 +38,11 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
                     if let items = model.PhotoCategories {
                         for item in items {
                             if let category = PhotoCategory(rawValue: item.Category) {
-                                var list = [String]()
+                                var list: [ViewImageController.ViewImageItem] = []
                                 if let images = item.Images {
                                     for image in images {
                                         if let path = image.Path {
-                                            list.append(path)
+                                            list.append(ViewImageController.ViewImageItem(key: image.key, path: path, image: nil))
                                         }
                                     }
                                 }
@@ -99,7 +99,7 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
                             btnAdd.frame = btnAddBorder.bounds
                             break
                         }
-                    } else if let image = mImagesExists?[category]?.first {
+                    } else if let image = mImagesExists?[category]?.first?.path {
                         btnAdd.frame = btnAddBorder.bounds
                         ImageManager.downloadImage(mUrl: image, imageView: btnAdd, cache: false)
                     }
@@ -108,21 +108,15 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
                     y = 0
                     
                     if let images = mImagesExists?[category] {
-                        var passImages = [String: UIImage?]()
-                        for image in images {
-                            passImages.updateValue(nil, forKey: image)
-                        }
-                        let point = drawImages(view: view, category: category, images: passImages, btnAddBorder: btnAddBorder, left: x, top: y, width: width, imageSize: imageSize)
+                        let point = drawImages(view: view, category: category, images: images, btnAddBorder: btnAddBorder, left: x, top: y, width: width, imageSize: imageSize)
                         x = point.x
                         y = point.y
                     }
                     
                     if let images = mImages?[category] {
-                        var passImages = [String: UIImage?]()
-                        var count = 0
+                        var passImages: [ViewImageController.ViewImageItem] = []
                         for image in images {
-                            passImages.updateValue(image, forKey: "\(count)")
-                            count = count + 1
+                            passImages.append(ViewImageController.ViewImageItem(key: nil, path: nil, image: image))
                         }
                         let point = drawImages(view: view, category: category, images: passImages, btnAddBorder: btnAddBorder, left: x, top: y, width: width, imageSize: imageSize)
                         x = point.x
@@ -171,19 +165,23 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
         }
     }
     
-    func drawImages(view: UIView, category: PhotoCategory, images: [String: UIImage?], btnAddBorder: UIView, left: CGFloat, top: CGFloat, width: CGFloat, imageSize: CGFloat) -> CGPoint {
+    func drawImages(view: UIView, category: PhotoCategory, images: [ViewImageController.ViewImageItem], btnAddBorder: UIView, left: CGFloat, top: CGFloat, width: CGFloat, imageSize: CGFloat) -> CGPoint {
         var x = left
         var y = top
         
-        for (path, image) in images {
+        for image in images {
             let imageView = CustomImageView(frame: CGRect(x: x, y: y, width: imageSize, height: imageSize)).initView()
-            if let image = image {
+            if let image = image.image {
                 imageView.image = image
                 imageView.tag = Convert(category.rawValue).to()!
             } else {
-                ImageManager.downloadImage(mUrl: path, imageView: imageView)
-                imageView.tag = Convert(category.rawValue).to()!
+                if let path = image.path {
+                    ImageManager.downloadImage(mUrl: path, imageView: imageView)
+                    imageView.tag = Convert(category.rawValue).to()!
+                }
             }
+            imageView.key = image.key
+            imageView.path = image.path
             view.addSubview(imageView)
             
             let gesture = UITapGestureRecognizer(target: self, action: #selector(viewImage(sender:)))
@@ -211,6 +209,10 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
         }
     }
     
+    func existsImageRemovable() -> Bool {
+        return false
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let svc: ViewImageController = segue.getMainController()  {
             if let imageView = sender as? CustomImageView {
@@ -219,7 +221,7 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
                     svc.images = images
                     var count = 0
                     for image in images {
-                        if image == imageView.image {
+                        if image.image == imageView.image {
                             break
                         }
                         count = count + 1
@@ -231,6 +233,7 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
                     svc.category = category
                     svc.delegate = self
                     svc.title = category.title
+                    svc.existsImageRemovable = existsImageRemovable()
                 }
             }
         }
@@ -244,8 +247,8 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
         return nil
     }
     
-    func getCategoryImages(category: PhotoCategory) -> [UIImage] {
-        var images = [UIImage]()
+    func getCategoryImages(category: PhotoCategory) -> [ViewImageController.ViewImageItem] {
+        var images: [ViewImageController.ViewImageItem] = []
         
         if let view = getImageContainer(category: category) {
             var count = 0
@@ -253,7 +256,7 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
                 if count > 0 {
                     if let imageView = subview as? CustomImageView {
                         if let image = imageView.image {
-                            images.append(image)
+                            images.append(ViewImageController.ViewImageItem(key: imageView.key, path: imageView.path, image: image))
                         }
                     }
                 }
@@ -269,6 +272,10 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
         mImages?[category]?.remove(at: index)
         drawImageUpload(category: category)
     }
+    func removeExistsImage(category: PhotoCategory, index: Int) {
+        mImagesExists?[category]?.remove(at: index)
+        drawImageUpload(category: category)
+    }
     
     var photoCategory: PhotoCategory?
     func pickImage(_ sender: UIGestureRecognizer) {
@@ -282,7 +289,7 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
         return CGSize(width: Config.profileImageWidth, height: Config.profileImageWidth)
     }
     
-    var mImagesExists: [PhotoCategory: [String]]?
+    var mImagesExists: [PhotoCategory: [ViewImageController.ViewImageItem]]?
     var mImages: [PhotoCategory: [UIImage]]?
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         

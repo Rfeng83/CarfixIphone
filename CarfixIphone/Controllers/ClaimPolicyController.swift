@@ -81,13 +81,11 @@ class ClaimPolicyController: BaseFormController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let nav = segue.destination as? UINavigationController {
-            if let svc = nav.topViewController as? ClaimMenuController {
-                if let key = sender as? String {
-                    svc.key = key
-                    svc.offerService = self.mModel
-                    svc.vehicle = self.mVehicle
-                }
+        if let svc: ClaimMenuController = segue.getMainController() {
+            if let key = sender as? String {
+                svc.key = key
+                svc.offerService = self.mModel
+                svc.vehicle = self.mVehicle
             }
         }
     }

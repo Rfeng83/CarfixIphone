@@ -18,10 +18,11 @@ class ViewImageController: BaseFormController, UIGestureRecognizerDelegate {
     @IBOutlet weak var btnRight: CustomImageView!
     @IBOutlet weak var btnRemove: CustomButton!
     
-    var images: [UIImage]!
+    var images: [ViewImageItem]!
     var index: Int!
     var category: PhotoCategory!
     var indexCanRemove: Int = 0
+    var existsImageRemovable: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +41,18 @@ class ViewImageController: BaseFormController, UIGestureRecognizerDelegate {
     }
     
     func refresh() {
-        imageView.image = images[index]
+        let image = images[index]
+        imageView.image = image.image
+        imageView.key = image.key
+        imageView.path = image.path
         let currentPage = index + 1
         txtLabel.text = "\(currentPage) / \(images.count)"
         btnRemove.isHidden = index < indexCanRemove
+        if btnRemove.isHidden {
+            if existsImageRemovable == true {
+                btnRemove.isHidden = image.key.isEmpty
+            }
+        }
         
         btnLeft.isHidden = currentPage <= 1
         btnRight.isHidden = currentPage >= images.count
@@ -66,11 +75,33 @@ class ViewImageController: BaseFormController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func remove(_ sender: Any) {
-        delegate?.removeImage(category: category, index: index - indexCanRemove)
-        self.navigationController?.popViewController(animated: true)
+        if let key = imageView.key {
+            CarFixAPIPost(self).deleteClaimPhoto(key: key) { data in
+                if data?.Result?.key.hasValue == true {
+                    self.delegate?.removeExistsImage(category: self.category, index: self.index)
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        } else {
+            delegate?.removeImage(category: category, index: index - indexCanRemove)
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    class ViewImageItem {
+        var key: String?
+        var path: String?
+        var image: UIImage?
+        
+        required init(key: String?, path: String?, image: UIImage?) {
+            self.key = key
+            self.path = path
+            self.image = image
+        }
     }
 }
 
 protocol ViewImageControllerDelegate {
     func removeImage(category: PhotoCategory, index: Int)
+    func removeExistsImage(category: PhotoCategory, index: Int)
 }

@@ -24,4 +24,8 @@ class ClaimAccidentImagesController: ClaimImagesController {
     override func getImageContainerHeight(category: PhotoCategory) -> NSLayoutConstraint? {
         return viewImagesHeight
     }
+    
+    override func existsImageRemovable() -> Bool {
+        return true
+    }
 }

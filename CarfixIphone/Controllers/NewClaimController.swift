@@ -262,12 +262,19 @@ class NewClaimController: BaseFormController, CustomEditPageDelegate, HasImagePi
         self.editPage.refresh()
     }
     
+    func removeExistsImage(category: PhotoCategory, index: Int) {        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let svc: ViewImageController = segue.getMainController() {
             if let imageView = sender as? CustomImageView {
                 if let category = viewImageCategory {
                     if let images = getCategoryImages(category: category) {
-                        svc.images = images
+                        var passImages: [ViewImageController.ViewImageItem] = []
+                        for image in images {
+                            passImages.append(ViewImageController.ViewImageItem(key: nil, path: nil, image: image))
+                        }
+                        svc.images = passImages
                         var count = 0
                         for image in images {
                             if image == imageView.image {

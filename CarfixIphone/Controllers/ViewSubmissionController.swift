@@ -243,20 +243,21 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
                         svc.images = images
                         var count = 0
                         for image in images {
-                            if image == imageView.image {
+                            if image.image == imageView.image {
                                 break
                             }
                             count = count + 1
                         }
                         svc.index = count
                         svc.category = category
+                        svc.indexCanRemove = images.count
                     }
                 }
             }
         }
     }
     
-    func getCategoryImages(category: PhotoCategory) -> [UIImage]? {
+    func getCategoryImages(category: PhotoCategory) -> [ViewImageController.ViewImageItem]? {
         var view: UIView?
         switch category {
         case .DamagedVehicle:
@@ -269,14 +270,14 @@ class ViewSubmissionController: BaseFormController, CustomEditPageDelegate, UIGe
             return nil
         }
         
-        var images = [UIImage]()
+        var images: [ViewImageController.ViewImageItem] = []
         var count = 0
         if let view = view {
             for subview in view.subviews {
                 if count > 0 {
                     if let imageView = subview as? CustomImageView {
                         if let image = imageView.image {
-                            images.append(image)
+                            images.append(ViewImageController.ViewImageItem(key: imageView.key, path: imageView.path, image: image))
                         }
                     }
                 }

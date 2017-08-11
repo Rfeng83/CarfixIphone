@@ -62,4 +62,8 @@ class ClaimDocumentController: ClaimImagesController {
             return nil
         }
     }
+    
+    override func existsImageRemovable() -> Bool {
+        return true
+    }
 }

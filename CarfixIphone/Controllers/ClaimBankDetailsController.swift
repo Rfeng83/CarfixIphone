@@ -77,7 +77,7 @@ class ClaimBankDetailsController: ClaimImagesController {
                     if let image = result.StampPath {
                         if image.contains(".png") {
                             self.mImagesExists = [:]
-                            self.mImagesExists?.updateValue([image], forKey: PhotoCategory.LatestBankStatement)
+                            self.mImagesExists?.updateValue([ViewImageController.ViewImageItem(key: nil, path: image, image: nil)], forKey: PhotoCategory.LatestBankStatement)
                         }
                     }
                     

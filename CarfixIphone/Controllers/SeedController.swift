@@ -104,27 +104,27 @@ class SeedController: BaseTableController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if let newsFeed = sender as? NewsFeedController.NewsFeedItem {
-                if let svc: WebController = segue.getMainController() {
-                    for item in newsFeedCategoriesCached! {
-                        if item.ID == Convert(newsFeed.category).to()! {
-                            svc.title = item.Name
-                            break
-                        }
+        if let newsFeed = sender as? NewsFeedController.NewsFeedItem {
+            if let svc: WebController = segue.getMainController() {
+                for item in newsFeedCategoriesCached! {
+                    if item.ID == Convert(newsFeed.category).to()! {
+                        svc.title = item.Name
+                        break
                     }
-                    
-                    svc.url = newsFeed.url
                 }
+                
+                svc.url = newsFeed.url
             }
-            else if let seed = sender as? SeedItem {
-                if let svc: CaseHistoryDetailsController = segue.getMainController() {
-                    svc.key = seed.itemId!
-                } else if let svc: ViewClaimController = segue.getMainController() {
-                    svc.key = seed.itemId!
-                } else if let svc: ClaimDetailController = segue.getMainController() {
-                    svc.key = seed.itemId!
-                }
+        }
+        else if let seed = sender as? SeedItem {
+            if let svc: CaseHistoryDetailsController = segue.getMainController() {
+                svc.key = seed.itemId!
+            } else if let svc: ViewClaimController = segue.getMainController() {
+                svc.key = seed.itemId!
+            } else if let svc: ClaimDetailController = segue.getMainController() {
+                svc.key = seed.itemId!
             }
+        }
     }
     
     override func dequeueReusableCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
@@ -153,8 +153,13 @@ class SeedController: BaseTableController {
                 self.title = serviceNeeded.title
                 self.leftImage = serviceNeeded.icon
             } else {
-                self.title = "Claim"
-                self.leftImage = #imageLiteral(resourceName: "ic_towing_services")
+                if self.isWindscreen {
+                    self.title = "Windscreen Claim"
+                    self.leftImage = #imageLiteral(resourceName: "ic_towing_services")
+                } else {
+                    self.title = "Claim"
+                    self.leftImage = #imageLiteral(resourceName: "ic_towing_services")
+                }
             }
             
             self.details = "\(Convert(model.CreatedDate).countDown())\n\(model.VehReg!)"

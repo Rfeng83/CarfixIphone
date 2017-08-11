@@ -118,6 +118,7 @@ class CaseHistoryController: BaseTableController {
             self.statusDesc = model.Status
             self.isClaim = model.IsClaim == 1
             self.isWindscreen = model.ClaimTypeID == 2
+
             if let image = model.DriverURL {
                 self.leftImagePath = image
             } else {

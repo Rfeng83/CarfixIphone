@@ -151,7 +151,15 @@ class ViewVehicleController: BaseTableViewController, UIPopoverPresentationContr
                 UIApplication.shared.openURL(URL(string: url)!)
             } else if item.offerService == .Windscreen {
                 if item.mModel?.InsurerName.hasValue == true {
-                    self.performSegue(withIdentifier: Segue.segueClaimPolicy.rawValue, sender: item)
+                    if let vehicleNo = self.mModel?.VehicleRegNo {
+                        CarFixAPIPost(self).checkClaimExists(vehReg: vehicleNo, claimTypeID: 2) { data in
+                            if data?.Result?.key.hasValue == true {
+                                self.performSegue(withIdentifier: Segue.segueClaimMenu.rawValue, sender: item)
+                            } else {
+                                self.performSegue(withIdentifier: Segue.segueClaimPolicy.rawValue, sender: item)
+                            }
+                        }
+                    }
                 } else {
                     self.message(content: "No policy found yet")
                 }
@@ -171,25 +179,29 @@ class ViewVehicleController: BaseTableViewController, UIPopoverPresentationContr
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let key = key {
-            if let nav = segue.destination as? UINavigationController {
-                if let svc = nav.topViewController as? EditVehicleController {
+            if let svc: EditVehicleController = segue.getMainController() {
+                svc.key = key
+            } else if let svc: PolicyController = segue.getMainController() {
+                if let sender = sender as? OfferServiceTableItem {
                     svc.key = key
-                } else if let svc = nav.topViewController as? PolicyController {
-                    if let sender = sender as? OfferServiceTableItem {
-                        svc.key = key
-                        svc.serviceID = sender.offerService?.rawValue
-                        svc.mModel = sender.mModel
-                    }
-                } else if let svc = nav.topViewController as? ClaimPolicyController {
-                    if let sender = sender as? OfferServiceTableItem {
-                        svc.key = key
-                        svc.mModel = sender.mModel
-                        svc.mVehicle = self.mModel
-                    }
+                    svc.serviceID = sender.offerService?.rawValue
+                    svc.mModel = sender.mModel
                 }
-            } else if let menu = segue.destination as? PopupMenuController {
-                menu.popoverPresentationController!.delegate = self
-                menu.key = key
+            } else if let svc: ClaimPolicyController = segue.getMainController() {
+                if let sender = sender as? OfferServiceTableItem {
+                    svc.key = key
+                    svc.mModel = sender.mModel
+                    svc.mVehicle = self.mModel
+                }
+            } else if let svc: PopupMenuController = segue.getMainController() {
+                svc.popoverPresentationController!.delegate = self
+                svc.key = key
+            } else if let svc: ClaimMenuController = segue.getMainController() {
+                if let sender = sender as? OfferServiceTableItem {
+                    svc.key = key
+                    svc.offerService = sender.mModel
+                    svc.vehicle = self.mModel
+                }
             }
         }
     }
@@ -262,6 +274,8 @@ class OfferServiceTableViewCell: GradientTableViewCell {
         let margin: CGFloat = Config.margin
         let padding: CGFloat = Config.padding
         
+        let rightImageSize = Config.iconSizeBig
+        
         var x = padding
         var y = margin + margin / 2
         var width = screenSize.width - x * 2
@@ -281,7 +295,7 @@ class OfferServiceTableViewCell: GradientTableViewCell {
         self.addSubview(self.priceLabel)
         
         y = y + self.titleLabel.font.lineHeight
-        width = width - x
+        width = width - x - rightImageSize
         self.detailsLabel.frame = CGRect(x: x, y: y, width: width, height: Config.lineHeight * 2)
         self.detailsLabel.numberOfLines = 0
         
@@ -295,7 +309,6 @@ class OfferServiceTableViewCell: GradientTableViewCell {
         self.remarksLabel.isHidden = true
         self.addSubview(self.remarksLabel)
         
-        let rightImageSize = Config.iconSizeBig
         y = (padding * 2 + Config.lineHeight * 3) / 2 - (rightImageSize / 2)
         x = screenSize.width - padding - rightImageSize
         
