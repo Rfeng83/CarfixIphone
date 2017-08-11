@@ -155,11 +155,10 @@ class SeedController: BaseTableController {
             } else {
                 if self.isWindscreen {
                     self.title = "Windscreen Claim"
-                    self.leftImage = #imageLiteral(resourceName: "ic_towing_services")
                 } else {
                     self.title = "Claim"
-                    self.leftImage = #imageLiteral(resourceName: "ic_towing_services")
                 }
+                self.leftImage = #imageLiteral(resourceName: "ic_directions_car")
             }
             
             self.details = "\(Convert(model.CreatedDate).countDown())\n\(model.VehReg!)"
@@ -202,7 +201,7 @@ class SeedTableViewCell: GradientTableViewCell {
         self.titleLabel.frame = CGRect(x: x, y: y, width: width, height: height)
         y = y + height
         
-        let imageWidth: CGFloat = height * 2 - margin
+        let imageWidth: CGFloat = height * 2 - margin - margin
         self.leftImage.frame = CGRect(x: x + margin, y: y + margin, width: imageWidth, height: imageWidth)
         self.leftImage.tintColor = .white
         

@@ -122,7 +122,7 @@ class CaseHistoryController: BaseTableController {
             if let image = model.DriverURL {
                 self.leftImagePath = image
             } else {
-                self.leftImage = #imageLiteral(resourceName: "ic_profile_default")
+                self.leftImage = #imageLiteral(resourceName: "ic_vehicle_default")
             }
         }
     }
