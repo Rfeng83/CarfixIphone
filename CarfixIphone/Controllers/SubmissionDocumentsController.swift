@@ -126,6 +126,7 @@ class SubmissionDocumentsController: BaseTableViewController {
         required init(model: GetClaimDocumentsInPdfResult) {
             super.init()
             self.title = model.title
+            self.details = model.details
             self.actionType = Convert(model.actionType).to()
             self.url = model.url
             self.leftImage = #imageLiteral(resourceName: "ic_chevron_right")
@@ -151,11 +152,37 @@ class SubmissionDocumentsTableViewCell: CustomTableViewCell {
         
         self.titleLabel.frame = CGRect(x: x, y: y, width: width, height: height)
         
+        self.detailsLabel.numberOfLines = 0
+        self.detailsLabel.lineBreakMode = .byWordWrapping
+        
         x = x + width + Config.padding
         y = Config.lineHeight * 2 - iconSize / 2
         self.leftImage.frame = CGRect(x: x, y: y, width: iconSize, height: iconSize)
         self.leftImage.tintColor = CarfixColor.shadow.color
         
         return self
+    }
+    
+    override func initCell(item: BaseTableItem) {
+        super.initCell(item: item)
+        
+        if let item = item as? SubmissionDocumentsController.SubmissionDocumentsItem {
+            if item.details.hasValue {
+                if let text = item.details {
+                    let frame = self.titleLabel.frame
+                    
+                    self.detailsLabel.frame = frame
+                    self.detailsLabel.text = text
+                    
+                    let height = self.detailsLabel.fitHeight()
+                    let totalHeight = height + frame.height
+                    let cellHeight = self.bounds.height
+                    var y = (cellHeight - totalHeight) / 2
+                    self.titleLabel.frame.origin.y = y
+                    y = y + frame.height
+                    self.detailsLabel.frame.origin.y = y
+                }
+            }
+        }
     }
 }
