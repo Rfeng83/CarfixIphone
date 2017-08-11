@@ -40,5 +40,6 @@ class GetClaimPhotoCategory: BaseAPIItem {
 }
 
 class GetClaimImage: BaseAPIItem {
+    var key: String?
     var Path: String?
 }

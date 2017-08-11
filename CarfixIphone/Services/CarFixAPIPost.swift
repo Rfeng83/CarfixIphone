@@ -192,13 +192,13 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "GetClaimPhotos", parameters: parameters, onSuccess: onSuccess)
     }
     
-//    func submitClaimReply(key: String, replyMessage: String?, onSuccess: @escaping (SubmitClaimReplyResponse?) -> Void) {
-//        var parameters = [String: Any]()
-//        parameters.updateValue(key, forKey: "key")
-//        if let val = replyMessage { parameters.updateValue(val, forKey: "replyMessage") }
-//        self.post(method: "SubmitClaimReply", parameters: parameters, onSuccess: onSuccess)
-//    }
-
+    func checkClaimExists(vehReg: String, claimTypeID: Int16, onSuccess: @escaping (KeyResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(vehReg, forKey: "vehReg")
+        parameters.updateValue(claimTypeID, forKey: "claimTypeID")
+        self.post(method: "CheckClaimExists", parameters: parameters, onSuccess: onSuccess)
+    }
+    
     func newPendingClaim(vehReg: String, claimTypeID: Int32, isDriver: Int16, insurerName: String, onSuccess: @escaping (KeyResponse?) -> Void) {
         var parameters = [String: Any]()
         parameters.updateValue(vehReg, forKey: "vehReg")
@@ -318,6 +318,12 @@ class CarFixAPIPost: BaseAPIPost
             parameters.updateValue(message, forKey: "message")
         }
         postFile(method: "UploadClaimPhotos", parameters: parameters, images: images, onSuccess: onSuccess)
+    }
+    
+    func deleteClaimPhoto(key: String, onSuccess: @escaping (KeyResponse?) -> Void) {
+        var parameters = [String: Any]()
+        parameters.updateValue(key, forKey: "key")
+        self.post(method: "DeleteClaimPhoto", parameters: parameters, onSuccess: onSuccess)
     }
     
     func submitSignedClaim(key: String, images: [String: UIImage], onSuccess: @escaping (SubmitSignedClaimResponse?) -> Void) {
