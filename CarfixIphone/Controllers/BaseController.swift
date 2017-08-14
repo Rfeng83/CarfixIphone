@@ -112,7 +112,7 @@ class BaseController: UIViewController {
                         
                         var rc = activeTextField.bounds
                         rc = activeTextField.convert(rc, to: view)
-                        self.scrollView?.scrollRectToVisible(rc, animated: true)
+                        self.scrollView?.scrollRectToVisible(rc, animated: false)
                     }
                 }
             }

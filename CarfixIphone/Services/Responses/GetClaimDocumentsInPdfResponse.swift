@@ -9,12 +9,19 @@
 import Foundation
 
 class GetClaimDocumentsInPdfResponse: CarFixAPIResponse {
-    var Result: [GetClaimDocumentsInPdfResult]?
+    var Result: GetClaimDocumentsInPdfResult?
 }
 
 class GetClaimDocumentsInPdfResult: BaseAPIItem {
+    var claimAction: Int16 = -1
+    var urls: [GetClaimDocumentsInPdfUrl]?
+}
+
+class GetClaimDocumentsInPdfUrl: BaseAPIItem {
     var url: String?
     var title: String?
+    var windowTitle: String?
     var details: String?
     var actionType: NSNumber?
 }
+

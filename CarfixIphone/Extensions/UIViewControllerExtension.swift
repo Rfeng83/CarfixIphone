@@ -237,25 +237,45 @@ extension UIViewController: UITextFieldDelegate, UITextViewDelegate, Notificatio
     }
     
     func dismissParentController(type: Any.Type) {
-        dismissParentController(svc: self, type: type)
+        guard dismissParentController(svc: self, type: type) else {
+            if let svcs = self.navigationController?.viewControllers {
+                dismissShowController(index: svcs.count - 1, type: type)
+            }
+            return
+        }
     }
     
-    func dismissParentController(svc: UIViewController?, type: Any.Type) {
+    func dismissShowController(index: Int, type: Any.Type) {
+        if index >= 0 {
+            if let nav = self.navigationController {
+                let svc = nav.viewControllers[index]
+                if type(of: svc) == type {
+                    nav.popToViewController(svc, animated: true)
+                }
+                
+                dismissShowController(index: index - 1, type: type)
+            }
+        }
+    }
+    
+    func dismissParentController(svc: UIViewController?, type: Any.Type) -> Bool {
         if let svc = svc {
             if type(of: svc) == type {
                 svc.dismiss(animated: true, completion: nil)
-                return
+                return true
             }
             if let nav = svc as? UINavigationController {
                 if let svc = nav.topViewController {
                     if type(of: svc) == type {
                         svc.dismiss(animated: true, completion: nil)
-                        return
+                        return true
                     }
                 }
             }
             
-            dismissParentController(svc: svc.presentingViewController, type: type)
+            return dismissParentController(svc: svc.presentingViewController, type: type)
+        } else {
+            return false
         }
     }
     

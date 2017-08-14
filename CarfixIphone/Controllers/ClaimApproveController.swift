@@ -68,7 +68,7 @@ class ClaimApproveController: BaseFormController {
                             
                             self.confirm(content: "Confirm to approve your claim?", handler: { data in
                                 CarFixAPIPost(self).submitSignedDV(key: key, witnessName: self.txtWitnessName.text!, witnessIC: self.txtICNumber.text!, images: images) { data in
-                                    self.dismissParentController(type: BaseTabBarController.self)
+                                    self.dismissParentController(type: ClaimDetailController.self)
                                 }
                             })
                         } else {

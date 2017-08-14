@@ -23,48 +23,33 @@ class SubmissionDocumentsController: BaseTableViewController {
         self.navigationController?.navigationBar.backgroundColor = CarfixColor.gray200.color
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: CarfixColor.primary.color]
         
-        self.initApproveButton(canApprove: false)
+        self.initApproveButton(claimAction: 0)
     }
     
     var mModel: GetClaimDetailResult?
-    var mDocuments: [GetClaimDocumentsInPdfResult]?
+    var mDocuments: [GetClaimDocumentsInPdfUrl]?
     override func refresh(sender: AnyObject?) {
         if let key = key {
             CarFixAPIPost(self).getClaimDocumentsInPdf(key: key) { data in
                 //                self.mDownloadClaimFormUrl = data?.Result?.DownloadClaimFormUrl
-                self.mDocuments = data?.Result
-                
-                super.refresh(sender: sender)
-                CarFixAPIPost(self).getClaimDetail(key: key) { data in
-                    self.mModel = data?.Result
-                    
-                    if let result = self.mModel {
-                        var canApprove: Bool = Convert(result.IsCaseResolved).to() != true
-                        if canApprove {
-                            if let documents = self.mDocuments {
-                                var imageUploaded: Bool = false
-                                for item in documents {
-                                    if item.actionType == 2 {
-                                        imageUploaded = true
-                                        break
-                                    }
-                                }
-                                canApprove = imageUploaded
-                            }
-                        }
-                        
-                        self.initApproveButton(canApprove: canApprove)
-                    }
-                    
+                if let result = data?.Result {
+                    self.mDocuments = result.urls
+                    self.initApproveButton(claimAction: result.claimAction)
                     super.refresh(sender: sender)
                 }
             }
         }
     }
     
-    func initApproveButton(canApprove: Bool) {
-        self.btnApprove.isHidden = !canApprove
-        self.btnApprove.isEnabled = !self.btnApprove.isHidden
+    func initApproveButton(claimAction: Int16) {
+        self.btnApprove.isHidden = claimAction == 0
+        self.btnApprove.isEnabled = claimAction == 2
+        if self.btnApprove.isEnabled {
+            self.btnApprove.backgroundColor = CarfixColor.primary.color
+        } else {
+            self.btnApprove.backgroundColor = CarfixColor.gray500.color
+        }
+        
         if self.btnApprove.isHidden {
             self.btnApproveHeight.constant = 0
         } else {
@@ -109,7 +94,7 @@ class SubmissionDocumentsController: BaseTableViewController {
             }
         } else if let svc: WebController = segue.getMainController() {
             if let model = sender as? SubmissionDocumentsItem {
-                svc.title = model.title
+                svc.title = model.windowTitle
                 if let uri = URL(string: model.url!) {
                     let queryItems = [URLQueryItem(name: "embedded", value: "true"), URLQueryItem(name: "url", value: uri.absoluteString)]
                     var urlComps = URLComponents(string: "http://drive.google.com/viewerng/viewer")!
@@ -123,9 +108,11 @@ class SubmissionDocumentsController: BaseTableViewController {
     class SubmissionDocumentsItem: BaseTableItem {
         var actionType: Int16?
         var url: String?
-        required init(model: GetClaimDocumentsInPdfResult) {
+        var windowTitle: String?
+        required init(model: GetClaimDocumentsInPdfUrl) {
             super.init()
             self.title = model.title
+            self.windowTitle = model.windowTitle ?? model.title
             self.details = model.details
             self.actionType = Convert(model.actionType).to()
             self.url = model.url
