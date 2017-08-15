@@ -14,6 +14,7 @@ class GetClaimResponse: CarFixAPIResponse {
 
 class GetClaimResult: BaseAPIItem {
     var CaseID: Int32 = 0
+    var ReferenceNo: String?
     var ClaimStatus: String?
     var ApprovalAmount: NSNumber?
     var IsApproved: NSNumber?

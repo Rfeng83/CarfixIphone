@@ -113,7 +113,7 @@ class CaseHistoryController: BaseTableController {
                 itemId = uniKey
             }
             
-            self.title = model.ServiceNeeded
+            self.title = "\(model.ServiceNeeded ?? "") | #\(model.ReferenceNo ?? "")"
             self.details = Convert(model.CreatedDate).countDown()
             self.statusDesc = model.Status
             self.isClaim = model.IsClaim == 1

@@ -86,7 +86,7 @@ class ClaimDetailController: BaseTableViewController {
                     let isCaseResolved = Convert(result.IsCaseResolved).to() == true
                     self.initButton(isCaseResolved: isCaseResolved)
                     
-                    if isCaseResolved {
+                    if isCaseResolved && result.ClaimStatusID == 100 {
                         self.performSegue(withIdentifier: Segue.segueCaseResolved.rawValue, sender: self)
                     }
                 }
@@ -134,6 +134,7 @@ class ClaimDetailController: BaseTableViewController {
             svc.delegate = self
         } else if let svc: NewClaimResultController = segue.getMainController() {
             svc.key = self.key
+            svc.isClaim = true
             svc.dontBacktoMainScreen = true
         }
     }

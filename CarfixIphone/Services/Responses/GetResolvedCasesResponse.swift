@@ -14,6 +14,7 @@ class GetResolvedCasesResponse: CarFixAPIResponse {
 
 class GetResolvedCasesResult: BaseAPIItem {
     var Key: String?
+    var ReferenceNo: String?
     var IsClaim: NSNumber?
     var ClaimTypeID: NSNumber?
     var ServiceNeeded: String?

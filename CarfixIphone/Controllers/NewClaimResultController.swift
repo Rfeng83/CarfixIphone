@@ -12,6 +12,7 @@ import UIKit
 class NewClaimResultController: BaseFormController, UIGestureRecognizerDelegate {
     var key: String?
     var dontBacktoMainScreen: Bool?
+    var isClaim: Bool?
     
     @IBOutlet weak var imgLogo: CustomImageView!
     @IBOutlet weak var labelCaseID: CustomLabel!
@@ -41,10 +42,10 @@ class NewClaimResultController: BaseFormController, UIGestureRecognizerDelegate 
         refresh()
     }
     
-    var mResult: GetClaimResult?
+    var mResult: GetClaimSummaryResult?
     func refresh() {
         if let key = key {
-            CarFixAPIPost(self).getClaim(key: key) { data in
+            CarFixAPIPost(self).getClaimSummary(key: key) { data in
                 self.mResult = data?.Result
                 if let result = self.mResult {
                     if let image = result.InsurerImage {
@@ -52,7 +53,9 @@ class NewClaimResultController: BaseFormController, UIGestureRecognizerDelegate 
                     } else {
                         self.imgLogo.image = #imageLiteral(resourceName: "ic_appicon")
                     }
-                    self.labelCaseID.text = "Case ID : \(result.CaseID)"
+                    
+                    let label = self.isClaim == true ? "Claim ID" : "Case ID"
+                    self.labelCaseID.text = "\(label) : \(result.ReferenceNo ?? Convert(result.CaseID).to()!)"
                     self.labelEmail.text = result.InsurerEmail
                     self.labelPhone.text = result.InsurerContact
                 }

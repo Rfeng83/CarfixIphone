@@ -81,6 +81,7 @@ class ClaimDeclarationController: BaseFormController {
         if let key = sender as? String {
             if let svc: NewClaimResultController = segue.getMainController() {
                 svc.key = key
+                svc.isClaim = true
             }
         }
     }

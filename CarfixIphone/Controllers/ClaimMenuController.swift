@@ -115,7 +115,9 @@ class ClaimMenuController: BaseTableViewController, BaseFormReturnData {
                 if let url = self.mResult?.DownloadClaimFormUrl {
                     svc.url = URL(string: url)
                     svc.delegate = self
-                    svc.title = self.title
+                    if let title = sender as? String {
+                        svc.title = title
+                    }
                 }
             }
         }
@@ -146,7 +148,7 @@ class ClaimMenuController: BaseTableViewController, BaseFormReturnData {
     }
     
     @IBAction func submit(_ sender: Any) {
-        performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: self.key)
+        performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: "Preview & Submit")
     }
     
     class WindscreenCategoryItem: BaseTableItem {

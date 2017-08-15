@@ -135,6 +135,7 @@
 		474DDC071F28529C00EA52EB /* GetClaimWorkshopResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474DDC061F28529C00EA52EB /* GetClaimWorkshopResponse.swift */; };
 		474FC4CC1E83C19200CFC05C /* CustomIconSizeConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474FC4CB1E83C19200CFC05C /* CustomIconSizeConstraint.swift */; };
 		475528371EC48CA8001199C8 /* NewClaimResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475528361EC48CA8001199C8 /* NewClaimResultController.swift */; };
+		4759DFDE1F42E9E80090491D /* GetClaimSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4759DFDD1F42E9E80090491D /* GetClaimSummary.swift */; };
 		475CF8441E01FFC4007E095B /* HasImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475CF8431E01FFC4007E095B /* HasImagePicker.swift */; };
 		4769F03E1E2373BF003D094D /* FilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4769F03D1E2373BF003D094D /* FilterController.swift */; };
 		4769F0401E2393D7003D094D /* GrayBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4769F03F1E2393D7003D094D /* GrayBackground.swift */; };
@@ -318,6 +319,7 @@
 		474DDC061F28529C00EA52EB /* GetClaimWorkshopResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetClaimWorkshopResponse.swift; sourceTree = "<group>"; };
 		474FC4CB1E83C19200CFC05C /* CustomIconSizeConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomIconSizeConstraint.swift; sourceTree = "<group>"; };
 		475528361EC48CA8001199C8 /* NewClaimResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewClaimResultController.swift; sourceTree = "<group>"; };
+		4759DFDD1F42E9E80090491D /* GetClaimSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetClaimSummary.swift; sourceTree = "<group>"; };
 		475CF8431E01FFC4007E095B /* HasImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasImagePicker.swift; sourceTree = "<group>"; };
 		4769F03D1E2373BF003D094D /* FilterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterController.swift; sourceTree = "<group>"; };
 		4769F03F1E2393D7003D094D /* GrayBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrayBackground.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 				47C6EA841DE19BDD00D1B2A1 /* LogCaseResponse.swift */,
 				470DC9281EC4710C0001FD40 /* NewClaimResponse.swift */,
 				470EAA6C1EC567FE006E752E /* GetClaimResponse.swift */,
+				4759DFDD1F42E9E80090491D /* GetClaimSummary.swift */,
 				4712A3361F3B482900E72EFE /* GetClaimPhotosResponse.swift */,
 				47164C821F2F7E6700672D85 /* GetClaimDetailResponse.swift */,
 				471EEEA61F25BD6B00F8AF6A /* GetClaimPersonalDetailsResponse.swift */,
@@ -878,6 +881,7 @@
 				470C27D91DE09B59003A6FFC /* EnumManager.swift in Sources */,
 				470C27E31DE0A1D1003A6FFC /* CarFixAPIResponse.swift in Sources */,
 				47E324CD1F1E599400D319C0 /* ClaimMenuController.swift in Sources */,
+				4759DFDE1F42E9E80090491D /* GetClaimSummary.swift in Sources */,
 				47C6EA8B1DE19BDD00D1B2A1 /* LogCaseResponse.swift in Sources */,
 				470CE5601F2B464200F594ED /* ClaimDocumentController.swift in Sources */,
 				4710E9B71F0DEEA7004BE52C /* GetResolvedCasesResponse.swift in Sources */,
