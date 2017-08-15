@@ -153,7 +153,8 @@ class ViewVehicleController: BaseTableViewController, UIPopoverPresentationContr
                 if item.mModel?.InsurerName.hasValue == true {
                     if let vehicleNo = self.mModel?.VehicleRegNo {
                         CarFixAPIPost(self).checkClaimExists(vehReg: vehicleNo, claimTypeID: 2) { data in
-                            if data?.Result?.key.hasValue == true {
+                            if let key = data?.Result?.key {
+                                item.key = key
                                 self.performSegue(withIdentifier: Segue.segueClaimMenu.rawValue, sender: item)
                             } else {
                                 self.performSegue(withIdentifier: Segue.segueClaimPolicy.rawValue, sender: item)
@@ -198,7 +199,7 @@ class ViewVehicleController: BaseTableViewController, UIPopoverPresentationContr
                 svc.key = key
             } else if let svc: ClaimMenuController = segue.getMainController() {
                 if let sender = sender as? OfferServiceTableItem {
-                    svc.key = key
+                    svc.key = sender.key
                     svc.offerService = sender.mModel
                     svc.vehicle = self.mModel
                 }
@@ -236,6 +237,7 @@ class ViewVehicleController: BaseTableViewController, UIPopoverPresentationContr
         var lastUpdated: Date?
         var openUrl: String?
         var isTappable: Bool = false
+        var key: String?
         
         required init(model: GetOfferServicesResult) {
             super.init()

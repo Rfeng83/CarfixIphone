@@ -8,12 +8,12 @@
 
 import Foundation
 
-class GetCaseHistoryResponse: CarFixAPIResponse
+class GetSeedResponse: CarFixAPIResponse
 {
-    public var Result: [GetCaseHistoryResult]? = [GetCaseHistoryResult.init(obj: nil)]
+    public var Result: [GetSeedResult]? = [GetSeedResult.init(obj: nil)]
 }
 
-class GetCaseHistoryResult: BaseAPIItem {
+class GetSeedResult: BaseAPIItem {
     public var key: String?
     public var IsClaim: NSNumber?
     public var ClaimTypeID: NSNumber?

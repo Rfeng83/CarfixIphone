@@ -11,7 +11,7 @@ import UIKit
 
 class SeedController: BaseTableController {
     var mHasVehicle: Bool?
-    var mResult: [GetCaseHistoryResult]?
+    var mResult: [GetSeedResult]?
     var mNewsFeed: [GetNewsFeedResult]?
     var newsFeedCategoriesCached: [GetMobileNewsFeedCategoriesResult]?
     
@@ -38,7 +38,7 @@ class SeedController: BaseTableController {
         CarFixAPIPost(self).getProfile() { data in
             self.mHasVehicle = data?.Result?.VehicleRegNo.isEmpty == false
         }
-        CarFixAPIPost(self).getCaseHistory() { data in
+        CarFixAPIPost(self).getSeed() { data in
             self.mResult = data?.Result
             super.refresh(sender: sender)
         }
@@ -141,7 +141,7 @@ class SeedController: BaseTableController {
         var isClaim: Bool!
         var isWindscreen: Bool!
         
-        required init(model: GetCaseHistoryResult) {
+        required init(model: GetSeedResult) {
             super.init()
             
             self.itemId = model.key

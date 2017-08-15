@@ -352,8 +352,8 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "CancelClaim", parameters: parameters, onSuccess: onSuccess)
     }
 
-    func getCaseHistory(onSuccess: @escaping (GetCaseHistoryResponse?) -> Void) {
-        self.post(method: "GetCaseHistory", parameters: nil, onSuccess: onSuccess)
+    func getSeed(onSuccess: @escaping (GetSeedResponse?) -> Void) {
+        self.post(method: "GetSeed", parameters: nil, onSuccess: onSuccess)
     }
     
     func getResolvedCases(onSuccess: @escaping (GetResolvedCasesResponse?) -> Void) {

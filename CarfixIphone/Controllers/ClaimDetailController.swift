@@ -44,17 +44,26 @@ class ClaimDetailController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height: CGFloat = Config.lineHeight * 2
+        
         if let item = getItems()?[indexPath.row] as? ClaimDetailItem {
+            if let title = item.details {
+                let width = ClaimDetailTableViewCell.titleWidth
+                let label = CustomLabel(frame: CGRect(x: 0, y: 0, width: width, height: Config.lineHeight)).initView()
+                label.text = title
+                height = height + label.fitHeight()
+            }
+            
             if let content = item.content {
                 if !content.isEmpty {
                     let width = UIScreen.main.bounds.width - Config.padding * 2 - Config.margin * 2
                     let label = CustomLabel(frame: CGRect(x: 0, y: 0, width: width, height: Config.lineHeight)).initView()
                     label.text = content
-                    return label.fitHeight() + Config.lineHeight * 3 + Config.margin + Config.margin
+                    height = height + label.fitHeight() + Config.margin + Config.margin
                 }
             }
         }
-        return Config.lineHeight * 3
+        return height
     }
     
     var mResult: GetClaimDetailResult?
@@ -158,6 +167,7 @@ class ClaimDetailController: BaseTableViewController {
 class ClaimDetailTableViewCell: CustomTableViewCell {
     var contentLabel: CustomLabel!
     var bottomBorder: CustomLine!
+    static var titleWidth: CGFloat = 0
     override func initView() -> ClaimDetailTableViewCell {
         _ = super.initView()
         
@@ -180,6 +190,8 @@ class ClaimDetailTableViewCell: CustomTableViewCell {
         self.detailsLabel.lineBreakMode = .byWordWrapping
         self.detailsLabel.textColor = CarfixColor.gray800.color
         
+        ClaimDetailTableViewCell.titleWidth = width
+        
         x = Config.padding + Config.margin
         y = y + Config.lineHeight + Config.margin
         width = screenSize.width - Config.padding * 2 - Config.margin * 2
@@ -201,6 +213,10 @@ class ClaimDetailTableViewCell: CustomTableViewCell {
         super.initCell(item: item)
         
         if let item = item as? ClaimDetailController.ClaimDetailItem {
+            let oriHeight = self.detailsLabel.bounds.height
+            let height = self.detailsLabel.fitHeight()
+            self.detailsLabel.pushElementBelowIt(height: height - oriHeight)
+            
             self.contentLabel.text = item.content
             _ = self.contentLabel.fitHeight()
             switch item.messageType {
