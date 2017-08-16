@@ -18,6 +18,7 @@ class ClaimMenuController: BaseTableViewController, BaseFormReturnData {
     @IBOutlet weak var btnDelete: CustomImageView!
     @IBOutlet weak var txtVehicleNo: ExtraBigLabel!
     @IBOutlet weak var imgInsurer: CustomImageView!
+    @IBOutlet weak var btnHelp: DarkIcon!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,10 @@ class ClaimMenuController: BaseTableViewController, BaseFormReturnData {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(deleteClaim(_:)))
         btnDelete.isUserInteractionEnabled = true
         btnDelete.addGestureRecognizer(gesture)
+        
+        let gestureHelp = UITapGestureRecognizer(target: self, action: #selector(help(sender:)))
+        btnHelp.isUserInteractionEnabled = true
+        btnHelp.addGestureRecognizer(gestureHelp)
         
         btnPreviewSubmit.isEnabled = false
     }
@@ -112,11 +117,15 @@ class ClaimMenuController: BaseTableViewController, BaseFormReturnData {
                     }
                 }
             } else if let svc: WebController = segue.getMainController() {
-                if let url = self.mResult?.DownloadClaimFormUrl {
-                    svc.url = URL(string: url)
-                    svc.delegate = self
-                    if let title = sender as? String {
-                        svc.title = title
+                if key.compare(titleWindscreen) == ComparisonResult.orderedSame {
+                    let url = URL(string: "http://www.carfix.my/Blog/Pages/ViewPage/28")
+                    svc.url = url
+                    svc.title = key
+                } else {
+                    if let url = self.mResult?.DownloadClaimFormUrl {
+                        svc.url = URL(string: url)
+                        svc.delegate = self
+                        svc.title = key
                     }
                 }
             }
@@ -131,6 +140,11 @@ class ClaimMenuController: BaseTableViewController, BaseFormReturnData {
                 }
             })
         }
+    }
+    
+    var titleWindscreen: String = "Windscreen Claim"
+    override func help(sender: AnyObject) {
+        performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: titleWindscreen)
     }
     
     func returnData(sender: BaseController, item: Any) {

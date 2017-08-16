@@ -88,7 +88,14 @@ class ClaimBankDetailsController: ClaimImagesController {
     }
     
     func readMore(_ sender: UIGestureRecognizer) {
-        
+        performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let svc: WebController = segue.getMainController() {
+            svc.url = URL(string: "http://www.carfix.my/Blog/Pages/ViewPage/26")
+            svc.title = "Windscreen Claim"
+        }
     }
     
     func isChecked(_ sender: UIGestureRecognizer) {

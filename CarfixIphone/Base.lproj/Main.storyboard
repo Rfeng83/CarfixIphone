@@ -1633,50 +1633,6 @@
                                     <constraint firstItem="MP8-x7-Lgm" firstAttribute="centerY" secondItem="C4b-S6-Rbm" secondAttribute="centerY" constant="-16" id="LB3-xP-3Qk"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOv-uR-Bxj">
-                                <rect key="frame" x="12" y="410" width="351" height="208"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breakdown Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIW-pO-oOn" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="8" width="166" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="827-td-7OF" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="37" width="335" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGe-DY-yeC" customClass="PopupPicker" customModule="CarfixIphone" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="86" width="335" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="PMU-Xs-rPe" id="Hxw-Dy-mnK"/>
-                                        </connections>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Your Vehicle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7r-up-4K3" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="57" width="157" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="WIW-pO-oOn" firstAttribute="top" secondItem="FOv-uR-Bxj" secondAttribute="topMargin" id="5Ny-t6-Miu"/>
-                                    <constraint firstItem="827-td-7OF" firstAttribute="top" secondItem="WIW-pO-oOn" secondAttribute="bottom" constant="8" id="GGd-vL-oZf"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="827-td-7OF" secondAttribute="trailing" id="I3v-Ry-5nD"/>
-                                    <constraint firstItem="y7r-up-4K3" firstAttribute="top" secondItem="827-td-7OF" secondAttribute="bottom" constant="20" id="IAt-IY-du7"/>
-                                    <constraint firstItem="hGe-DY-yeC" firstAttribute="top" secondItem="y7r-up-4K3" secondAttribute="bottom" constant="8" id="SBO-x9-qox"/>
-                                    <constraint firstItem="WIW-pO-oOn" firstAttribute="leading" secondItem="FOv-uR-Bxj" secondAttribute="leadingMargin" id="ZcV-Yv-qym"/>
-                                    <constraint firstItem="y7r-up-4K3" firstAttribute="leading" secondItem="FOv-uR-Bxj" secondAttribute="leadingMargin" id="gv4-jT-BH7"/>
-                                    <constraint firstItem="827-td-7OF" firstAttribute="leading" secondItem="FOv-uR-Bxj" secondAttribute="leadingMargin" id="lSe-3S-7ea"/>
-                                    <constraint firstItem="hGe-DY-yeC" firstAttribute="leading" secondItem="FOv-uR-Bxj" secondAttribute="leadingMargin" id="rRa-na-A1n"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="hGe-DY-yeC" secondAttribute="trailing" id="vGr-FT-WZq"/>
-                                </constraints>
-                            </view>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkT-fw-3NG" customClass="CustomButton" customModule="CarfixIphone" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                                 <constraints>
@@ -1687,20 +1643,87 @@
                                     <action selector="submitCase:" destination="PMU-Xs-rPe" eventType="touchUpInside" id="uT9-wJ-FKe"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spM-nX-MPw">
+                                <rect key="frame" x="0.0" y="398" width="375" height="220"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOv-uR-Bxj">
+                                        <rect key="frame" x="12" y="4" width="351" height="242"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breakdown Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIW-pO-oOn" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="8" width="166" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="827-td-7OF" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="33" width="351" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGe-DY-yeC" customClass="PopupPicker" customModule="CarfixIphone" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="70" width="351" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="PMU-Xs-rPe" id="Hxw-Dy-mnK"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Your Vehicle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7r-up-4K3" customClass="CustomLabel" customModule="CarfixIphone" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="45" width="157" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThJ-cu-WeN" customClass="SmallLabel" customModule="CarfixIphone" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="112" width="351" height="122"/>
+                                                <string key="text">Terms and Condition: Please take note that proceeding to request for assistance might incur charges or affect the overall benefits that are currently in your policy. Please refer to our terms and condition in the About section.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="WIW-pO-oOn" firstAttribute="top" secondItem="FOv-uR-Bxj" secondAttribute="topMargin" id="5Ny-t6-Miu"/>
+                                            <constraint firstItem="ThJ-cu-WeN" firstAttribute="top" secondItem="hGe-DY-yeC" secondAttribute="bottom" constant="12" id="9AG-kX-f69"/>
+                                            <constraint firstItem="ThJ-cu-WeN" firstAttribute="leading" secondItem="FOv-uR-Bxj" secondAttribute="leading" id="Bm8-1T-rQN"/>
+                                            <constraint firstItem="827-td-7OF" firstAttribute="top" secondItem="WIW-pO-oOn" secondAttribute="bottom" constant="4" id="GGd-vL-oZf"/>
+                                            <constraint firstAttribute="trailing" secondItem="827-td-7OF" secondAttribute="trailing" id="I3v-Ry-5nD"/>
+                                            <constraint firstItem="y7r-up-4K3" firstAttribute="top" secondItem="827-td-7OF" secondAttribute="bottom" constant="12" id="IAt-IY-du7"/>
+                                            <constraint firstItem="hGe-DY-yeC" firstAttribute="top" secondItem="y7r-up-4K3" secondAttribute="bottom" constant="4" id="SBO-x9-qox"/>
+                                            <constraint firstItem="WIW-pO-oOn" firstAttribute="leading" secondItem="FOv-uR-Bxj" secondAttribute="leading" id="ZcV-Yv-qym"/>
+                                            <constraint firstItem="y7r-up-4K3" firstAttribute="leading" secondItem="FOv-uR-Bxj" secondAttribute="leading" id="gv4-jT-BH7"/>
+                                            <constraint firstAttribute="bottom" secondItem="ThJ-cu-WeN" secondAttribute="bottom" constant="8" id="hRp-y0-Atg"/>
+                                            <constraint firstAttribute="trailing" secondItem="ThJ-cu-WeN" secondAttribute="trailing" id="jV3-zd-gAH"/>
+                                            <constraint firstItem="827-td-7OF" firstAttribute="leading" secondItem="FOv-uR-Bxj" secondAttribute="leading" id="lSe-3S-7ea"/>
+                                            <constraint firstItem="hGe-DY-yeC" firstAttribute="leading" secondItem="FOv-uR-Bxj" secondAttribute="leading" id="rRa-na-A1n"/>
+                                            <constraint firstAttribute="trailing" secondItem="hGe-DY-yeC" secondAttribute="trailing" id="vGr-FT-WZq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="FOv-uR-Bxj" firstAttribute="top" secondItem="spM-nX-MPw" secondAttribute="top" constant="4" id="2QY-fj-R32"/>
+                                    <constraint firstItem="FOv-uR-Bxj" firstAttribute="centerX" secondItem="spM-nX-MPw" secondAttribute="centerX" id="3ms-Dd-Msw"/>
+                                    <constraint firstAttribute="trailing" secondItem="FOv-uR-Bxj" secondAttribute="trailing" constant="12" id="fNb-Ty-moE"/>
+                                    <constraint firstAttribute="bottom" secondItem="FOv-uR-Bxj" secondAttribute="bottom" constant="4" id="lVb-JW-nNr"/>
+                                    <constraint firstItem="FOv-uR-Bxj" firstAttribute="leading" secondItem="spM-nX-MPw" secondAttribute="leading" constant="12" id="stR-JV-FhB"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pkT-fw-3NG" firstAttribute="top" secondItem="FOv-uR-Bxj" secondAttribute="bottom" id="7nV-nT-yYw"/>
                             <constraint firstItem="C4b-S6-Rbm" firstAttribute="height" secondItem="g5I-Xs-Jxl" secondAttribute="height" multiplier="0.5" id="Bfc-sG-fWk"/>
                             <constraint firstAttribute="trailing" secondItem="C4b-S6-Rbm" secondAttribute="trailing" id="EJj-fy-j15"/>
-                            <constraint firstAttribute="trailing" secondItem="FOv-uR-Bxj" secondAttribute="trailing" constant="12" id="FQi-zq-nCt"/>
                             <constraint firstItem="pkT-fw-3NG" firstAttribute="leading" secondItem="g5I-Xs-Jxl" secondAttribute="leading" id="L2E-XB-z8W"/>
+                            <constraint firstItem="pkT-fw-3NG" firstAttribute="top" secondItem="spM-nX-MPw" secondAttribute="bottom" id="M59-iK-G5B"/>
+                            <constraint firstItem="spM-nX-MPw" firstAttribute="top" secondItem="C4b-S6-Rbm" secondAttribute="bottom" id="Mr8-Iq-ob8"/>
                             <constraint firstAttribute="bottom" secondItem="pkT-fw-3NG" secondAttribute="bottom" id="NJh-Pv-LhZ"/>
                             <constraint firstItem="C4b-S6-Rbm" firstAttribute="leading" secondItem="g5I-Xs-Jxl" secondAttribute="leading" id="bst-gA-kPE"/>
-                            <constraint firstItem="FOv-uR-Bxj" firstAttribute="top" secondItem="C4b-S6-Rbm" secondAttribute="bottom" constant="12" id="fWR-0g-Lsb"/>
                             <constraint firstAttribute="trailing" secondItem="pkT-fw-3NG" secondAttribute="trailing" id="jPi-co-MLR"/>
                             <constraint firstItem="C4b-S6-Rbm" firstAttribute="top" secondItem="IFc-Nw-rB2" secondAttribute="bottom" id="sBf-55-ZUI"/>
-                            <constraint firstItem="FOv-uR-Bxj" firstAttribute="leading" secondItem="g5I-Xs-Jxl" secondAttribute="leading" constant="12" id="vRk-ET-j4w"/>
+                            <constraint firstAttribute="trailing" secondItem="spM-nX-MPw" secondAttribute="trailing" id="sIe-qQ-yFx"/>
+                            <constraint firstItem="spM-nX-MPw" firstAttribute="leading" secondItem="g5I-Xs-Jxl" secondAttribute="leading" id="yFQ-bI-N7H"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Case" id="hUt-um-SO5">
@@ -1713,6 +1736,7 @@
                     <connections>
                         <outlet property="ddlVehicle" destination="hGe-DY-yeC" id="bcg-qQ-cxE"/>
                         <outlet property="lblAddress" destination="WIW-pO-oOn" id="XfX-bX-gNM"/>
+                        <outlet property="lblTermsCondition" destination="ThJ-cu-WeN" id="BjA-IU-uuP"/>
                         <outlet property="mapViewContainer" destination="C4b-S6-Rbm" id="0qv-kv-IDC"/>
                         <outlet property="newCaseContainer" destination="FOv-uR-Bxj" id="HgN-a3-Hrt"/>
                         <outlet property="txtAddress" destination="827-td-7OF" id="eWl-W5-daV"/>
@@ -1721,7 +1745,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAP-1B-dnC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3710" y="2171"/>
+            <point key="canvasLocation" x="3709.5999999999999" y="2170.1649175412294"/>
         </scene>
         <!--New Case Result Controller-->
         <scene sceneID="AtO-MK-6XD">
@@ -2028,7 +2052,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ATp-Nj-pzq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ATp-Nj-pzq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2049,7 +2073,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PmX-Og-JUR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PmX-Og-JUR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2070,7 +2094,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TBD-ME-DZJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TBD-ME-DZJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2091,7 +2115,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hEy-4Y-qN0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hEy-4Y-qN0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2109,7 +2133,7 @@
             <objects>
                 <navigationController storyboardIdentifier="notifications" automaticallyAdjustsScrollViewInsets="NO" id="gRi-KY-1wN" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5gb-g4-ObE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5gb-g4-ObE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2362,7 +2386,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9d9-c7-p25" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qRt-bx-zLB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qRt-bx-zLB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3267,6 +3291,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btnDelete" destination="oQw-Vc-Fpp" id="uWx-rN-x0e"/>
+                        <outlet property="btnHelp" destination="SSn-bS-LjI" id="4tp-wK-tlM"/>
                         <outlet property="btnPreviewSubmit" destination="EbO-Pt-ZhV" id="WQd-de-og2"/>
                         <outlet property="imgInsurer" destination="5yX-qR-GTP" id="ddP-n3-GQe"/>
                         <outlet property="tableView" destination="MI6-Od-L9k" id="Tla-rZ-zfu"/>
@@ -3959,6 +3984,7 @@
                         <outlet property="viewImages" destination="gOF-KD-pDz" id="hp4-0H-TcX"/>
                         <outlet property="viewImagesHeight" destination="Z4S-Wm-7ZH" id="RPZ-Dn-6Ao"/>
                         <outlet property="viewSignature" destination="fUA-vR-z16" id="fFc-57-Y7G"/>
+                        <segue destination="9d9-c7-p25" kind="showDetail" identifier="segueWeb" id="kmh-Lj-hIf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjb-IC-Z3u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5493,6 +5519,7 @@
                         <outlet property="viewIAgree" destination="fQA-5E-IPK" id="jK0-cV-Sgt"/>
                         <outlet property="viewInsuredSignature" destination="ikq-GW-7sN" id="h0A-CG-ND7"/>
                         <segue destination="2y1-as-6Vm" kind="show" identifier="segueNewClaimResult" id="TFK-nt-Uof"/>
+                        <segue destination="9d9-c7-p25" kind="showDetail" identifier="segueWeb" id="DBi-q2-N76"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bb-rc-fJT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5758,7 +5785,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Hx-fu-kLF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7Hx-fu-kLF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     </navigationBar>
@@ -5776,7 +5803,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8sm-fK-Dte" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NAt-9u-TJI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NAt-9u-TJI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -5794,7 +5821,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EM9-0f-nOy" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8nv-Js-bTw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8nv-Js-bTw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -5812,7 +5839,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x3H-pr-tzn" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="maI-Bz-622">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="maI-Bz-622">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -5830,7 +5857,7 @@
             <objects>
                 <navigationController storyboardIdentifier="CaseController_Old" automaticallyAdjustsScrollViewInsets="NO" id="UvX-eN-CeO" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="L5C-GT-PHs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="L5C-GT-PHs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -5848,7 +5875,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KAk-0c-WiK" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B6F-da-jTW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B6F-da-jTW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -5866,7 +5893,7 @@
             <objects>
                 <navigationController storyboardIdentifier="picker" automaticallyAdjustsScrollViewInsets="NO" id="5th-1Y-wOf" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jri-M3-aRN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Jri-M3-aRN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -5884,7 +5911,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="emq-EU-u3P" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hx3-fN-J3O">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Hx3-fN-J3O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -5902,7 +5929,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WVC-zb-gqd" customClass="RedNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GXo-9w-eOg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GXo-9w-eOg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -5961,7 +5988,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cAf-tS-KJl" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nni-yf-9dY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Nni-yf-9dY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -6355,7 +6382,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iho-UW-qdI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="o3x-7s-6N8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="o3x-7s-6N8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -6373,7 +6400,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oFt-Ri-RrX" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uzf-Lb-cvL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uzf-Lb-cvL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -6391,7 +6418,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X90-MA-hGi" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ttw-Tp-LWK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ttw-Tp-LWK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -7570,7 +7597,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yKI-bD-3YZ" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DhY-nX-Xxx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DhY-nX-Xxx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -7684,7 +7711,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VE1-Nf-Wad" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GWj-pp-XIl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GWj-pp-XIl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -7702,7 +7729,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LSQ-cO-4NL" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gJm-fs-4aU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gJm-fs-4aU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -7720,7 +7747,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WPz-kf-Hf7" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eLR-XM-h7p">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eLR-XM-h7p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -7925,7 +7952,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hrM-lG-4A5" customClass="BaseNavigationController" customModule="CarfixIphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gwb-6q-5Gw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gwb-6q-5Gw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -8243,18 +8270,18 @@
     <inferredMetricsTieBreakers>
         <segue reference="zOa-Ds-HbM"/>
         <segue reference="jwp-6J-ziI"/>
-        <segue reference="Jll-2p-dzf"/>
         <segue reference="Ksb-uh-DtL"/>
         <segue reference="eDe-6U-5Qf"/>
         <segue reference="UwB-fJ-tA0"/>
         <segue reference="TFK-nt-Uof"/>
+        <segue reference="DBi-q2-N76"/>
         <segue reference="fdF-sT-vca"/>
-        <segue reference="SnJ-bj-dFk"/>
         <segue reference="ebC-82-iFH"/>
         <segue reference="Oay-mq-rqT"/>
-        <segue reference="Mb9-hL-ail"/>
+        <segue reference="SnJ-bj-dFk"/>
         <segue reference="BJf-tM-BSQ"/>
-        <segue reference="37J-qr-IGl"/>
+        <segue reference="2nD-6o-Hqc"/>
         <segue reference="Sj4-yO-bIK"/>
+        <segue reference="37J-qr-IGl"/>
     </inferredMetricsTieBreakers>
 </document>

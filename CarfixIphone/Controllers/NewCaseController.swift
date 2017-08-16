@@ -22,6 +22,7 @@ class NewCaseController: BaseFormController, GMSMapViewDelegate, CLLocationManag
     @IBOutlet weak var lblAddress: CustomLabel!
     @IBOutlet weak var txtAddress: CustomLabel!
     @IBOutlet weak var ddlVehicle: PopupPicker!
+    @IBOutlet weak var lblTermsCondition: SmallLabel!
     
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
@@ -34,6 +35,7 @@ class NewCaseController: BaseFormController, GMSMapViewDelegate, CLLocationManag
         super.viewDidLoad()
         
         ddlVehicle.underlineOnly = false
+        lblTermsCondition.isHidden = serviceNeeded != .TowingServices
         
         // Create a GMSCameraPosition that tells the map to display the
         // coordinate Kuala Lumpur at zoom level 9.

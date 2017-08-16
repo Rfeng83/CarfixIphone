@@ -31,7 +31,7 @@ class ClaimDeclarationController: BaseFormController {
     }
     
     func readMore(_ sender: UIGestureRecognizer) {
-        
+        performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: self)
     }
     
     func isChecked(_ sender: UIGestureRecognizer) {
@@ -78,11 +78,15 @@ class ClaimDeclarationController: BaseFormController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let key = sender as? String {
-            if let svc: NewClaimResultController = segue.getMainController() {
+        if let svc: NewClaimResultController = segue.getMainController() {
+            if let key = sender as? String {
                 svc.key = key
                 svc.isClaim = true
             }
+        }
+        if let svc: WebController = segue.getMainController() {
+            svc.url = URL(string: "http://www.carfix.my/Blog/Pages/ViewPage/27")
+            svc.title = "Windscreen Claim"
         }
     }
 }
