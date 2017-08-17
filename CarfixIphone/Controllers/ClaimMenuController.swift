@@ -123,7 +123,11 @@ class ClaimMenuController: BaseTableViewController, BaseFormReturnData {
                     svc.title = key
                 } else {
                     if let url = self.mResult?.DownloadClaimFormUrl {
-                        svc.url = URL(string: url)
+                        let queryItems = [URLQueryItem(name: "embedded", value: "true"), URLQueryItem(name: "url", value: url)]
+                        var urlComps = URLComponents(string: "http://drive.google.com/viewerng/viewer")!
+                        urlComps.queryItems = queryItems
+                        
+                        svc.url = urlComps.url
                         svc.delegate = self
                         svc.title = key
                     }

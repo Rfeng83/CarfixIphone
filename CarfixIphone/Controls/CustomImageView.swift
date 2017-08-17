@@ -12,14 +12,15 @@ import UIKit
 class CustomImageView: UIImageView {
     var key: String?
     var path: String?
+    var data: Any?
     
     override func initView() -> CustomImageView {
         _ = super.initView()
         return self
     }
     
-    override func draw(_ rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
-        context?.clear(self.bounds)
-    }
+//    override func draw(_ rect: CGRect) {
+//        let context = UIGraphicsGetCurrentContext()
+//        context?.clear(self.bounds)
+//    }
 }

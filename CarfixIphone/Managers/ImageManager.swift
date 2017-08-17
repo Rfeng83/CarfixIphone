@@ -102,15 +102,19 @@ class ImageManager
 //    }
     
     static func downloadImage(mUrl: String, imageView: UIImageView, cache: Bool, onSuccess: @escaping (UIImageView) -> Void) {
-        let oriSize = imageView.frame.size
         let oriImage = imageView.image
-        if oriImage.isEmpty {
-            imageView.image = #imageLiteral(resourceName: "loading")
+        var loadingImage = oriImage
+        if loadingImage.isEmpty {
+            loadingImage = #imageLiteral(resourceName: "loading")
         }
+        imageViewSetImage(imageView: imageView, cachedImage: loadingImage)
         
+        if let image = imageView as? CustomImageView {
+            image.path = mUrl
+        }
         downloadImage(mUrl: mUrl, cache: cache) { data in
             if let image = data {
-                imageViewSetImage(imageView: imageView, cachedImage: image, size: oriSize)
+                imageViewSetImage(imageView: imageView, cachedImage: image)
             } else {
                 imageView.image = oriImage
                 ImageManager.imageCache[mUrl] = oriImage
@@ -145,10 +149,9 @@ class ImageManager
         }
     }
     
-    static func imageViewSetImage(imageView: UIImageView, cachedImage: UIImage?, size: CGSize?) {
+    static func imageViewSetImage(imageView: UIImageView, cachedImage: UIImage?) {
         let width = imageView.frame.width
         let height = imageView.frame.height
-        imageView.image = cachedImage
         
         if let image = cachedImage {
             if width > 0 && height <= 0 {
@@ -160,10 +163,13 @@ class ImageManager
             else if height <= 0 && width <= 0 {
                 imageView.frame = CGRect(origin: imageView.frame.origin, size: image.size)
             }
-            else {
-                imageView.frame = CGRect(origin: imageView.frame.origin, size: size!)
-            }
+//            else {
+//                imageView.frame = CGRect(origin: imageView.frame.origin, size: size!)
+//            }
         }
+        
+        imageView.image = cachedImage
+        
     }
     
     static func RBSquareImageTo(image: UIImage, size: CGSize) -> UIImage {
