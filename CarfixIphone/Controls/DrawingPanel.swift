@@ -75,6 +75,9 @@ class DrawingPanel: BorderView {
         if let scrollView: UIScrollView = self.getSuperView() {
             scrollView.isScrollEnabled = !start
             self.viewBorder.strokeColor = start ? CarfixColor.gray800.color.cgColor : CarfixColor.gray500.color.cgColor
+            self.viewBorder.lineDashPattern = start ? nil : [8, 6]
+            
+            startDrawing()
         }
     }
     
