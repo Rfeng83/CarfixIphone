@@ -14,7 +14,7 @@ class SignaturePanel: DrawingPanel {
         _ = super.initView()
         
         DispatchQueue.main.async {
-            self.placeholder = "Tap Here To Sign"
+            self.placeholder = "Press Here For a Second to Start Sign"
         }
         
         return self

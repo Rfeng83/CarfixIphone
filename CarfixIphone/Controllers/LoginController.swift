@@ -245,7 +245,7 @@ class LoginController: BaseFormController, CustomPickerDelegate, LoginButtonDele
     }
     
     func startLogin() {
-        CarFixAPIPost(self).getProfile(onSuccess: { data in
+        CarFixAPIPost(self, progressBar: true, overrideErrorMessage: "Incorrect username or password").getProfile(onSuccess: { data in
             if let result = data?.Result {
                 if result.PhoneNo.isEmpty == false {
                     let db = CarfixInfo()

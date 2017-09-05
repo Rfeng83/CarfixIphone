@@ -32,10 +32,16 @@ class BaseAPIPost
     
     var viewController: UIViewController
     var isShowProgressBar: Bool
+    var overrideErrorMessage: String?
     
-    required init(_ viewController: UIViewController, progressBar: Bool) {
+    required init(_ viewController: UIViewController, progressBar: Bool, overrideErrorMessage: String?) {
         self.viewController = viewController
         self.isShowProgressBar = progressBar
+        self.overrideErrorMessage = overrideErrorMessage
+    }
+    
+    convenience init(_ viewController: UIViewController, progressBar: Bool) {
+        self.init(viewController, progressBar: progressBar, overrideErrorMessage: nil)
     }
     
     convenience init(_ viewController: UIViewController) {
@@ -57,7 +63,11 @@ class BaseAPIPost
         
         if let data = response as? CarFixAPIResponse {
             if data.Code != 100 {
-                self.viewController.alert(content: data.Message!)
+                if let msg = self.overrideErrorMessage {
+                    self.viewController.alert(content: msg)
+                } else {
+                    self.viewController.alert(content: data.Message!)
+                }
                 return false
             }
         }

@@ -53,6 +53,7 @@ class ClaimAccidentImagesController: ClaimImagesController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         if let svc: WebController = segue.getMainController() {
             if let info = sender as? ImageInfo {
                 svc.url = URL(string: info.url)
