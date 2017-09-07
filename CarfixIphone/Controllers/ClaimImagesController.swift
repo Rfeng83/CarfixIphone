@@ -13,6 +13,7 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
     
     var delegate: RefreshDelegate?
     @IBOutlet weak var btnUpload: CustomButton?
+    @IBOutlet weak var btnUploadHeight: NSLayoutConstraint?
     
     var key: String?
     var singleFile: Bool?
@@ -63,6 +64,10 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
     }
     
     func drawImageUpload(category: PhotoCategory) {
+        drawImageUpload(category: category, canAdd: true)
+    }
+    
+    func drawImageUpload(category: PhotoCategory, canAdd: Bool) {
         if let view = getImageContainer(category: category) {
             if let heightConstraint = getImageContainerHeight(category: category) {
                 view.subviews.forEach({ $0.removeFromSuperview() })
@@ -74,37 +79,45 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
                 let imageSize = Config.lineHeight * 4
                 let iconSize = Config.iconSizeBig
                 
-                let btnAddBorder = BorderView(frame: CGRect(x: x, y: y, width: imageSize, height: imageSize)).initView()
-                
-                x = x + imageSize / 2 - iconSize / 2
-                y = y + imageSize / 2 - iconSize / 2
-                
-                let btnAdd = CustomImageView(frame: CGRect(x: x, y: y, width: iconSize, height: iconSize)).initView()
-                btnAdd.tintColor = CarfixColor.primary.color
-                btnAdd.image = #imageLiteral(resourceName: "ic_add_circle")
-                btnAdd.tag = Convert(category.rawValue).to()!
-                btnAddBorder.tag = btnAdd.tag
-                btnAddBorder.addSubview(btnAdd)
-                view.addSubview(btnAddBorder)
-                
-                let gestureAdd = UITapGestureRecognizer(target: self, action: #selector(pickImage(_:)))
-                gestureAdd.delegate = self
-                btnAddBorder.isUserInteractionEnabled = true
-                btnAddBorder.addGestureRecognizer(gestureAdd)
+                var btnAddBorder: BorderView?
+                var btnAdd: CustomImageView?
+                if canAdd {
+                    btnAddBorder = BorderView(frame: CGRect(x: x, y: y, width: imageSize, height: imageSize)).initView()
+                    
+                    x = x + imageSize / 2 - iconSize / 2
+                    y = y + imageSize / 2 - iconSize / 2
+                    
+                    btnAdd = CustomImageView(frame: CGRect(x: x, y: y, width: iconSize, height: iconSize)).initView()
+                    btnAdd?.tintColor = CarfixColor.primary.color
+                    btnAdd?.image = #imageLiteral(resourceName: "ic_add_circle")
+                    btnAdd?.tag = Convert(category.rawValue).to()!
+                    btnAddBorder?.tag = btnAdd!.tag
+                    btnAddBorder?.addSubview(btnAdd!)
+                    view.addSubview(btnAddBorder!)
+                    
+                    let gestureAdd = UITapGestureRecognizer(target: self, action: #selector(pickImage(_:)))
+                    gestureAdd.delegate = self
+                    btnAddBorder?.isUserInteractionEnabled = true
+                    btnAddBorder?.addGestureRecognizer(gestureAdd)
+                }
                 
                 if singleFile == true {
-                    if let images = mImages?[category] {
-                        for image in images {
-                            btnAdd.image = image
-                            btnAdd.frame = btnAddBorder.bounds
-                            break
+                    if let btnAdd = btnAdd {
+                        if let btnAddBorder = btnAddBorder {
+                            if let images = mImages?[category] {
+                                for image in images {
+                                    btnAdd.image = image
+                                    btnAdd.frame = btnAddBorder.bounds
+                                    break
+                                }
+                            } else if let image = mImagesExists?[category]?.first?.path {
+                                btnAdd.frame = btnAddBorder.bounds
+                                ImageManager.downloadImage(mUrl: image, imageView: btnAdd, cache: false)
+                            }
                         }
-                    } else if let image = mImagesExists?[category]?.first?.path {
-                        btnAdd.frame = btnAddBorder.bounds
-                        ImageManager.downloadImage(mUrl: image, imageView: btnAdd, cache: false)
                     }
                 } else {
-                    x = btnAddBorder.frame.width + Config.padding
+                    x = btnAddBorder == nil ? 0 : btnAddBorder!.frame.width + Config.padding
                     y = 0
                     
                     if let images = mImagesExists?[category] {
@@ -165,7 +178,7 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
         }
     }
     
-    func drawImages(view: UIView, category: PhotoCategory, images: [ViewImageController.ViewImageItem], btnAddBorder: UIView, left: CGFloat, top: CGFloat, width: CGFloat, imageSize: CGFloat) -> CGPoint {
+    func drawImages(view: UIView, category: PhotoCategory, images: [ViewImageController.ViewImageItem], btnAddBorder: UIView?, left: CGFloat, top: CGFloat, width: CGFloat, imageSize: CGFloat) -> CGPoint {
         var x = left
         var y = top
         
@@ -191,7 +204,7 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
             
             x = x + imageSize + Config.padding
             if x + imageSize > width {
-                x = btnAddBorder.frame.origin.x + btnAddBorder.frame.width + Config.padding
+                x = btnAddBorder == nil ? 0 : btnAddBorder!.frame.origin.x + btnAddBorder!.frame.width + Config.padding
                 y = y + imageSize + Config.padding
             }
         }
@@ -251,17 +264,17 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
         var images: [ViewImageController.ViewImageItem] = []
         
         if let view = getImageContainer(category: category) {
-            var count = 0
+            //            var count = 0
             for subview in view.subviews {
-                if count > 0 {
-                    if let imageView = subview as? CustomImageView {
-                        if let image = imageView.image {
-                            images.append(ViewImageController.ViewImageItem(key: imageView.key, path: imageView.path, image: image))
-                        }
+                //                if count > 0 {
+                if let imageView = subview as? CustomImageView {
+                    if let image = imageView.image {
+                        images.append(ViewImageController.ViewImageItem(key: imageView.key, path: imageView.path, image: image))
                     }
                 }
-                
-                count = count + 1
+                //                }
+                //
+                //                count = count + 1
             }
         }
         

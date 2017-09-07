@@ -14,10 +14,29 @@ class ClaimRepairedPhotosController: ClaimImagesController {
     @IBOutlet weak var viewRepairedReceiptHeight: NSLayoutConstraint!
     @IBOutlet weak var viewRepairedPhotos: UIView!
     @IBOutlet weak var viewRepairedPhotosHeight: NSLayoutConstraint!
+    var isApprovable: Bool?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.initButton()
+    }
+    
+    func initButton() {
+        if isApprovable == true {
+            btnUpload?.isEnabled = true
+            btnUpload?.isHidden = false
+            btnUploadHeight?.constant = 49
+        } else {
+            btnUpload?.isEnabled = false
+            btnUpload?.isHidden = true
+            btnUploadHeight?.constant = 0
+        }
+    }
     
     override func redrawImages() {
-        self.drawImageUpload(category: .RepairedReceipt)
-        self.drawImageUpload(category: .AfterRepairedPhoto)
+        self.drawImageUpload(category: .RepairedReceipt, canAdd: isApprovable == true)
+        self.drawImageUpload(category: .AfterRepairedPhoto, canAdd: isApprovable == true)
     }
     
     override func getImageContainer(category: PhotoCategory) -> UIView? {
@@ -43,6 +62,6 @@ class ClaimRepairedPhotosController: ClaimImagesController {
     }
     
     override func existsImageRemovable() -> Bool {
-        return true
+        return isApprovable == true
     }
 }

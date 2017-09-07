@@ -15,6 +15,7 @@ class WebController: BaseController, UIWebViewDelegate {
     
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var btnNextHeight: NSLayoutConstraint!
+    @IBOutlet weak var btnNext: CustomButton!
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.backgroundColor = .white
@@ -30,8 +31,10 @@ class WebController: BaseController, UIWebViewDelegate {
         
         if self.delegate.hasValue {
             btnNextHeight.constant = 49
+            btnNext.isHidden = false
         } else {
             btnNextHeight.constant = 0
+            btnNext.isHidden = true
         }
     }
     

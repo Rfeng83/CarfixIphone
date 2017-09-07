@@ -371,3 +371,18 @@ enum ClaimContentCategoryEnum: Int {
         }
     }
 }
+
+enum ClaimStatus: Int16 {
+    case New = 1
+    case Approved = 2
+    case OfferAccepted = 3
+    case Repaired = 4
+    case Paid = 5
+    case Closed = 100
+    case Rejected = 101
+    case OfferRejected = 102
+    case Cancel = 103
+    case PendingSubmission = 104
+    case ClosedWithoutPayment = 105
+    case ClaimWithdrawn = 106
+}
