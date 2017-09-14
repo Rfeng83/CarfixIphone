@@ -205,7 +205,7 @@ class CarFixAPIPost: BaseAPIPost
         self.post(method: "CheckClaimExists", parameters: parameters, onSuccess: onSuccess)
     }
     
-    func newPendingClaim(vehReg: String, claimTypeID: Int32, isDriver: Int16, insurerName: String, onSuccess: @escaping (KeyResponse?) -> Void) {
+    func newPendingClaim(vehReg: String, claimTypeID: Int32, isDriver: Bool, insurerName: String, onSuccess: @escaping (KeyResponse?) -> Void) {
         var parameters = [String: Any]()
         parameters.updateValue(vehReg, forKey: "vehReg")
         parameters.updateValue(claimTypeID, forKey: "claimTypeID")
@@ -279,11 +279,7 @@ class CarFixAPIPost: BaseAPIPost
         if let val = accountName { parameters.updateValue(val, forKey: "accountName") }
         if let val = accountNumber { parameters.updateValue(val, forKey: "accountNumber") }
         if let val = bankAddress { parameters.updateValue(val, forKey: "bankAddress") }
-        self.postFile(method: "UpdateClaimEPayment", parameters: parameters, images: images, onBuildRequest: { req in
-            var request = req
-            request.setValue(self.getUID(), forHTTPHeaderField: "UID")
-            return request
-        }, onSuccess: onSuccess)
+        self.postFile(method: "UpdateClaimEPayment", parameters: parameters, images: images, onSuccess: onSuccess)
     }
     
     func getClaimEPayment(key: String, onSuccess: @escaping (GetClaimEPaymentResponse?) -> Void) {

@@ -143,7 +143,7 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
             for item in images {
                 var count = 0
                 for image in item.value {
-                    imageList["\(item.key.rawValue);\(count).jpg"] = resizeImage(sourceImage: image, scaledToWidth: Config.profileImageWidth)
+                    imageList["\(item.key.rawValue);\(count).jpg"] = image
                     count = count + 1
                 }
             }
@@ -167,7 +167,7 @@ class ViewClaimController: BaseFormController, HasImagePicker, UIGestureRecogniz
         for (path, image) in images {
             let imageView = CustomImageView(frame: CGRect(x: x, y: y, width: imageSize, height: imageSize)).initView()
             if let image = image {
-                imageView.image = image
+                imageView.image = image.compressed
                 imageView.tag = Convert(category.rawValue).to()!
             } else {
                 ImageManager.downloadImage(mUrl: path, imageView: imageView)

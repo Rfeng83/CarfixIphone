@@ -158,7 +158,7 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
             for item in images {
                 var count = 0
                 for image in item.value {
-                    imageList["\(item.key.rawValue);\(count).jpg"] = resizeImage(sourceImage: image, scaledToWidth: Config.profileImageWidth)
+                    imageList["\(item.key.rawValue);\(count).jpg"] = image
                     count = count + 1
                 }
             }
@@ -320,7 +320,9 @@ class ClaimImagesController: BaseFormController, HasImagePicker, UIGestureRecogn
                 if singleFile == true {
                     mImages?[photoCategory]?.removeAll()
                 }
-                mImages?[photoCategory]?.append(image)
+                if let image = image.compressed {
+                    mImages?[photoCategory]?.append(image)
+                }
             } else { print("some error message") }
             
             self.drawImageUpload(category: photoCategory)

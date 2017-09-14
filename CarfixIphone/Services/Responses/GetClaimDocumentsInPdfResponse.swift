@@ -14,6 +14,7 @@ class GetClaimDocumentsInPdfResponse: CarFixAPIResponse {
 
 class GetClaimDocumentsInPdfResult: BaseAPIItem {
     var claimAction: Int16 = -1
+    var canUploadImage: NSNumber?
     var urls: [GetClaimDocumentsInPdfUrl]?
 }
 

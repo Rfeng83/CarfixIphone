@@ -66,19 +66,19 @@ extension HasImagePicker where Self: UIViewController {
         self.present(imagePicker, animated: true, completion: nil)
     }
     
-    func resizeImage (sourceImage: UIImage, scaledToWidth: CGFloat) -> UIImage {
-        let oldWidth = sourceImage.size.width
-        let scaleFactor = scaledToWidth / oldWidth
-        
-        let newHeight = sourceImage.size.height * scaleFactor
-        let newWidth = oldWidth * scaleFactor
-        
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-        sourceImage.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!
-    }
+    //    func resizeImage (sourceImage: UIImage, scaledToWidth: CGFloat) -> UIImage {
+    //        let oldWidth = sourceImage.size.width
+    //        let scaleFactor = scaledToWidth / oldWidth
+    //
+    //        let newHeight = sourceImage.size.height * scaleFactor
+    //        let newWidth = oldWidth * scaleFactor
+    //
+    //        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+    //        sourceImage.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+    //        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    //        UIGraphicsEndImageContext()
+    //        return newImage!
+    //    }
     //    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     //
     //        var myImageName: String

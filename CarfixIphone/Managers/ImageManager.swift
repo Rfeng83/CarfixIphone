@@ -54,52 +54,9 @@ class ImageManager
         }
     }
     
-    //    static func clearCache(url: String) {
-    //        if imageCache.contains(where: { (key, data) in
-    //            return key == url }) {
-    //            imageCache.removeValue(forKey: url)
-    //        }
-    //    }
-    
     static func downloadImage(mUrl: String, imageView: UIImageView, onSuccess: @escaping (UIImageView) -> Void) {
         downloadImage(mUrl: mUrl, imageView: imageView, cache: false, onSuccess: onSuccess)
     }
-//    
-//    static func downloadImage(mUrl: String, imageView: UIImageView, cache: Bool, onSuccess: @escaping (UIImageView) -> Void) {
-//        let oriSize = imageView.frame.size
-//        let oriImage = imageView.image
-//        if oriImage.isEmpty {
-//            imageView.image = #imageLiteral(resourceName: "loading")
-//        }
-//        
-//        let cachedImage = imageCache[mUrl]
-//        if !cache || cachedImage.isEmpty {
-//            if let url = URL(string: mUrl) {
-//                print("Download Started")
-//                print("lastPathComponent: " + (url.lastPathComponent ))
-//                
-//                URLSession.shared.dataTask(with: URLRequest(url: url, cachePolicy: cache ? .useProtocolCachePolicy : .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)) { (data, response, error) in
-//                    DispatchQueue.main.async { () -> Void in
-//                        guard let data = data, error == nil else { return }
-//                        print(response?.suggestedFilename ?? "")
-//                        print("Download Finished")
-//                        if let image = UIImage(data: data) {
-//                            imageViewSetImage(imageView: imageView, cachedImage: image, size: oriSize)
-//                            ImageManager.imageCache[mUrl] = image
-//                        } else {
-//                            imageView.image = oriImage
-//                            ImageManager.imageCache[mUrl] = oriImage
-//                        }
-//                        onSuccess(imageView)
-//                    }
-//                    }.resume()
-//            }
-//        }
-//        else {
-//            imageViewSetImage(imageView: imageView, cachedImage: cachedImage, size: oriSize)
-//            onSuccess(imageView)
-//        }
-//    }
     
     static func downloadImage(mUrl: String, imageView: UIImageView, cache: Bool, onSuccess: @escaping (UIImageView) -> Void) {
         let oriImage = imageView.image
@@ -231,7 +188,7 @@ class ImageManager
         return newImage!
     }
     
-    static func saveImage (image: UIImage, path: String) -> Bool{
+    static func saveImage(image: UIImage, path: String) -> Bool{
         
         //let pngImageData = UIImagePNGRepresentation(image)
         let jpgImageData = UIImageJPEGRepresentation(image, 0.2)   // if you want to save as JPEG

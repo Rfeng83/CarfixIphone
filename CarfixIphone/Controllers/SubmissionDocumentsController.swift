@@ -27,13 +27,13 @@ class SubmissionDocumentsController: BaseTableViewController {
     }
     
     var mModel: GetClaimDetailResult?
-    var mDocuments: [GetClaimDocumentsInPdfUrl]?
+    var mClaimDocumentsInPdf: GetClaimDocumentsInPdfResult?
     override func refresh(sender: AnyObject?) {
         if let key = key {
             CarFixAPIPost(self).getClaimDocumentsInPdf(key: key) { data in
                 //                self.mDownloadClaimFormUrl = data?.Result?.DownloadClaimFormUrl
                 if let result = data?.Result {
-                    self.mDocuments = result.urls
+                    self.mClaimDocumentsInPdf = result
                     self.initApproveButton(claimAction: result.claimAction)
                     super.refresh(sender: sender)
                 }
@@ -59,7 +59,7 @@ class SubmissionDocumentsController: BaseTableViewController {
     
     override func buildItems() -> [BaseTableItem]? {
         var items = [BaseTableItem]()
-        if let documents = mDocuments {
+        if let documents = mClaimDocumentsInPdf?.urls {
             for item in documents {
                 items.append(SubmissionDocumentsItem(model: item))
             }
@@ -73,7 +73,7 @@ class SubmissionDocumentsController: BaseTableViewController {
             case 0:
                 performSegue(withIdentifier: Segue.segueWeb.rawValue, sender: item)
             default:
-                performSegue(withIdentifier: Segue.segueClaimDocument.rawValue, sender: self.key)
+                performSegue(withIdentifier: Segue.segueClaimDocument.rawValue, sender: item)
             }
         }
     }
@@ -84,9 +84,10 @@ class SubmissionDocumentsController: BaseTableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let svc: ClaimRepairedPhotosController = segue.getMainController() {
-            if let key = sender as? String {
+            if let key = self.key {
                 svc.key = key
             }
+            svc.canUpload = mClaimDocumentsInPdf?.canUploadImage != 0
             svc.delegate = self
         } else if let svc: ClaimApproveController = segue.getMainController() {
             if let key = sender as? String {

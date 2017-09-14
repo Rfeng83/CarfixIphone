@@ -175,7 +175,7 @@ class HTTPManager<T: BaseAPIResponse> {
         
         var count = 0
         for (fileName, image) in images {
-            let image_data = UIImageJPEGRepresentation(image, 1)
+            let image_data = image.compressedData
             
             if image_data == nil {
                 continue

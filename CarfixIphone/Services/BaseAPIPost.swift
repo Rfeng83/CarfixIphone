@@ -12,7 +12,8 @@ import UIKit
 class BaseAPIPost
 {
     func getWebBaseURL() -> String {
-        if CarfixInfo().profile.loginID?.compare("60122538125") == ComparisonResult.orderedSame {
+        let profile = CarfixInfo().profile
+        if profile.password.hasValue && profile.loginID?.compare("60122538125") == ComparisonResult.orderedSame {
             return RootPath.My_Test.rawValue
         }
         return RootPath.My.rawValue

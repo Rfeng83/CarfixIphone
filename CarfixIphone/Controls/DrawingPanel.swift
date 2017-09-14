@@ -125,6 +125,7 @@ class DrawingPanel: BorderView {
         }
     }
     
+    var endTime: DispatchTime!
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !swiped {
             // draw a single point
@@ -142,7 +143,13 @@ class DrawingPanel: BorderView {
         
         tempImageView.image = nil
         
-        drawing(start: false)
+        drawing(start: true)
+        endTime = DispatchTime.now() + 2
+        DispatchQueue.main.asyncAfter(deadline: endTime) {
+            if DispatchTime.now().uptimeNanoseconds >= self.endTime.uptimeNanoseconds {
+                self.drawing(start: false)
+            }
+        }
     }
     
     func getImage() -> UIImage? {
@@ -156,5 +163,14 @@ class DrawingPanel: BorderView {
         tempImageView.image = nil
         mainImageView.image = nil
         placeholderLabel?.isHidden = false
+        
+        drawing(start: true)
+        endTime = DispatchTime.now() + 2
+        DispatchQueue.main.asyncAfter(deadline: endTime) {
+            if DispatchTime.now().uptimeNanoseconds >= self.endTime.uptimeNanoseconds {
+                self.drawing(start: false)
+                self.placeholderLabel?.isHidden = false
+            }
+        }
     }
 }

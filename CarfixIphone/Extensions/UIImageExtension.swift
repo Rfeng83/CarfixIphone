@@ -44,4 +44,86 @@ extension UIImage {
             return nil
         }
     }
+    
+    var compressed: UIImage? {
+        get {
+            if let data = compressedData {
+                return UIImage(data: data)
+            }
+            return nil
+        }
+    }
+    
+    var compressedData: Data? {
+        get {
+            return compressTo(200)
+        }
+    }
+    
+    // MARK: - UIImage+Resize
+    func compressTo(_ expectedSizeInkb: Double) -> Data? {
+        let sizeInBytes: Int = Convert(round(expectedSizeInkb * 1024)).to()!
+        var needCompress:Bool = true
+        var imgData:Data?
+        var compressingValue:CGFloat = 1.0
+        while (needCompress && compressingValue > 0.0) {
+            if let data:Data = UIImageJPEGRepresentation(self, compressingValue) {
+                if data.count < sizeInBytes {
+                    needCompress = false
+                    imgData = data
+                } else {
+                    compressingValue -= 0.1
+                }
+            } else {
+                return nil
+            }
+        }
+        
+        if let data = imgData {
+            if (data.count < sizeInBytes) {
+                return data
+            }
+        }
+        return reduceImageSize(width: Float(self.size.width / 2), height: Float(self.size.height / 2))?.compressTo(expectedSizeInkb)
+    }
+    
+    func reduceImageSize(width: Float, height: Float) -> UIImage? {
+        var actualHeight: Float = Float(self.size.height)
+        var actualWidth: Float = Float(self.size.width)
+        let maxHeight: Float = height
+        let maxWidth: Float = width
+        var imgRatio: Float = actualWidth / actualHeight
+        let maxRatio: Float = maxWidth / maxHeight
+        //50 percent compression
+        
+        if actualHeight > maxHeight || actualWidth > maxWidth {
+            if imgRatio < maxRatio {
+                //adjust width according to maxHeight
+                imgRatio = maxHeight / actualHeight
+                actualWidth = imgRatio * actualWidth
+                actualHeight = maxHeight
+            }
+            else if imgRatio > maxRatio {
+                //adjust height according to maxWidth
+                imgRatio = maxWidth / actualWidth
+                actualHeight = imgRatio * actualHeight
+                actualWidth = maxWidth
+            }
+            else {
+                actualHeight = maxHeight
+                actualWidth = maxWidth
+            }
+        }
+        
+        let rect = CGRect(x: 0.0, y: 0.0, width: CGFloat(actualWidth), height: CGFloat(actualHeight))
+        UIGraphicsBeginImageContext(rect.size)
+        self.draw(in: rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        let imageData = UIImageJPEGRepresentation(img!, 1.0)
+        UIGraphicsEndImageContext()
+        if let imageData = imageData {
+            return UIImage(data: imageData)
+        }
+        return nil
+    }
 }
