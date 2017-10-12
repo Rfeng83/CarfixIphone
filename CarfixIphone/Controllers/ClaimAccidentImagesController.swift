@@ -57,7 +57,7 @@ class ClaimAccidentImagesController: ClaimImagesController {
         if let svc: WebController = segue.getMainController() {
             if let info = sender as? ImageInfo {
                 svc.url = URL(string: info.url)
-                svc.title = info.title
+                svc.title = "Windscreen Claim"
             }
         }
     }

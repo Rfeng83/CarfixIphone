@@ -704,7 +704,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Oneworks Sdn Bhd";
 				TargetAttributes = {
 					47B25E691DDDB87400F65C47 = {
@@ -1107,6 +1107,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3829420250774F19BCFF9CF1 /* Pods-CarfixIphone.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CarfixIphone/CarfixIphone.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1130,6 +1131,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6035FA1C6B754A801057FEFC /* Pods-CarfixIphone.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CarfixIphone/CarfixIphone.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

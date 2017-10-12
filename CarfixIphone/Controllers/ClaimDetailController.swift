@@ -97,14 +97,14 @@ class ClaimDetailController: BaseTableViewController {
     }
     
     func initButton(isCaseResolved: Bool){
-        btnUploadReply.isUserInteractionEnabled = !isCaseResolved
         btnDelete.isHidden = isCaseResolved
         
-        if btnUploadReply.isUserInteractionEnabled {
-            self.btnUploadReply.backgroundColor = CarfixColor.primary.color
-        } else {
-            self.btnUploadReply.backgroundColor = CarfixColor.gray500.color
-        }
+//        btnUploadReply.isUserInteractionEnabled = !isCaseResolved
+//        if btnUploadReply.isUserInteractionEnabled {
+//            self.btnUploadReply.backgroundColor = CarfixColor.primary.color
+//        } else {
+//            self.btnUploadReply.backgroundColor = CarfixColor.gray500.color
+//        }
     }
     
     override func buildItems() -> [BaseTableItem]? {
